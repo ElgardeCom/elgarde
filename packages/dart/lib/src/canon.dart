@@ -21,9 +21,8 @@ class InspectionCanon {
   factory InspectionCanon._parse() {
     final checklist = jsonDecode(checklistCanonJson) as Map<String, dynamic>;
     final defects = jsonDecode(defectsCanonJson) as Map<String, dynamic>;
-    final modules =
-        (checklist['modules'] as Map<String, dynamic>)['fuel']
-            as Map<String, dynamic>;
+    final modules = (checklist['modules'] as Map<String, dynamic>)['fuel']
+        as Map<String, dynamic>;
 
     return InspectionCanon._(
       version: checklist['version'] as int,
@@ -50,8 +49,7 @@ class InspectionCanon {
   static InspectionCanon? _instance;
 
   /// The canon, parsed on first access and cached.
-  static InspectionCanon get instance =>
-      _instance ??= InspectionCanon._parse();
+  static InspectionCanon get instance => _instance ??= InspectionCanon._parse();
 
   /// Checklist data version.
   final int version;

@@ -133,7 +133,10 @@ void main() {
       expect(canon.languages, equals(['en', 'pt', 'ru', 'uk', 'fr']));
       expect(canonVersion(), equals({'checklist': 1, 'defects': 1}));
 
-      for (final item in allItems([...canon.base, ...canon.fuelModules.values])) {
+      for (final item in allItems([
+        ...canon.base,
+        ...canon.fuelModules.values,
+      ])) {
         expect(
           item.prompt.toMap().keys.toSet(),
           containsAll(canon.languages),

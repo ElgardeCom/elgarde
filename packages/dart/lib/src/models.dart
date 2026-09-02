@@ -11,13 +11,7 @@ const int kScoreNotInspected = -2;
 const int kCriticalThreshold = 2;
 
 /// Fuel types that select a checklist module. `other` selects none.
-const List<String> kFuelTypes = [
-  'petrol',
-  'diesel',
-  'hybrid',
-  'ev',
-  'other',
-];
+const List<String> kFuelTypes = ['petrol', 'diesel', 'hybrid', 'ev', 'other'];
 
 /// An immutable `{languageCode: text}` map. English is always present and is
 /// the fallback for any language the canon does not carry.

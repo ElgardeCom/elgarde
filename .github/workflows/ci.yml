@@ -65,13 +65,13 @@ jobs:
       - name: Tools, transports and the stdio entry point
         working-directory: mcp
         run: node --test
-      - name: The published bin actually starts
+      - name: The published bin completes a real stdio handshake
         run: |
-          node mcp/bin/elgarde-mcp.js &
-          pid=$!
-          sleep 2
-          kill -0 "$pid" || { echo "stdio server exited immediately"; exit 1; }
-          kill "$pid"
+          request='{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"ci","version":"1"}}}'
+          reply=$(printf '%s\n' "$request" | node mcp/bin/elgarde-mcp.js | head -1)
+          echo "$reply"
+          echo "$reply" | grep -q '"serverInfo"' || {
+            echo "the stdio server did not answer initialize"; exit 1; }
 
   dart:
     name: Dart package

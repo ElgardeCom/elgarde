@@ -67,10 +67,11 @@ def dart_source() -> str:
             "// The canon is data, but a pure Dart package cannot ship a runtime",
             "// data file, so it is embedded here as raw JSON strings.",
             literal("checklistCanonJson", checklist),
+            # No trailing blank line: dart format would strip it, and CI runs
+            # `dart format --set-exit-if-changed` over the generated file too.
             literal("defectsCanonJson", defects),
-            "",
         ]
-    )
+    ) + "\n"
 
 
 def sync(check: bool) -> int:

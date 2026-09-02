@@ -1088,4 +1088,3 @@ const String defectsCanonJson = r'''
   ]
 }
 ''';
-
