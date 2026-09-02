@@ -1,36 +1,50 @@
-# elgarde-inspection-core
+# Elgarde — open inspection data and tools
 
-The canonical data and specification behind [Elgarde](https://elgarde.com/) — a structured
-pre-purchase used-car inspection.
+Open pieces of [**Elgarde**](https://elgarde.com/), a structured pre-purchase used-car inspection:
+the inspection data itself, the scoring specification, the API contract, and every tool that runs
+on somebody else's machine.
 
-Three things live here, and nothing else:
+The mobile app, the marketing site and the backend service are not here — see
+[PUBLIC_BOUNDARY.md](PUBLIC_BOUNDARY.md) for what belongs in this repository and why.
 
-| Path | What it is |
-|---|---|
-| [`data/checklist.json`](data/checklist.json) | The inspection checklist: grouped items with 1–5 scoring and criticality, authored in **English, Portuguese, Russian, Ukrainian and French**, plus per-fuel modules (petrol · diesel · hybrid · EV). |
-| [`data/defects.json`](data/defects.json) | Curated **model-specific known weak points** for common European used models — the DQ200 dry clutch, the PureTech wet belt, the N47 timing chain — with declarative make/model match rules. |
-| [`spec/SCORING.md`](spec/SCORING.md) | How answers roll up into group scores and one overall verdict, including the critical clamp. |
-| [`conformance/vectors.json`](conformance/vectors.json) | The test vectors every implementation must pass. |
+## What's inside
 
-This repository is the **single source of truth**. The Elgarde app, the public API and every
-language port are thin wrappers over this data, and each one runs the same conformance vectors in
-CI. A port that disagrees with the vectors is a broken port.
+| Path | What it is | Status |
+|---|---|---|
+| [`inspection-core/`](inspection-core/) | The canon: checklist content in five languages, curated model-specific defect rules, the scoring specification, and the conformance vectors every implementation must pass | ✅ |
+| [`openapi/`](openapi/) | The published contract of the free `/v1` API | ✅ |
+| `packages/` | Ports of the core for Dart, Python, JS and PHP | planned |
+| `mcp/` | MCP server — ask an assistant what to check on a given car | planned |
+| `plugins/wordpress/` | WordPress plugin embedding the inspection checklist | planned |
+| `extension/` | Browser extension surfacing known defects on used-car listings | planned |
 
-## Try it without cloning anything
+## The free API
 
-The data is served live, free and unauthenticated:
+No key, no sign-up, CORS open, rate-limited per IP:
 
 ```bash
 curl "https://api.elgarde.com/api/v1/checklist?fuel=diesel&make=Volkswagen&model=Golf&lang=en"
 curl "https://api.elgarde.com/api/v1/defects?make=Peugeot&model=208"
 ```
 
-Full reference: **<https://elgarde.com/api/>** · OpenAPI 3.1:
-<https://api.elgarde.com/api/openapi.json>
+Reference: **<https://elgarde.com/api/>** · spec: <https://api.elgarde.com/api/openapi.json>
+(a snapshot is committed at [`openapi/elgarde-api.json`](openapi/elgarde-api.json)).
 
-## Shape
+## The canon
 
-A **group** holds child groups or items:
+`inspection-core/` is the single source of truth. The Elgarde app, the API and every language
+port are thin wrappers over it, and each runs the same
+[`conformance/vectors.json`](inspection-core/conformance/vectors.json) in CI — so a score
+computed in the app and a score computed through the API are the same number.
+
+- 25 base checklist items plus 10 across four fuel modules, authored in **English, Portuguese,
+  Russian, Ukrainian and French**
+- 8 ordered make/model match rules covering 25 curated known defects — the DQ200 dry clutch, the
+  PureTech wet belt, the N47 timing chain
+- [`spec/SCORING.md`](inspection-core/spec/SCORING.md): group rollups (average, weighted,
+  worst-case) and the critical clamp that stops one failed safety item from averaging away
+
+A group holds child groups or items:
 
 ```json
 {
@@ -49,8 +63,9 @@ A **group** holds child groups or items:
 }
 ```
 
-A **defect rule** matches when any of its clauses matches — the make contains one of `makeAny`,
-and, when present, the model contains one of `modelAny`:
+A defect rule matches when any of its clauses matches — the make contains one of `makeAny`, and,
+when present, the model contains one of `modelAny`. Rules are **ordered**, the first match wins,
+and at most one defect group is ever appended:
 
 ```json
 {
@@ -70,20 +85,21 @@ and, when present, the model contains one of `modelAny`:
 }
 ```
 
-Rules are **ordered** and the first match wins; at most one defect group is ever appended to a
-checklist. Item ids are permanent — they are what makes an inspection comparable over time.
+Item ids are permanent — they are what makes an inspection comparable over time. JSON Schemas for
+both files are in [`inspection-core/data/schema/`](inspection-core/data/schema/).
 
-JSON Schemas for both files are in [`data/schema/`](data/schema/).
+Self-check, before you rely on any of it:
 
-## Porting
+```bash
+python3 inspection-core/tools/check.py     # schemas, structure, all 32 vectors
+```
 
-1. Load the two JSON files.
-2. Implement [`spec/SCORING.md`](spec/SCORING.md).
-3. Run [`conformance/vectors.json`](conformance/vectors.json) in your test suite — all four
-   sections (`scoring`, `assembly`, `matching`, `canonScoring`). Compare floats with a tolerance
-   of `1e-9`.
+## Porting the core
 
-Reference implementations: Python (Elgarde's API backend) and Dart (the Elgarde app).
+1. Load `inspection-core/data/checklist.json` and `inspection-core/data/defects.json`.
+2. Implement [`spec/SCORING.md`](inspection-core/spec/SCORING.md).
+3. Run all four sections of `conformance/vectors.json` in your test suite — `scoring`,
+   `assembly`, `matching`, `canonScoring`. Compare floats with a tolerance of `1e-9`.
 
 ## Honest limits
 
@@ -95,9 +111,10 @@ model is trouble-free.
 
 ## Licence
 
-- **Data** (`data/`, `conformance/`) — [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/).
-  Use it commercially, embed it, ship it; keep the attribution to <https://elgarde.com/>.
-- **Tooling** (`tools/`) — [MIT](LICENSE).
+- **Data** (`inspection-core/data/`, `inspection-core/conformance/`) —
+  [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/). Commercial use is fine; keep the
+  attribution to <https://elgarde.com/>.
+- **Code and tooling** — [MIT](LICENSE).
 
-Elgarde is made in Porto, Portugal by TransparentCaprice, Lda. (NIPC 517840642).
-Corrections and additional model defects are welcome — open an issue or a pull request.
+Corrections and additional model defects are welcome — open an issue or a pull request. Elgarde is
+made in Porto, Portugal by TransparentCaprice, Lda. (NIPC 517840642).

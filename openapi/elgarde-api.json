@@ -1,0 +1,526 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Elgarde API",
+    "description": "The Elgarde API. Everything under **`/v1`** is a free, public, no-auth tier —\nno key, no sign-up, CORS open to any origin, rate-limited per IP:\n\n- `GET /v1/checklist` — the adaptive pre-purchase inspection checklist in\n  English, Portuguese, Russian, Ukrainian and French.\n- `GET /v1/defects` — curated model-specific known weak points.\n- `POST /v1/score` — roll a sheet of 1–5 answers into an overall verdict.\n- `GET /v1/vin/{vin}` — VIN decode over the free NHTSA vPIC dataset.\n\nThe underlying data and the scoring specification are open\n([elgarde-inspection-core](https://github.com/elgarde/elgarde-inspection-core),\nCC-BY-4.0). Please keep the attribution that every response carries, and cache\nresults rather than re-fetching static content.\n\nElgarde is a self-service checklist, not a certified, mechanical or legal\ninspection. Every other route on this service belongs to the Elgarde app and\nrequires authentication.\n",
+    "contact": {
+      "name": "Elgarde",
+      "url": "https://elgarde.com/api/",
+      "email": "support@elgarde.com"
+    },
+    "license": {
+      "name": "CC-BY-4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.elgarde.com/api",
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "/v1/meta": {
+      "get": {
+        "tags": [
+          "public"
+        ],
+        "summary": "Canon version, licence and attribution",
+        "description": "What this tier serves, which canon version it is on, and how to credit\nit. Free, no key, no auth.",
+        "operationId": "meta_v1_meta_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Meta V1 Meta Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/checklist": {
+      "get": {
+        "tags": [
+          "public"
+        ],
+        "summary": "Adaptive pre-purchase inspection checklist",
+        "description": "The checklist for a car: base groups, the fuel-specific module, and the\nknown-defect group when the make/model matches a curated rule.",
+        "operationId": "checklist_v1_checklist_get",
+        "parameters": [
+          {
+            "name": "lang",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "en · pt · ru · uk · fr (falls back to en)",
+              "default": "en",
+              "title": "Lang"
+            },
+            "description": "en · pt · ru · uk · fr (falls back to en)"
+          },
+          {
+            "name": "fuel",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "petrol · diesel · hybrid · ev · other",
+              "title": "Fuel"
+            },
+            "description": "petrol · diesel · hybrid · ev · other"
+          },
+          {
+            "name": "make",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Adds the model's known defects",
+              "title": "Make"
+            },
+            "description": "Adds the model's known defects"
+          },
+          {
+            "name": "model",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Model"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Checklist V1 Checklist Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/defects": {
+      "get": {
+        "tags": [
+          "public"
+        ],
+        "summary": "Known weak points for a make and model",
+        "description": "Curated, model-specific things to check — the DQ200 dry clutch, the\nPureTech wet belt, the N47 chain. Empty when nothing is curated for that\nmodel yet; that is not a statement that the model has no known issues.",
+        "operationId": "defects_v1_defects_get",
+        "parameters": [
+          {
+            "name": "make",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Make"
+            }
+          },
+          {
+            "name": "model",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Model"
+            }
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "en · pt (falls back to en)",
+              "default": "en",
+              "title": "Lang"
+            },
+            "description": "en · pt (falls back to en)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Defects V1 Defects Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/score": {
+      "post": {
+        "tags": [
+          "public"
+        ],
+        "summary": "Score an inspection",
+        "description": "Roll a sheet of 1–5 answers up into group scores and one overall verdict.\nA failed critical item clamps the verdict down — see the scoring spec.",
+        "operationId": "score_v1_score_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScoreRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScoreResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/vin/{vin}": {
+      "get": {
+        "tags": [
+          "public"
+        ],
+        "summary": "Decode a VIN (free NHTSA vPIC data)",
+        "description": "Normalise NHTSA vPIC output into a usable shape. US-centric and thin on\nEuropean models — partial results with nulls are normal, not an error.\nCached for 24h; please cache on your side too.",
+        "operationId": "vin_v1_vin__vin__get",
+        "parameters": [
+          {
+            "name": "vin",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Vin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Vin V1 Vin  Vin  Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ScoreRequest": {
+        "properties": {
+          "scores": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "type": "object",
+            "title": "Scores"
+          },
+          "make": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Make"
+          },
+          "model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model"
+          },
+          "fuelType": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fueltype"
+          },
+          "criticalThreshold": {
+            "type": "integer",
+            "maximum": 5.0,
+            "minimum": 1.0,
+            "title": "Criticalthreshold",
+            "default": 2
+          }
+        },
+        "type": "object",
+        "title": "ScoreRequest",
+        "description": "Scores keyed by checklist item id. 1–5 rates the item; -1 marks it not\napplicable, -2 not inspected; omit an item to leave it unanswered."
+      },
+      "ScoreResponse": {
+        "properties": {
+          "overall": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Overall"
+          },
+          "overallBeforeClamp": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Overallbeforeclamp"
+          },
+          "groupScores": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "type": "object",
+            "title": "Groupscores"
+          },
+          "answered": {
+            "type": "integer",
+            "title": "Answered"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "clampedBy": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Clampedby"
+          },
+          "attribution": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Attribution"
+          },
+          "disclaimer": {
+            "type": "string",
+            "title": "Disclaimer"
+          }
+        },
+        "type": "object",
+        "required": [
+          "overall",
+          "overallBeforeClamp",
+          "groupScores",
+          "answered",
+          "total",
+          "clampedBy",
+          "attribution",
+          "disclaimer"
+        ],
+        "title": "ScoreResponse"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    },
+    "securitySchemes": {
+      "HTTPBearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "public",
+      "description": "Free, unauthenticated tier. No key required.",
+      "externalDocs": {
+        "description": "API docs",
+        "url": "https://elgarde.com/api/"
+      }
+    }
+  ]
+}

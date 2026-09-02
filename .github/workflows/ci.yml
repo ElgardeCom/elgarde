@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  canon:
+    name: inspection-core self-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install jsonschema
+      - name: Schemas, structure and conformance vectors
+        run: python inspection-core/tools/check.py
+
+  openapi:
+    name: OpenAPI snapshot is valid
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Parse and sanity-check the committed spec
+        run: |
+          python - <<'PY'
+          import json, sys
+          spec = json.load(open("openapi/elgarde-api.json"))
+          assert spec["openapi"].startswith("3.1"), spec["openapi"]
+          paths = set(spec["paths"])
+          expected = {"/v1/meta", "/v1/checklist", "/v1/defects", "/v1/score", "/v1/vin/{vin}"}
+          assert paths == expected, f"unexpected paths: {paths ^ expected}"
+          # The snapshot must never carry an authenticated route.
+          for path in paths:
+              assert path.startswith("/v1/"), path
+          print(f"OK — {len(paths)} public paths, OpenAPI {spec['openapi']}")
+          PY
+
+  no-secrets:
+    name: No secrets committed
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scan for credential-shaped strings
+        run: |
+          set +e
+          hits=$(grep -rniE \
+            'BEGIN [A-Z ]*PRIVATE KEY|(secret|api[_-]?key|password|passwd|access[_-]?token)[[:space:]]*[:=][[:space:]]*["'\''][^"'\'']{8,}' \
+            --exclude-dir=.git --exclude-dir=.github . )
+          if [ -n "$hits" ]; then
+            echo "Possible secret material:"; echo "$hits"; exit 1
+          fi
+          echo "Clean."
