@@ -1,0 +1,94 @@
+name: Publish to npm
+
+# Publishing runs here, not from a laptop: the credential lives in one place
+# (repository secrets), the same tests that gate every push gate the release,
+# and there is a log of who released what and when.
+#
+# Trigger it from the Actions tab, or:
+#   gh workflow run publish-npm.yml --repo ElgardeCom/elgarde
+#
+# Order is not optional — elgarde-mcp depends on elgarde-inspection, so the
+# library must be on the registry before the server is published.
+
+on:
+  workflow_dispatch:
+    inputs:
+      packages:
+        description: What to publish
+        type: choice
+        default: both
+        options: [both, elgarde-inspection, elgarde-mcp]
+      dry_run:
+        description: Pack and validate without publishing
+        type: boolean
+        default: false
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          registry-url: https://registry.npmjs.org
+
+      - run: npm install
+
+      # A release must not ship something the test suite has not seen.
+      - name: Conformance vectors
+        working-directory: packages/js
+        run: node --test
+      - name: MCP tools and transports
+        working-directory: mcp
+        run: node --test
+
+      - name: Publish elgarde-inspection
+        if: inputs.packages != 'elgarde-mcp'
+        working-directory: packages/js
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if npm view elgarde-inspection version >/dev/null 2>&1; then
+            echo "already on the registry at $(npm view elgarde-inspection version) — skipping"
+          elif [ "${{ inputs.dry_run }}" = "true" ]; then
+            npm publish --dry-run
+          else
+            npm publish
+          fi
+
+      - name: Wait for the registry to serve it
+        if: inputs.packages != 'elgarde-mcp' && inputs.dry_run == false
+        run: |
+          for _ in $(seq 1 30); do
+            npm view elgarde-inspection version >/dev/null 2>&1 && exit 0
+            sleep 2
+          done
+          echo "the library is not being served yet; re-run for elgarde-mcp"; exit 1
+
+      - name: Publish elgarde-mcp
+        if: inputs.packages != 'elgarde-inspection'
+        working-directory: mcp
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if npm view elgarde-mcp version >/dev/null 2>&1; then
+            echo "already on the registry at $(npm view elgarde-mcp version) — skipping"
+          elif [ "${{ inputs.dry_run }}" = "true" ]; then
+            npm publish --dry-run
+          else
+            npm publish
+          fi
+
+      - name: Install from the registry and complete an MCP handshake
+        if: inputs.dry_run == false
+        run: |
+          mkdir -p /tmp/smoke && cd /tmp/smoke && npm init -y >/dev/null
+          npm install --silent --no-audit --no-fund elgarde-mcp
+          request='{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"ci","version":"1"}}}'
+          reply=$(printf '%s\n' "$request" \
+            | node node_modules/elgarde-mcp/bin/elgarde-mcp.js | head -1)
+          echo "$reply"
+          echo "$reply" | grep -q '"serverInfo"' || {
+            echo "the published package did not answer initialize"; exit 1; }
