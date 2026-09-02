@@ -1,0 +1,112 @@
+name: Publish to PyPI
+
+# No token anywhere. PyPI trusted publishing: GitHub mints a short-lived OIDC
+# identity for this workflow, PyPI checks it against the publisher registered
+# for the project, and the upload is authorised on that alone. Nothing to store,
+# nothing to rotate, nothing to leak.
+#
+# One-time setup on PyPI — https://pypi.org/manage/account/publishing/
+#   PyPI Project Name  elgarde-inspection
+#   Owner              ElgardeCom
+#   Repository name    elgarde
+#   Workflow name      publish-pypi.yml
+#   Environment name   pypi
+#
+# Then: gh workflow run publish-pypi.yml --repo ElgardeCom/elgarde
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Where to upload
+        type: choice
+        default: pypi
+        options: [pypi, testpypi]
+      dry_run:
+        description: Build and check without uploading
+        type: boolean
+        default: false
+
+jobs:
+  build:
+    name: Build and verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Conformance vectors, against the built package
+        run: |
+          pip install ./packages/python pytest
+          cd packages/python && python -m pytest -q
+
+      - name: Build sdist and wheel
+        run: |
+          pip install build twine
+          cd packages/python && python -m build
+
+      - name: Metadata is renderable and complete
+        run: twine check packages/python/dist/*
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: packages/python/dist/
+
+  publish:
+    name: Upload
+    needs: build
+    if: inputs.dry_run == false
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.target }}
+    permissions:
+      id-token: write # the whole point: this is the credential
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - name: Publish to PyPI
+        if: inputs.target == 'pypi'
+        uses: pypa/gh-action-pypi-publish@release/v1
+
+      - name: Publish to TestPyPI
+        if: inputs.target == 'testpypi'
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
+
+  verify:
+    name: Install from PyPI and run the vectors again
+    needs: publish
+    if: inputs.dry_run == false && inputs.target == 'pypi'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Wait for the index to serve the new release
+        run: |
+          for _ in $(seq 1 30); do
+            pip download --no-deps --dest /tmp/probe elgarde-inspection==1.0.0 \
+              >/dev/null 2>&1 && exit 0
+            sleep 5
+          done
+          echo "not served yet — re-run this job in a minute"; exit 1
+
+      - name: The published wheel passes the same conformance suite
+        run: |
+          pip install elgarde-inspection pytest
+          cd packages/python && python -m pytest -q
+          python -c "
+          import elgarde_inspection as core
+          groups = core.assemble(core.Car('Volkswagen', 'Golf', 'diesel'))
+          assert [g['id'] for g in groups][-2:] == ['fuel.diesel', 'defects']
+          assert core.overall(groups, {'docs.all.mileage': 1}) == 1.0
+          print('published package behaves:', len(core.all_items(groups)), 'items')
+          "
