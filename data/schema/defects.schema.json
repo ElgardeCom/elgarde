@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elgarde.com/schema/defects.schema.json",
+  "title": "Elgarde model-specific known defects",
+  "description": "Curated known weak points per vehicle model, with declarative make/model match rules. A defect describes something worth checking on a model — never a claim about an individual car.",
+  "type": "object",
+  "required": ["version", "languages", "rules"],
+  "additionalProperties": false,
+  "properties": {
+    "version": { "type": "integer", "minimum": 1 },
+    "languages": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^[a-z]{2}$" }
+    },
+    "rules": {
+      "description": "Ordered; the first matching rule wins and at most one ever applies.",
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/rule" }
+    }
+  },
+  "$defs": {
+    "localizedText": {
+      "type": "object",
+      "required": ["en"],
+      "propertyNames": { "pattern": "^[a-z]{2}$" },
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "rule": {
+      "type": "object",
+      "required": ["id", "label", "match", "defects"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+        "label": { "$ref": "#/$defs/localizedText" },
+        "match": {
+          "description": "The rule matches when ANY clause matches.",
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/clause" }
+        },
+        "defects": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/defect" }
+        }
+      }
+    },
+    "clause": {
+      "description": "Matches when the lowercased make contains any makeAny token AND, if modelAny is present, the lowercased model contains any of its tokens.",
+      "type": "object",
+      "required": ["makeAny"],
+      "additionalProperties": false,
+      "properties": {
+        "makeAny": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "modelAny": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "defect": {
+      "type": "object",
+      "required": ["id", "text"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "description": "Stable provenance id; the generated checklist item is `defect.<id>`.",
+          "type": "string",
+          "pattern": "^[a-z0-9]+([._][a-z0-9]+)*$"
+        },
+        "text": { "$ref": "#/$defs/localizedText" },
+        "critical": { "type": "boolean", "default": false }
+      }
+    }
+  }
+}

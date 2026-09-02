@@ -1,0 +1,17 @@
+The datasets in this repository — data/checklist.json, data/defects.json and
+conformance/vectors.json — are licensed under the Creative Commons
+Attribution 4.0 International licence (CC-BY-4.0).
+
+    https://creativecommons.org/licenses/by/4.0/
+
+You may share and adapt them, including commercially, provided you give
+appropriate credit:
+
+    Inspection data by Elgarde — https://elgarde.com/ — CC-BY-4.0
+
+The Elgarde API returns this attribution block with every response; keeping it
+satisfies the licence.
+
+The data describes known weak points on vehicle models and generic inspection
+items. It is not a certified inspection, not professional advice, and never a
+statement about any individual vehicle. It is provided without warranty.

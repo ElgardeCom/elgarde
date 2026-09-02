@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elgarde.com/schema/checklist.schema.json",
+  "title": "Elgarde inspection checklist",
+  "description": "Canonical pre-purchase used-car inspection checklist: grouped items with 1-5 scoring and criticality, authored per language, plus per-fuel modules.",
+  "type": "object",
+  "required": ["version", "languages", "base", "modules"],
+  "additionalProperties": false,
+  "properties": {
+    "version": { "type": "integer", "minimum": 1 },
+    "languages": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^[a-z]{2}$" }
+    },
+    "base": {
+      "description": "Top-level groups applicable to every car, in display order.",
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/group" }
+    },
+    "modules": {
+      "type": "object",
+      "required": ["fuel"],
+      "additionalProperties": false,
+      "properties": {
+        "fuel": {
+          "description": "Appended when the car's fuel type matches the key.",
+          "type": "object",
+          "propertyNames": {
+            "enum": ["petrol", "diesel", "hybrid", "ev"]
+          },
+          "additionalProperties": { "$ref": "#/$defs/group" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "localizedText": {
+      "description": "Language code to text. `en` is the fallback and must be present.",
+      "type": "object",
+      "required": ["en"],
+      "minProperties": 1,
+      "propertyNames": { "pattern": "^[a-z]{2}$" },
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "group": {
+      "type": "object",
+      "required": ["id", "order", "title"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(\\.[a-z0-9]+)*$" },
+        "order": { "type": "integer", "minimum": 0 },
+        "title": { "$ref": "#/$defs/localizedText" },
+        "aggregation": {
+          "description": "How this group's rollup is computed. Defaults to average.",
+          "enum": ["average", "weighted", "worst_case"],
+          "default": "average"
+        },
+        "children": { "type": "array", "items": { "$ref": "#/$defs/group" } },
+        "items": { "type": "array", "items": { "$ref": "#/$defs/item" } }
+      }
+    },
+    "item": {
+      "description": "One question, answered 1-5, or -1 (not applicable) / -2 (not inspected).",
+      "type": "object",
+      "required": ["id", "order", "prompt"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(\\.[a-z0-9]+)*$" },
+        "order": { "type": "integer", "minimum": 0 },
+        "prompt": { "$ref": "#/$defs/localizedText" },
+        "weight": {
+          "description": "Relative weight under `weighted` aggregation.",
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "default": 1
+        },
+        "critical": {
+          "description": "A failing score on a critical item clamps the overall verdict down.",
+          "type": "boolean",
+          "default": false
+        }
+      }
+    }
+  }
+}
