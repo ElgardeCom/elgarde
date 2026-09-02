@@ -79,3 +79,17 @@ Elgarde implementation must pass.
 
 Code MIT; the inspection data is [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) —
 attribution to <https://elgarde.com/> is the only condition.
+
+## Publishing to the MCP registry
+
+`server.json` is the registry manifest. The `com.elgarde/*` namespace has to be
+proved by a DNS TXT record on elgarde.com before the first publish:
+
+```bash
+npx @modelcontextprotocol/publisher login dns --domain elgarde.com
+npx @modelcontextprotocol/publisher publish
+```
+
+The publisher prints the TXT record to add. Using the domain namespace rather
+than `io.github.elgardecom/*` keeps the server's identity on the same domain as
+the data and the API.

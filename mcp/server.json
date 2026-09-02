@@ -1,0 +1,27 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+  "name": "com.elgarde/inspection",
+  "description": "What to check before buying a used car: an inspection checklist adapted to the specific car, that model's curated known weak points, 1-5 scoring with a critical clamp, and VIN decoding.",
+  "version": "1.0.0",
+  "websiteUrl": "https://elgarde.com/api/",
+  "repository": {
+    "url": "https://github.com/ElgardeCom/elgarde",
+    "source": "github",
+    "subfolder": "mcp"
+  },
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "elgarde-mcp",
+      "version": "1.0.0",
+      "transport": { "type": "stdio" }
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.elgarde.com/mcp"
+    }
+  ]
+}
