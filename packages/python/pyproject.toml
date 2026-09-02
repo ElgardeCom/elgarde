@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "elgarde-inspection"
+version = "1.0.0"
+description = "Pre-purchase used-car inspection: a multilingual checklist, curated model-specific known defects, and 1-5 scoring."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Elgarde", email = "support@elgarde.com" }]
+keywords = [
+    "car",
+    "vehicle",
+    "inspection",
+    "checklist",
+    "used-car",
+    "pre-purchase-inspection",
+    "automotive",
+    "vin",
+    "open-data",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
+    "Typing :: Typed",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://elgarde.com"
+Documentation = "https://elgarde.com/api/"
+Repository = "https://github.com/ElgardeCom/elgarde"
+Issues = "https://github.com/ElgardeCom/elgarde/issues"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+packages = ["elgarde_inspection"]
+
+[tool.setuptools.package-data]
+elgarde_inspection = ["data/*.json", "py.typed"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"

@@ -18,6 +18,101 @@ jobs:
       - run: pip install jsonschema
       - name: Schemas, structure and conformance vectors
         run: python inspection-core/tools/check.py
+      - name: Every package's copy of the canon is in sync
+        run: python inspection-core/tools/sync_canon.py --check
+
+  python:
+    name: Python package
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.13"]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install from the built package, not the source tree
+        run: pip install ./packages/python pytest
+      - name: Conformance vectors
+        working-directory: packages/python
+        run: python -m pytest -q
+
+  js:
+    name: npm package
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ["18", "22"]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Conformance vectors
+        working-directory: packages/js
+        run: node --test
+
+  mcp:
+    name: MCP server
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm install
+      - name: Tools, transports and the stdio entry point
+        working-directory: mcp
+        run: node --test
+      - name: The published bin actually starts
+        run: |
+          node mcp/bin/elgarde-mcp.js &
+          pid=$!
+          sleep 2
+          kill -0 "$pid" || { echo "stdio server exited immediately"; exit 1; }
+          kill "$pid"
+
+  dart:
+    name: Dart package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+      - working-directory: packages/dart
+        run: dart pub get
+      - name: Format
+        working-directory: packages/dart
+        run: dart format --output=none --set-exit-if-changed .
+      - name: Analyze
+        working-directory: packages/dart
+        run: dart analyze --fatal-infos
+      - name: Conformance vectors
+        working-directory: packages/dart
+        run: dart test
+      - name: Publish dry run
+        working-directory: packages/dart
+        run: dart pub publish --dry-run
+
+  php:
+    name: PHP package
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: ["8.1", "8.4"]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: json, mbstring
+          coverage: none
+      - name: composer.json is valid and publishable
+        run: composer validate --strict
+      - name: Conformance vectors
+        run: php packages/php/tests/conformance.php
 
   openapi:
     name: OpenAPI snapshot is valid
@@ -52,7 +147,7 @@ jobs:
           set +e
           hits=$(grep -rniE \
             'BEGIN [A-Z ]*PRIVATE KEY|(secret|api[_-]?key|password|passwd|access[_-]?token)[[:space:]]*[:=][[:space:]]*["'\''][^"'\'']{8,}' \
-            --exclude-dir=.git --exclude-dir=.github . )
+            --exclude-dir=.git --exclude-dir=.github --exclude-dir=node_modules . )
           if [ -n "$hits" ]; then
             echo "Possible secret material:"; echo "$hits"; exit 1
           fi

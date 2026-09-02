@@ -1,0 +1,52 @@
+{
+  "name": "elgarde-inspection",
+  "version": "1.0.0",
+  "description": "Pre-purchase used-car inspection: a multilingual checklist, curated model-specific known defects, and 1-5 scoring. Zero dependencies.",
+  "keywords": [
+    "car",
+    "vehicle",
+    "inspection",
+    "checklist",
+    "used-car",
+    "pre-purchase-inspection",
+    "automotive",
+    "vin",
+    "open-data"
+  ],
+  "homepage": "https://elgarde.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElgardeCom/elgarde.git",
+    "directory": "packages/js"
+  },
+  "bugs": "https://github.com/ElgardeCom/elgarde/issues",
+  "author": "Elgarde <support@elgarde.com> (https://elgarde.com)",
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    },
+    "./data/checklist.json": "./data/checklist.json",
+    "./data/defects.json": "./data/defects.json"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "data/",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

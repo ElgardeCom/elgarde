@@ -1,0 +1,56 @@
+{
+  "name": "elgarde/inspection",
+  "description": "Pre-purchase used-car inspection: a multilingual checklist, curated model-specific known defects, and 1-5 scoring with a critical clamp.",
+  "type": "library",
+  "keywords": [
+    "car",
+    "vehicle",
+    "inspection",
+    "checklist",
+    "used-car",
+    "automotive",
+    "vin",
+    "open-data"
+  ],
+  "homepage": "https://elgarde.com",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Elgarde",
+      "email": "support@elgarde.com",
+      "homepage": "https://elgarde.com"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/ElgardeCom/elgarde/issues",
+    "source": "https://github.com/ElgardeCom/elgarde",
+    "docs": "https://elgarde.com/api/"
+  },
+  "require": {
+    "php": ">=8.1",
+    "ext-json": "*",
+    "ext-mbstring": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Elgarde\\Inspection\\": "packages/php/src/"
+    }
+  },
+  "scripts": {
+    "test": "php packages/php/tests/conformance.php"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "archive": {
+    "exclude": [
+      "/packages/js",
+      "/packages/dart",
+      "/packages/python",
+      "/mcp",
+      "/node_modules",
+      "/.github",
+      "/openapi"
+    ]
+  }
+}

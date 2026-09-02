@@ -1,0 +1,361 @@
+{
+  "version": 1,
+  "languages": [
+    "en",
+    "pt"
+  ],
+  "rules": [
+    {
+      "id": "vag-known-issues",
+      "label": {
+        "en": "VAG known issues",
+        "pt": "Problemas conhecidos VAG"
+      },
+      "match": [
+        {
+          "makeAny": [
+            "volkswagen",
+            "vw",
+            "audi",
+            "seat",
+            "skoda",
+            "škoda"
+          ],
+          "modelAny": [
+            "golf",
+            "passat",
+            "polo",
+            "leon",
+            "ibiza",
+            "octavia",
+            "fabia",
+            "a3",
+            "a1"
+          ]
+        }
+      ],
+      "defects": [
+        {
+          "id": "dsg.dq200",
+          "text": {
+            "en": "DSG (DQ200 dry-clutch) — jerky/shuddering shifts, mechatronic faults",
+            "pt": "DSG (DQ200 embraiagem seca) — trancos, falhas do mecatrónico"
+          }
+        },
+        {
+          "id": "tsi.chain",
+          "text": {
+            "en": "1.2/1.4 TSI timing chain tensioner — rattle on cold start",
+            "pt": "Corrente de distribuição 1.2/1.4 TSI — ruído no arranque a frio"
+          }
+        },
+        {
+          "id": "tdi.egr",
+          "text": {
+            "en": "TDI EGR/DPF — clogging, warning lights, short-trip use",
+            "pt": "EGR/FAP TDI — entupimento, luzes, uso urbano"
+          }
+        },
+        {
+          "id": "tsi.oil",
+          "text": {
+            "en": "1.8/2.0 TSI oil consumption (piston rings)",
+            "pt": "Consumo de óleo 1.8/2.0 TSI (segmentos)"
+          }
+        },
+        {
+          "id": "waterpump",
+          "text": {
+            "en": "Plastic water pump / thermostat leaks",
+            "pt": "Bomba de água / termóstato de plástico com fugas"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bmw-known-issues",
+      "label": {
+        "en": "BMW known issues",
+        "pt": "Problemas conhecidos BMW"
+      },
+      "match": [
+        {
+          "makeAny": [
+            "bmw"
+          ]
+        }
+      ],
+      "defects": [
+        {
+          "id": "n47.chain",
+          "text": {
+            "en": "N47 diesel timing chain (rear of engine) — stretch/rattle, costly",
+            "pt": "Corrente N47 diesel (traseira do motor) — desgaste, dispendiosa"
+          },
+          "critical": true
+        },
+        {
+          "id": "oil.leaks",
+          "text": {
+            "en": "Valve cover + oil filter housing gasket leaks",
+            "pt": "Fugas da tampa de válvulas e do suporte do filtro de óleo"
+          }
+        },
+        {
+          "id": "vanos",
+          "text": {
+            "en": "VANOS rattle / rough idle",
+            "pt": "VANOS com ruído / ralenti irregular"
+          }
+        },
+        {
+          "id": "rust.arches",
+          "text": {
+            "en": "E90: rust on rear wheel arches",
+            "pt": "E90: ferrugem nos guarda-lamas traseiros"
+          }
+        }
+      ]
+    },
+    {
+      "id": "psa-known-issues",
+      "label": {
+        "en": "PSA known issues",
+        "pt": "Problemas conhecidos PSA"
+      },
+      "match": [
+        {
+          "makeAny": [
+            "peugeot",
+            "citro",
+            "ds "
+          ]
+        }
+      ],
+      "defects": [
+        {
+          "id": "puretech.wetbelt",
+          "text": {
+            "en": "PureTech 1.2 wet timing belt — degrades into the oil pump (check belt/oil)",
+            "pt": "Correia em banho de óleo 1.2 PureTech — degrada-se (verificar correia/óleo)"
+          },
+          "critical": true
+        },
+        {
+          "id": "ep6.chain",
+          "text": {
+            "en": "1.6 THP (EP6) timing chain + carbon build-up on valves",
+            "pt": "Corrente 1.6 THP (EP6) + acumulação de carbono nas válvulas"
+          }
+        },
+        {
+          "id": "hdi.turbo",
+          "text": {
+            "en": "1.6 HDi turbo oil-feed / EGR / DPF issues",
+            "pt": "Turbo 1.6 HDi (alimentação de óleo) / EGR / FAP"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ford-known-issues",
+      "label": {
+        "en": "Ford known issues",
+        "pt": "Problemas conhecidos Ford"
+      },
+      "match": [
+        {
+          "makeAny": [
+            "ford"
+          ],
+          "modelAny": [
+            "focus",
+            "fiesta",
+            "ecosport",
+            "puma"
+          ]
+        }
+      ],
+      "defects": [
+        {
+          "id": "ecoboost.coolant",
+          "text": {
+            "en": "1.0 EcoBoost coolant/overheating (degas hose, head) — check history",
+            "pt": "1.0 EcoBoost sobreaquecimento/líquido — verificar histórico"
+          },
+          "critical": true
+        },
+        {
+          "id": "ecoboost.wetbelt",
+          "text": {
+            "en": "1.0 EcoBoost wet timing belt service due",
+            "pt": "Correia em óleo 1.0 EcoBoost — revisão em dia"
+          }
+        },
+        {
+          "id": "powershift",
+          "text": {
+            "en": "Powershift (DPS6) dual-clutch — shudder/jerk on petrol autos",
+            "pt": "Powershift (DPS6) — trancos nas automáticas a gasolina"
+          }
+        }
+      ]
+    },
+    {
+      "id": "renault-nissan-1-5-dci-known-issues",
+      "label": {
+        "en": "Renault/Nissan 1.5 dCi known issues",
+        "pt": "Problemas conhecidos Renault/Nissan"
+      },
+      "match": [
+        {
+          "makeAny": [
+            "renault",
+            "dacia"
+          ]
+        },
+        {
+          "makeAny": [
+            "nissan"
+          ],
+          "modelAny": [
+            "qashqai",
+            "juke",
+            "micra"
+          ]
+        }
+      ],
+      "defects": [
+        {
+          "id": "dci.injectors",
+          "text": {
+            "en": "1.5 dCi injectors + DPF/EGR — clogging, injector wear",
+            "pt": "Injetores 1.5 dCi + FAP/EGR — entupimento, desgaste"
+          }
+        },
+        {
+          "id": "cvt.xtronic",
+          "text": {
+            "en": "Nissan Xtronic CVT — overheating/jerky (check fluid + behaviour)",
+            "pt": "CVT Xtronic Nissan — sobreaquece/trancos (verificar óleo)"
+          }
+        },
+        {
+          "id": "electrics",
+          "text": {
+            "en": "Electrical gremlins (windows, sensors, injector wiring)",
+            "pt": "Problemas elétricos (vidros, sensores, cablagem dos injetores)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "opel-known-issues",
+      "label": {
+        "en": "Opel known issues",
+        "pt": "Problemas conhecidos Opel"
+      },
+      "match": [
+        {
+          "makeAny": [
+            "opel",
+            "vauxhall"
+          ],
+          "modelAny": [
+            "astra",
+            "corsa",
+            "insignia"
+          ]
+        }
+      ],
+      "defects": [
+        {
+          "id": "opel.chain",
+          "text": {
+            "en": "1.4 Turbo timing chain wear",
+            "pt": "Desgaste da corrente 1.4 Turbo"
+          }
+        },
+        {
+          "id": "opel.waterpump",
+          "text": {
+            "en": "Water pump / thermostat failures",
+            "pt": "Falhas da bomba de água / termóstato"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mercedes-known-issues",
+      "label": {
+        "en": "Mercedes known issues",
+        "pt": "Problemas conhecidos Mercedes"
+      },
+      "match": [
+        {
+          "makeAny": [
+            "mercedes"
+          ]
+        }
+      ],
+      "defects": [
+        {
+          "id": "om651.injectors",
+          "text": {
+            "en": "OM651 diesel injector wear / leaks",
+            "pt": "Desgaste/fugas dos injetores OM651 diesel"
+          }
+        },
+        {
+          "id": "m271.balanceshaft",
+          "text": {
+            "en": "M271 petrol (pre-2011) balance-shaft/timing gear wear",
+            "pt": "M271 gasolina (pré-2011) — desgaste da árvore de balanceamento"
+          }
+        },
+        {
+          "id": "rust",
+          "text": {
+            "en": "Older models: rust (arches, jacking points)",
+            "pt": "Modelos antigos: ferrugem (guarda-lamas, apoios de macaco)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fiat-known-issues",
+      "label": {
+        "en": "Fiat known issues",
+        "pt": "Problemas conhecidos Fiat"
+      },
+      "match": [
+        {
+          "makeAny": [
+            "fiat"
+          ],
+          "modelAny": [
+            "500",
+            "panda",
+            "punto"
+          ]
+        }
+      ],
+      "defects": [
+        {
+          "id": "multijet.dpf",
+          "text": {
+            "en": "1.3 MultiJet diesel DPF (city use)",
+            "pt": "FAP 1.3 MultiJet diesel (uso urbano)"
+          }
+        },
+        {
+          "id": "twinair.oil",
+          "text": {
+            "en": "0.9 TwinAir oil consumption",
+            "pt": "Consumo de óleo 0.9 TwinAir"
+          }
+        }
+      ]
+    }
+  ]
+}

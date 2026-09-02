@@ -1,0 +1,210 @@
+{
+  "version": 1,
+  "about": "Conformance vectors for every Elgarde inspection-core port. Numbers compare with an absolute tolerance of 1e-9. See ../spec/SCORING.md.",
+  "fixtures": {
+    "mixed": {
+      "about": "Exercises all three aggregations, item weights, the critical clamp and both sentinels. Not real checklist content.",
+      "groups": [
+        {
+          "id": "a",
+          "order": 0,
+          "title": { "en": "Weighted group" },
+          "aggregation": "weighted",
+          "items": [
+            { "id": "a1", "order": 0, "weight": 3.0, "prompt": { "en": "Heavy item" } },
+            { "id": "a2", "order": 1, "weight": 1.0, "critical": true, "prompt": { "en": "Critical item" } }
+          ]
+        },
+        {
+          "id": "b",
+          "order": 1,
+          "title": { "en": "Averaging parent" },
+          "aggregation": "average",
+          "children": [
+            {
+              "id": "b1",
+              "order": 0,
+              "title": { "en": "Child" },
+              "aggregation": "average",
+              "items": [
+                { "id": "b1x", "order": 0, "prompt": { "en": "First" } },
+                { "id": "b1y", "order": 1, "prompt": { "en": "Second" } }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "order": 2,
+          "title": { "en": "Worst-case group" },
+          "aggregation": "worst_case",
+          "items": [
+            { "id": "c1", "order": 0, "prompt": { "en": "First" } },
+            { "id": "c2", "order": 1, "prompt": { "en": "Second" } }
+          ]
+        }
+      ]
+    }
+  },
+  "scoring": [
+    {
+      "name": "weighted mean, worst case, and a failed critical item clamping the verdict",
+      "fixture": "mixed",
+      "scores": { "a1": 5, "a2": 2, "b1x": 4, "b1y": 2, "c1": 5, "c2": 3 },
+      "expect": {
+        "groupScores": { "a": 4.25, "b": 3.0, "c": 3.0 },
+        "overallBeforeClamp": 3.4166666666666665,
+        "overall": 2.0,
+        "progress": [6, 6]
+      }
+    },
+    {
+      "name": "sentinels are excluded from rollups but still count as answered",
+      "fixture": "mixed",
+      "scores": { "a1": -1, "b1x": 3, "b1y": -2, "c2": 4 },
+      "expect": {
+        "groupScores": { "a": null, "b": 3.0, "c": 4.0 },
+        "overallBeforeClamp": 3.5,
+        "overall": 3.5,
+        "progress": [4, 6]
+      }
+    },
+    {
+      "name": "an unanswered critical item never clamps",
+      "fixture": "mixed",
+      "scores": { "a1": 4, "b1x": 4, "b1y": 4, "c1": 4, "c2": 4 },
+      "expect": {
+        "groupScores": { "a": 4.0, "b": 4.0, "c": 4.0 },
+        "overallBeforeClamp": 4.0,
+        "overall": 4.0,
+        "progress": [5, 6]
+      }
+    },
+    {
+      "name": "a critical item above the threshold never clamps",
+      "fixture": "mixed",
+      "scores": { "a1": 1, "a2": 3, "b1x": 1, "b1y": 1, "c1": 1, "c2": 1 },
+      "expect": {
+        "groupScores": { "a": 1.5, "b": 1.0, "c": 1.0 },
+        "overallBeforeClamp": 1.1666666666666667,
+        "overall": 1.1666666666666667,
+        "progress": [6, 6]
+      }
+    },
+    {
+      "name": "nothing answered",
+      "fixture": "mixed",
+      "scores": {},
+      "expect": {
+        "groupScores": { "a": null, "b": null, "c": null },
+        "overallBeforeClamp": null,
+        "overall": null,
+        "progress": [0, 6]
+      }
+    }
+  ],
+  "assembly": [
+    {
+      "name": "VW Golf diesel — base + diesel module + VAG defects",
+      "car": { "make": "Volkswagen", "model": "Golf", "fuelType": "diesel" },
+      "expect": {
+        "groupIds": ["ext", "int", "eng", "road", "docs", "fuel.diesel", "defects"],
+        "itemCount": 33,
+        "defectRuleId": "vag-known-issues"
+      }
+    },
+    {
+      "name": "BMW 320d petrol — the BMW rule has no model constraint",
+      "car": { "make": "BMW", "model": "320d", "fuelType": "petrol" },
+      "expect": {
+        "groupIds": ["ext", "int", "eng", "road", "docs", "fuel.petrol", "defects"],
+        "itemCount": 31,
+        "defectRuleId": "bmw-known-issues"
+      }
+    },
+    {
+      "name": "Nissan Qashqai, fuel unknown — second clause of the Renault rule, no fuel module",
+      "car": { "make": "Nissan", "model": "Qashqai", "fuelType": null },
+      "expect": {
+        "groupIds": ["ext", "int", "eng", "road", "docs", "defects"],
+        "itemCount": 28,
+        "defectRuleId": "renault-nissan-1-5-dci-known-issues"
+      }
+    },
+    {
+      "name": "Opel Zafira hybrid — make matches but the model does not, so no defect group",
+      "car": { "make": "Opel", "model": "Zafira", "fuelType": "hybrid" },
+      "expect": {
+        "groupIds": ["ext", "int", "eng", "road", "docs", "fuel.hybrid"],
+        "itemCount": 27,
+        "defectRuleId": null
+      }
+    },
+    {
+      "name": "unknown car, fuel other — base checklist only",
+      "car": { "make": "Lada", "model": "Niva", "fuelType": "other" },
+      "expect": {
+        "groupIds": ["ext", "int", "eng", "road", "docs"],
+        "itemCount": 25,
+        "defectRuleId": null
+      }
+    },
+    {
+      "name": "EV with no make or model",
+      "car": { "make": null, "model": null, "fuelType": "ev" },
+      "expect": {
+        "groupIds": ["ext", "int", "eng", "road", "docs", "fuel.ev"],
+        "itemCount": 28,
+        "defectRuleId": null
+      }
+    }
+  ],
+  "matching": [
+    { "make": "Volkswagen", "model": "Golf", "expect": "vag-known-issues" },
+    { "make": "Škoda", "model": "Octavia", "expect": "vag-known-issues" },
+    { "make": "Audi", "model": "A3", "expect": "vag-known-issues" },
+    { "make": "Volkswagen", "model": "Touareg", "expect": null },
+    { "make": "BMW", "model": "320d", "expect": "bmw-known-issues" },
+    { "make": "Peugeot", "model": "208", "expect": "psa-known-issues" },
+    { "make": "Citroën", "model": "C3", "expect": "psa-known-issues" },
+    { "make": "Ford", "model": "Focus", "expect": "ford-known-issues" },
+    { "make": "Ford", "model": "Mondeo", "expect": null },
+    { "make": "Dacia", "model": "Duster", "expect": "renault-nissan-1-5-dci-known-issues" },
+    { "make": "Nissan", "model": "Qashqai", "expect": "renault-nissan-1-5-dci-known-issues" },
+    { "make": "Nissan", "model": "Leaf", "expect": null },
+    { "make": "Opel", "model": "Astra", "expect": "opel-known-issues" },
+    { "make": "Mercedes-Benz", "model": "C220", "expect": "mercedes-known-issues" },
+    { "make": "Fiat", "model": "500", "expect": "fiat-known-issues" },
+    { "make": "Fiat", "model": "Tipo", "expect": null },
+    { "make": "Lada", "model": "Niva", "expect": null },
+    { "make": null, "model": null, "expect": null }
+  ],
+  "canonScoring": [
+    {
+      "name": "every item scored 5 on a VW Golf diesel",
+      "car": { "make": "Volkswagen", "model": "Golf", "fuelType": "diesel" },
+      "fillAll": 5,
+      "override": {},
+      "expect": { "overall": 5.0, "progress": [33, 33] }
+    },
+    {
+      "name": "one failed critical item (odometer) clamps an otherwise perfect sheet",
+      "car": { "make": "Volkswagen", "model": "Golf", "fuelType": "diesel" },
+      "fillAll": 5,
+      "override": { "docs.all.mileage": 1 },
+      "expect": { "overallBeforeClamp": 4.857142857142857, "overall": 1.0, "progress": [33, 33] }
+    },
+    {
+      "name": "a non-critical item scored low only moves the average",
+      "car": { "make": "Volkswagen", "model": "Golf", "fuelType": "diesel" },
+      "fillAll": 5,
+      "override": { "ext.body.panels": 1 },
+      "expect": { "overallBeforeClamp": 4.936507936507937, "overall": 4.936507936507937, "progress": [33, 33] }
+    }
+  ],
+  "notes": {
+    "fillAll": "Assemble the checklist for `car`, set every leaf item to `fillAll`, then apply `override` on top.",
+    "overallBeforeClamp": "The mean of the top-level group scores before the critical clamp is applied. Ports that do not expose it may skip this assertion.",
+    "tolerance": 1e-9
+  }
+}

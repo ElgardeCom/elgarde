@@ -1,0 +1,54 @@
+{
+  "name": "elgarde-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for pre-purchase used-car inspection: what to check on a given car, that model's known weak points, 1-5 scoring, and VIN decoding.",
+  "keywords": [
+    "mcp",
+    "modelcontextprotocol",
+    "mcp-server",
+    "car",
+    "vehicle-inspection",
+    "used-car",
+    "pre-purchase-inspection",
+    "automotive",
+    "vin"
+  ],
+  "homepage": "https://elgarde.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElgardeCom/elgarde.git",
+    "directory": "mcp"
+  },
+  "bugs": "https://github.com/ElgardeCom/elgarde/issues",
+  "author": "Elgarde <support@elgarde.com> (https://elgarde.com)",
+  "license": "MIT",
+  "type": "module",
+  "main": "server.js",
+  "bin": {
+    "elgarde-mcp": "bin/elgarde-mcp.js",
+    "elgarde-mcp-http": "bin/elgarde-mcp-http.js"
+  },
+  "files": [
+    "server.js",
+    "bin/",
+    "http.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node bin/elgarde-mcp.js",
+    "start:http": "node http.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "elgarde-inspection": "^1.0.0",
+    "zod": "^4.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

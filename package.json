@@ -1,0 +1,16 @@
+{
+  "name": "elgarde-monorepo",
+  "private": true,
+  "description": "Workspace root — the published packages live under packages/ and mcp/.",
+  "workspaces": [
+    "packages/js",
+    "mcp"
+  ],
+  "scripts": {
+    "test": "npm test --workspaces --if-present"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^4.5.4"
+  }
+}
