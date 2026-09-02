@@ -70,6 +70,12 @@ An empty defect result means nothing is curated for that model yet, not that the
 trouble-free. Every tool response repeats this, so an assistant relaying the output has no excuse
 for overstating it.
 
+## Documentation
+
+Human-facing page, and the URL to use as this server's website in any registry:
+**<https://elgarde.com/mcp/>**. `mcp.elgarde.com` is the transport endpoint — a machine URL, not
+a page.
+
 ## Where the data comes from
 
 The open [Elgarde inspection canon](https://github.com/ElgardeCom/elgarde): checklist content
