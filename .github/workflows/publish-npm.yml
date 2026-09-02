@@ -84,8 +84,14 @@ jobs:
       - name: Install from the registry and complete an MCP handshake
         if: inputs.dry_run == false
         run: |
+          # The registry needs a moment before a just-published version is
+          # installable; without this the smoke test races the publish above.
+          for _ in $(seq 1 30); do
+            npm view elgarde-mcp@1.0.0 version >/dev/null 2>&1 && break
+            sleep 2
+          done
           mkdir -p /tmp/smoke && cd /tmp/smoke && npm init -y >/dev/null
-          npm install --silent --no-audit --no-fund elgarde-mcp
+          npm install --no-audit --no-fund elgarde-mcp
           request='{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"ci","version":"1"}}}'
           reply=$(printf '%s\n' "$request" \
             | node node_modules/elgarde-mcp/bin/elgarde-mcp.js | head -1)
