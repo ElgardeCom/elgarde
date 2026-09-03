@@ -1,6 +1,7 @@
 {
   "name": "elgarde-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "mcpName": "com.elgarde/inspection",
   "description": "MCP server for pre-purchase used-car inspection: what to check on a given car, that model's known weak points, 1-5 scoring, and VIN decoding.",
   "keywords": [
     "mcp",

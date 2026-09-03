@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1
+
+- Declare `mcpName: com.elgarde/inspection` in `package.json`. The official MCP
+  Registry verifies that the npm package it is asked to list really belongs to
+  the server name being claimed, and refuses the publish without it.
+
 ## 1.0.0
 
 First release.

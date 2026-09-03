@@ -50,8 +50,9 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          if npm view elgarde-inspection version >/dev/null 2>&1; then
-            echo "already on the registry at $(npm view elgarde-inspection version) — skipping"
+          want=$(node -p "require('./package.json').version")
+          if npm view elgarde-inspection@$want version >/dev/null 2>&1; then
+            echo "elgarde-inspection@$want is already on the registry — skipping"
           elif [ "${{ inputs.dry_run }}" = "true" ]; then
             npm publish --dry-run
           else
@@ -73,8 +74,9 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          if npm view elgarde-mcp version >/dev/null 2>&1; then
-            echo "already on the registry at $(npm view elgarde-mcp version) — skipping"
+          want=$(node -p "require('./package.json').version")
+          if npm view elgarde-mcp@$want version >/dev/null 2>&1; then
+            echo "elgarde-mcp@$want is already on the registry — skipping"
           elif [ "${{ inputs.dry_run }}" = "true" ]; then
             npm publish --dry-run
           else
@@ -87,7 +89,8 @@ jobs:
           # The registry needs a moment before a just-published version is
           # installable; without this the smoke test races the publish above.
           for _ in $(seq 1 30); do
-            npm view elgarde-mcp@1.0.0 version >/dev/null 2>&1 && break
+            npm view elgarde-mcp@$(node -p "require('./mcp/package.json').version") \
+              version >/dev/null 2>&1 && break
             sleep 2
           done
           mkdir -p /tmp/smoke && cd /tmp/smoke && npm init -y >/dev/null
