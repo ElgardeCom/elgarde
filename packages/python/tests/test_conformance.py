@@ -83,14 +83,23 @@ def test_packaged_canon_is_complete() -> None:
     checklist, defects = core.canon()
     assert checklist["languages"] == ["en", "pt", "ru", "uk", "fr"]
     assert len(defects["rules"]) >= 8
-    assert core.canon_version() == {"checklist": 1, "defects": 1}
+    assert core.canon_version() == {"checklist": 1, "defects": 2}
 
 
-def test_localize_falls_back_to_english() -> None:
+def test_defect_text_is_authored_in_every_language() -> None:
+    """Since canon v2 the defect corpus is translated, not fallen back on."""
     groups = core.assemble(core.Car(make="BMW", model="320d"))
     defects = next(g for g in groups if g["id"] == "defects")
-    localized = core.localize([defects], "uk")[0]
-    assert "N47" in localized["children"][0]["items"][0]["prompt"]
+    item = defects["children"][0]["items"][0]
+
+    english = core.pick(item["prompt"], "en")
+    for lang in ("pt", "ru", "uk", "fr"):
+        translated = core.pick(item["prompt"], lang)
+        assert translated != english, f"{lang} is still falling back to English"
+        assert "N47" in translated, f"{lang} lost the engine code"
+
+    # An unsupported language still falls back rather than coming back empty.
+    assert core.pick(item["prompt"], "de") == english
 
 
 def test_readme_example_holds() -> None:

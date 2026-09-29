@@ -170,7 +170,7 @@ check(
     'packaged checklist carries all five languages',
 );
 check(
-    Canon::version() === ['checklist' => 1, 'defects' => 1],
+    Canon::version() === ['checklist' => 1, 'defects' => 2],
     'packaged canon version',
 );
 check(\count(Canon::defects()['rules']) >= 8, 'packaged defect rules');
@@ -182,11 +182,14 @@ foreach ($bmw as $group) {
         $defects = $group;
     }
 }
-$localized = Inspection::localize([$defects], 'uk');
-check(
-    str_contains($localized[0]['children'][0]['items'][0]['prompt'], 'N47'),
-    'defect text falls back to English for an unsupported language',
-);
+$prompt = $defects['children'][0]['items'][0]['prompt'];
+$english = Canon::pick($prompt, 'en');
+foreach (['pt', 'ru', 'uk', 'fr'] as $lang) {
+    $translated = Canon::pick($prompt, $lang);
+    check($translated !== $english, "defect text in {$lang} still falls back to English");
+    check(str_contains($translated, 'N47'), "defect text in {$lang} lost the engine code");
+}
+check(Canon::pick($prompt, 'de') === $english, 'unsupported language falls back to English');
 
 $golf = Inspection::assemble('Volkswagen', 'Golf', 'diesel');
 $full = [];

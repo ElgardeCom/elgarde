@@ -727,17 +727,23 @@ const String checklistCanonJson = r'''
 
 const String defectsCanonJson = r'''
 {
-  "version": 1,
+  "version": 2,
   "languages": [
     "en",
-    "pt"
+    "pt",
+    "ru",
+    "uk",
+    "fr"
   ],
   "rules": [
     {
       "id": "vag-known-issues",
       "label": {
         "en": "VAG known issues",
-        "pt": "Problemas conhecidos VAG"
+        "pt": "Problemas conhecidos VAG",
+        "ru": "Известные проблемы VAG",
+        "uk": "Відомі проблеми VAG",
+        "fr": "Problèmes connus VAG"
       },
       "match": [
         {
@@ -767,35 +773,50 @@ const String defectsCanonJson = r'''
           "id": "dsg.dq200",
           "text": {
             "en": "DSG (DQ200 dry-clutch) — jerky/shuddering shifts, mechatronic faults",
-            "pt": "DSG (DQ200 embraiagem seca) — trancos, falhas do mecatrónico"
+            "pt": "DSG (DQ200 embraiagem seca) — trancos, falhas do mecatrónico",
+            "ru": "DSG (DQ200, сухое сцепление) — рывки и вибрации при переключении, отказы мехатроника",
+            "uk": "DSG (DQ200, сухе зчеплення) — ривки та вібрації при перемиканні, відмови мехатроніка",
+            "fr": "DSG (DQ200 à embrayage à sec) — à-coups et broutements aux passages, pannes du mécatronique"
           }
         },
         {
           "id": "tsi.chain",
           "text": {
             "en": "1.2/1.4 TSI timing chain tensioner — rattle on cold start",
-            "pt": "Corrente de distribuição 1.2/1.4 TSI — ruído no arranque a frio"
+            "pt": "Corrente de distribuição 1.2/1.4 TSI — ruído no arranque a frio",
+            "ru": "Натяжитель цепи ГРМ 1.2/1.4 TSI — стук на холодном пуске",
+            "uk": "Натягувач ланцюга ГРМ 1.2/1.4 TSI — стукіт на холодному пуску",
+            "fr": "Tendeur de chaîne de distribution 1.2/1.4 TSI — cliquetis au démarrage à froid"
           }
         },
         {
           "id": "tdi.egr",
           "text": {
             "en": "TDI EGR/DPF — clogging, warning lights, short-trip use",
-            "pt": "EGR/FAP TDI — entupimento, luzes, uso urbano"
+            "pt": "EGR/FAP TDI — entupimento, luzes, uso urbano",
+            "ru": "EGR и сажевый фильтр TDI — закоксовка, ошибки на панели, частые короткие поездки",
+            "uk": "EGR і сажовий фільтр TDI — закоксування, помилки на панелі, часті короткі поїздки",
+            "fr": "EGR/FAP TDI — encrassement, voyants, usage sur trajets courts"
           }
         },
         {
           "id": "tsi.oil",
           "text": {
             "en": "1.8/2.0 TSI oil consumption (piston rings)",
-            "pt": "Consumo de óleo 1.8/2.0 TSI (segmentos)"
+            "pt": "Consumo de óleo 1.8/2.0 TSI (segmentos)",
+            "ru": "Расход масла на 1.8/2.0 TSI (поршневые кольца)",
+            "uk": "Витрата оливи на 1.8/2.0 TSI (поршневі кільця)",
+            "fr": "Consommation d'huile 1.8/2.0 TSI (segments)"
           }
         },
         {
           "id": "waterpump",
           "text": {
             "en": "Plastic water pump / thermostat leaks",
-            "pt": "Bomba de água / termóstato de plástico com fugas"
+            "pt": "Bomba de água / termóstato de plástico com fugas",
+            "ru": "Пластиковая помпа и термостат — течи",
+            "uk": "Пластикова помпа і термостат — течі",
+            "fr": "Pompe à eau / thermostat en plastique — fuites"
           }
         }
       ]
@@ -804,7 +825,10 @@ const String defectsCanonJson = r'''
       "id": "bmw-known-issues",
       "label": {
         "en": "BMW known issues",
-        "pt": "Problemas conhecidos BMW"
+        "pt": "Problemas conhecidos BMW",
+        "ru": "Известные проблемы BMW",
+        "uk": "Відомі проблеми BMW",
+        "fr": "Problèmes connus BMW"
       },
       "match": [
         {
@@ -818,7 +842,10 @@ const String defectsCanonJson = r'''
           "id": "n47.chain",
           "text": {
             "en": "N47 diesel timing chain (rear of engine) — stretch/rattle, costly",
-            "pt": "Corrente N47 diesel (traseira do motor) — desgaste, dispendiosa"
+            "pt": "Corrente N47 diesel (traseira do motor) — desgaste, dispendiosa",
+            "ru": "Цепь ГРМ дизеля N47 (со стороны маховика) — вытягивается и гремит, ремонт дорогой",
+            "uk": "Ланцюг ГРМ дизеля N47 (з боку маховика) — витягується і гримить, ремонт дорогий",
+            "fr": "Chaîne de distribution du diesel N47 (côté volant moteur) — détente et cliquetis, réparation coûteuse"
           },
           "critical": true
         },
@@ -826,21 +853,30 @@ const String defectsCanonJson = r'''
           "id": "oil.leaks",
           "text": {
             "en": "Valve cover + oil filter housing gasket leaks",
-            "pt": "Fugas da tampa de válvulas e do suporte do filtro de óleo"
+            "pt": "Fugas da tampa de válvulas e do suporte do filtro de óleo",
+            "ru": "Течи прокладок клапанной крышки и корпуса масляного фильтра",
+            "uk": "Течі прокладок кришки клапанів і корпусу масляного фільтра",
+            "fr": "Fuites des joints de couvre-culasse et de support de filtre à huile"
           }
         },
         {
           "id": "vanos",
           "text": {
             "en": "VANOS rattle / rough idle",
-            "pt": "VANOS com ruído / ralenti irregular"
+            "pt": "VANOS com ruído / ralenti irregular",
+            "ru": "Стук VANOS, неровный холостой ход",
+            "uk": "Стукіт VANOS, нерівний холостий хід",
+            "fr": "Cliquetis VANOS, ralenti irrégulier"
           }
         },
         {
           "id": "rust.arches",
           "text": {
             "en": "E90: rust on rear wheel arches",
-            "pt": "E90: ferrugem nos guarda-lamas traseiros"
+            "pt": "E90: ferrugem nos guarda-lamas traseiros",
+            "ru": "E90: ржавчина на задних арках",
+            "uk": "E90: іржа на задніх арках",
+            "fr": "E90 : rouille sur les passages de roue arrière"
           }
         }
       ]
@@ -849,7 +885,10 @@ const String defectsCanonJson = r'''
       "id": "psa-known-issues",
       "label": {
         "en": "PSA known issues",
-        "pt": "Problemas conhecidos PSA"
+        "pt": "Problemas conhecidos PSA",
+        "ru": "Известные проблемы PSA",
+        "uk": "Відомі проблеми PSA",
+        "fr": "Problèmes connus PSA"
       },
       "match": [
         {
@@ -865,7 +904,10 @@ const String defectsCanonJson = r'''
           "id": "puretech.wetbelt",
           "text": {
             "en": "PureTech 1.2 wet timing belt — degrades into the oil pump (check belt/oil)",
-            "pt": "Correia em banho de óleo 1.2 PureTech — degrada-se (verificar correia/óleo)"
+            "pt": "Correia em banho de óleo 1.2 PureTech — degrada-se (verificar correia/óleo)",
+            "ru": "«Мокрый» ремень ГРМ PureTech 1.2 — крошится и забивает масляный насос (проверить ремень и масло)",
+            "uk": "«Мокрий» ремінь ГРМ PureTech 1.2 — кришиться і забиває масляний насос (перевірити ремінь і оливу)",
+            "fr": "Courroie de distribution humide PureTech 1.2 — se délite et obstrue la pompe à huile (vérifier courroie et huile)"
           },
           "critical": true
         },
@@ -873,14 +915,20 @@ const String defectsCanonJson = r'''
           "id": "ep6.chain",
           "text": {
             "en": "1.6 THP (EP6) timing chain + carbon build-up on valves",
-            "pt": "Corrente 1.6 THP (EP6) + acumulação de carbono nas válvulas"
+            "pt": "Corrente 1.6 THP (EP6) + acumulação de carbono nas válvulas",
+            "ru": "Цепь ГРМ 1.6 THP (EP6) и нагар на клапанах",
+            "uk": "Ланцюг ГРМ 1.6 THP (EP6) і нагар на клапанах",
+            "fr": "Chaîne de distribution 1.6 THP (EP6) et calamine sur les soupapes"
           }
         },
         {
           "id": "hdi.turbo",
           "text": {
             "en": "1.6 HDi turbo oil-feed / EGR / DPF issues",
-            "pt": "Turbo 1.6 HDi (alimentação de óleo) / EGR / FAP"
+            "pt": "Turbo 1.6 HDi (alimentação de óleo) / EGR / FAP",
+            "ru": "1.6 HDi — маслоподача турбины, EGR, сажевый фильтр",
+            "uk": "1.6 HDi — оливоподача турбіни, EGR, сажовий фільтр",
+            "fr": "1.6 HDi — alimentation en huile du turbo, EGR, FAP"
           }
         }
       ]
@@ -889,7 +937,10 @@ const String defectsCanonJson = r'''
       "id": "ford-known-issues",
       "label": {
         "en": "Ford known issues",
-        "pt": "Problemas conhecidos Ford"
+        "pt": "Problemas conhecidos Ford",
+        "ru": "Известные проблемы Ford",
+        "uk": "Відомі проблеми Ford",
+        "fr": "Problèmes connus Ford"
       },
       "match": [
         {
@@ -909,7 +960,10 @@ const String defectsCanonJson = r'''
           "id": "ecoboost.coolant",
           "text": {
             "en": "1.0 EcoBoost coolant/overheating (degas hose, head) — check history",
-            "pt": "1.0 EcoBoost sobreaquecimento/líquido — verificar histórico"
+            "pt": "1.0 EcoBoost sobreaquecimento/líquido — verificar histórico",
+            "ru": "1.0 EcoBoost — перегрев и потеря охлаждающей жидкости (патрубок дегазации, головка) — проверить историю",
+            "uk": "1.0 EcoBoost — перегрів і втрата охолоджувальної рідини (патрубок дегазації, головка) — перевірити історію",
+            "fr": "1.0 EcoBoost — surchauffe et perte de liquide de refroidissement (durite de dégazage, culasse) — vérifier l'historique"
           },
           "critical": true
         },
@@ -917,14 +971,20 @@ const String defectsCanonJson = r'''
           "id": "ecoboost.wetbelt",
           "text": {
             "en": "1.0 EcoBoost wet timing belt service due",
-            "pt": "Correia em óleo 1.0 EcoBoost — revisão em dia"
+            "pt": "Correia em óleo 1.0 EcoBoost — revisão em dia",
+            "ru": "«Мокрый» ремень ГРМ 1.0 EcoBoost — замена по регламенту",
+            "uk": "«Мокрий» ремінь ГРМ 1.0 EcoBoost — заміна за регламентом",
+            "fr": "Courroie de distribution humide 1.0 EcoBoost — remplacement à jour"
           }
         },
         {
           "id": "powershift",
           "text": {
             "en": "Powershift (DPS6) dual-clutch — shudder/jerk on petrol autos",
-            "pt": "Powershift (DPS6) — trancos nas automáticas a gasolina"
+            "pt": "Powershift (DPS6) — trancos nas automáticas a gasolina",
+            "ru": "Робот Powershift (DPS6) — вибрации и рывки на бензиновых автоматах",
+            "uk": "Робот Powershift (DPS6) — вібрації та ривки на бензинових автоматах",
+            "fr": "Boîte Powershift (DPS6) à double embrayage — broutements et à-coups sur les automatiques essence"
           }
         }
       ]
@@ -933,7 +993,10 @@ const String defectsCanonJson = r'''
       "id": "renault-nissan-1-5-dci-known-issues",
       "label": {
         "en": "Renault/Nissan 1.5 dCi known issues",
-        "pt": "Problemas conhecidos Renault/Nissan"
+        "pt": "Problemas conhecidos Renault/Nissan",
+        "ru": "Известные проблемы Renault/Nissan (1.5 dCi)",
+        "uk": "Відомі проблеми Renault/Nissan (1.5 dCi)",
+        "fr": "Problèmes connus Renault/Nissan (1.5 dCi)"
       },
       "match": [
         {
@@ -958,21 +1021,30 @@ const String defectsCanonJson = r'''
           "id": "dci.injectors",
           "text": {
             "en": "1.5 dCi injectors + DPF/EGR — clogging, injector wear",
-            "pt": "Injetores 1.5 dCi + FAP/EGR — entupimento, desgaste"
+            "pt": "Injetores 1.5 dCi + FAP/EGR — entupimento, desgaste",
+            "ru": "Форсунки 1.5 dCi, сажевый фильтр и EGR — закоксовка, износ форсунок",
+            "uk": "Форсунки 1.5 dCi, сажовий фільтр і EGR — закоксування, знос форсунок",
+            "fr": "Injecteurs 1.5 dCi, FAP et EGR — encrassement, usure des injecteurs"
           }
         },
         {
           "id": "cvt.xtronic",
           "text": {
             "en": "Nissan Xtronic CVT — overheating/jerky (check fluid + behaviour)",
-            "pt": "CVT Xtronic Nissan — sobreaquece/trancos (verificar óleo)"
+            "pt": "CVT Xtronic Nissan — sobreaquece/trancos (verificar óleo)",
+            "ru": "Вариатор Nissan Xtronic — перегрев и рывки (проверить масло и поведение)",
+            "uk": "Варіатор Nissan Xtronic — перегрів і ривки (перевірити оливу та поведінку)",
+            "fr": "CVT Xtronic Nissan — surchauffe et à-coups (vérifier l'huile et le comportement)"
           }
         },
         {
           "id": "electrics",
           "text": {
             "en": "Electrical gremlins (windows, sensors, injector wiring)",
-            "pt": "Problemas elétricos (vidros, sensores, cablagem dos injetores)"
+            "pt": "Problemas elétricos (vidros, sensores, cablagem dos injetores)",
+            "ru": "Электрика: стеклоподъёмники, датчики, проводка форсунок",
+            "uk": "Електрика: склопідйомники, датчики, проводка форсунок",
+            "fr": "Aléas électriques : lève-vitres, capteurs, faisceau des injecteurs"
           }
         }
       ]
@@ -981,7 +1053,10 @@ const String defectsCanonJson = r'''
       "id": "opel-known-issues",
       "label": {
         "en": "Opel known issues",
-        "pt": "Problemas conhecidos Opel"
+        "pt": "Problemas conhecidos Opel",
+        "ru": "Известные проблемы Opel",
+        "uk": "Відомі проблеми Opel",
+        "fr": "Problèmes connus Opel"
       },
       "match": [
         {
@@ -1001,14 +1076,20 @@ const String defectsCanonJson = r'''
           "id": "opel.chain",
           "text": {
             "en": "1.4 Turbo timing chain wear",
-            "pt": "Desgaste da corrente 1.4 Turbo"
+            "pt": "Desgaste da corrente 1.4 Turbo",
+            "ru": "Износ цепи ГРМ 1.4 Turbo",
+            "uk": "Знос ланцюга ГРМ 1.4 Turbo",
+            "fr": "Usure de la chaîne de distribution 1.4 Turbo"
           }
         },
         {
           "id": "opel.waterpump",
           "text": {
             "en": "Water pump / thermostat failures",
-            "pt": "Falhas da bomba de água / termóstato"
+            "pt": "Falhas da bomba de água / termóstato",
+            "ru": "Отказы помпы и термостата",
+            "uk": "Відмови помпи і термостата",
+            "fr": "Défaillances de la pompe à eau et du thermostat"
           }
         }
       ]
@@ -1017,7 +1098,10 @@ const String defectsCanonJson = r'''
       "id": "mercedes-known-issues",
       "label": {
         "en": "Mercedes known issues",
-        "pt": "Problemas conhecidos Mercedes"
+        "pt": "Problemas conhecidos Mercedes",
+        "ru": "Известные проблемы Mercedes",
+        "uk": "Відомі проблеми Mercedes",
+        "fr": "Problèmes connus Mercedes"
       },
       "match": [
         {
@@ -1031,21 +1115,30 @@ const String defectsCanonJson = r'''
           "id": "om651.injectors",
           "text": {
             "en": "OM651 diesel injector wear / leaks",
-            "pt": "Desgaste/fugas dos injetores OM651 diesel"
+            "pt": "Desgaste/fugas dos injetores OM651 diesel",
+            "ru": "Износ и течи форсунок дизеля OM651",
+            "uk": "Знос і течі форсунок дизеля OM651",
+            "fr": "Usure et fuites des injecteurs du diesel OM651"
           }
         },
         {
           "id": "m271.balanceshaft",
           "text": {
             "en": "M271 petrol (pre-2011) balance-shaft/timing gear wear",
-            "pt": "M271 gasolina (pré-2011) — desgaste da árvore de balanceamento"
+            "pt": "M271 gasolina (pré-2011) — desgaste da árvore de balanceamento",
+            "ru": "M271 бензин (до 2011): износ балансирного вала и шестерён ГРМ",
+            "uk": "M271 бензин (до 2011): знос балансирного вала і шестерень ГРМ",
+            "fr": "M271 essence (avant 2011) : usure de l'arbre d'équilibrage et des pignons de distribution"
           }
         },
         {
           "id": "rust",
           "text": {
             "en": "Older models: rust (arches, jacking points)",
-            "pt": "Modelos antigos: ferrugem (guarda-lamas, apoios de macaco)"
+            "pt": "Modelos antigos: ferrugem (guarda-lamas, apoios de macaco)",
+            "ru": "Старые модели: ржавчина (арки, точки домкрата)",
+            "uk": "Старі моделі: іржа (арки, точки домкрата)",
+            "fr": "Modèles anciens : rouille (passages de roue, points de levage)"
           }
         }
       ]
@@ -1054,7 +1147,10 @@ const String defectsCanonJson = r'''
       "id": "fiat-known-issues",
       "label": {
         "en": "Fiat known issues",
-        "pt": "Problemas conhecidos Fiat"
+        "pt": "Problemas conhecidos Fiat",
+        "ru": "Известные проблемы Fiat",
+        "uk": "Відомі проблеми Fiat",
+        "fr": "Problèmes connus Fiat"
       },
       "match": [
         {
@@ -1073,14 +1169,20 @@ const String defectsCanonJson = r'''
           "id": "multijet.dpf",
           "text": {
             "en": "1.3 MultiJet diesel DPF (city use)",
-            "pt": "FAP 1.3 MultiJet diesel (uso urbano)"
+            "pt": "FAP 1.3 MultiJet diesel (uso urbano)",
+            "ru": "Сажевый фильтр дизеля 1.3 MultiJet (городская езда)",
+            "uk": "Сажовий фільтр дизеля 1.3 MultiJet (міська їзда)",
+            "fr": "FAP du diesel 1.3 MultiJet (usage urbain)"
           }
         },
         {
           "id": "twinair.oil",
           "text": {
             "en": "0.9 TwinAir oil consumption",
-            "pt": "Consumo de óleo 0.9 TwinAir"
+            "pt": "Consumo de óleo 0.9 TwinAir",
+            "ru": "Расход масла на 0.9 TwinAir",
+            "uk": "Витрата оливи на 0.9 TwinAir",
+            "fr": "Consommation d'huile 0.9 TwinAir"
           }
         }
       ]

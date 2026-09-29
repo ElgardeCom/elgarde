@@ -19,6 +19,7 @@ import {
   matchDefectRule,
   overall,
   overallBeforeClamp,
+  pick,
   progress,
 } from '../index.js';
 
@@ -107,14 +108,23 @@ test('the packaged canon is complete', () => {
   const { checklist, defects } = canon();
   assert.deepEqual(checklist.languages, ['en', 'pt', 'ru', 'uk', 'fr']);
   assert.ok(defects.rules.length >= 8);
-  assert.deepEqual(canonVersion(), { checklist: 1, defects: 1 });
+  assert.deepEqual(canonVersion(), { checklist: 1, defects: 2 });
 });
 
-test('localize falls back to English', () => {
+test('defect text is authored in every language, not fallen back on', () => {
   const groups = assemble({ make: 'BMW', model: '320d' });
   const defects = groups.find((g) => g.id === 'defects');
-  const localized = localize([defects], 'uk')[0];
-  assert.match(localized.children[0].items[0].prompt, /N47/);
+  const item = defects.children[0].items[0];
+  const english = pick(item.prompt, 'en');
+
+  for (const lang of ['pt', 'ru', 'uk', 'fr']) {
+    const translated = pick(item.prompt, lang);
+    assert.notEqual(translated, english, `${lang} still falls back to English`);
+    assert.match(translated, /N47/, `${lang} lost the engine code`);
+  }
+
+  // An unsupported language still falls back rather than coming back empty.
+  assert.equal(pick(item.prompt, 'de'), english);
 });
 
 test('the README example holds', () => {

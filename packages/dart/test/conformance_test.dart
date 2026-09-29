@@ -131,7 +131,7 @@ void main() {
     test('carries every language on every item', () {
       final canon = InspectionCanon.instance;
       expect(canon.languages, equals(['en', 'pt', 'ru', 'uk', 'fr']));
-      expect(canonVersion(), equals({'checklist': 1, 'defects': 1}));
+      expect(canonVersion(), equals({'checklist': 1, 'defects': 2}));
 
       for (final item in allItems([
         ...canon.base,
@@ -145,12 +145,19 @@ void main() {
       }
     });
 
-    test('defect text falls back to English', () {
+    test('defect text is authored in every language', () {
       final groups = assemble(const Car(make: 'BMW', model: '320d'));
       final defects = groups.firstWhere((group) => group.id == 'defects');
       final prompt = defects.children.single.items.first.prompt;
-      expect(prompt.resolve('uk'), contains('N47'));
+      final english = prompt.resolve('en');
+
+      for (final lang in const ['pt', 'ru', 'uk', 'fr']) {
+        expect(prompt.resolve(lang), isNot(english), reason: lang);
+        expect(prompt.resolve(lang), contains('N47'), reason: lang);
+      }
       expect(prompt.resolve('pt'), contains('Corrente N47'));
+      // An unsupported language still falls back rather than coming back empty.
+      expect(prompt.resolve('de'), english);
     });
 
     test('the documented example holds', () {
