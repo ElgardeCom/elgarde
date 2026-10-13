@@ -76,6 +76,52 @@ test('get_known_defects returns curated entries', async () => {
   assert.match(body, /\[critical\]/);
 });
 
+test('get_known_defects resolves the facts it is given', async () => {
+  const client = await connect();
+  const call = async (args) =>
+    textOf(await client.callTool({ name: 'get_known_defects', arguments: args }));
+
+  // Nothing but the model: the DQ200 is possible, and the gearbox settles it.
+  const golf = await call({ make: 'Volkswagen', model: 'Golf' });
+  assert.match(golf, /DQ200/);
+  assert.match(golf, /Possible — to settle it, find out the gearbox type/);
+  assert.match(golf, /\/v1\/defects\/dsg\.dq200/);
+
+  // A manual gearbox rules it out, and the answer says so instead of hiding it.
+  const manual = await call({ make: 'Volkswagen', model: 'Golf', gearbox: 'manual' });
+  assert.match(manual, /Ruled out by the facts given:\n(- .*\n)*- dsg\.dq200 \(by gearbox\)/);
+  assert.doesNotMatch(manual.split('Ruled out')[0], /DQ200/);
+
+  // The gearbox code makes it apply.
+  const dsg = await call({ make: 'Volkswagen', model: 'Golf', gearboxCode: '0AM' });
+  assert.match(dsg, /DQ200[^\n]*\n  Applies to this car/);
+});
+
+test('get_known_defects keeps a renamed v2 entry and links its dossier', async () => {
+  const client = await connect();
+  const body = textOf(
+    await client.callTool({
+      name: 'get_known_defects',
+      arguments: { make: 'Mercedes-Benz', model: 'C-Class', engineCode: 'M271', productionDate: '2008-03' },
+    }),
+  );
+  assert.match(body, /\/v1\/defects\/m271\.timingchain/);
+  assert.match(body, /om651\.injectors \(by productionDate, engineFamily\)/);
+  // A v2 entry without a sourced dossier stays, marked as such.
+  assert.match(body, /Older entry: no sourced dossier yet/);
+});
+
+test('get_known_defects speaks all five languages', async () => {
+  const client = await connect();
+  const body = textOf(
+    await client.callTool({
+      name: 'get_known_defects',
+      arguments: { make: 'Peugeot', model: '208', lang: 'fr' },
+    }),
+  );
+  assert.match(body, /Problèmes connus PSA/);
+});
+
 test('get_known_defects says "not curated", never "no issues"', async () => {
   const client = await connect();
   const result = await client.callTool({

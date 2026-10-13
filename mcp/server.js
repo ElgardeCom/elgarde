@@ -4,7 +4,7 @@
  * Four tools over the open Elgarde inspection canon:
  *
  *   get_inspection_checklist   the adaptive checklist for a given car
- *   get_known_defects          curated model-specific weak points
+ *   get_known_defects          curated weak points, resolved for this car
  *   score_inspection           roll 1-5 answers into one verdict
  *   decode_vin                 VIN -> make/model/year (free NHTSA vPIC data)
  *
@@ -16,13 +16,14 @@
 import {
   allItems,
   assemble,
+  assembleV3,
   canonVersion,
   localize,
-  matchDefectRule,
   overall,
   overallBeforeClamp,
   pick,
   progress,
+  resolveDefects,
 } from 'elgarde-inspection';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
@@ -37,6 +38,21 @@ export const DISCLAIMER =
 
 const LANGS = ['en', 'pt', 'ru', 'uk', 'fr'];
 const FUELS = ['petrol', 'diesel', 'hybrid', 'ev', 'other'];
+const GEARBOXES = ['manual', 'automatic', 'dct', 'cvt'];
+
+/** Where the full dossier of a known defect (sources, prevalence) is served. */
+export const dossierUrl = (id) => `${API_BASE}/v1/defects/${id}`;
+
+// What a buyer is asked for, per fact the resolver says it needs.
+const NEED_LABELS = {
+  model: 'the exact model',
+  year: 'the year',
+  fuel: 'the fuel type',
+  gearbox: 'the gearbox type (manual, automatic, dct or cvt)',
+  gearboxCode: 'the gearbox code',
+  engineCode: 'the engine code',
+  productionDate: 'the production month (YYYY-MM)',
+};
 
 const text = (body) => ({ content: [{ type: 'text', text: body }] });
 const failure = (body) => ({ content: [{ type: 'text', text: body }], isError: true });
@@ -78,30 +94,59 @@ function renderChecklist(car, lang) {
   return lines.join('\n');
 }
 
-function renderDefects(make, model, lang) {
-  const rule = matchDefectRule(make, model);
-  if (rule === null) {
-    return [
-      `No model-specific defects are curated for ${[make, model].filter(Boolean).join(' ')}.`,
+function renderDefects(facts, lang) {
+  const { make, model } = facts;
+  const name = [make, model].filter(Boolean).join(' ');
+  const groups = assembleV3(facts);
+  const group = groups.find((g) => g.id === 'defects');
+  const items = group ? allItems([group]) : [];
+  const ruledOut = resolveDefects(facts).filter((r) => r.status === 'not_applicable');
+
+  if (items.length === 0) {
+    const lines = [
+      `No model-specific defects are curated for ${name}` +
+        (ruledOut.length ? ' that can apply with the facts given.' : '.'),
       '',
       'This is not a statement that the model has no known issues — only that ' +
         'Elgarde has not curated any for it yet. Run the general inspection ' +
         'checklist (get_inspection_checklist) instead.',
-      '',
-      DISCLAIMER,
-    ].join('\n');
+    ];
+    if (ruledOut.length) lines.push('', ...renderRuledOut(ruledOut));
+    lines.push('', DISCLAIMER);
+    return lines.join('\n');
   }
 
+  const [localized] = localize([group], lang);
+  const rows = localized.children[0].items;
   const lines = [
-    `${pick(rule.label, lang)} — ${rule.defects.length} known weak points to check ` +
-      `on ${[make, model].filter(Boolean).join(' ')}:`,
+    `${localized.title} — ${rows.length} known weak points to check on ${name}:`,
     '',
   ];
-  for (const defect of rule.defects) {
-    lines.push(`- ${pick(defect.text, lang)}${defect.critical ? '  [critical]' : ''}`);
+  for (const row of rows) {
+    lines.push(`- ${row.prompt}${row.critical ? '  [critical]' : ''}`);
+    if (row.status === 'applies') {
+      lines.push('  Applies to this car, by the facts given.');
+    } else if (row.status === 'possible') {
+      const needs = row.needs.map((n) => NEED_LABELS[n] ?? n).join(', ');
+      lines.push(`  Possible — to settle it, find out ${needs}.`);
+      if (row.hint) lines.push(`  ${row.hint}`);
+    } else {
+      lines.push('  Older entry: no sourced dossier yet, so it cannot be narrowed down.');
+    }
+    if (row.dossierId) lines.push(`  Sources and prevalence: ${dossierUrl(row.dossierId)}`);
   }
+  if (ruledOut.length) lines.push('', ...renderRuledOut(ruledOut));
   lines.push('', DISCLAIMER);
   return lines.join('\n');
+}
+
+function renderRuledOut(resolutions) {
+  return [
+    'Ruled out by the facts given:',
+    ...resolutions.map(
+      (r) => `- ${r.defectId} (by ${r.excludedBy.join(', ')}): ${dossierUrl(r.defectId)}`,
+    ),
+  ];
 }
 
 function renderScore(car, scores) {
@@ -197,7 +242,7 @@ async function decodeVin(vin) {
 
 export function createServer() {
   const server = new McpServer(
-    { name: 'elgarde-inspection', version: '1.0.0' },
+    { name: 'elgarde-inspection', version: '1.1.0' },
     {
       instructions:
         'Elgarde answers "what should I check before buying this used car?". ' +
@@ -234,20 +279,36 @@ export function createServer() {
   server.registerTool(
     'get_known_defects',
     {
-      title: "Get a model's known weak points",
+      title: "Get a car's known weak points",
       description:
-        'Curated, model-specific things that commonly go wrong — the DQ200 dry ' +
-        'clutch, the PureTech wet timing belt, the N47 timing chain. Returns ' +
-        'nothing when no defects are curated for that model, which is not the ' +
-        'same as the model having none. Works offline.',
+        'Curated, sourced weak points for a make and model — the DQ200 dry ' +
+        'clutch, the PureTech wet timing belt, the N47 timing chain — resolved ' +
+        'against whatever else is known about the car. Each entry says whether ' +
+        'it applies, is possible (and which fact would settle it, e.g. the ' +
+        'gearbox type or engine code), and links to its dossier of sources. ' +
+        'Pass the optional facts to narrow the list; entries the facts rule ' +
+        'out are listed separately. Returns nothing when no defects are ' +
+        'curated for that model, which is not the same as the model having ' +
+        'none. Works offline.',
       inputSchema: {
         make: z.string().describe('e.g. "Peugeot"'),
         model: z.string().describe('e.g. "208"'),
-        lang: z.enum(['en', 'pt']).optional().describe('Defaults to English.'),
+        year: z.number().int().min(1950).max(2100).optional().describe('Model year or year of first registration.'),
+        productionDate: z
+          .string()
+          .regex(/^[0-9]{4}-(0[1-9]|1[0-2])$/)
+          .optional()
+          .describe('Production month, YYYY-MM.'),
+        fuel: z.enum(FUELS).optional(),
+        engineCode: z.string().optional().describe('e.g. "HNZ", "N47D20", "CAXA"'),
+        engineFamily: z.string().optional().describe('e.g. "EB2", "N47", "EA888"'),
+        gearbox: z.enum(GEARBOXES).optional(),
+        gearboxCode: z.string().optional().describe('e.g. "0AM" or a family such as "DQ200"'),
+        lang: z.enum(LANGS).optional().describe('Defaults to English.'),
       },
       annotations: { readOnlyHint: true, openWorldHint: false },
     },
-    async ({ make, model, lang }) => text(renderDefects(make, model, lang ?? 'en')),
+    async ({ lang, ...facts }) => text(renderDefects(facts, lang ?? 'en')),
   );
 
   server.registerTool(

@@ -20,7 +20,7 @@ Claude: [get_inspection_checklist make="Volkswagen" model="Golf" fuelType="diese
 | Tool | What it does |
 |---|---|
 | `get_inspection_checklist` | The checklist for a specific car: base items, fuel-specific items, and the model's known defects. Five languages. |
-| `get_known_defects` | Just the curated weak points for a make and model. |
+| `get_known_defects` | The curated weak points for a make and model, resolved against what else you know (year, fuel, engine or gearbox code…): applies, possible (and what would settle it) or ruled out, each linked to its dossier of sources. |
 | `score_inspection` | Rolls 1–5 answers into per-section scores and one verdict, with the critical clamp applied. |
 | `decode_vin` | A 17-character VIN → make, model, year, fuel type (free NHTSA vPIC data). |
 
