@@ -234,6 +234,12 @@ def localize(groups: list[Group], lang: str) -> list[dict]:
             out["weight"] = i["weight"]
         if i.get("sourceDefectId"):
             out["sourceDefectId"] = i["sourceDefectId"]
+        # Known-defects v3 items (assemble_v3) carry their resolution too.
+        if "status" in i:
+            out["dossierId"] = i.get("dossierId")
+            out["status"] = i["status"]
+            out["needs"] = list(i.get("needs", ()))
+            out["hint"] = pick(i["hint"], lang) if i.get("hint") else None
         return out
 
     def group(g: Group) -> dict:

@@ -39,8 +39,8 @@ for group in localize(groups, "pt"):
             print("  ", item["prompt"], "(critical)" if item["critical"] else "")
 ```
 
-Content is authored in **English, Portuguese, Russian, Ukrainian and French**; defect text in
-English and Portuguese, falling back to English.
+Content, defect texts included, is authored in **English, Portuguese, Russian, Ukrainian and
+French**; any other language falls back to English.
 
 ### Score an inspection
 
@@ -74,6 +74,43 @@ rule = match_defect_rule("Peugeot", "208")
 ```
 
 `None` means nothing is curated for that model yet — **not** that the model is trouble-free.
+
+### Known defects v3: what applies to *this* car
+
+The v2 rules above match on make and model only, so the DQ200 dry clutch shows up on every Golf,
+manual ones included. v3 dossiers say which engines, gearboxes and build dates a defect concerns,
+and resolve what you know about the car to `applies`, `possible` (with the facts that would settle
+it) or `not_applicable` (with the facts that ruled it out). Unknown is never rounded down to "not
+applicable".
+
+```python
+from elgarde_inspection import assemble_v3, resolve_defects, served_id
+
+facts = {"make": "Volkswagen", "model": "Golf", "fuel": "petrol",
+         "engineCode": "CBZB", "productionDate": "2010-05"}
+[(r.defect_id, r.status, r.needs) for r in resolve_defects(facts)]
+# [('dsg.dq200', 'possible', ('gearbox',)),
+#  ('tdi.egr', 'not_applicable', ()),
+#  ('tsi.chain', 'applies', ()),
+#  ('tsi.oil', 'not_applicable', ())]
+
+groups = assemble_v3(facts)            # the checklist, with only what can apply
+[i["id"] for i in groups[-1]["children"][0]["items"]]
+# ['defect.dsg.dq200', 'defect.tsi.chain']
+
+served_id("m271.balanceshaft")         # a renamed v2 id -> its dossier
+# 'm271.timingchain'
+```
+
+Facts use the API's names: `make`, `model`, `year`, `productionDate` (`YYYY-MM`), `fuel`,
+`engineCode`, `engineFamily`, `gearbox` (`manual`/`automatic`/`dct`/`cvt`), `gearboxCode`, `cc`,
+`powerKw`, `vin` (only its first three characters are used, for the make). `assemble_v3` keeps
+the v2 item ids (`defect.<v2 id>`), so answers stored against the v2 checklist stay valid; a
+`possible` item answered *not applicable* is simply a `-1`.
+
+The package bundles the dictionary and the dossiers (`data/v3/vehicles.json`,
+`data/v3/defects.json`, release 2026.10.1). The evidence and prevalence behind each dossier are
+served by the free API: `https://api.elgarde.com/api/v1/defects/{id}`.
 
 ## Honest limits
 

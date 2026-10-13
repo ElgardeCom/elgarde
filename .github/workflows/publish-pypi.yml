@@ -92,8 +92,9 @@ jobs:
 
       - name: Wait for the index to serve the new release
         run: |
+          want=$(python -c "import tomllib; print(tomllib.load(open('packages/python/pyproject.toml', 'rb'))['project']['version'])")
           for _ in $(seq 1 30); do
-            pip download --no-deps --dest /tmp/probe elgarde-inspection==1.0.0 \
+            pip download --no-deps --dest /tmp/probe "elgarde-inspection==$want" \
               >/dev/null 2>&1 && exit 0
             sleep 5
           done
@@ -101,7 +102,7 @@ jobs:
 
       - name: The published wheel passes the same conformance suite
         run: |
-          pip install elgarde-inspection pytest
+          pip install "elgarde-inspection==$(python -c "import tomllib; print(tomllib.load(open('packages/python/pyproject.toml', 'rb'))['project']['version'])")" pytest
           cd packages/python && python -m pytest -q
           python -c "
           import elgarde_inspection as core
