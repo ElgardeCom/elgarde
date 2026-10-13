@@ -73,9 +73,14 @@ class InspectionItem {
     this.weight = 1.0,
     this.critical = false,
     this.sourceDefectId,
+    this.dossierId,
+    this.status,
+    this.needs = const [],
+    this.hint,
   });
 
   factory InspectionItem.fromJson(Map<String, dynamic> json) {
+    final hint = json['hint'];
     return InspectionItem(
       id: json['id'] as String,
       prompt: LocalizedText.fromJson(json['prompt'] as Map<String, dynamic>),
@@ -83,6 +88,10 @@ class InspectionItem {
       weight: (json['weight'] as num? ?? 1).toDouble(),
       critical: json['critical'] as bool? ?? false,
       sourceDefectId: json['sourceDefectId'] as String?,
+      dossierId: json['dossierId'] as String?,
+      status: json['status'] as String?,
+      needs: (json['needs'] as List? ?? const []).cast<String>(),
+      hint: hint is Map<String, dynamic> ? LocalizedText.fromJson(hint) : null,
     );
   }
 
@@ -99,6 +108,20 @@ class InspectionItem {
 
   /// Provenance back to the defect record that generated this item.
   final String? sourceDefectId;
+
+  /// Known defects v3 (`assembleV3` only): the served dossier this row is
+  /// linked to, or null for a `legacy` row with no dossier.
+  final String? dossierId;
+
+  /// Known defects v3 (`assembleV3` only): `applies`, `possible` or `legacy`.
+  /// Null on items from `assemble` and the checklist.
+  final String? status;
+
+  /// Known defects v3: for a `possible` row, the facts that would settle it.
+  final List<String> needs;
+
+  /// Known defects v3: which cars the dossier concerns, or null.
+  final LocalizedText? hint;
 }
 
 /// A checklist section: child groups, items, or both.
@@ -110,6 +133,7 @@ class InspectionGroup {
     this.aggregation = ScoreAggregation.average,
     this.children = const [],
     this.items = const [],
+    this.ruleId,
   });
 
   factory InspectionGroup.fromJson(Map<String, dynamic> json) {
@@ -126,6 +150,7 @@ class InspectionGroup {
         for (final item in (json['items'] as List? ?? const []))
           InspectionItem.fromJson(item as Map<String, dynamic>),
       ],
+      ruleId: json['ruleId'] as String?,
     );
   }
 
@@ -135,6 +160,10 @@ class InspectionGroup {
   final ScoreAggregation aggregation;
   final List<InspectionGroup> children;
   final List<InspectionItem> items;
+
+  /// Known defects v3 (`assembleV3` only): on the `defects` group, the id of
+  /// the matched v2 rule, or null when only dossiers matched.
+  final String? ruleId;
 
   bool get isLeaf => children.isEmpty;
 }

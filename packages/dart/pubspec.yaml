@@ -2,7 +2,7 @@ name: elgarde_inspection
 description: >-
   A structured pre-purchase used-car inspection: a multilingual checklist,
   curated model-specific known defects, and 1-5 scoring with a critical clamp.
-version: 1.0.0
+version: 1.2.0
 repository: https://github.com/ElgardeCom/elgarde
 homepage: https://elgarde.com
 issue_tracker: https://github.com/ElgardeCom/elgarde/issues

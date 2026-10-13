@@ -9,7 +9,7 @@ device, in a `flutter test`, or in a server-side Dart process.
 
 ```yaml
 dependencies:
-  elgarde_inspection: ^1.0.0
+  elgarde_inspection: ^1.2.0
 ```
 
 ## Use
@@ -78,6 +78,51 @@ rule?.defects.map((d) => d.id).toList();
 ```
 
 `null` means nothing is curated for that model yet — **not** that the model is trouble-free.
+
+## Known defects v3
+
+A v2 rule matches by make and model. A v3 dossier also says *which* cars on the model it concerns
+(engine, gearbox, build dates), and `resolveDefects` checks that against whatever you know about
+the car:
+
+```dart
+final golf = resolveDefects(
+  const CarFacts(make: 'VW', model: 'Golf', fuel: 'petrol', year: 2010),
+);
+for (final r in golf) {
+  print('${r.defectId} ${r.status} ${r.needs}');
+}
+// dsg.dq200 possible [gearbox]
+// tdi.egr not_applicable []
+// tsi.chain possible [engineCode]
+// tsi.oil possible [engineCode]
+```
+
+`possible` comes with the facts that would settle it, `not_applicable` with `excludedBy`, the facts
+that ruled it out. An unknown is never rounded down to "not applicable". Give the codes from the
+data plate (`engineCode`, `gearboxCode`) and most answers become `applies` or `not_applicable`; a
+`vin` is only used offline for its first three characters, to find the make.
+
+`assembleV3` builds the checklist from the same facts. The v2 rows keep their ids
+(`defect.<v2 id>`), so stored answers stay valid; rows ruled out for this car are dropped, and
+dossiers without a v2 row are added:
+
+```dart
+final groups = assembleV3(
+  const CarFacts(make: 'Peugeot', model: '208', engineCode: 'HNZ', year: 2015),
+);
+for (final item in groups.last.children.single.items) {
+  print('${item.id} ${item.status} ${item.dossierId}');
+}
+// defect.puretech.wetbelt applies puretech.wetbelt
+// defect.ep6.chain legacy null
+// defect.hdi.turbo legacy null
+```
+
+`legacy` is a v2 row with no dossier yet. `servedId('m271.balanceshaft')` follows renamed ids to
+`m271.timingchain`. The package ships the dossiers' applicability (release 2026.10.1); the
+evidence and prevalence behind each one are served by the free API at
+`https://api.elgarde.com/api/v1/defects/{id}`.
 
 ## Honest limits
 
