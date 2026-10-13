@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "elgarde-inspection"
-version = "1.0.0"
+version = "1.1.0"
 description = "Pre-purchase used-car inspection: a multilingual checklist, curated model-specific known defects, and 1-5 scoring."
 readme = "README.md"
 requires-python = ">=3.10"
