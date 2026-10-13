@@ -213,33 +213,19 @@
         "status",
         "replacedBy",
         "revision",
-        "updatedAt",
-        "title",
-        "summary",
-        "checklistPrompt",
-        "component",
-        "mechanism",
-        "applicability",
-        "severity",
-        "safety",
-        "critical",
-        "symptoms",
-        "inspection",
-        "repair",
-        "evidence",
-        "prevalence"
+        "updatedAt"
       ],
       "properties": {
         "id": {
-          "type": "string",
-          "pattern": "^[a-z0-9]+(\\.[a-z0-9_]+)+$"
+          "$ref": "#/$defs/defectId"
         },
         "aliases": {
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "#/$defs/defectId"
           },
-          "description": "Older ids merged into this entry."
+          "uniqueItems": true,
+          "description": "Older ids merged into this entry. A served dossier answers for each of them (a renamed defect keeps its stored answers); the old id also stays in the file as a deprecated record whose replacedBy names this one."
         },
         "status": {
           "enum": [
@@ -250,10 +236,15 @@
           ]
         },
         "replacedBy": {
-          "type": [
-            "string",
-            "null"
-          ]
+          "oneOf": [
+            {
+              "$ref": "#/$defs/defectId"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "For a deprecated record: the dossier that took over, or null when the entry was withdrawn."
         },
         "revision": {
           "type": "integer",
@@ -423,16 +414,24 @@
               ]
             },
             "manufacturerProgramme": {
-              "type": "object",
-              "properties": {
-                "evidence": {
-                  "$ref": "#/$defs/strings"
+              "oneOf": [
+                {
+                  "type": "null"
                 },
-                "text": {
-                  "$ref": "#/$defs/i18n"
+                {
+                  "type": "object",
+                  "properties": {
+                    "evidence": {
+                      "$ref": "#/$defs/strings"
+                    },
+                    "text": {
+                      "$ref": "#/$defs/i18n"
+                    }
+                  },
+                  "additionalProperties": true
                 }
-              },
-              "additionalProperties": true
+              ],
+              "description": "An extended-warranty or goodwill programme, or null when none is documented."
             }
           },
           "additionalProperties": true
@@ -451,9 +450,69 @@
             "type": "string"
           },
           "description": "Ids into prevalence.json. Never empty: an honest 'no reliable figure' record counts."
+        },
+        "reason": {
+          "$ref": "#/$defs/i18n5",
+          "description": "Why the record is deprecated. Required when status is deprecated."
         }
       },
-      "additionalProperties": true
+      "additionalProperties": true,
+      "description": "A dossier. A deprecated record is a tombstone: it keeps its id (and legacyRule) so v2 consumers and stored answers can still find it, and says why it was withdrawn; it carries no texts or applicability.",
+      "if": {
+        "properties": {
+          "status": {
+            "const": "deprecated"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "reason"
+        ]
+      },
+      "else": {
+        "required": [
+          "title",
+          "summary",
+          "checklistPrompt",
+          "component",
+          "mechanism",
+          "applicability",
+          "severity",
+          "safety",
+          "critical",
+          "symptoms",
+          "inspection",
+          "repair",
+          "evidence",
+          "prevalence"
+        ]
+      }
+    },
+    "defectId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+([._][a-z0-9]+)*$",
+      "description": "Stable dossier id: lower-case segments joined by '.' or '_' (\"dsg.dq200\", \"m271.timingchain\"). A single segment (\"vanos\") is allowed: legacy v2 ids keep their spelling because stored answers hang off `defect.<id>`."
+    },
+    "i18n5": {
+      "description": "Text in all five authored languages.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/i18n"
+        },
+        {
+          "required": [
+            "en",
+            "pt",
+            "ru",
+            "uk",
+            "fr"
+          ]
+        }
+      ]
     }
   }
 }

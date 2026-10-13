@@ -175,31 +175,79 @@ def check_schemas() -> None:
             failures.append(f"v3/{name}.json {list(error.path)}: {error.message}")
 
 
+SERVED_GRADES = ("established", "well_documented")
+
+
+def evidence_grade(defect: dict, evidence_by_id: dict[str, dict]) -> str:
+    """The publication threshold (architecture section 4.6), as the API computes it."""
+    evs = [evidence_by_id[e] for e in defect.get("evidence", ()) if e in evidence_by_id]
+    for ev in evs:
+        if (
+            ev.get("tier") == 1
+            and "existence" in ev.get("supports", ())
+            and ev.get("confidence") in ("high", "medium")
+        ):
+            return "established"
+    publishers = {
+        (ev.get("source", {}).get("publisher") or "").casefold()
+        for ev in evs
+        if ev.get("tier") == 2 and {"existence", "mechanism"} <= set(ev.get("supports", ()))
+    }
+    publishers.discard("")
+    return "well_documented" if len(publishers) >= 2 else "reported"
+
+
 def check_v3_references() -> None:
-    """Every id a v3 dossier points at must exist, and the release counts must be true."""
+    """Every id a v3 dossier points at must exist, every published dossier must
+    clear the evidence threshold (the ports serve every published dossier and do
+    not carry the evidence to check it themselves), aliases and replacements must
+    point the right way, and the release counts must be true."""
     defects = load("data/v3/defects.json")["defects"]
     evidence = load("data/v3/evidence.json")["evidence"]
     prevalence = load("data/v3/prevalence.json")["prevalence"]
     release = load("data/v3/release.json")
-    defect_ids = {d["id"] for d in defects}
-    evidence_ids = {e["id"] for e in evidence}
+    by_id = {d["id"]: d for d in defects}
+    check(len(by_id) == len(defects), "v3 defects.json: duplicate ids")
+    evidence_by_id = {e["id"]: e for e in evidence}
     prevalence_ids = {p["id"] for p in prevalence}
+    published = {i for i, d in by_id.items() if d["status"] == "published"}
+    deprecated = {i for i, d in by_id.items() if d["status"] == "deprecated"}
     for d in defects:
-        for ref in d["evidence"]:
-            check(ref in evidence_ids, f"v3 defect {d['id']}: unknown evidence {ref}")
-        for ref in d["prevalence"]:
+        for ref in d.get("evidence", ()):
+            check(ref in evidence_by_id, f"v3 defect {d['id']}: unknown evidence {ref}")
+        for ref in d.get("prevalence", ()):
             check(ref in prevalence_ids, f"v3 defect {d['id']}: unknown prevalence {ref}")
+        if d["id"] in published:
+            grade = evidence_grade(d, evidence_by_id)
+            check(grade in SERVED_GRADES,
+                  f"v3 defect {d['id']}: published with evidence grade {grade!r}")
+        for alias in d.get("aliases", ()):
+            check(d["id"] in published, f"v3 defect {d['id']}: only a published dossier has aliases")
+            old = by_id.get(alias)
+            check(old is not None and old["status"] == "deprecated" and old.get("replacedBy") == d["id"],
+                  f"v3 defect {d['id']}: alias {alias} must be a deprecated record replaced by it")
+        if d.get("replacedBy") is not None:
+            check(d["replacedBy"] in published and d["id"] in by_id[d["replacedBy"]].get("aliases", ()),
+                  f"v3 defect {d['id']}: replacedBy {d['replacedBy']} must be a published dossier listing it in aliases")
     for e in evidence:
         for ref in e["defects"]:
-            check(ref in defect_ids, f"v3 evidence {e['id']}: unknown defect {ref}")
+            check(ref in by_id, f"v3 evidence {e['id']}: unknown defect {ref}")
         check(e["source"]["license"] in release["licenses"], f"v3 evidence {e['id']}: licence not in release.json")
     for p in prevalence:
-        check(p["defect"] in defect_ids, f"v3 prevalence {p['id']}: unknown defect {p['defect']}")
+        check(p["defect"] in by_id, f"v3 prevalence {p['id']}: unknown defect {p['defect']}")
         for ref in p["evidence"]:
-            check(ref in evidence_ids, f"v3 prevalence {p['id']}: unknown evidence {ref}")
+            check(ref in evidence_by_id, f"v3 prevalence {p['id']}: unknown evidence {ref}")
+    # Every v2 defect id lives on in v3, as a dossier or as a deprecated record.
+    for rule in DEFECTS["rules"]:
+        for entry in rule["defects"]:
+            check(entry["id"] in by_id, f"v2 defect {entry['id']} has no v3 record")
     counts = release["counts"]
-    check(counts == {"defects": len(defects), "evidence": len(evidence), "prevalence": len(prevalence)},
-          f"v3 release.json counts {counts} do not match the data")
+    want = {"defects": len(published), "evidence": len(evidence), "prevalence": len(prevalence)}
+    if "deprecated" in counts:
+        want["deprecated"] = len(deprecated)
+    check(counts == want, f"v3 release.json counts {counts} do not match the data {want}")
+    check(release["changelog"][-1]["release"] == release["release"],
+          "v3 release.json: the last changelog entry is not the current release")
 
 
 def check_structure() -> None:
@@ -301,7 +349,12 @@ def main() -> int:
     print(
         "  vectors:        "
         f"{sum(len(VECTORS[k]) for k in ('scoring', 'assembly', 'matching', 'canonScoring'))}"
+        " (+"
+        f"{sum(len(VECTORS.get(k, ())) for k in ('resolveV3', 'resolveDefect', 'v3Names', 'v3ServedIds', 'assembleV3'))}"
+        " known-defects v3, run by the ports)"
     )
+    release = load("data/v3/release.json")
+    print(f"  defects v3:     release {release['release']}, {release['counts']}")
 
     if failures:
         print(f"\nFAILED ({len(failures)}):")

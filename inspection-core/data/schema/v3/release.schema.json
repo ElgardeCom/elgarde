@@ -41,13 +41,20 @@
       ],
       "properties": {
         "defects": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0,
+          "description": "Published dossiers."
         },
         "evidence": {
           "type": "integer"
         },
         "prevalence": {
           "type": "integer"
+        },
+        "deprecated": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Deprecated records (withdrawn or renamed ids kept as tombstones)."
         }
       }
     },

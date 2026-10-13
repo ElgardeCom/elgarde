@@ -310,6 +310,796 @@
       ],
       "noReliableFigure": false,
       "reason": null
+    },
+    {
+      "id": "pv_ts_none",
+      "defect": "tsi.chain",
+      "kind": "none",
+      "value": null,
+      "unit": null,
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": null,
+      "outcome": null,
+      "baseline": null,
+      "method": null,
+      "evidence": [],
+      "confidence": null,
+      "caveats": [],
+      "noReliableFigure": true,
+      "reason": {
+        "en": "No published figure gives the share of these engines with a stretched or skipped chain. In 2012 Volkswagen put damage cases in the tenths-of-a-per-mille range without naming a population, and AUTO BILD reported in 2018 that the 2012 count had long been exceeded; complaint counts from a magazine are not a rate.",
+        "pt": "Nenhum número publicado indica a proporção destes motores com corrente alongada ou saltada. Em 2012 a Volkswagen situou os casos de avaria na ordem das décimas de milésimo sem indicar a população, e a AUTO BILD referiu em 2018 que a contagem de 2012 há muito tinha sido ultrapassada; contagens de queixas de uma revista não são uma taxa.",
+        "ru": "Опубликованной доли этих двигателей с растянутой или перескочившей цепью нет. В 2012 году Volkswagen оценила случаи повреждения порядком десятых долей промилле, не назвав выборку, а AUTO BILD в 2018 году писал, что цифра 2012 года давно превышена; число жалоб в журнале — не частота.",
+        "uk": "Опублікованої частки цих двигунів із розтягнутим чи перескоченим ланцюгом немає. У 2012 році Volkswagen оцінила випадки пошкодження порядком десятих часток проміле, не назвавши вибірку, а AUTO BILD у 2018 році писав, що цифру 2012 року давно перевищено; кількість скарг у журналі — не частота.",
+        "fr": "Aucun chiffre publié ne donne la part de ces moteurs à chaîne allongée ou sautée. En 2012, Volkswagen a situé les cas de dommage dans l'ordre du dixième de pour mille sans nommer de population, et AUTO BILD a rapporté en 2018 que le chiffre de 2012 était depuis longtemps dépassé ; un décompte de réclamations de magazine n'est pas un taux."
+      }
+    },
+    {
+      "id": "pv_ts_complaints",
+      "defect": "tsi.chain",
+      "kind": "complaint_signal",
+      "value": 435,
+      "unit": "units",
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": {
+        "description": {
+          "en": "Cases about timing chains of VW-group cars counted by AUTO BILD's reader-complaint column from early 2017 to the article of June 2018",
+          "pt": "Casos sobre correntes de distribuição de automóveis do grupo VW contados pela rubrica de queixas de leitores da AUTO BILD desde o início de 2017 até ao artigo de junho de 2018",
+          "ru": "Случаи по цепям ГРМ машин группы VW, учтённые рубрикой жалоб читателей AUTO BILD с начала 2017 года до статьи июня 2018 года",
+          "uk": "Випадки щодо ланцюгів ГРМ машин групи VW, облічені рубрикою скарг читачів AUTO BILD із початку 2017 року до статті червня 2018 року",
+          "fr": "Cas concernant les chaînes de distribution de véhicules du groupe VW comptés par la rubrique de réclamations de lecteurs d'AUTO BILD du début 2017 à l'article de juin 2018"
+        },
+        "applicability": {
+          "engine": {
+            "ids": [
+              "vag.ea111_12tsi",
+              "vag.ea111_14tsi"
+            ]
+          }
+        },
+        "geography": "DE",
+        "period": {
+          "from": "2017-01",
+          "to": "2018-06"
+        },
+        "ageYears": null
+      },
+      "outcome": {
+        "en": "New cases reported to the magazine's complaint column",
+        "pt": "Novos casos comunicados à rubrica de queixas da revista",
+        "ru": "Новые случаи, сообщённые в рубрику жалоб журнала",
+        "uk": "Нові випадки, повідомлені до рубрики скарг журналу",
+        "fr": "Nouveaux cas signalés à la rubrique de réclamations du magazine"
+      },
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_ts_e01"
+      ],
+      "confidence": "D",
+      "caveats": [
+        {
+          "en": "Self-selected reader reports to one magazine, not checked against vehicle records; it is not a failure rate.",
+          "pt": "Relatos de leitores autosselecionados enviados a uma revista, não confrontados com registos de veículos; não é uma taxa de avarias.",
+          "ru": "Самостоятельные сообщения читателей в один журнал, не сверенные с данными о машинах; это не частота отказов.",
+          "uk": "Самостійні повідомлення читачів до одного журналу, не звірені з даними про машини; це не частота відмов.",
+          "fr": "Signalements spontanés de lecteurs à un seul magazine, non recoupés avec des données de véhicules ; ce n'est pas un taux de panne."
+        },
+        {
+          "en": "The article does not say how many of the cases involved the EA111 1.2 and 1.4 TSI as opposed to other VW-group engines.",
+          "pt": "O artigo não diz quantos dos casos envolviam os 1.2 e 1.4 TSI EA111 e não outros motores do grupo VW.",
+          "ru": "В статье не сказано, сколько случаев приходится на 1.2 и 1.4 TSI EA111, а сколько на другие двигатели группы VW.",
+          "uk": "У статті не сказано, скільки випадків припадає на 1.2 і 1.4 TSI EA111, а скільки на інші двигуни групи VW.",
+          "fr": "L'article ne dit pas combien de cas concernent les 1.2 et 1.4 TSI EA111 par rapport à d'autres moteurs du groupe VW."
+        }
+      ],
+      "noReliableFigure": false,
+      "reason": null
+    },
+    {
+      "id": "pv_td_none",
+      "defect": "tdi.egr",
+      "kind": "none",
+      "value": null,
+      "unit": null,
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": null,
+      "outcome": null,
+      "baseline": null,
+      "method": null,
+      "evidence": [],
+      "confidence": null,
+      "caveats": [],
+      "noReliableFigure": true,
+      "reason": {
+        "en": "No published figure gives the share of these engines with EGR filter restriction. The Volkswagen bulletin lists affected models and years but is not a count, and no dataset records this fault.",
+        "pt": "Nenhum número publicado indica a proporção destes motores com restrição do filtro EGR. O boletim da Volkswagen lista modelos e anos abrangidos mas não é uma contagem, e nenhum conjunto de dados regista esta avaria.",
+        "ru": "Опубликованной доли этих двигателей с засорением фильтра EGR нет. Бюллетень Volkswagen перечисляет модели и годы, но это не подсчёт, и ни один набор данных эту неисправность не учитывает.",
+        "uk": "Опублікованої частки цих двигунів із засміченням фільтра EGR немає. Бюлетень Volkswagen перелічує моделі та роки, але це не підрахунок, і жоден набір даних цю несправність не враховує.",
+        "fr": "Aucun chiffre publié ne donne la part de ces moteurs touchés par une restriction du filtre EGR. Le bulletin de Volkswagen liste modèles et années concernés mais n'est pas un décompte, et aucun jeu de données ne recense ce défaut."
+      }
+    },
+    {
+      "id": "pv_to_none",
+      "defect": "tsi.oil",
+      "kind": "none",
+      "value": null,
+      "unit": null,
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": null,
+      "outcome": null,
+      "baseline": null,
+      "method": null,
+      "evidence": [],
+      "confidence": null,
+      "caveats": [],
+      "noReliableFigure": true,
+      "reason": {
+        "en": "No published figure gives the share of these engines with high oil consumption. The 785,000 engines built with narrower rings are a production count reported by the press, not a count of engines that consume oil; owner cases collected by a magazine are not a rate.",
+        "pt": "Nenhum número publicado indica a proporção destes motores com consumo elevado de óleo. Os 785 000 motores construídos com segmentos mais estreitos são uma contagem de produção referida pela imprensa, e não uma contagem de motores que consomem óleo; casos de proprietários reunidos por uma revista não são uma taxa.",
+        "ru": "Опубликованной доли этих двигателей с высоким расходом масла нет. 785 000 моторов с более узкими кольцами — это производственная цифра, названная прессой, а не число моторов, расходующих масло; случаи владельцев, собранные журналом, — не частота.",
+        "uk": "Опублікованої частки цих двигунів із високою витратою оливи немає. 785 000 моторів із вужчими кільцями — це виробнича цифра, названа пресою, а не кількість моторів, що витрачають оливу; випадки власників, зібрані журналом, — не частота.",
+        "fr": "Aucun chiffre publié ne donne la part de ces moteurs à forte consommation d'huile. Les 785 000 moteurs construits avec des segments plus étroits sont un chiffre de production rapporté par la presse, pas un décompte de moteurs qui consomment de l'huile ; des cas de propriétaires réunis par un magazine ne sont pas un taux."
+      }
+    },
+    {
+      "id": "pv_to_785k",
+      "defect": "tsi.oil",
+      "kind": "manufacturer_figure",
+      "value": 785000,
+      "unit": "units",
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": {
+        "description": {
+          "en": "EA888 1.8 and 2.0 engines built with the narrower oil control rings, roughly early 2008 to mid-2011, as stated by Audi to AUTO BILD",
+          "pt": "Motores EA888 1.8 e 2.0 construídos com os segmentos de óleo mais estreitos, aproximadamente do início de 2008 a meados de 2011, segundo a Audi à AUTO BILD",
+          "ru": "Моторы EA888 1.8 и 2.0, построенные с более узкими маслосъёмными кольцами, примерно с начала 2008 до середины 2011 года, по словам Audi для AUTO BILD",
+          "uk": "Мотори EA888 1.8 і 2.0, збудовані з вужчими оливознімними кільцями, приблизно з початку 2008 до середини 2011 року, за словами Audi для AUTO BILD",
+          "fr": "Moteurs EA888 1.8 et 2.0 construits avec les segments racleurs plus étroits, environ du début 2008 à mi-2011, selon Audi à AUTO BILD"
+        },
+        "applicability": {
+          "engine": {
+            "ids": [
+              "vag.ea888_18tfsi",
+              "vag.ea888_20tfsi"
+            ]
+          }
+        },
+        "geography": null,
+        "period": {
+          "from": "2008-01",
+          "to": "2011-06"
+        },
+        "ageYears": null
+      },
+      "outcome": {
+        "en": "Engines built with the narrower oil control rings (a production count)",
+        "pt": "Motores construídos com os segmentos de óleo mais estreitos (contagem de produção)",
+        "ru": "Моторы, построенные с более узкими маслосъёмными кольцами (производственная цифра)",
+        "uk": "Мотори, збудовані з вужчими оливознімними кільцями (виробнича цифра)",
+        "fr": "Moteurs construits avec les segments racleurs plus étroits (chiffre de production)"
+      },
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_to_e04"
+      ],
+      "confidence": "C",
+      "caveats": [
+        {
+          "en": "A production count of engines with a part variant, not of engines that consume oil. It is not a failure rate.",
+          "pt": "Contagem de produção de motores com uma variante de peça, e não de motores que consomem óleo. Não é uma taxa de avarias.",
+          "ru": "Производственная цифра по моторам с одним вариантом детали, а не число моторов, расходующих масло. Это не частота отказов.",
+          "uk": "Виробнича цифра моторів з одним варіантом деталі, а не кількість моторів, що витрачають оливу. Це не частота відмов.",
+          "fr": "Chiffre de production de moteurs ayant une variante de pièce, pas de moteurs qui consomment de l'huile. Ce n'est pas un taux de panne."
+        },
+        {
+          "en": "Reported by the press as Audi's statement; the figure was not checked against a primary document.",
+          "pt": "Indicado pela imprensa como declaração da Audi; o número não foi confrontado com um documento primário.",
+          "ru": "Цифра из прессы как заявление Audi; с первичным документом не сверена.",
+          "uk": "Цифра з преси як заява Audi; з первинним документом не звірена.",
+          "fr": "Rapporté par la presse comme déclaration d'Audi ; le chiffre n'a pas été vérifié sur un document primaire."
+        }
+      ],
+      "noReliableFigure": false,
+      "reason": null
+    },
+    {
+      "id": "pv_wp_none",
+      "defect": "waterpump",
+      "kind": "none",
+      "value": null,
+      "unit": null,
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": null,
+      "outcome": null,
+      "baseline": null,
+      "method": null,
+      "evidence": [],
+      "confidence": null,
+      "caveats": [],
+      "noReliableFigure": true,
+      "reason": {
+        "en": "No published figure gives the share of these engines with a coolant leak at the water pump or thermostat housing. Audi's bulletins describe the repair and warranty handling but give no count.",
+        "pt": "Nenhum número publicado indica a proporção destes motores com fuga de líquido na bomba de água ou no alojamento do termóstato. Os boletins da Audi descrevem a reparação e o tratamento em garantia mas não dão nenhuma contagem.",
+        "ru": "Опубликованной доли этих двигателей с течью жидкости у помпы или корпуса термостата нет. Бюллетени Audi описывают ремонт и порядок гарантии, но числа не дают.",
+        "uk": "Опублікованої частки цих двигунів із витоком рідини біля помпи чи корпуса термостата немає. Бюлетені Audi описують ремонт і порядок гарантії, але числа не дають.",
+        "fr": "Aucun chiffre publié ne donne la part de ces moteurs avec une fuite de liquide à la pompe à eau ou au boîtier de thermostat. Les bulletins d'Audi décrivent la réparation et le traitement sous garantie mais ne donnent aucun décompte."
+      }
+    },
+    {
+      "id": "pv_vanos_14v176",
+      "defect": "vanos",
+      "kind": "recall_scope",
+      "value": 156137,
+      "unit": "units",
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": {
+        "description": {
+          "en": "Model year 2010-2012 BMW vehicles in the US recall 14V-176 (VANOS housing bolts)",
+          "pt": "Veículos BMW dos anos-modelo 2010-2012 na chamada 14V-176 dos EUA (parafusos da caixa do VANOS)",
+          "ru": "BMW 2010-2012 модельных годов в отзыве США 14V-176 (болты корпуса VANOS)",
+          "uk": "BMW 2010-2012 модельних років у відкликанні США 14V-176 (болти корпусу VANOS)",
+          "fr": "BMW des millésimes 2010-2012 dans le rappel américain 14V-176 (vis du boîtier VANOS)"
+        },
+        "applicability": null,
+        "geography": "US",
+        "period": null,
+        "ageYears": null
+      },
+      "outcome": {
+        "en": "Vehicles recalled",
+        "pt": "Veículos chamados",
+        "ru": "Отозванные машины",
+        "uk": "Відкликані машини",
+        "fr": "Véhicules rappelés"
+      },
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_bmmb_e01"
+      ],
+      "confidence": "C",
+      "caveats": [
+        {
+          "en": "A recall population counts vehicles in scope, not failures. It is not a failure rate.",
+          "pt": "A população de uma chamada conta veículos abrangidos, não avarias. Não é uma taxa de avarias.",
+          "ru": "Число машин в отзыве — это охват, а не число отказов. Это не частота отказов.",
+          "uk": "Кількість машин у відкликанні — це охоплення, а не кількість відмов. Це не частота відмов.",
+          "fr": "La population d'un rappel compte les véhicules concernés, pas les pannes. Ce n'est pas un taux de panne."
+        }
+      ],
+      "noReliableFigure": false,
+      "reason": null
+    },
+    {
+      "id": "pv_vanos_23v707",
+      "defect": "vanos",
+      "kind": "recall_scope",
+      "value": 157796,
+      "unit": "units",
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": {
+        "description": {
+          "en": "Model year 2010-2012 BMW vehicles in the US recall 23V-707 (VANOS aluminium bolts)",
+          "pt": "Veículos BMW dos anos-modelo 2010-2012 na chamada 23V-707 dos EUA (parafusos de alumínio do VANOS)",
+          "ru": "BMW 2010-2012 модельных годов в отзыве США 23V-707 (алюминиевые болты VANOS)",
+          "uk": "BMW 2010-2012 модельних років у відкликанні США 23V-707 (алюмінієві болти VANOS)",
+          "fr": "BMW des millésimes 2010-2012 dans le rappel américain 23V-707 (vis aluminium du VANOS)"
+        },
+        "applicability": null,
+        "geography": "US",
+        "period": null,
+        "ageYears": null
+      },
+      "outcome": {
+        "en": "Vehicles recalled",
+        "pt": "Veículos chamados",
+        "ru": "Отозванные машины",
+        "uk": "Відкликані машини",
+        "fr": "Véhicules rappelés"
+      },
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_bmmb_e04"
+      ],
+      "confidence": "C",
+      "caveats": [
+        {
+          "en": "A recall population counts vehicles in scope, not failures. It is not a failure rate.",
+          "pt": "A população de uma chamada conta veículos abrangidos, não avarias. Não é uma taxa de avarias.",
+          "ru": "Число машин в отзыве — это охват, а не число отказов. Это не частота отказов.",
+          "uk": "Кількість машин у відкликанні — це охоплення, а не кількість відмов. Це не частота відмов.",
+          "fr": "La population d'un rappel compte les véhicules concernés, pas les pannes. Ce n'est pas un taux de panne."
+        },
+        {
+          "en": "The 2023 recall overlaps the 2014 one in scope, so the two counts must not be added together.",
+          "pt": "A chamada de 2023 sobrepõe-se em âmbito à de 2014, pelo que as duas contagens não devem ser somadas.",
+          "ru": "Отзыв 2023 года частично совпадает по охвату с отзывом 2014 года, поэтому два числа нельзя складывать.",
+          "uk": "Відкликання 2023 року частково збігається за охопленням із відкликанням 2014 року, тому два числа не можна додавати.",
+          "fr": "Le rappel de 2023 recoupe celui de 2014 ; les deux chiffres ne doivent pas être additionnés."
+        }
+      ],
+      "noReliableFigure": false,
+      "reason": null
+    },
+    {
+      "id": "pv_vanos_elw",
+      "defect": "vanos",
+      "kind": "recall_scope",
+      "value": 170172,
+      "unit": "units",
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": {
+        "description": {
+          "en": "Model year 2010-2012 BMW inline-six cars not covered by recall 14V-176 that received a warranty extension for the same condition, per the NHTSA record",
+          "pt": "Automóveis BMW de seis cilindros em linha dos anos-modelo 2010-2012 não abrangidos pela chamada 14V-176 que receberam uma extensão de garantia para a mesma situação, segundo o registo da NHTSA",
+          "ru": "Рядные шестицилиндровые BMW 2010-2012 модельных годов, не охваченные отзывом 14V-176, получившие расширенную гарантию на тот же случай, по записи NHTSA",
+          "uk": "Рядні шестициліндрові BMW 2010-2012 модельних років, не охоплені відкликанням 14V-176, які отримали розширену гарантію на той самий випадок, за записом NHTSA",
+          "fr": "Voitures BMW six cylindres en ligne des millésimes 2010-2012 non couvertes par le rappel 14V-176 ayant reçu une extension de garantie pour le même cas, selon la fiche NHTSA"
+        },
+        "applicability": null,
+        "geography": "US",
+        "period": null,
+        "ageYears": null
+      },
+      "outcome": {
+        "en": "Vehicles covered by a warranty extension",
+        "pt": "Veículos abrangidos por uma extensão de garantia",
+        "ru": "Машины, охваченные расширенной гарантией",
+        "uk": "Машини, охоплені розширеною гарантією",
+        "fr": "Véhicules couverts par une extension de garantie"
+      },
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_bmmb_e01"
+      ],
+      "confidence": "C",
+      "caveats": [
+        {
+          "en": "The number counts vehicles in scope of a warranty extension, not failures. It is not a failure rate.",
+          "pt": "O número conta veículos abrangidos por uma extensão de garantia, não avarias. Não é uma taxa de avarias.",
+          "ru": "Число — это машины, охваченные расширенной гарантией, а не отказы. Это не частота отказов.",
+          "uk": "Число — це машини, охоплені розширеною гарантією, а не відмови. Це не частота відмов.",
+          "fr": "Le nombre compte les véhicules couverts par une extension de garantie, pas les pannes. Ce n'est pas un taux de panne."
+        }
+      ],
+      "noReliableFigure": false,
+      "reason": null
+    },
+    {
+      "id": "pv_vanos_none",
+      "defect": "vanos",
+      "kind": "none",
+      "value": null,
+      "unit": null,
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": null,
+      "outcome": null,
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_bmmb_e01",
+        "ev_bmmb_e04"
+      ],
+      "confidence": null,
+      "caveats": [],
+      "noReliableFigure": true,
+      "reason": {
+        "en": "No verified share of affected engines with loosened or broken VANOS bolts has been published. The recall counts above are vehicles in scope, not failures.",
+        "pt": "Não foi publicada nenhuma proporção verificada de motores afetados com parafusos do VANOS soltos ou partidos. Os números das chamadas acima são veículos abrangidos, não avarias.",
+        "ru": "Проверенной доли двигателей с ослабленными или сломанными болтами VANOS не опубликовано. Числа по отзывам выше — это машины в охвате, а не отказы.",
+        "uk": "Перевіреної частки двигунів із послабленими чи зламаними болтами VANOS не опубліковано. Числа за відкликаннями вище — це машини в охопленні, а не відмови.",
+        "fr": "Aucune part vérifiée de moteurs concernés avec vis VANOS desserrées ou rompues n'a été publiée. Les nombres des rappels ci-dessus sont des véhicules concernés, pas des pannes."
+      }
+    },
+    {
+      "id": "pv_oil_none",
+      "defect": "oil.leaks",
+      "kind": "none",
+      "value": null,
+      "unit": null,
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": null,
+      "outcome": null,
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_bmmb_e07",
+        "ev_bmmb_e08"
+      ],
+      "confidence": null,
+      "caveats": [],
+      "noReliableFigure": true,
+      "reason": {
+        "en": "No verified share of the covered N20 and N55 engines with a failed plastic oil filter housing has been published, and the BMW service actions do not state how many cars they cover.",
+        "pt": "Não foi publicada nenhuma proporção verificada dos motores N20 e N55 abrangidos com suporte plástico do filtro de óleo avariado, e as ações de serviço da BMW não indicam quantos automóveis abrangem.",
+        "ru": "Проверенной доли охваченных двигателей N20 и N55 с отказавшим пластиковым корпусом масляного фильтра не опубликовано, а в сервисных акциях BMW не указано, сколько машин они охватывают.",
+        "uk": "Перевіреної частки охоплених двигунів N20 і N55 із відмовним пластиковим корпусом оливного фільтра не опубліковано, а в сервісних акціях BMW не зазначено, скільки машин вони охоплюють.",
+        "fr": "Aucune part vérifiée des moteurs N20 et N55 concernés avec un boîtier plastique de filtre à huile défaillant n'a été publiée, et les actions de service BMW n'indiquent pas combien de voitures elles couvrent."
+      }
+    },
+    {
+      "id": "pv_om651_cases",
+      "defect": "om651.injectors",
+      "kind": "manufacturer_figure",
+      "value": 2800,
+      "unit": "units",
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": {
+        "description": {
+          "en": "Cases (Beanstandungen) of injector problems that Mercedes told AUTO BILD it had in Germany for OM651 220 CDI and 250 CDI cars with piezo injectors, October 2009",
+          "pt": "Casos (Beanstandungen) de problemas de injetores que a Mercedes disse à AUTO BILD ter na Alemanha em carros OM651 220 CDI e 250 CDI com injetores piezo, outubro de 2009",
+          "ru": "Случаи (Beanstandungen) проблем с форсунками, о которых Mercedes сообщила AUTO BILD по Германии для OM651 220 CDI и 250 CDI с пьезофорсунками, октябрь 2009",
+          "uk": "Випадки (Beanstandungen) проблем із форсунками, про які Mercedes повідомила AUTO BILD щодо Німеччини для OM651 220 CDI і 250 CDI з п'єзофорсунками, жовтень 2009",
+          "fr": "Cas (Beanstandungen) de problèmes d'injecteurs que Mercedes a indiqués à AUTO BILD en Allemagne pour les OM651 220 CDI et 250 CDI à injecteurs piézo, octobre 2009"
+        },
+        "applicability": null,
+        "geography": "DE",
+        "period": null,
+        "ageYears": null
+      },
+      "outcome": {
+        "en": "Cases reported to the manufacturer",
+        "pt": "Casos comunicados ao fabricante",
+        "ru": "Случаи, о которых сообщено производителю",
+        "uk": "Випадки, повідомлені виробнику",
+        "fr": "Cas signalés au constructeur"
+      },
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_bmmb_e10",
+        "ev_bmmb_e11"
+      ],
+      "confidence": "C",
+      "caveats": [
+        {
+          "en": "Manufacturer figure for a count of cases, not a rate. L'argus reports the same 2,800 against 25,000 vehicles sold (without stating the area), while AUTO BILD says about 50,000 cars could theoretically be added; the denominators do not agree, so no percentage is given.",
+          "pt": "Valor do fabricante para uma contagem de casos, não uma taxa. O L'argus indica os mesmos 2 800 contra 25 000 veículos vendidos (sem indicar a zona), enquanto a AUTO BILD diz que cerca de 50 000 automóveis poderiam, teoricamente, juntar-se; os denominadores não coincidem, pelo que não é indicada percentagem.",
+          "ru": "Цифра производителя — число случаев, а не доля. L'argus приводит те же 2 800 на 25 000 проданных машин (не уточняя территорию), а AUTO BILD пишет, что теоретически могут добавиться около 50 000 машин; знаменатели не совпадают, поэтому процент не указан.",
+          "uk": "Цифра виробника — кількість випадків, а не частка. L'argus наводить ті самі 2 800 на 25 000 проданих машин (не уточнюючи територію), а AUTO BILD пише, що теоретично можуть додатися близько 50 000 машин; знаменники не збігаються, тому відсоток не вказано.",
+          "fr": "Chiffre du constructeur pour un nombre de cas, pas un taux. L'argus rapporte les mêmes 2 800 sur 25 000 véhicules vendus (sans préciser la zone), tandis qu'AUTO BILD dit qu'environ 50 000 voitures pourraient théoriquement s'y ajouter ; les dénominateurs ne concordent pas, donc aucun pourcentage n'est donné."
+        }
+      ],
+      "noReliableFigure": false,
+      "reason": null
+    },
+    {
+      "id": "pv_om651_none",
+      "defect": "om651.injectors",
+      "kind": "none",
+      "value": null,
+      "unit": null,
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": null,
+      "outcome": null,
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_bmmb_e10",
+        "ev_bmmb_e11"
+      ],
+      "confidence": null,
+      "caveats": [],
+      "noReliableFigure": true,
+      "reason": {
+        "en": "No verified failure rate for OM651 piezo injectors has been published; the only figure is a manufacturer count of cases from 2009 with inconsistent denominators, and no later figure was found.",
+        "pt": "Não foi publicada nenhuma taxa de avarias verificada dos injetores piezo do OM651; o único número é uma contagem de casos do fabricante de 2009 com denominadores inconsistentes, e não foi encontrado nenhum número posterior.",
+        "ru": "Проверенной частоты отказов пьезофорсунок OM651 не опубликовано; единственная цифра — подсчёт случаев производителем за 2009 год с несогласованными знаменателями, более поздних цифр не найдено.",
+        "uk": "Перевіреної частоти відмов п'єзофорсунок OM651 не опубліковано; єдина цифра — підрахунок випадків виробником за 2009 рік із неузгодженими знаменниками, пізніших цифр не знайдено.",
+        "fr": "Aucun taux de panne vérifié des injecteurs piézo de l'OM651 n'a été publié ; le seul chiffre est un décompte de cas du constructeur de 2009 aux dénominateurs incohérents, et aucun chiffre plus récent n'a été trouvé."
+      }
+    },
+    {
+      "id": "pv_m271_none",
+      "defect": "m271.timingchain",
+      "kind": "none",
+      "value": null,
+      "unit": null,
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": null,
+      "outcome": null,
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_bmmb_e15",
+        "ev_bmmb_e16"
+      ],
+      "confidence": null,
+      "caveats": [],
+      "noReliableFigure": true,
+      "reason": {
+        "en": "No verified share of M271 engines with timing chain wear has been published; the two articles used give no failure percentage (mbpassion.de says many engines show elongation before 100,000 km, without a number).",
+        "pt": "Não foi publicada nenhuma proporção verificada de motores M271 com desgaste da corrente de distribuição; os dois artigos usados não indicam percentagem de avarias (o mbpassion.de diz que muitos motores mostram alongamento antes dos 100 000 km, sem número).",
+        "ru": "Проверенной доли двигателей M271 с износом цепи ГРМ не опубликовано; в двух использованных статьях нет процента отказов (mbpassion.de пишет, что у многих моторов вытягивание появляется до 100 000 км, без цифры).",
+        "uk": "Перевіреної частки двигунів M271 зі зносом ланцюга ГРМ не опубліковано; у двох використаних статтях немає відсотка відмов (mbpassion.de пише, що у багатьох моторів витягування з'являється до 100 000 км, без цифри).",
+        "fr": "Aucune part vérifiée de moteurs M271 touchés par l'usure de la chaîne n'a été publiée ; les deux articles utilisés ne donnent aucun pourcentage de pannes (mbpassion.de dit que beaucoup de moteurs montrent un allongement avant 100 000 km, sans chiffre)."
+      }
+    },
+    {
+      "id": "pv_pf_wb_recall",
+      "defect": "ecoboost.wetbelt",
+      "kind": "recall_scope",
+      "value": 139730,
+      "unit": "units",
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": {
+        "description": {
+          "en": "Focus MY2016-2018 and EcoSport MY2018-2022 with the 1.0L engine and 6F15 automatic in US recall 23V-905",
+          "pt": "Focus MY2016-2018 e EcoSport MY2018-2022 com motor 1.0L e automática 6F15 na chamada 23V-905 dos EUA",
+          "ru": "Focus 2016-2018 и EcoSport 2018-2022 модельных годов с двигателем 1.0L и автоматом 6F15 в отзыве США 23V-905",
+          "uk": "Focus 2016-2018 і EcoSport 2018-2022 модельних років з двигуном 1.0L і автоматом 6F15 у відкликанні США 23V-905",
+          "fr": "Focus MY2016-2018 et EcoSport MY2018-2022 avec moteur 1.0L et automatique 6F15 dans le rappel américain 23V-905"
+        },
+        "applicability": null,
+        "geography": "US",
+        "period": null,
+        "ageYears": null
+      },
+      "outcome": {
+        "en": "Vehicles recalled",
+        "pt": "Veículos chamados",
+        "ru": "Отозванные машины",
+        "uk": "Відкликані машини",
+        "fr": "Véhicules rappelés"
+      },
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_pf_w01"
+      ],
+      "confidence": "C",
+      "caveats": [
+        {
+          "en": "A recall population counts vehicles in scope, not vehicles that failed. It is not a failure rate and says nothing about Europe.",
+          "pt": "A população de uma chamada conta veículos abrangidos, não veículos avariados. Não é uma taxa de avaria e nada diz sobre a Europa.",
+          "ru": "Число машин в отзыве — это охват, а не число отказавших. Это не доля отказов и ничего не говорит о Европе.",
+          "uk": "Кількість машин у відкликанні — це охоплення, а не кількість відмов. Це не частка відмов і нічого не говорить про Європу.",
+          "fr": "La population d'un rappel compte les véhicules concernés, pas les véhicules en panne. Ce n'est pas un taux de défaillance et cela ne dit rien de l'Europe."
+        }
+      ],
+      "noReliableFigure": false,
+      "reason": null
+    },
+    {
+      "id": "pv_pf_wb_claims",
+      "defect": "ecoboost.wetbelt",
+      "kind": "claims_filed",
+      "value": 2099,
+      "unit": "units",
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": {
+        "description": {
+          "en": "Warranty claims counted by Ford for the oil pump belt tensioner and belt in the 23V-905 population, 10 June 2016 to 6 October 2023",
+          "pt": "Reclamações de garantia contabilizadas pela Ford para o tensor e a correia da bomba de óleo na população da 23V-905, de 10 de junho de 2016 a 6 de outubro de 2023",
+          "ru": "Гарантийные обращения, учтённые Ford по натяжителю и ремню масляного насоса в популяции 23V-905, с 10 июня 2016 по 6 октября 2023",
+          "uk": "Гарантійні звернення, враховані Ford щодо натяжника й ременя оливного насоса в популяції 23V-905, з 10 червня 2016 по 6 жовтня 2023",
+          "fr": "Réclamations sous garantie comptées par Ford pour le tendeur et la courroie de pompe à huile dans la population 23V-905, du 10 juin 2016 au 6 octobre 2023"
+        },
+        "applicability": null,
+        "geography": "US",
+        "period": null,
+        "ageYears": null
+      },
+      "outcome": {
+        "en": "Warranty claims",
+        "pt": "Reclamações de garantia",
+        "ru": "Гарантийные обращения",
+        "uk": "Гарантійні звернення",
+        "fr": "Réclamations sous garantie"
+      },
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_pf_w01",
+        "ev_pf_w02"
+      ],
+      "confidence": "C",
+      "caveats": [
+        {
+          "en": "A manufacturer-reported count of claims, not a rate; it has no denominator on a comparable basis. The separate NHTSA investigation EA26-004 covers 135,551 vehicles, which is its scope and not a failure count.",
+          "pt": "Contagem de reclamações comunicada pelo fabricante, não uma taxa; não tem denominador comparável. A investigação separada EA26-004 da NHTSA abrange 135 551 veículos, o que é o seu âmbito e não uma contagem de avarias.",
+          "ru": "Число обращений, сообщённое производителем, а не доля; сопоставимого знаменателя нет. Отдельное расследование NHTSA EA26-004 охватывает 135 551 машину — это его охват, а не число отказов.",
+          "uk": "Число звернень, повідомлене виробником, а не частка; порівнянного знаменника немає. Окреме розслідування NHTSA EA26-004 охоплює 135 551 машину — це його охоплення, а не кількість відмов.",
+          "fr": "Nombre de réclamations déclaré par le constructeur, pas un taux ; pas de dénominateur comparable. L'enquête distincte EA26-004 de la NHTSA couvre 135 551 véhicules, ce qui est son périmètre et non un nombre de défaillances."
+        }
+      ],
+      "noReliableFigure": false,
+      "reason": null
+    },
+    {
+      "id": "pv_pf_wb_none",
+      "defect": "ecoboost.wetbelt",
+      "kind": "none",
+      "value": null,
+      "unit": null,
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": null,
+      "outcome": null,
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_pf_w01",
+        "ev_pf_w04"
+      ],
+      "confidence": null,
+      "caveats": [],
+      "noReliableFigure": true,
+      "reason": {
+        "en": "No verified share of affected engines that suffered a belt or oil pump failure has been published. The figures above are recall scope and warranty claims, not rates.",
+        "pt": "Não foi publicada nenhuma proporção verificada de motores afetados com falha da correia ou da bomba de óleo. Os números acima são âmbito de chamada e reclamações de garantia, não taxas.",
+        "ru": "Проверенной доли двигателей с отказом ремня или масляного насоса не опубликовано. Числа выше — охват отзыва и гарантийные обращения, а не доли.",
+        "uk": "Перевіреної частки двигунів зі збоєм ременя або оливного насоса не опубліковано. Числа вище — охоплення відкликання та гарантійні звернення, а не частки.",
+        "fr": "Aucune part vérifiée de moteurs concernés avec défaillance de la courroie ou de la pompe à huile n'a été publiée. Les chiffres ci-dessus sont un périmètre de rappel et des réclamations, pas des taux."
+      }
+    },
+    {
+      "id": "pv_pf_cl_fsa",
+      "defect": "ecoboost.coolant",
+      "kind": "recall_scope",
+      "value": 44600,
+      "unit": "units",
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": {
+        "description": {
+          "en": "UK Focus with 1.0L engines built October 2011 to October 2013 in Ford voluntary action 4S615 (just over 44,600 cars)",
+          "pt": "Focus no Reino Unido com motores 1.0L fabricados de outubro de 2011 a outubro de 2013 na ação voluntária 4S615 da Ford (pouco mais de 44 600 carros)",
+          "ru": "Британские Focus с двигателями 1.0L выпуска октябрь 2011 - октябрь 2013 в добровольной акции Ford 4S615 (чуть более 44 600 машин)",
+          "uk": "Британські Focus з двигунами 1.0L випуску жовтень 2011 - жовтень 2013 у добровільній акції Ford 4S615 (трохи більше 44 600 машин)",
+          "fr": "Focus britanniques à moteur 1.0L produits d'octobre 2011 à octobre 2013 dans l'action volontaire Ford 4S615 (un peu plus de 44 600 voitures)"
+        },
+        "applicability": null,
+        "geography": "UK",
+        "period": null,
+        "ageYears": null
+      },
+      "outcome": {
+        "en": "Vehicles in the service action",
+        "pt": "Veículos na ação de serviço",
+        "ru": "Машины в сервисной акции",
+        "uk": "Машини в сервісній акції",
+        "fr": "Véhicules dans l'action de service"
+      },
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_pf_c01"
+      ],
+      "confidence": "C",
+      "caveats": [
+        {
+          "en": "A voluntary non-safety service action, not a recall. The count is vehicles in scope, not vehicles that failed; Fiesta, B-MAX and C-MAX are not in the figure.",
+          "pt": "Uma ação de serviço voluntária sem carácter de segurança, não uma chamada. O número são veículos abrangidos, não veículos avariados; Fiesta, B-MAX e C-MAX não estão incluídos.",
+          "ru": "Добровольная сервисная акция, не связанная с безопасностью, а не отзыв. Число — это машины в охвате, а не отказавшие; Fiesta, B-MAX и C-MAX в цифру не входят.",
+          "uk": "Добровільна сервісна акція, не пов'язана з безпекою, а не відкликання. Число — це машини в охопленні, а не ті, що відмовили; Fiesta, B-MAX і C-MAX у цифру не входять.",
+          "fr": "Action de service volontaire hors sécurité, pas un rappel. Le nombre correspond aux véhicules concernés, pas aux pannes ; Fiesta, B-MAX et C-MAX n'y figurent pas."
+        }
+      ],
+      "noReliableFigure": false,
+      "reason": null
+    },
+    {
+      "id": "pv_pf_cl_none",
+      "defect": "ecoboost.coolant",
+      "kind": "none",
+      "value": null,
+      "unit": null,
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": null,
+      "outcome": null,
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_pf_c01"
+      ],
+      "confidence": null,
+      "caveats": [],
+      "noReliableFigure": true,
+      "reason": {
+        "en": "No verified share of affected engines that lost coolant or overheated has been published. Ford gives the size of the service action and the share already reworked, not a failure rate.",
+        "pt": "Não foi publicada nenhuma proporção verificada de motores afetados com perda de líquido de refrigeração ou sobreaquecimento. A Ford indica a dimensão da ação de serviço e a parte já reparada, não uma taxa de avaria.",
+        "ru": "Проверенной доли двигателей с потерей охлаждающей жидкости или перегревом не опубликовано. Ford приводит размер сервисной акции и долю уже доработанных машин, а не долю отказов.",
+        "uk": "Перевіреної частки двигунів із втратою охолоджувальної рідини або перегрівом не опубліковано. Ford наводить розмір сервісної акції та частку вже доопрацьованих машин, а не частку відмов.",
+        "fr": "Aucune part vérifiée de moteurs concernés ayant perdu du liquide de refroidissement ou surchauffé n'a été publiée. Ford donne la taille de l'action de service et la part déjà traitée, pas un taux de défaillance."
+      }
+    },
+    {
+      "id": "pv_pf_ps_none",
+      "defect": "powershift",
+      "kind": "none",
+      "value": null,
+      "unit": null,
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": null,
+      "outcome": null,
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_pf_p01",
+        "ev_pf_p02",
+        "ev_pf_p03"
+      ],
+      "confidence": null,
+      "caveats": [],
+      "noReliableFigure": true,
+      "reason": {
+        "en": "No verified share of DPS6 cars that developed shudder, seal leaks or control module failures has been published. The 1.9 million settlement class described in the court evidence is the number of class members, not a failure count.",
+        "pt": "Não foi publicada nenhuma proporção verificada de carros DPS6 com trepidação, fugas nas vedações ou falhas do módulo de controlo. A classe do acordo de 1,9 milhões descrita na prova judicial é o número de membros da classe, não uma contagem de avarias.",
+        "ru": "Проверенной доли машин DPS6 с вибрацией, течью сальников или отказом блока управления не опубликовано. Класс соглашения в 1,9 миллиона, описанный в судебных материалах, — число участников класса, а не число отказов.",
+        "uk": "Перевіреної частки машин DPS6 з вібрацією, течією сальників або відмовою блока керування не опубліковано. Клас угоди в 1,9 мільйона, описаний у судових матеріалах, — кількість учасників класу, а не кількість відмов.",
+        "fr": "Aucune part vérifiée de voitures DPS6 ayant présenté des à-coups, des fuites de joints ou des pannes de module n'a été publiée. La classe de 1,9 million décrite dans les pièces judiciaires est un nombre de membres de la classe, pas un nombre de pannes."
+      }
+    },
+    {
+      "id": "pv_cv_none",
+      "defect": "cvt.xtronic",
+      "kind": "none",
+      "value": null,
+      "unit": null,
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": null,
+      "outcome": null,
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_cv_e01",
+        "ev_cv_e02"
+      ],
+      "confidence": null,
+      "caveats": [],
+      "noReliableFigure": true,
+      "reason": {
+        "en": "No failure rate for the Juke CVT has been published. Warranty eligibility and lawsuit allegations are not failure rates.",
+        "pt": "Não foi publicada nenhuma taxa de avarias da CVT do Juke. A elegibilidade para garantia e as alegações em ações judiciais não são taxas de avarias.",
+        "ru": "Частота отказов вариатора Juke не публиковалась. Право на гарантию и обвинения в исках не являются частотой отказов.",
+        "uk": "Частота відмов варіатора Juke не публікувалася. Право на гарантію та звинувачення в позовах не є частотою відмов.",
+        "fr": "Aucun taux de panne de la CVT du Juke n'a été publié. L'éligibilité à la garantie et les allégations dans des actions en justice ne sont pas des taux de panne."
+      }
     }
   ]
 }

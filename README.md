@@ -13,8 +13,8 @@ The mobile app, the marketing site and the backend service are not here — see
 |---|---|---|
 | [`inspection-core/`](inspection-core/) | The canon: checklist content in five languages, curated model-specific defect rules, the scoring specification, and the conformance vectors every implementation must pass | ✅ |
 | [`openapi/`](openapi/) | The published contract of the free `/v1` API | ✅ |
-| `packages/` | Ports of the core for Dart, Python, JS and PHP | planned |
-| `mcp/` | MCP server — ask an assistant what to check on a given car | planned |
+| [`packages/`](packages/) | Ports of the core for Dart, Python, JS and PHP | ✅ |
+| [`mcp/`](mcp/) | MCP server — ask an assistant what to check on a given car | ✅ |
 | `plugins/wordpress/` | WordPress plugin embedding the inspection checklist | planned |
 | `extension/` | Browser extension surfacing known defects on used-car listings | planned |
 
@@ -97,9 +97,19 @@ python3 inspection-core/tools/check.py     # schemas, structure, all 32 vectors
 ## Known defects v3 (dossiers)
 
 `inspection-core/data/v3/` holds sourced dossiers for individual known defects, next to the v2
-rule file, which is **unchanged** (`data/defects.json`, `format 2`, still what the packages and the
-MCP server use). Schemas are in `inspection-core/data/schema/v3/`; the release manifest, with
-counts, changelog and source licences, is `data/v3/release.json`.
+rule file, which is **unchanged** (`data/defects.json`, `format 2`). Schemas are in
+`inspection-core/data/schema/v3/`; the release manifest, with counts, changelog and source
+licences, is `data/v3/release.json`.
+
+Release **2026.10.1**: 15 published dossiers backed by 90 evidence records and 28 prevalence
+records. 11 of the 25 v2 defect ids did not clear the evidence threshold and are kept as
+`deprecated` records (a reason in five languages, no texts); one of them, `m271.balanceshaft`,
+was renamed, so it is listed in the `aliases` of `m271.timingchain` and its `replacedBy` names that
+dossier. Every v2 id still exists in v3, so stored `defect.<id>` answers keep working.
+
+The packages (1.2.0) bundle `vehicles.json` and `defects.json` and resolve facts offline
+(`resolveDefects`, `assembleV3`, `servedId`); evidence and prevalence are not bundled and are
+served by the API.
 
 | File | Holds |
 |---|---|
@@ -134,6 +144,10 @@ Some evidence derives from RappelConso under the Licence Ouverte 2.0; see
 2. Implement [`spec/SCORING.md`](inspection-core/spec/SCORING.md).
 3. Run all four sections of `conformance/vectors.json` in your test suite — `scoring`,
    `assembly`, `matching`, `canonScoring`. Compare floats with a tolerance of `1e-9`.
+4. For known defects v3, load `data/v3/vehicles.json` and `data/v3/defects.json` and run the
+   `resolveV3`, `resolveDefect`, `v3Names`, `v3ServedIds` and `assembleV3` sections (the `notes`
+   in the file say what each one compares). They are generated from the implementation that
+   serves `/v1/defects`, so a port that passes them agrees with the API.
 
 ## Honest limits
 

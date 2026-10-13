@@ -91,6 +91,44 @@
       ],
       "group": "stellantis",
       "wmi": []
+    },
+    {
+      "id": "mercedes",
+      "label": "Mercedes-Benz",
+      "names": [
+        "mercedes",
+        "mercedes-benz",
+        "mercedes benz"
+      ],
+      "group": "mercedes",
+      "wmi": [
+        "WDB",
+        "WDC",
+        "WDD",
+        "W1K"
+      ]
+    },
+    {
+      "id": "ford",
+      "label": "Ford",
+      "names": [
+        "ford"
+      ],
+      "group": "ford",
+      "wmi": [
+        "WF0",
+        "1FA",
+        "3FA"
+      ]
+    },
+    {
+      "id": "nissan",
+      "label": "Nissan",
+      "names": [
+        "nissan"
+      ],
+      "group": "renault-nissan",
+      "wmi": []
     }
   ],
   "models": [
@@ -455,6 +493,341 @@
         "ds 4",
         "4"
       ]
+    },
+    {
+      "id": "volkswagen.beetle",
+      "make": "volkswagen",
+      "label": "Volkswagen Beetle",
+      "names": [
+        "beetle"
+      ]
+    },
+    {
+      "id": "volkswagen.tiguan",
+      "make": "volkswagen",
+      "label": "Volkswagen Tiguan",
+      "names": [
+        "tiguan"
+      ]
+    },
+    {
+      "id": "seat.altea",
+      "make": "seat",
+      "label": "SEAT Altea",
+      "names": [
+        "altea",
+        "altea xl"
+      ]
+    },
+    {
+      "id": "seat.toledo",
+      "make": "seat",
+      "label": "SEAT Toledo",
+      "names": [
+        "toledo"
+      ]
+    },
+    {
+      "id": "skoda.yeti",
+      "make": "skoda",
+      "label": "Škoda Yeti",
+      "names": [
+        "yeti"
+      ]
+    },
+    {
+      "id": "skoda.rapid",
+      "make": "skoda",
+      "label": "Škoda Rapid",
+      "names": [
+        "rapid"
+      ]
+    },
+    {
+      "id": "audi.a4",
+      "make": "audi",
+      "label": "Audi A4",
+      "names": [
+        "a4",
+        "a4 avant",
+        "a4 allroad",
+        "allroad"
+      ]
+    },
+    {
+      "id": "audi.a5",
+      "make": "audi",
+      "label": "Audi A5",
+      "names": [
+        "a5",
+        "a5 sportback",
+        "a5 cabriolet"
+      ]
+    },
+    {
+      "id": "audi.a6",
+      "make": "audi",
+      "label": "Audi A6",
+      "names": [
+        "a6",
+        "a6 avant"
+      ]
+    },
+    {
+      "id": "audi.a8",
+      "make": "audi",
+      "label": "Audi A8",
+      "names": [
+        "a8"
+      ]
+    },
+    {
+      "id": "audi.q3",
+      "make": "audi",
+      "label": "Audi Q3",
+      "names": [
+        "q3"
+      ]
+    },
+    {
+      "id": "audi.q5",
+      "make": "audi",
+      "label": "Audi Q5",
+      "names": [
+        "q5"
+      ]
+    },
+    {
+      "id": "audi.tt",
+      "make": "audi",
+      "label": "Audi TT",
+      "names": [
+        "tt",
+        "tt roadster"
+      ]
+    },
+    {
+      "id": "volkswagen.eos",
+      "make": "volkswagen",
+      "label": "Volkswagen Eos",
+      "names": [
+        "eos"
+      ]
+    },
+    {
+      "id": "volkswagen.sharan",
+      "make": "volkswagen",
+      "label": "Volkswagen Sharan",
+      "names": [
+        "sharan"
+      ]
+    },
+    {
+      "id": "seat.alhambra",
+      "make": "seat",
+      "label": "SEAT Alhambra",
+      "names": [
+        "alhambra"
+      ]
+    },
+    {
+      "id": "seat.exeo",
+      "make": "seat",
+      "label": "SEAT Exeo",
+      "names": [
+        "exeo",
+        "exeo st"
+      ]
+    },
+    {
+      "id": "skoda.roomster",
+      "make": "skoda",
+      "label": "Škoda Roomster",
+      "names": [
+        "roomster"
+      ]
+    },
+    {
+      "id": "skoda.superb",
+      "make": "skoda",
+      "label": "Škoda Superb",
+      "names": [
+        "superb"
+      ]
+    },
+    {
+      "id": "audi.q7",
+      "make": "audi",
+      "label": "Audi Q7",
+      "names": [
+        "q7"
+      ]
+    },
+    {
+      "id": "bmw.6series",
+      "make": "bmw",
+      "label": "BMW 6 Series",
+      "names": [
+        "6 series",
+        "6er",
+        "serie 6",
+        "640i"
+      ]
+    },
+    {
+      "id": "bmw.7series",
+      "make": "bmw",
+      "label": "BMW 7 Series",
+      "names": [
+        "7 series",
+        "7er",
+        "serie 7"
+      ]
+    },
+    {
+      "id": "bmw.x5",
+      "make": "bmw",
+      "label": "BMW X5",
+      "names": [
+        "x5"
+      ]
+    },
+    {
+      "id": "bmw.x6",
+      "make": "bmw",
+      "label": "BMW X6",
+      "names": [
+        "x6"
+      ]
+    },
+    {
+      "id": "bmw.z4",
+      "make": "bmw",
+      "label": "BMW Z4",
+      "names": [
+        "z4"
+      ]
+    },
+    {
+      "id": "mercedes.cclass",
+      "make": "mercedes",
+      "label": "Mercedes-Benz C-Class",
+      "names": [
+        "c-class",
+        "c class",
+        "classe c",
+        "c-klasse",
+        "c 180",
+        "c 200",
+        "c 220",
+        "c 230",
+        "c 250",
+        "c 280",
+        "c 300",
+        "c 350"
+      ]
+    },
+    {
+      "id": "mercedes.eclass",
+      "make": "mercedes",
+      "label": "Mercedes-Benz E-Class",
+      "names": [
+        "e-class",
+        "e class",
+        "classe e",
+        "e-klasse",
+        "e 200",
+        "e 220",
+        "e 250",
+        "e 280",
+        "e 300",
+        "e 350"
+      ]
+    },
+    {
+      "id": "mercedes.glk",
+      "make": "mercedes",
+      "label": "Mercedes-Benz GLK",
+      "names": [
+        "glk"
+      ]
+    },
+    {
+      "id": "mercedes.slk",
+      "make": "mercedes",
+      "label": "Mercedes-Benz SLK",
+      "names": [
+        "slk"
+      ]
+    },
+    {
+      "id": "ford.fiesta",
+      "make": "ford",
+      "label": "Ford Fiesta",
+      "names": [
+        "fiesta"
+      ]
+    },
+    {
+      "id": "ford.focus",
+      "make": "ford",
+      "label": "Ford Focus",
+      "names": [
+        "focus"
+      ]
+    },
+    {
+      "id": "ford.ecosport",
+      "make": "ford",
+      "label": "Ford EcoSport",
+      "names": [
+        "ecosport",
+        "eco sport"
+      ]
+    },
+    {
+      "id": "ford.b_max",
+      "make": "ford",
+      "label": "Ford B-MAX",
+      "names": [
+        "b-max",
+        "b max",
+        "bmax"
+      ]
+    },
+    {
+      "id": "ford.c_max",
+      "make": "ford",
+      "label": "Ford C-MAX",
+      "names": [
+        "c-max",
+        "c max",
+        "cmax"
+      ]
+    },
+    {
+      "id": "ford.mondeo",
+      "make": "ford",
+      "label": "Ford Mondeo",
+      "names": [
+        "mondeo"
+      ]
+    },
+    {
+      "id": "ford.puma",
+      "make": "ford",
+      "label": "Ford Puma",
+      "names": [
+        "puma"
+      ]
+    },
+    {
+      "id": "nissan.juke",
+      "make": "nissan",
+      "label": "Nissan Juke",
+      "names": [
+        "juke"
+      ]
     }
   ],
   "generations": [],
@@ -579,6 +952,357 @@
         "ev_bm_e11",
         "ev_bm_e01"
       ]
+    },
+    {
+      "id": "vag.ea111_12tsi",
+      "family": "EA111",
+      "codes": [
+        "CBZA",
+        "CBZB",
+        "CBZC"
+      ],
+      "fuel": "petrol",
+      "displacementCc": 1197,
+      "powerKw": [
+        63,
+        66,
+        77
+      ],
+      "label": {
+        "en": "1.2 TSI EA111 (CBZA / CBZB / CBZC)",
+        "pt": "1.2 TSI EA111 (CBZA / CBZB / CBZC)",
+        "ru": "1.2 TSI EA111 (CBZA / CBZB / CBZC)",
+        "uk": "1.2 TSI EA111 (CBZA / CBZB / CBZC)",
+        "fr": "1.2 TSI EA111 (CBZA / CBZB / CBZC)"
+      },
+      "evidence": [
+        "ev_ts_e03",
+        "ev_ts_e05"
+      ]
+    },
+    {
+      "id": "vag.ea111_14tsi",
+      "family": "EA111",
+      "codes": [
+        "BMY",
+        "BWK",
+        "CAVA",
+        "CAVD",
+        "CAXA",
+        "CDGA",
+        "CTHA"
+      ],
+      "fuel": "petrol",
+      "displacementCc": 1390,
+      "powerKw": [],
+      "label": {
+        "en": "1.4 TSI EA111 (BMY / BWK / CAVA / CAVD / CAXA / CDGA / CTHA)",
+        "pt": "1.4 TSI EA111 (BMY / BWK / CAVA / CAVD / CAXA / CDGA / CTHA)",
+        "ru": "1.4 TSI EA111 (BMY / BWK / CAVA / CAVD / CAXA / CDGA / CTHA)",
+        "uk": "1.4 TSI EA111 (BMY / BWK / CAVA / CAVD / CAXA / CDGA / CTHA)",
+        "fr": "1.4 TSI EA111 (BMY / BWK / CAVA / CAVD / CAXA / CDGA / CTHA)"
+      },
+      "evidence": [
+        "ev_ts_e04",
+        "ev_ts_e06"
+      ]
+    },
+    {
+      "id": "vag.ea888_18tfsi",
+      "family": "EA888",
+      "codes": [
+        "BYT",
+        "CDHB",
+        "CDAA",
+        "CDAB"
+      ],
+      "fuel": "petrol",
+      "displacementCc": 1798,
+      "powerKw": [],
+      "label": {
+        "en": "1.8 TFSI/TSI EA888 (BYT / CDHB / CDAA / CDAB)",
+        "pt": "1.8 TFSI/TSI EA888 (BYT / CDHB / CDAA / CDAB)",
+        "ru": "1.8 TFSI/TSI EA888 (BYT / CDHB / CDAA / CDAB)",
+        "uk": "1.8 TFSI/TSI EA888 (BYT / CDHB / CDAA / CDAB)",
+        "fr": "1.8 TFSI/TSI EA888 (BYT / CDHB / CDAA / CDAB)"
+      },
+      "evidence": [
+        "ev_to_e07"
+      ]
+    },
+    {
+      "id": "vag.ea888_20tfsi",
+      "family": "EA888",
+      "codes": [
+        "CAEA",
+        "CAEB",
+        "CDNB",
+        "CDNC"
+      ],
+      "fuel": "petrol",
+      "displacementCc": 1984,
+      "powerKw": [],
+      "label": {
+        "en": "2.0 TFSI EA888, longitudinal (CAEA / CAEB / CDNB / CDNC)",
+        "pt": "2.0 TFSI EA888, longitudinal (CAEA / CAEB / CDNB / CDNC)",
+        "ru": "2.0 TFSI EA888, продольный (CAEA / CAEB / CDNB / CDNC)",
+        "uk": "2.0 TFSI EA888, поздовжній (CAEA / CAEB / CDNB / CDNC)",
+        "fr": "2.0 TFSI EA888, longitudinal (CAEA / CAEB / CDNB / CDNC)"
+      },
+      "evidence": [
+        "ev_to_e01",
+        "ev_to_e07"
+      ]
+    },
+    {
+      "id": "vag.ea888_20tfsi_t",
+      "family": "EA888",
+      "codes": [
+        "CBFA",
+        "CCTA",
+        "CCZA",
+        "CCZB",
+        "CAWB",
+        "CESA",
+        "CAWA",
+        "CCZC",
+        "CCZD"
+      ],
+      "fuel": "petrol",
+      "displacementCc": 1984,
+      "powerKw": [],
+      "label": {
+        "en": "2.0 TFSI EA888, transverse (CBFA / CCTA / CCZA / CCZB / CAWB / CESA / CAWA / CCZC / CCZD)",
+        "pt": "2.0 TFSI EA888, transversal (CBFA / CCTA / CCZA / CCZB / CAWB / CESA / CAWA / CCZC / CCZD)",
+        "ru": "2.0 TFSI EA888, поперечный (CBFA / CCTA / CCZA / CCZB / CAWB / CESA / CAWA / CCZC / CCZD)",
+        "uk": "2.0 TFSI EA888, поперечний (CBFA / CCTA / CCZA / CCZB / CAWB / CESA / CAWA / CCZC / CCZD)",
+        "fr": "2.0 TFSI EA888, transversal (CBFA / CCTA / CCZA / CCZB / CAWB / CESA / CAWA / CCZC / CCZD)"
+      },
+      "evidence": [
+        "ev_wp_e05",
+        "ev_to_e07"
+      ]
+    },
+    {
+      "id": "vag.ea189_20tdi_140",
+      "family": "EA189",
+      "codes": [
+        "CBEA",
+        "CJAA"
+      ],
+      "fuel": "diesel",
+      "displacementCc": 1968,
+      "powerKw": [
+        103
+      ],
+      "label": {
+        "en": "2.0 TDI common rail 140 hp EA189 (CBEA / CJAA)",
+        "pt": "2.0 TDI common rail 140 cv EA189 (CBEA / CJAA)",
+        "ru": "2.0 TDI common rail 140 л. с. EA189 (CBEA / CJAA)",
+        "uk": "2.0 TDI common rail 140 к. с. EA189 (CBEA / CJAA)",
+        "fr": "2.0 TDI common rail 140 ch EA189 (CBEA / CJAA)"
+      },
+      "evidence": [
+        "ev_td_e01",
+        "ev_td_e03"
+      ]
+    },
+    {
+      "id": "bmw.n51",
+      "family": "N51",
+      "codes": [
+        "N51"
+      ],
+      "fuel": "petrol",
+      "displacementCc": null,
+      "powerKw": [],
+      "label": {
+        "en": "BMW N51 inline-six petrol",
+        "pt": "BMW N51 gasolina, seis cilindros em linha",
+        "ru": "BMW N51, бензиновый рядный шестицилиндровый",
+        "uk": "BMW N51, бензиновий рядний шестициліндровий",
+        "fr": "BMW N51 essence, six cylindres en ligne"
+      },
+      "evidence": [
+        "ev_bmmb_e02",
+        "ev_bmmb_e05"
+      ]
+    },
+    {
+      "id": "bmw.n52k",
+      "family": "N52",
+      "codes": [
+        "N52K"
+      ],
+      "fuel": "petrol",
+      "displacementCc": null,
+      "powerKw": [],
+      "label": {
+        "en": "BMW N52K inline-six petrol",
+        "pt": "BMW N52K gasolina, seis cilindros em linha",
+        "ru": "BMW N52K, бензиновый рядный шестицилиндровый",
+        "uk": "BMW N52K, бензиновий рядний шестициліндровий",
+        "fr": "BMW N52K essence, six cylindres en ligne"
+      },
+      "evidence": [
+        "ev_bmmb_e02",
+        "ev_bmmb_e05"
+      ]
+    },
+    {
+      "id": "bmw.n52t",
+      "family": "N52",
+      "codes": [
+        "N52T"
+      ],
+      "fuel": "petrol",
+      "displacementCc": null,
+      "powerKw": [],
+      "label": {
+        "en": "BMW N52T inline-six petrol",
+        "pt": "BMW N52T gasolina, seis cilindros em linha",
+        "ru": "BMW N52T, бензиновый рядный шестицилиндровый",
+        "uk": "BMW N52T, бензиновий рядний шестициліндровий",
+        "fr": "BMW N52T essence, six cylindres en ligne"
+      },
+      "evidence": [
+        "ev_bmmb_e02",
+        "ev_bmmb_e05"
+      ]
+    },
+    {
+      "id": "bmw.n55",
+      "family": "N55",
+      "codes": [
+        "N55"
+      ],
+      "fuel": "petrol",
+      "displacementCc": null,
+      "powerKw": [],
+      "label": {
+        "en": "BMW N55 inline-six petrol",
+        "pt": "BMW N55 gasolina, seis cilindros em linha",
+        "ru": "BMW N55, бензиновый рядный шестицилиндровый",
+        "uk": "BMW N55, бензиновий рядний шестициліндровий",
+        "fr": "BMW N55 essence, six cylindres en ligne"
+      },
+      "evidence": [
+        "ev_bmmb_e03",
+        "ev_bmmb_e05",
+        "ev_bmmb_e08"
+      ]
+    },
+    {
+      "id": "bmw.n20",
+      "family": "N20",
+      "codes": [
+        "N20"
+      ],
+      "fuel": "petrol",
+      "displacementCc": null,
+      "powerKw": [],
+      "label": {
+        "en": "BMW N20 petrol",
+        "pt": "BMW N20 gasolina",
+        "ru": "BMW N20, бензиновый",
+        "uk": "BMW N20, бензиновий",
+        "fr": "BMW N20 essence"
+      },
+      "evidence": [
+        "ev_bmmb_e07",
+        "ev_bmmb_e09"
+      ]
+    },
+    {
+      "id": "mercedes.m271",
+      "family": "M271",
+      "codes": [
+        "M271"
+      ],
+      "fuel": "petrol",
+      "displacementCc": 1796,
+      "powerKw": [],
+      "label": {
+        "en": "Mercedes M271 1.8 petrol (supercharged and EVO)",
+        "pt": "Mercedes M271 1.8 gasolina (com compressor e EVO)",
+        "ru": "Mercedes M271 1.8 бензин (с компрессором и EVO)",
+        "uk": "Mercedes M271 1.8 бензин (з компресором і EVO)",
+        "fr": "Mercedes M271 1.8 essence (à compresseur et EVO)"
+      },
+      "evidence": [
+        "ev_bmmb_e15",
+        "ev_bmmb_e16"
+      ]
+    },
+    {
+      "id": "mercedes.om651_220_250",
+      "family": "OM651",
+      "codes": [
+        "OM651"
+      ],
+      "fuel": "diesel",
+      "displacementCc": null,
+      "powerKw": [
+        125,
+        150
+      ],
+      "label": {
+        "en": "Mercedes OM651 diesel, 220 CDI and 250 CDI versions",
+        "pt": "Mercedes OM651 diesel, versões 220 CDI e 250 CDI",
+        "ru": "Mercedes OM651 дизель, версии 220 CDI и 250 CDI",
+        "uk": "Mercedes OM651 дизель, версії 220 CDI і 250 CDI",
+        "fr": "Mercedes OM651 diesel, versions 220 CDI et 250 CDI"
+      },
+      "evidence": [
+        "ev_bmmb_e10",
+        "ev_bmmb_e11"
+      ]
+    },
+    {
+      "id": "ford.fox_1_0",
+      "family": "FOX",
+      "codes": [
+        "M1JA",
+        "M1JH",
+        "M1JL",
+        "M1JE",
+        "M1JJ",
+        "M1JU",
+        "SFJA",
+        "SFJB",
+        "SFJC",
+        "SFJD",
+        "M2DA",
+        "M2DC",
+        "M1DA",
+        "M1DC",
+        "M1DD",
+        "M1DH",
+        "M1CA",
+        "M1CB",
+        "YYJA",
+        "YYJB",
+        "YYJC",
+        "M0JB",
+        "B3DA",
+        "B7JB",
+        "B7JC",
+        "BZJA"
+      ],
+      "fuel": "petrol",
+      "displacementCc": 999,
+      "powerKw": [],
+      "label": {
+        "en": "Ford 1.0 EcoBoost (Fox) turbo petrol",
+        "pt": "Ford 1.0 EcoBoost (Fox) turbo a gasolina",
+        "ru": "Ford 1.0 EcoBoost (Fox) бензиновый турбо",
+        "uk": "Ford 1.0 EcoBoost (Fox) бензиновий турбо",
+        "fr": "Ford 1.0 EcoBoost (Fox) essence turbo"
+      },
+      "evidence": [
+        "ev_pf_w01",
+        "ev_pf_w07"
+      ]
     }
   ],
   "gearboxes": [
@@ -651,6 +1375,84 @@
       },
       "evidence": [
         "ev_dq_e15"
+      ]
+    },
+    {
+      "id": "ford.dps6",
+      "family": "DPS6",
+      "codes": [],
+      "type": "dct_dry",
+      "label": {
+        "en": "Ford 6-speed dual-clutch with dry clutches (DPS6, Powershift)",
+        "pt": "Ford de 6 velocidades de dupla embraiagem a seco (DPS6, Powershift)",
+        "ru": "6-ступенчатая Ford с двумя сухими сцеплениями (DPS6, Powershift)",
+        "uk": "6-ступінчаста Ford із двома сухими зчепленнями (DPS6, Powershift)",
+        "fr": "Ford 6 rapports à double embrayage sec (DPS6, Powershift)"
+      },
+      "evidence": [
+        "ev_pf_p01",
+        "ev_pf_p03"
+      ]
+    },
+    {
+      "id": "jatco.jf015e",
+      "family": "JF015E",
+      "codes": [
+        "JF015E",
+        "RE0F11A"
+      ],
+      "type": "cvt",
+      "label": {
+        "en": "Jatco JF015E / Nissan RE0F11A belt CVT",
+        "pt": "Jatco JF015E / Nissan RE0F11A, CVT de correia",
+        "ru": "Вариатор Jatco JF015E / Nissan RE0F11A (ремень)",
+        "uk": "Варіатор Jatco JF015E / Nissan RE0F11A (пас)",
+        "fr": "CVT à courroie Jatco JF015E / Nissan RE0F11A"
+      },
+      "evidence": [
+        "ev_cv_e07"
+      ]
+    },
+    {
+      "id": "jatco.jf016e",
+      "family": "JF016E",
+      "codes": [
+        "JF016E",
+        "RE0F10D"
+      ],
+      "type": "cvt",
+      "label": {
+        "en": "Jatco JF016E / Nissan RE0F10D belt CVT",
+        "pt": "Jatco JF016E / Nissan RE0F10D, CVT de correia",
+        "ru": "Вариатор Jatco JF016E / Nissan RE0F10D (ремень)",
+        "uk": "Варіатор Jatco JF016E / Nissan RE0F10D (пас)",
+        "fr": "CVT à courroie Jatco JF016E / Nissan RE0F10D"
+      },
+      "evidence": [
+        "ev_cv_e02",
+        "ev_cv_e07"
+      ]
+    },
+    {
+      "id": "jatco.jf017e",
+      "family": "JF017E",
+      "codes": [
+        "JF017E",
+        "RE0F10E",
+        "RE0F10H",
+        "RE0F10J"
+      ],
+      "type": "cvt",
+      "label": {
+        "en": "Jatco JF017E / Nissan RE0F10E, H, J chain CVT",
+        "pt": "Jatco JF017E / Nissan RE0F10E, H, J, CVT de corrente",
+        "ru": "Вариатор Jatco JF017E / Nissan RE0F10E, H, J (цепь)",
+        "uk": "Варіатор Jatco JF017E / Nissan RE0F10E, H, J (ланцюг)",
+        "fr": "CVT à chaîne Jatco JF017E / Nissan RE0F10E, H, J"
+      },
+      "evidence": [
+        "ev_cv_e07",
+        "ev_cv_e08"
       ]
     }
   ],
