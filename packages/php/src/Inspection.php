@@ -146,12 +146,24 @@ final class Inspection
             if (($group['items'] ?? []) !== []) {
                 $items = [];
                 foreach ($group['items'] as $item) {
-                    $items[] = [
+                    $localizedItem = [
                         'id' => $item['id'],
                         'order' => $item['order'] ?? 0,
                         'prompt' => Canon::pick($item['prompt'], $lang),
                         'critical' => (bool) ($item['critical'] ?? false),
                     ];
+                    // Known-defects v3 items (DefectsV3::assembleV3) carry
+                    // their resolution too; v2 items render exactly as before.
+                    if (\array_key_exists('status', $item)) {
+                        if (($item['sourceDefectId'] ?? '') !== '') {
+                            $localizedItem['sourceDefectId'] = $item['sourceDefectId'];
+                        }
+                        $localizedItem['dossierId'] = $item['dossierId'] ?? null;
+                        $localizedItem['status'] = $item['status'];
+                        $localizedItem['needs'] = array_values($item['needs'] ?? []);
+                        $localizedItem['hint'] = !empty($item['hint']) ? Canon::pick($item['hint'], $lang) : null;
+                    }
+                    $items[] = $localizedItem;
                 }
                 $localized['items'] = $items;
             }

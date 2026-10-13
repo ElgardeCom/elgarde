@@ -45,8 +45,8 @@ foreach (Inspection::localize($groups, 'pt') as $group) {
 }
 ```
 
-Checklist content is authored in **English, Portuguese, Russian, Ukrainian and French**; defect
-text in English and Portuguese, falling back to English.
+Checklist content and defect text are authored in **English, Portuguese, Russian, Ukrainian and
+French**; any other language falls back to English.
 
 ## Score
 
@@ -80,6 +80,47 @@ array_column($rule['defects'], 'id');
 ```
 
 `null` means nothing is curated for that model yet — **not** that the model is trouble-free.
+
+## Known defects v3
+
+The v2 rules above match on make and model only. Known defects v3 also looks at what you know
+about the particular car — year, build date, fuel, engine code, gearbox — and says, for every
+sourced dossier on that model, whether it `applies`, is `possible` (and which facts would settle
+it), or is `not_applicable` (and which facts ruled it out). Unknown is never rounded down to "not
+applicable".
+
+```php
+use Elgarde\Inspection\DefectsV3;
+
+$facts = ['make' => 'VW', 'model' => 'Golf', 'gearbox' => 'manual', 'fuel' => 'diesel'];
+
+foreach (DefectsV3::resolveDefects($facts) as $r) {
+    echo $r->defectId, ' ', $r->status, ' ', implode(',', $r->needs ?: $r->excludedBy), "\n";
+}
+// dsg.dq200 not_applicable gearbox
+// tdi.egr possible year,engineCode
+// tsi.chain not_applicable fuel
+// tsi.oil not_applicable fuel
+
+DefectsV3::resolveDefect('dsg.dq200', ['make' => 'VW', 'model' => 'Golf', 'gearboxCode' => '0am'])
+    ->status;                                // 'applies'
+DefectsV3::servedId('m271.balanceshaft');    // 'm271.timingchain' (renamed dossier)
+```
+
+Facts use the API's names — `make`, `model`, `year`, `productionDate` (`YYYY-MM`), `fuel`,
+`engineCode`, `engineFamily`, `gearbox`, `gearboxCode`, `cc`, `powerKw`, `vin` — and all are
+optional. A VIN is used offline for its first three characters only, to find the make. Each
+result is a `Resolution` (`toArray()` gives the API's JSON shape).
+
+`DefectsV3::assembleV3($facts)` builds the whole checklist from facts: the v2 rule's rows first
+(same ids, so stored answers stay valid), minus those that do not apply, then every other dossier
+that applies or is possible. Items also carry `status`, `needs`, `dossierId` and `hint`, which
+`Inspection::localize()` passes through.
+
+The package bundles the dossiers' applicability, prompts and hints. Their sources, evidence and
+prevalence are served by the free API: `https://api.elgarde.com/api/v1/defects/{id}`. Name
+matching folds case and accents with `ext-intl` when it is installed, and with a bundled table
+when it is not.
 
 ## Honest limits
 
