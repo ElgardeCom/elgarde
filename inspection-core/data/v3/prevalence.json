@@ -1,0 +1,315 @@
+{
+  "format": 3,
+  "prevalence": [
+    {
+      "id": "pv_pt_none",
+      "defect": "puretech.wetbelt",
+      "kind": "none",
+      "value": null,
+      "unit": null,
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": null,
+      "outcome": null,
+      "baseline": null,
+      "method": null,
+      "evidence": [],
+      "confidence": null,
+      "caveats": [],
+      "noReliableFigure": true,
+      "reason": {
+        "en": "No published figure gives the share of these engines with belt failure. Recall populations and compensation claim counts exist, but they are not failure rates.",
+        "pt": "Nenhum número publicado indica a proporção destes motores com avaria da correia. Existem populações de chamadas e números de pedidos de indemnização, mas não são taxas de avarias.",
+        "ru": "Опубликованной доли этих двигателей с отказом ремня нет. Есть число машин в отзывах и число заявок на компенсацию, но это не частота отказов.",
+        "uk": "Опублікованої частки цих двигунів із відмовою ременя немає. Є кількість машин у відкликаннях і кількість заявок на компенсацію, але це не частота відмов.",
+        "fr": "Aucun chiffre publié ne donne la part de ces moteurs touchés par une défaillance de courroie. Il existe des populations de rappel et des nombres de demandes d'indemnisation, mais ce ne sont pas des taux de panne."
+      }
+    },
+    {
+      "id": "pv_pt_recall_fr",
+      "defect": "puretech.wetbelt",
+      "kind": "recall_scope",
+      "value": 220000,
+      "unit": "units",
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": {
+        "description": {
+          "en": "Vehicles in France in scope of the November 2020 recall (built March 2013 to April 2017)",
+          "pt": "Veículos em França abrangidos pela chamada de novembro de 2020 (fabricados entre março de 2013 e abril de 2017)",
+          "ru": "Машины во Франции, подпадающие под отзыв ноября 2020 года (выпуск 03.2013–04.2017)",
+          "uk": "Машини у Франції, що підпадають під відкликання листопада 2020 року (випуск 03.2013–04.2017)",
+          "fr": "Véhicules en France concernés par le rappel de novembre 2020 (produits de mars 2013 à avril 2017)"
+        },
+        "applicability": {
+          "productionDate": {
+            "from": "2013-03",
+            "to": "2017-04"
+          }
+        },
+        "geography": "FR",
+        "period": null,
+        "ageYears": null
+      },
+      "outcome": {
+        "en": "Vehicles called back for inspection",
+        "pt": "Veículos chamados para inspeção",
+        "ru": "Машины, вызванные на проверку",
+        "uk": "Машини, викликані на перевірку",
+        "fr": "Véhicules rappelés pour contrôle"
+      },
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_pt_e18",
+        "ev_pt_e17"
+      ],
+      "confidence": "C",
+      "caveats": [
+        {
+          "en": "A recall population counts vehicles in scope, not failures. It is not a failure rate.",
+          "pt": "A população de uma chamada conta veículos abrangidos, não avarias. Não é uma taxa de avarias.",
+          "ru": "Число машин в отзыве — это охват, а не число отказов. Это не частота отказов.",
+          "uk": "Кількість машин у відкликанні — це охоплення, а не кількість відмов. Це не частота відмов.",
+          "fr": "La population d'un rappel compte les véhicules concernés, pas les pannes. Ce n'est pas un taux de panne."
+        },
+        {
+          "en": "Reported by the press; the recall record itself does not give the number.",
+          "pt": "Indicado pela imprensa; o próprio registo da chamada não dá o número.",
+          "ru": "Цифра из прессы; в самой записи об отзыве её нет.",
+          "uk": "Цифра з преси; у самому записі про відкликання її немає.",
+          "fr": "Chiffre de presse ; la fiche de rappel elle-même ne le donne pas."
+        }
+      ],
+      "noReliableFigure": false,
+      "reason": null
+    },
+    {
+      "id": "pv_pt_claims",
+      "defect": "puretech.wetbelt",
+      "kind": "claims_filed",
+      "value": 8226,
+      "unit": "units",
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": {
+        "description": {
+          "en": "Claims filed on the Stellantis compensation platform as reported on 6 May 2025 (4,337 processed, about 60% favourable)",
+          "pt": "Pedidos apresentados na plataforma de indemnização da Stellantis segundo notícia de 6 de maio de 2025 (4 337 tratados, cerca de 60% favoráveis)",
+          "ru": "Заявки на платформе компенсаций Stellantis по публикации от 6 мая 2025 года (4 337 рассмотрено, около 60% — в пользу клиента)",
+          "uk": "Заявки на платформі компенсацій Stellantis за публікацією від 6 травня 2025 року (4 337 розглянуто, близько 60% — на користь клієнта)",
+          "fr": "Demandes déposées sur la plate-forme d'indemnisation de Stellantis selon un article du 6 mai 2025 (4 337 traitées, environ 60 % favorables)"
+        },
+        "applicability": null,
+        "geography": "FR",
+        "period": {
+          "from": "2025-01",
+          "to": "2025-05"
+        },
+        "ageYears": null
+      },
+      "outcome": {
+        "en": "Compensation claims filed",
+        "pt": "Pedidos de indemnização apresentados",
+        "ru": "Поданные заявки на компенсацию",
+        "uk": "Подані заявки на компенсацію",
+        "fr": "Demandes d'indemnisation déposées"
+      },
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_pt_e13"
+      ],
+      "confidence": "C",
+      "caveats": [
+        {
+          "en": "Self-selected claimants; includes oil-consumption claims; no eligible-fleet denominator is published. Not a failure rate.",
+          "pt": "Requerentes auto-selecionados; inclui pedidos por consumo de óleo; não é publicado o denominador da frota elegível. Não é uma taxa de avarias.",
+          "ru": "Заявители сами решали, обращаться ли; учтены и заявки по расходу масла; численность парка, имеющего право на компенсацию, не опубликована. Это не частота отказов.",
+          "uk": "Заявники самі вирішували, чи звертатися; враховано й заявки щодо витрати оливи; чисельність парку, що має право на компенсацію, не опублікована. Це не частота відмов.",
+          "fr": "Demandeurs auto-sélectionnés ; inclut des demandes pour consommation d'huile ; aucun dénominateur du parc éligible n'est publié. Ce n'est pas un taux de panne."
+        }
+      ],
+      "noReliableFigure": false,
+      "reason": null
+    },
+    {
+      "id": "pv_n47_none",
+      "defect": "n47.chain",
+      "kind": "none",
+      "value": null,
+      "unit": null,
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": null,
+      "outcome": null,
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_bm_e09a",
+        "ev_bm_e09b"
+      ],
+      "confidence": null,
+      "caveats": [],
+      "noReliableFigure": true,
+      "reason": {
+        "en": "No verified share of N47 engines with chain failure has been published. A '20%' figure attributed online to auto motor und sport does not appear in two of its N47 articles.",
+        "pt": "Não foi publicada nenhuma proporção verificada de motores N47 com avaria da corrente. Um número de '20%' atribuído online à auto motor und sport não consta de dois dos seus artigos sobre o N47.",
+        "ru": "Проверенной доли двигателей N47 с отказом цепи не опубликовано. Цифры «20%», которую в интернете приписывают auto motor und sport, нет в двух её статьях про N47.",
+        "uk": "Перевіреної частки двигунів N47 із відмовою ланцюга не опубліковано. Цифри «20%», яку в інтернеті приписують auto motor und sport, немає у двох її статтях про N47.",
+        "fr": "Aucune part vérifiée de moteurs N47 touchés par une défaillance de chaîne n'a été publiée. Un chiffre de « 20 % » attribué en ligne à auto motor und sport ne figure dans aucun de ses deux articles sur le N47."
+      }
+    },
+    {
+      "id": "pv_dq_none",
+      "defect": "dsg.dq200",
+      "kind": "none",
+      "value": null,
+      "unit": null,
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": null,
+      "outcome": null,
+      "baseline": null,
+      "method": null,
+      "evidence": [],
+      "confidence": null,
+      "caveats": [],
+      "noReliableFigure": true,
+      "reason": {
+        "en": "No published figure gives the share of DQ200 gearboxes with mechatronic or clutch failure. Recall and service-measure populations count vehicles in scope, not failures.",
+        "pt": "Nenhum número publicado indica a proporção de caixas DQ200 com avaria da mecatrónica ou da embraiagem. As populações de chamadas e de medidas de oficina contam veículos abrangidos, não avarias.",
+        "ru": "Опубликованной доли коробок DQ200 с отказом мехатроника или сцепления нет. Число машин в отзывах и сервисных мероприятиях — это охват, а не отказы.",
+        "uk": "Опублікованої частки коробок DQ200 із відмовою мехатроніка чи зчеплення немає. Кількість машин у відкликаннях і сервісних заходах — це охоплення, а не відмови.",
+        "fr": "Aucun chiffre publié ne donne la part de boîtes DQ200 touchées par une défaillance du mécatronique ou de l'embrayage. Les populations des rappels et des actions atelier comptent les véhicules concernés, pas les pannes."
+      }
+    },
+    {
+      "id": "pv_dq_13v568",
+      "defect": "dsg.dq200",
+      "kind": "recall_scope",
+      "value": 3837,
+      "unit": "units",
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": {
+        "description": {
+          "en": "2013–2014 Volkswagen Jetta Hybrid built October 2012 to October 2013 (USA), NHTSA recall 13V568",
+          "pt": "Volkswagen Jetta Hybrid 2013–2014 fabricados entre outubro de 2012 e outubro de 2013 (EUA), chamada NHTSA 13V568",
+          "ru": "Volkswagen Jetta Hybrid 2013–2014 модельных годов, выпуск 10.2012–10.2013 (США), отзыв NHTSA 13V568",
+          "uk": "Volkswagen Jetta Hybrid 2013–2014 модельних років, випуск 10.2012–10.2013 (США), відкликання NHTSA 13V568",
+          "fr": "Volkswagen Jetta Hybrid 2013–2014 produites d'octobre 2012 à octobre 2013 (États-Unis), rappel NHTSA 13V568"
+        },
+        "applicability": {
+          "all": [
+            {
+              "model": [
+                "volkswagen.jetta"
+              ]
+            },
+            {
+              "productionDate": {
+                "from": "2012-10",
+                "to": "2013-10"
+              }
+            }
+          ]
+        },
+        "geography": "US",
+        "period": null,
+        "ageYears": null
+      },
+      "outcome": {
+        "en": "Vehicles recalled",
+        "pt": "Veículos chamados",
+        "ru": "Отозванные машины",
+        "uk": "Відкликані машини",
+        "fr": "Véhicules rappelés"
+      },
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_dq_e01"
+      ],
+      "confidence": "C",
+      "caveats": [
+        {
+          "en": "A recall population counts vehicles in scope, not failures. It is not a failure rate.",
+          "pt": "A população de uma chamada conta veículos abrangidos, não avarias. Não é uma taxa de avarias.",
+          "ru": "Число машин в отзыве — это охват, а не число отказов. Это не частота отказов.",
+          "uk": "Кількість машин у відкликанні — це охоплення, а не кількість відмов. Це не частота відмов.",
+          "fr": "La population d'un rappel compte les véhicules concernés, pas les pannes. Ce n'est pas un taux de panne."
+        }
+      ],
+      "noReliableFigure": false,
+      "reason": null
+    },
+    {
+      "id": "pv_dq_19v866",
+      "defect": "dsg.dq200",
+      "kind": "recall_scope",
+      "value": 2167,
+      "unit": "units",
+      "numerator": null,
+      "denominator": null,
+      "ci": null,
+      "population": {
+        "description": {
+          "en": "2013–2015 Volkswagen Jetta Hybrid (USA), NHTSA recall 19V866",
+          "pt": "Volkswagen Jetta Hybrid 2013–2015 (EUA), chamada NHTSA 19V866",
+          "ru": "Volkswagen Jetta Hybrid 2013–2015 модельных годов (США), отзыв NHTSA 19V866",
+          "uk": "Volkswagen Jetta Hybrid 2013–2015 модельних років (США), відкликання NHTSA 19V866",
+          "fr": "Volkswagen Jetta Hybrid 2013–2015 (États-Unis), rappel NHTSA 19V866"
+        },
+        "applicability": {
+          "all": [
+            {
+              "model": [
+                "volkswagen.jetta"
+              ]
+            },
+            {
+              "modelYear": {
+                "from": 2013,
+                "to": 2015
+              }
+            }
+          ]
+        },
+        "geography": "US",
+        "period": null,
+        "ageYears": null
+      },
+      "outcome": {
+        "en": "Vehicles recalled",
+        "pt": "Veículos chamados",
+        "ru": "Отозванные машины",
+        "uk": "Відкликані машини",
+        "fr": "Véhicules rappelés"
+      },
+      "baseline": null,
+      "method": null,
+      "evidence": [
+        "ev_dq_e02"
+      ],
+      "confidence": "C",
+      "caveats": [
+        {
+          "en": "A recall population counts vehicles in scope, not failures. It is not a failure rate.",
+          "pt": "A população de uma chamada conta veículos abrangidos, não avarias. Não é uma taxa de avarias.",
+          "ru": "Число машин в отзыве — это охват, а не число отказов. Это не частота отказов.",
+          "uk": "Кількість машин у відкликанні — це охоплення, а не кількість відмов. Це не частота відмов.",
+          "fr": "La population d'un rappel compte les véhicules concernés, pas les pannes. Ce n'est pas un taux de panne."
+        }
+      ],
+      "noReliableFigure": false,
+      "reason": null
+    }
+  ]
+}

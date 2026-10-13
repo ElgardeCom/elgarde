@@ -30,6 +30,8 @@ DEFECTS = load("data/defects.json")
 VECTORS = load("conformance/vectors.json")
 TOLERANCE = VECTORS["notes"]["tolerance"]
 
+V3_FILES = ("defects", "evidence", "prevalence", "vehicles", "disclaimer", "release")
+
 failures: list[str] = []
 
 
@@ -166,6 +168,38 @@ def check_schemas() -> None:
         Draft202012Validator.check_schema(schema)
         for error in Draft202012Validator(schema).iter_errors(data):
             failures.append(f"{name}.json {list(error.path)}: {error.message}")
+    for name in V3_FILES:
+        schema = load(f"data/schema/v3/{name}.schema.json")
+        Draft202012Validator.check_schema(schema)
+        for error in Draft202012Validator(schema).iter_errors(load(f"data/v3/{name}.json")):
+            failures.append(f"v3/{name}.json {list(error.path)}: {error.message}")
+
+
+def check_v3_references() -> None:
+    """Every id a v3 dossier points at must exist, and the release counts must be true."""
+    defects = load("data/v3/defects.json")["defects"]
+    evidence = load("data/v3/evidence.json")["evidence"]
+    prevalence = load("data/v3/prevalence.json")["prevalence"]
+    release = load("data/v3/release.json")
+    defect_ids = {d["id"] for d in defects}
+    evidence_ids = {e["id"] for e in evidence}
+    prevalence_ids = {p["id"] for p in prevalence}
+    for d in defects:
+        for ref in d["evidence"]:
+            check(ref in evidence_ids, f"v3 defect {d['id']}: unknown evidence {ref}")
+        for ref in d["prevalence"]:
+            check(ref in prevalence_ids, f"v3 defect {d['id']}: unknown prevalence {ref}")
+    for e in evidence:
+        for ref in e["defects"]:
+            check(ref in defect_ids, f"v3 evidence {e['id']}: unknown defect {ref}")
+        check(e["source"]["license"] in release["licenses"], f"v3 evidence {e['id']}: licence not in release.json")
+    for p in prevalence:
+        check(p["defect"] in defect_ids, f"v3 prevalence {p['id']}: unknown defect {p['defect']}")
+        for ref in p["evidence"]:
+            check(ref in evidence_ids, f"v3 prevalence {p['id']}: unknown evidence {ref}")
+    counts = release["counts"]
+    check(counts == {"defects": len(defects), "evidence": len(evidence), "prevalence": len(prevalence)},
+          f"v3 release.json counts {counts} do not match the data")
 
 
 def check_structure() -> None:
@@ -251,6 +285,7 @@ def main() -> int:
     print("elgarde-inspection-core self-check")
     check_schemas()
     check_structure()
+    check_v3_references()
     check_vectors()
 
     items = len(leaf_items(CHECKLIST["base"]))

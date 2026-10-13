@@ -1,0 +1,360 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elgarde.com/schema/v3/prevalence.schema.json",
+  "title": "Elgarde known defects v3 — prevalence",
+  "description": "How common a defect is, in one of three honest forms: measured, partial (for example a recall scope), or an explicit 'no reliable figure'. Entity objects allow additional properties on purpose: new fields arrive in minor releases. Only the condition language is closed.",
+  "type": "object",
+  "required": [
+    "format",
+    "prevalence"
+  ],
+  "properties": {
+    "format": {
+      "const": 3
+    },
+    "prevalence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/prevalence"
+      }
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "i18n": {
+      "description": "Text per language. 'en' is always present; other languages are added as they are authored.",
+      "type": "object",
+      "required": [
+        "en"
+      ],
+      "propertyNames": {
+        "pattern": "^[a-z]{2}$"
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+    },
+    "strings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "condition": {
+      "description": "Closed condition language. Keys of one object are ANDed. No regular expressions and no substring matching: names are normalised through vehicles.json first.",
+      "type": "object",
+      "properties": {
+        "all": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/condition"
+          }
+        },
+        "any": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/condition"
+          }
+        },
+        "not": {
+          "$ref": "#/$defs/condition"
+        },
+        "make": {
+          "$ref": "#/$defs/strings"
+        },
+        "model": {
+          "$ref": "#/$defs/strings"
+        },
+        "generation": {
+          "$ref": "#/$defs/strings"
+        },
+        "engine": {
+          "$ref": "#/$defs/refSelector"
+        },
+        "gearbox": {
+          "$ref": "#/$defs/refSelector"
+        },
+        "fuel": {
+          "$ref": "#/$defs/strings"
+        },
+        "market": {
+          "$ref": "#/$defs/strings"
+        },
+        "modelYear": {
+          "$ref": "#/$defs/yearRange"
+        },
+        "productionDate": {
+          "$ref": "#/$defs/monthRange"
+        }
+      },
+      "additionalProperties": false
+    },
+    "yearMonth": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])$"
+    },
+    "monthRange": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "$ref": "#/$defs/yearMonth"
+        },
+        "to": {
+          "$ref": "#/$defs/yearMonth"
+        }
+      },
+      "additionalProperties": false
+    },
+    "yearRange": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "integer"
+        },
+        "to": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "refSelector": {
+      "description": "Match a catalogue entry by id, family or code.",
+      "type": "object",
+      "properties": {
+        "ids": {
+          "$ref": "#/$defs/strings"
+        },
+        "family": {
+          "$ref": "#/$defs/strings"
+        },
+        "codes": {
+          "$ref": "#/$defs/strings"
+        },
+        "type": {
+          "$ref": "#/$defs/strings"
+        }
+      },
+      "additionalProperties": false
+    },
+    "prevalence": {
+      "type": "object",
+      "required": [
+        "id",
+        "defect",
+        "kind",
+        "evidence",
+        "noReliableFigure"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^pv_[a-z0-9_]+$"
+        },
+        "defect": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "measured_rate",
+            "relative_rate",
+            "recall_scope",
+            "complaint_signal",
+            "claims_filed",
+            "manufacturer_figure",
+            "survey_figure",
+            "none"
+          ]
+        },
+        "value": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "unit": {
+          "enum": [
+            "fraction_of_vehicles",
+            "per_1000_vehicles",
+            "relative_risk",
+            "units",
+            null
+          ]
+        },
+        "numerator": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "denominator": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ci": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "level": {
+                  "type": "number"
+                },
+                "low": {
+                  "type": "number"
+                },
+                "high": {
+                  "type": "number"
+                },
+                "method": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            }
+          ]
+        },
+        "population": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "description": {
+                  "$ref": "#/$defs/i18n"
+                },
+                "applicability": {
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/condition"
+                    }
+                  ]
+                },
+                "geography": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "period": {
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/monthRange"
+                    }
+                  ]
+                },
+                "ageYears": {
+                  "type": [
+                    "object",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": true
+            }
+          ]
+        },
+        "outcome": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/i18n"
+            }
+          ]
+        },
+        "baseline": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "method": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "confidence": {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D",
+            null
+          ],
+          "description": "Quality grade of the figure; null when there is no figure."
+        },
+        "caveats": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/i18n"
+          }
+        },
+        "noReliableFigure": {
+          "type": "boolean"
+        },
+        "reason": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/i18n"
+            }
+          ]
+        }
+      },
+      "additionalProperties": true,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "none"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "properties": {
+              "noReliableFigure": {
+                "const": true
+              },
+              "reason": {
+                "$ref": "#/$defs/i18n"
+              },
+              "value": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

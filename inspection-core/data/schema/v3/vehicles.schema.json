@@ -1,0 +1,303 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elgarde.com/schema/v3/vehicles.schema.json",
+  "title": "Elgarde known defects v3 — vehicle catalogue",
+  "description": "Makes, models, generations, engines, gearboxes and which fit together. Used to resolve the facts a caller supplies. Entity objects allow additional properties on purpose: new fields arrive in minor releases. Only the condition language is closed.",
+  "type": "object",
+  "required": [
+    "format",
+    "makes",
+    "models",
+    "generations",
+    "engines",
+    "gearboxes",
+    "fitments"
+  ],
+  "properties": {
+    "format": {
+      "const": 3
+    },
+    "makes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/make"
+      }
+    },
+    "models": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/model"
+      }
+    },
+    "generations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/generation"
+      }
+    },
+    "engines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/engine"
+      }
+    },
+    "gearboxes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/gearbox"
+      }
+    },
+    "fitments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/fitment"
+      }
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "i18n": {
+      "description": "Text per language. 'en' is always present; other languages are added as they are authored.",
+      "type": "object",
+      "required": [
+        "en"
+      ],
+      "propertyNames": {
+        "pattern": "^[a-z]{2}$"
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "strings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "yearRange": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "integer"
+        },
+        "to": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "make": {
+      "type": "object",
+      "required": [
+        "id",
+        "names"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "#/$defs/i18n"
+            }
+          ]
+        },
+        "names": {
+          "$ref": "#/$defs/strings"
+        },
+        "group": {
+          "type": "string"
+        },
+        "wmi": {
+          "$ref": "#/$defs/strings"
+        }
+      },
+      "additionalProperties": true
+    },
+    "model": {
+      "type": "object",
+      "required": [
+        "id",
+        "make",
+        "names"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "#/$defs/i18n"
+            }
+          ]
+        },
+        "make": {
+          "type": "string"
+        },
+        "names": {
+          "$ref": "#/$defs/strings"
+        },
+        "excludeNames": {
+          "$ref": "#/$defs/strings"
+        }
+      },
+      "additionalProperties": true
+    },
+    "generation": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "codes": {
+          "$ref": "#/$defs/strings"
+        },
+        "years": {
+          "$ref": "#/$defs/yearRange"
+        },
+        "markets": {
+          "$ref": "#/$defs/strings"
+        }
+      },
+      "additionalProperties": true
+    },
+    "engine": {
+      "type": "object",
+      "required": [
+        "id",
+        "family",
+        "codes"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "#/$defs/i18n"
+            }
+          ]
+        },
+        "family": {
+          "type": "string"
+        },
+        "codes": {
+          "$ref": "#/$defs/strings"
+        },
+        "fuel": {
+          "type": "string"
+        },
+        "displacementCc": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "powerKw": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "evidence": {
+          "$ref": "#/$defs/strings"
+        }
+      },
+      "additionalProperties": true
+    },
+    "gearbox": {
+      "type": "object",
+      "required": [
+        "id",
+        "family",
+        "codes",
+        "type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "#/$defs/i18n"
+            }
+          ]
+        },
+        "family": {
+          "type": "string"
+        },
+        "codes": {
+          "$ref": "#/$defs/strings"
+        },
+        "type": {
+          "enum": [
+            "manual",
+            "automatic_tc",
+            "dct_dry",
+            "dct_wet",
+            "cvt",
+            "amt",
+            "single_speed_ev"
+          ]
+        },
+        "evidence": {
+          "$ref": "#/$defs/strings"
+        }
+      },
+      "additionalProperties": true
+    },
+    "fitment": {
+      "type": "object",
+      "required": [
+        "generation"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "generation": {
+          "type": "string"
+        },
+        "engine": {
+          "type": "string"
+        },
+        "gearboxes": {
+          "$ref": "#/$defs/strings"
+        },
+        "years": {
+          "$ref": "#/$defs/yearRange"
+        },
+        "markets": {
+          "$ref": "#/$defs/strings"
+        },
+        "evidence": {
+          "$ref": "#/$defs/strings"
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

@@ -1,0 +1,459 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elgarde.com/schema/v3/defects.schema.json",
+  "title": "Elgarde known defects v3 — dossiers",
+  "description": "One dossier per known defect: where it applies, how to check, what it costs, and the ids of the evidence behind it. Entity objects allow additional properties on purpose: new fields arrive in minor releases. Only the condition language is closed.",
+  "type": "object",
+  "required": [
+    "format",
+    "languages",
+    "questions",
+    "defects"
+  ],
+  "properties": {
+    "format": {
+      "const": 3
+    },
+    "languages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z]{2}$"
+      }
+    },
+    "questions": {
+      "type": "object",
+      "description": "Facts a caller may supply to narrow applicability.",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "label",
+          "help"
+        ],
+        "properties": {
+          "label": {
+            "$ref": "#/$defs/i18n"
+          },
+          "help": {
+            "$ref": "#/$defs/i18n"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "defects": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/defect"
+      }
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "i18n": {
+      "description": "Text per language. 'en' is always present; other languages are added as they are authored.",
+      "type": "object",
+      "required": [
+        "en"
+      ],
+      "propertyNames": {
+        "pattern": "^[a-z]{2}$"
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "yearMonth": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])$"
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+    },
+    "strings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "monthRange": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "$ref": "#/$defs/yearMonth"
+        },
+        "to": {
+          "$ref": "#/$defs/yearMonth"
+        }
+      },
+      "additionalProperties": false
+    },
+    "yearRange": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "integer"
+        },
+        "to": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "refSelector": {
+      "description": "Match a catalogue entry by id, family or code.",
+      "type": "object",
+      "properties": {
+        "ids": {
+          "$ref": "#/$defs/strings"
+        },
+        "family": {
+          "$ref": "#/$defs/strings"
+        },
+        "codes": {
+          "$ref": "#/$defs/strings"
+        },
+        "type": {
+          "$ref": "#/$defs/strings"
+        }
+      },
+      "additionalProperties": false
+    },
+    "condition": {
+      "description": "Closed condition language. Keys of one object are ANDed. No regular expressions and no substring matching: names are normalised through vehicles.json first.",
+      "type": "object",
+      "properties": {
+        "all": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/condition"
+          }
+        },
+        "any": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/condition"
+          }
+        },
+        "not": {
+          "$ref": "#/$defs/condition"
+        },
+        "make": {
+          "$ref": "#/$defs/strings"
+        },
+        "model": {
+          "$ref": "#/$defs/strings"
+        },
+        "generation": {
+          "$ref": "#/$defs/strings"
+        },
+        "engine": {
+          "$ref": "#/$defs/refSelector"
+        },
+        "gearbox": {
+          "$ref": "#/$defs/refSelector"
+        },
+        "fuel": {
+          "$ref": "#/$defs/strings"
+        },
+        "market": {
+          "$ref": "#/$defs/strings"
+        },
+        "modelYear": {
+          "$ref": "#/$defs/yearRange"
+        },
+        "productionDate": {
+          "$ref": "#/$defs/monthRange"
+        }
+      },
+      "additionalProperties": false
+    },
+    "cost": {
+      "type": "object",
+      "required": [
+        "currency",
+        "low",
+        "high"
+      ],
+      "properties": {
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "low": {
+          "type": "number",
+          "minimum": 0
+        },
+        "high": {
+          "type": "number",
+          "minimum": 0
+        },
+        "asOf": {
+          "$ref": "#/$defs/yearMonth"
+        },
+        "basis": {
+          "$ref": "#/$defs/i18n"
+        },
+        "what": {
+          "$ref": "#/$defs/i18n"
+        },
+        "evidence": {
+          "$ref": "#/$defs/strings"
+        }
+      },
+      "additionalProperties": true
+    },
+    "defect": {
+      "type": "object",
+      "required": [
+        "id",
+        "aliases",
+        "status",
+        "replacedBy",
+        "revision",
+        "updatedAt",
+        "title",
+        "summary",
+        "checklistPrompt",
+        "component",
+        "mechanism",
+        "applicability",
+        "severity",
+        "safety",
+        "critical",
+        "symptoms",
+        "inspection",
+        "repair",
+        "evidence",
+        "prevalence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(\\.[a-z0-9_]+)+$"
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Older ids merged into this entry."
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "in_review",
+            "published",
+            "deprecated"
+          ]
+        },
+        "replacedBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "updatedAt": {
+          "$ref": "#/$defs/date"
+        },
+        "legacyRule": {
+          "type": "string",
+          "description": "The v2 rule this defect belongs to, if any."
+        },
+        "title": {
+          "$ref": "#/$defs/i18n"
+        },
+        "summary": {
+          "$ref": "#/$defs/i18n"
+        },
+        "checklistPrompt": {
+          "$ref": "#/$defs/i18n"
+        },
+        "mechanism": {
+          "$ref": "#/$defs/i18n"
+        },
+        "component": {
+          "type": "string",
+          "pattern": "^[a-z_]+(\\.[a-z_]+)*$"
+        },
+        "applicability": {
+          "type": "object",
+          "required": [
+            "models"
+          ],
+          "properties": {
+            "models": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              },
+              "description": "Model ids (vehicles.json) where this defect is worth looking for."
+            },
+            "when": {
+              "$ref": "#/$defs/condition"
+            },
+            "markets": {
+              "$ref": "#/$defs/strings"
+            },
+            "hint": {
+              "$ref": "#/$defs/i18n"
+            },
+            "notes": {
+              "$ref": "#/$defs/i18n"
+            }
+          },
+          "additionalProperties": true
+        },
+        "severity": {
+          "enum": [
+            "minor",
+            "moderate",
+            "major",
+            "critical"
+          ]
+        },
+        "safety": {
+          "type": "boolean"
+        },
+        "critical": {
+          "type": "boolean",
+          "description": "Feeds the scoring clamp."
+        },
+        "symptoms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "text",
+              "stage"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "text": {
+                "$ref": "#/$defs/i18n"
+              },
+              "stage": {
+                "enum": [
+                  "early",
+                  "late"
+                ]
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "inspection": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "method",
+              "text"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "method": {
+                "enum": [
+                  "visual",
+                  "listen",
+                  "test_drive",
+                  "obd",
+                  "document",
+                  "dipstick",
+                  "tool"
+                ]
+              },
+              "text": {
+                "$ref": "#/$defs/i18n"
+              },
+              "redFlag": {
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/i18n"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "tools": {
+                "$ref": "#/$defs/strings"
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "repair": {
+          "type": "object",
+          "properties": {
+            "remedy": {
+              "$ref": "#/$defs/i18n"
+            },
+            "cost": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/cost"
+                }
+              ]
+            },
+            "worstCase": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/cost"
+                }
+              ]
+            },
+            "manufacturerProgramme": {
+              "type": "object",
+              "properties": {
+                "evidence": {
+                  "$ref": "#/$defs/strings"
+                },
+                "text": {
+                  "$ref": "#/$defs/i18n"
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Ids into evidence.json."
+        },
+        "prevalence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "description": "Ids into prevalence.json. Never empty: an honest 'no reliable figure' record counts."
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

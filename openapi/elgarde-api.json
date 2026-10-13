@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Elgarde API",
-    "description": "The Elgarde API. Everything under **`/v1`** is a free, public, no-auth tier —\nno key, no sign-up, CORS open to any origin, rate-limited per IP:\n\n- `GET /v1/checklist` — the adaptive pre-purchase inspection checklist in\n  English, Portuguese, Russian, Ukrainian and French.\n- `GET /v1/defects` — curated model-specific known weak points.\n- `POST /v1/score` — roll a sheet of 1–5 answers into an overall verdict.\n- `GET /v1/vin/{vin}` — VIN decode over the free NHTSA vPIC dataset.\n\nThe underlying data and the scoring specification are open\n([elgarde-inspection-core](https://github.com/elgarde/elgarde-inspection-core),\nCC-BY-4.0). Please keep the attribution that every response carries, and cache\nresults rather than re-fetching static content.\n\nElgarde is a self-service checklist, not a certified, mechanical or legal\ninspection. Every other route on this service belongs to the Elgarde app and\nrequires authentication.\n",
+    "description": "The Elgarde API. Everything under **`/v1`** is a free, public, no-auth tier —\nno key, no sign-up, CORS open to any origin, rate-limited per IP:\n\n- `GET /v1/checklist` — the adaptive pre-purchase inspection checklist in\n  English, Portuguese, Russian, Ukrainian and French.\n- `GET /v1/defects` — curated model-specific known weak points; pass facts\n  about the car (`year`, `fuel`, `gearbox`, `engineCode`, `vin`, …) to keep\n  only the ones that can apply to its engine and gearbox.\n- `GET /v1/defects/{defect_id}` — the full dossier behind one known defect:\n  applicability per engine and gearbox, how to inspect, repair, sources and\n  prevalence.\n- `GET /v1/catalog` — every published defect dossier, for syncing.\n- `POST /v1/score` — roll a sheet of 1–5 answers into an overall verdict.\n- `GET /v1/vin/{vin}` — VIN decode over the free NHTSA vPIC dataset.\n\nThe underlying data and the scoring specification are open\n([ElgardeCom/elgarde](https://github.com/ElgardeCom/elgarde),\nCC-BY-4.0). Please keep the attribution that every response carries, and cache\nresults rather than re-fetching static content.\n\nElgarde is a self-service checklist, not a certified, mechanical or legal\ninspection. Every other route on this service belongs to the Elgarde app and\nrequires authentication.\n",
     "contact": {
       "name": "Elgarde",
       "url": "https://elgarde.com/api/",
@@ -27,7 +27,7 @@
           "public"
         ],
         "summary": "Canon version, licence and attribution",
-        "description": "What this tier serves, which canon version it is on, and how to credit\nit. Free, no key, no auth.",
+        "description": "What this tier serves, which canon version it is on, and how to credit\nit. `defectsRelease` is the version of the known-defects dossiers and\n`catalog` links to their list. Free, no key, no auth.",
         "operationId": "meta_v1_meta_get",
         "responses": {
           "200": {
@@ -151,7 +151,7 @@
           "public"
         ],
         "summary": "Known weak points for a make and model",
-        "description": "Curated, model-specific things to check — the DQ200 dry clutch, the\nPureTech wet belt, the N47 chain. Empty when nothing is curated for that\nmodel yet; that is not a statement that the model has no known issues.",
+        "description": "Curated, model-specific things to check — the DQ200 dry clutch, the\nPureTech wet belt, the N47 chain. Empty when nothing is curated for that\nmodel yet; that is not a statement that the model has no known issues.\n\n**Without** any fact parameter the list is exactly the v2 list, each entry\nenriched with a v3 `status` worked out from make and model alone.\n**With** facts (`year`, `fuel`, `gearbox`, `engineCode`, `vin`, …) defects\nthat cannot apply are moved out (to `excluded` when `includeExcluded=true`),\nand `questions` lists what to ask to settle the `possible` ones.",
         "operationId": "defects_v1_defects_get",
         "parameters": [
           {
@@ -192,11 +192,219 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "en · pt (falls back to en)",
+              "description": "en · pt · ru · uk · fr (falls back to en)",
               "default": "en",
               "title": "Lang"
             },
-            "description": "en · pt (falls back to en)"
+            "description": "en · pt · ru · uk · fr (falls back to en)"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Model year / year of manufacture, 1950 to next year",
+              "title": "Year"
+            },
+            "description": "Model year / year of manufacture, 1950 to next year"
+          },
+          {
+            "name": "productionDate",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Production month, YYYY-MM",
+              "examples": [
+                "2016-04"
+              ],
+              "title": "Productiondate"
+            },
+            "description": "Production month, YYYY-MM"
+          },
+          {
+            "name": "fuel",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "petrol · diesel · hybrid · ev · other",
+              "enum": [
+                "petrol",
+                "diesel",
+                "hybrid",
+                "ev",
+                "other"
+              ],
+              "title": "Fuel"
+            },
+            "description": "petrol · diesel · hybrid · ev · other"
+          },
+          {
+            "name": "engineCode",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Engine code from the engine plate or data sticker (2–10 letters/digits)",
+              "title": "Enginecode"
+            },
+            "description": "Engine code from the engine plate or data sticker (2–10 letters/digits)"
+          },
+          {
+            "name": "engineFamily",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Engine family, e.g. EB2 or N47 (2–10 letters/digits)",
+              "title": "Enginefamily"
+            },
+            "description": "Engine family, e.g. EB2 or N47 (2–10 letters/digits)"
+          },
+          {
+            "name": "gearbox",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Coarse gearbox type: manual · automatic · dct · cvt",
+              "enum": [
+                "manual",
+                "automatic",
+                "dct",
+                "cvt"
+              ],
+              "title": "Gearbox"
+            },
+            "description": "Coarse gearbox type: manual · automatic · dct · cvt"
+          },
+          {
+            "name": "gearboxCode",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Gearbox code (e.g. 0AM) or family (e.g. DQ200)",
+              "title": "Gearboxcode"
+            },
+            "description": "Gearbox code (e.g. 0AM) or family (e.g. DQ200)"
+          },
+          {
+            "name": "cc",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Engine displacement in cm³, 500–8000",
+              "title": "Cc"
+            },
+            "description": "Engine displacement in cm³, 500–8000"
+          },
+          {
+            "name": "powerKw",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Engine power in kW (registration field P.2), 20–500",
+              "title": "Powerkw"
+            },
+            "description": "Engine power in kW (registration field P.2), 20–500"
+          },
+          {
+            "name": "vin",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Fills facts missing from the query via the free NHTSA vPIC decode (and the WMI table for the make). Counts against the VIN limit. A model year vPIC cannot place unambiguously (European VINs) is not used; pass `year` instead.",
+              "title": "Vin"
+            },
+            "description": "Fills facts missing from the query via the free NHTSA vPIC decode (and the WMI table for the make). Counts against the VIN limit. A model year vPIC cannot place unambiguously (European VINs) is not used; pass `year` instead."
+          },
+          {
+            "name": "includeExcluded",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Also list defects ruled out by the facts, in `excluded`",
+              "default": false,
+              "title": "Includeexcluded"
+            },
+            "description": "Also list defects ruled out by the facts, in `excluded`"
           }
         ],
         "responses": {
@@ -205,9 +413,133 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "additionalProperties": true,
-                  "title": "Response Defects V1 Defects Get"
+                  "$ref": "#/components/schemas/DefectsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/defects/{defect_id}": {
+      "get": {
+        "tags": [
+          "public"
+        ],
+        "summary": "Full dossier for one known defect",
+        "description": "Everything behind one defect: applicability per engine and gearbox,\nsymptoms, how to inspect, repair and cost, every source with its archive\ncopy, and prevalence — a measured figure with its confidence grade, or an\nexplicit statement that no reliable figure exists.",
+        "operationId": "defect_dossier_v1_defects__defect_id__get",
+        "parameters": [
+          {
+            "name": "defect_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+([._][a-z0-9]+)*$",
+              "examples": [
+                "dsg.dq200"
+              ],
+              "title": "Defect Id"
+            }
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "en · pt · ru · uk · fr, or `all` for every language as {lang: text} maps (falls back to en)",
+              "default": "en",
+              "title": "Lang"
+            },
+            "description": "en · pt · ru · uk · fr, or `all` for every language as {lang: text} maps (falls back to en)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DossierResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No published v3 dossier for this defect id"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/catalog": {
+      "get": {
+        "tags": [
+          "public"
+        ],
+        "summary": "Every published defect dossier, for syncing",
+        "description": "One row per published dossier, sorted by id — poll this instead of\nwalking makes and models. Bulk data: the public repository below.",
+        "operationId": "defects_catalog_v1_catalog_get",
+        "parameters": [
+          {
+            "name": "lang",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "en · pt · ru · uk · fr (falls back to en)",
+              "default": "en",
+              "title": "Lang"
+            },
+            "description": "en · pt · ru · uk · fr (falls back to en)"
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Only dossiers updated on or after this date (YYYY-MM-DD)",
+              "title": "Since"
+            },
+            "description": "Only dossiers updated on or after this date (YYYY-MM-DD)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CatalogResponse"
                 }
               }
             }
@@ -315,6 +647,1652 @@
   },
   "components": {
     "schemas": {
+      "Applicability": {
+        "properties": {
+          "models": {
+            "items": {
+              "$ref": "#/components/schemas/ModelRef"
+            },
+            "type": "array",
+            "title": "Models"
+          },
+          "when": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "When",
+            "description": "Condition in the closed applicability DSL (all/any/not; make, model, generation, engine, gearbox, fuel, modelYear, productionDate). JSON Schema: inspection-core/data/schema/v3/ in ElgardeCom/elgarde."
+          },
+          "markets": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Markets"
+          },
+          "hint": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hint"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "models",
+          "when",
+          "markets",
+          "hint",
+          "notes"
+        ],
+        "title": "Applicability"
+      },
+      "ArchiveRef": {
+        "properties": {
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url"
+          },
+          "capturedAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Capturedat"
+          },
+          "sha256": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sha256"
+          }
+        },
+        "type": "object",
+        "title": "ArchiveRef"
+      },
+      "Attribution": {
+        "properties": {
+          "source": {
+            "type": "string",
+            "title": "Source"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url"
+          },
+          "license": {
+            "type": "string",
+            "title": "License"
+          },
+          "repository": {
+            "type": "string",
+            "title": "Repository"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "url",
+          "license",
+          "repository"
+        ],
+        "title": "Attribution"
+      },
+      "Bulk": {
+        "properties": {
+          "repository": {
+            "type": "string",
+            "title": "Repository"
+          },
+          "path": {
+            "type": "string",
+            "title": "Path"
+          },
+          "license": {
+            "type": "string",
+            "title": "License"
+          }
+        },
+        "type": "object",
+        "required": [
+          "repository",
+          "path",
+          "license"
+        ],
+        "title": "Bulk"
+      },
+      "CatalogEntry": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Title"
+          },
+          "severity": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "minor",
+                  "moderate",
+                  "major",
+                  "critical"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Severity"
+          },
+          "safety": {
+            "type": "boolean",
+            "title": "Safety"
+          },
+          "critical": {
+            "type": "boolean",
+            "title": "Critical"
+          },
+          "evidenceGrade": {
+            "type": "string",
+            "enum": [
+              "established",
+              "well_documented"
+            ],
+            "title": "Evidencegrade"
+          },
+          "revision": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revision"
+          },
+          "updatedAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updatedat"
+          },
+          "models": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Models"
+          },
+          "detailUrl": {
+            "type": "string",
+            "title": "Detailurl"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "severity",
+          "safety",
+          "critical",
+          "evidenceGrade",
+          "revision",
+          "updatedAt",
+          "models",
+          "detailUrl"
+        ],
+        "title": "CatalogEntry"
+      },
+      "CatalogResponse": {
+        "properties": {
+          "canonVersion": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Canonversion"
+          },
+          "defectsRelease": {
+            "$ref": "#/components/schemas/DefectsRelease"
+          },
+          "attribution": {
+            "$ref": "#/components/schemas/Attribution"
+          },
+          "disclaimer": {
+            "type": "string",
+            "title": "Disclaimer"
+          },
+          "defectsDisclaimer": {
+            "type": "string",
+            "title": "Defectsdisclaimer"
+          },
+          "lang": {
+            "type": "string",
+            "title": "Lang"
+          },
+          "since": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Since"
+          },
+          "count": {
+            "type": "integer",
+            "title": "Count"
+          },
+          "defects": {
+            "items": {
+              "$ref": "#/components/schemas/CatalogEntry"
+            },
+            "type": "array",
+            "title": "Defects"
+          },
+          "bulk": {
+            "$ref": "#/components/schemas/Bulk"
+          }
+        },
+        "type": "object",
+        "required": [
+          "canonVersion",
+          "defectsRelease",
+          "attribution",
+          "disclaimer",
+          "defectsDisclaimer",
+          "lang",
+          "since",
+          "count",
+          "defects",
+          "bulk"
+        ],
+        "title": "CatalogResponse"
+      },
+      "ConfidenceInterval": {
+        "properties": {
+          "level": {
+            "type": "number",
+            "title": "Level"
+          },
+          "low": {
+            "type": "number",
+            "title": "Low"
+          },
+          "high": {
+            "type": "number",
+            "title": "High"
+          },
+          "method": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Method"
+          }
+        },
+        "type": "object",
+        "required": [
+          "level",
+          "low",
+          "high"
+        ],
+        "title": "ConfidenceInterval"
+      },
+      "CostRange": {
+        "properties": {
+          "currency": {
+            "type": "string",
+            "title": "Currency"
+          },
+          "low": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Low"
+          },
+          "high": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "High"
+          },
+          "basis": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Basis"
+          },
+          "asOf": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Asof"
+          },
+          "what": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "What"
+          },
+          "evidence": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Evidence"
+          }
+        },
+        "type": "object",
+        "required": [
+          "currency"
+        ],
+        "title": "CostRange"
+      },
+      "DefectEntry": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "critical": {
+            "type": "boolean",
+            "title": "Critical"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "applies",
+              "possible",
+              "not_applicable",
+              "legacy"
+            ],
+            "title": "Status"
+          },
+          "needs": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Needs"
+          },
+          "hint": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hint"
+          },
+          "severity": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "minor",
+                  "moderate",
+                  "major",
+                  "critical"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Severity"
+          },
+          "safety": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Safety"
+          },
+          "evidenceGrade": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "established",
+                  "well_documented"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Evidencegrade"
+          },
+          "revision": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revision"
+          },
+          "updatedAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updatedat"
+          },
+          "detailUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Detailurl"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "text",
+          "critical",
+          "status",
+          "needs",
+          "hint",
+          "severity",
+          "safety",
+          "evidenceGrade",
+          "revision",
+          "updatedAt",
+          "detailUrl"
+        ],
+        "title": "DefectEntry"
+      },
+      "DefectsRelease": {
+        "properties": {
+          "format": {
+            "type": "integer",
+            "title": "Format"
+          },
+          "release": {
+            "type": "string",
+            "title": "Release"
+          },
+          "dossiers": {
+            "type": "integer",
+            "title": "Dossiers"
+          }
+        },
+        "type": "object",
+        "required": [
+          "format",
+          "release",
+          "dossiers"
+        ],
+        "title": "DefectsRelease",
+        "description": "Version of the v3 defects data. Separate from `canonVersion`, which\nstays `{checklist: int, defects: int}`."
+      },
+      "DefectsResponse": {
+        "properties": {
+          "canonVersion": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Canonversion"
+          },
+          "defectsRelease": {
+            "$ref": "#/components/schemas/DefectsRelease"
+          },
+          "attribution": {
+            "$ref": "#/components/schemas/Attribution"
+          },
+          "disclaimer": {
+            "type": "string",
+            "title": "Disclaimer"
+          },
+          "defectsDisclaimer": {
+            "type": "string",
+            "title": "Defectsdisclaimer",
+            "description": "The canonical known-defects disclaimer, in `lang`. Show it next to any defect text you reproduce."
+          },
+          "query": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "type": "object",
+            "title": "Query"
+          },
+          "resolved": {
+            "type": "boolean",
+            "title": "Resolved"
+          },
+          "facts": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/ResolvedFact"
+            },
+            "type": "object",
+            "title": "Facts"
+          },
+          "matched": {
+            "type": "boolean",
+            "title": "Matched"
+          },
+          "ruleId": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ruleid"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          },
+          "defects": {
+            "items": {
+              "$ref": "#/components/schemas/DefectEntry"
+            },
+            "type": "array",
+            "title": "Defects"
+          },
+          "excluded": {
+            "items": {
+              "$ref": "#/components/schemas/ExcludedDefectEntry"
+            },
+            "type": "array",
+            "title": "Excluded"
+          },
+          "questions": {
+            "items": {
+              "$ref": "#/components/schemas/Question"
+            },
+            "type": "array",
+            "title": "Questions"
+          },
+          "warnings": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Warnings"
+          }
+        },
+        "type": "object",
+        "required": [
+          "canonVersion",
+          "defectsRelease",
+          "attribution",
+          "disclaimer",
+          "defectsDisclaimer",
+          "query",
+          "resolved",
+          "facts",
+          "matched",
+          "ruleId",
+          "label",
+          "defects",
+          "excluded",
+          "questions",
+          "warnings"
+        ],
+        "title": "DefectsResponse"
+      },
+      "Dossier": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "aliases": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Aliases"
+          },
+          "revision": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revision"
+          },
+          "updatedAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updatedat"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Title"
+          },
+          "summary": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Summary"
+          },
+          "checklistPrompt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Checklistprompt"
+          },
+          "component": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Component"
+          },
+          "mechanism": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mechanism"
+          },
+          "applicability": {
+            "$ref": "#/components/schemas/Applicability"
+          },
+          "engines": {
+            "items": {
+              "$ref": "#/components/schemas/EngineRef"
+            },
+            "type": "array",
+            "title": "Engines"
+          },
+          "gearboxes": {
+            "items": {
+              "$ref": "#/components/schemas/GearboxRef"
+            },
+            "type": "array",
+            "title": "Gearboxes"
+          },
+          "severity": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "minor",
+                  "moderate",
+                  "major",
+                  "critical"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Severity"
+          },
+          "safety": {
+            "type": "boolean",
+            "title": "Safety"
+          },
+          "critical": {
+            "type": "boolean",
+            "title": "Critical"
+          },
+          "evidenceGrade": {
+            "type": "string",
+            "enum": [
+              "established",
+              "well_documented"
+            ],
+            "title": "Evidencegrade"
+          },
+          "symptoms": {
+            "items": {
+              "$ref": "#/components/schemas/Symptom"
+            },
+            "type": "array",
+            "title": "Symptoms"
+          },
+          "inspection": {
+            "items": {
+              "$ref": "#/components/schemas/InspectionStep"
+            },
+            "type": "array",
+            "title": "Inspection"
+          },
+          "repair": {
+            "$ref": "#/components/schemas/Repair"
+          },
+          "evidence": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Evidence"
+          },
+          "prevalence": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Prevalence"
+          },
+          "disclaimer": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              }
+            ],
+            "title": "Disclaimer"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "aliases",
+          "revision",
+          "updatedAt",
+          "title",
+          "summary",
+          "checklistPrompt",
+          "component",
+          "mechanism",
+          "applicability",
+          "engines",
+          "gearboxes",
+          "severity",
+          "safety",
+          "critical",
+          "evidenceGrade",
+          "symptoms",
+          "inspection",
+          "repair",
+          "evidence",
+          "prevalence",
+          "disclaimer"
+        ],
+        "title": "Dossier"
+      },
+      "DossierResponse": {
+        "properties": {
+          "canonVersion": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Canonversion"
+          },
+          "defectsRelease": {
+            "$ref": "#/components/schemas/DefectsRelease"
+          },
+          "attribution": {
+            "$ref": "#/components/schemas/Attribution"
+          },
+          "disclaimer": {
+            "type": "string",
+            "title": "Disclaimer"
+          },
+          "defectsDisclaimer": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              }
+            ],
+            "title": "Defectsdisclaimer"
+          },
+          "lang": {
+            "type": "string",
+            "title": "Lang"
+          },
+          "defect": {
+            "$ref": "#/components/schemas/Dossier"
+          },
+          "evidence": {
+            "items": {
+              "$ref": "#/components/schemas/Evidence"
+            },
+            "type": "array",
+            "title": "Evidence"
+          },
+          "prevalence": {
+            "items": {
+              "$ref": "#/components/schemas/Prevalence"
+            },
+            "type": "array",
+            "title": "Prevalence"
+          },
+          "attributions": {
+            "items": {
+              "$ref": "#/components/schemas/SourceAttribution"
+            },
+            "type": "array",
+            "title": "Attributions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "canonVersion",
+          "defectsRelease",
+          "attribution",
+          "disclaimer",
+          "defectsDisclaimer",
+          "lang",
+          "defect",
+          "evidence",
+          "prevalence",
+          "attributions"
+        ],
+        "title": "DossierResponse"
+      },
+      "EngineRef": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "family": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Family"
+          },
+          "codes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Codes"
+          },
+          "fuel": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fuel"
+          },
+          "displacementCc": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Displacementcc"
+          },
+          "powerKw": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "title": "Powerkw"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "family",
+          "codes",
+          "fuel",
+          "displacementCc",
+          "powerKw",
+          "label"
+        ],
+        "title": "EngineRef"
+      },
+      "Evidence": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Type"
+          },
+          "tier": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tier"
+          },
+          "defects": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Defects"
+          },
+          "supports": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Supports"
+          },
+          "scope": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Scope"
+          },
+          "source": {
+            "$ref": "#/components/schemas/EvidenceSource"
+          },
+          "quote": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Quote"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "translation": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Translation"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "confidence": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "high",
+                  "medium",
+                  "low"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Confidence"
+          },
+          "reviewedAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reviewedat"
+          },
+          "reviewStatus": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "pending",
+                  "source_verified",
+                  "approved"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reviewstatus",
+            "description": "pending: not checked yet. source_verified: the source was opened and the claims, dates and figures compared with it (automated check, no human sign-off). approved: signed off by an Elgarde reviewer."
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "tier",
+          "defects",
+          "supports",
+          "scope",
+          "source",
+          "quote",
+          "translation",
+          "note",
+          "confidence",
+          "reviewedAt"
+        ],
+        "title": "Evidence"
+      },
+      "EvidenceSource": {
+        "properties": {
+          "publisher": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Publisher"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Title"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url"
+          },
+          "identifier": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Identifier"
+          },
+          "publishedDate": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Publisheddate"
+          },
+          "retrievedAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Retrievedat"
+          },
+          "language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Language"
+          },
+          "archive": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ArchiveRef"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "license": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "License"
+          },
+          "reuse": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "republish",
+                  "cite",
+                  "link_only"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reuse"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "publisher",
+          "title",
+          "url",
+          "identifier",
+          "publishedDate",
+          "retrievedAt",
+          "language",
+          "archive",
+          "license",
+          "reuse",
+          "status"
+        ],
+        "title": "EvidenceSource"
+      },
+      "ExcludedDefectEntry": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "critical": {
+            "type": "boolean",
+            "title": "Critical"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "applies",
+              "possible",
+              "not_applicable",
+              "legacy"
+            ],
+            "title": "Status"
+          },
+          "needs": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Needs"
+          },
+          "hint": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hint"
+          },
+          "severity": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "minor",
+                  "moderate",
+                  "major",
+                  "critical"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Severity"
+          },
+          "safety": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Safety"
+          },
+          "evidenceGrade": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "established",
+                  "well_documented"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Evidencegrade"
+          },
+          "revision": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revision"
+          },
+          "updatedAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updatedat"
+          },
+          "detailUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Detailurl"
+          },
+          "excludedBy": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Excludedby"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "text",
+          "critical",
+          "status",
+          "needs",
+          "hint",
+          "severity",
+          "safety",
+          "evidenceGrade",
+          "revision",
+          "updatedAt",
+          "detailUrl",
+          "excludedBy"
+        ],
+        "title": "ExcludedDefectEntry"
+      },
+      "GearboxRef": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "family": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Family"
+          },
+          "codes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Codes"
+          },
+          "type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Type"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "family",
+          "codes",
+          "type",
+          "label"
+        ],
+        "title": "GearboxRef"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -327,6 +2305,577 @@
         },
         "type": "object",
         "title": "HTTPValidationError"
+      },
+      "InspectionStep": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "method": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Method"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Text"
+          },
+          "redFlag": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Redflag"
+          },
+          "tools": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Tools"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "method",
+          "text",
+          "redFlag",
+          "tools"
+        ],
+        "title": "InspectionStep"
+      },
+      "ManufacturerProgramme": {
+        "properties": {
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Text"
+          },
+          "evidence": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Evidence"
+          }
+        },
+        "type": "object",
+        "title": "ManufacturerProgramme"
+      },
+      "ModelRef": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "label"
+        ],
+        "title": "ModelRef"
+      },
+      "Prevalence": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "kind": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kind"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          },
+          "unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit"
+          },
+          "numerator": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Numerator"
+          },
+          "denominator": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Denominator"
+          },
+          "ci": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ConfidenceInterval"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "population": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PrevalencePopulation"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "outcome": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Outcome"
+          },
+          "baseline": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Baseline"
+          },
+          "method": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Method"
+          },
+          "evidence": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Evidence"
+          },
+          "confidence": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "A",
+                  "B",
+                  "C",
+                  "D"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Confidence"
+          },
+          "caveats": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Caveats"
+          },
+          "noReliableFigure": {
+            "type": "boolean",
+            "title": "Noreliablefigure"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "value",
+          "unit",
+          "numerator",
+          "denominator",
+          "ci",
+          "population",
+          "outcome",
+          "baseline",
+          "method",
+          "evidence",
+          "confidence",
+          "caveats",
+          "noReliableFigure",
+          "reason"
+        ],
+        "title": "Prevalence",
+        "description": "Either a figure (with population and confidence grade) or an explicit\n`noReliableFigure` with the reason. Every field is always present."
+      },
+      "PrevalencePopulation": {
+        "properties": {
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "applicability": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Applicability"
+          },
+          "geography": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Geography"
+          },
+          "period": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Period"
+          },
+          "ageYears": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "integer"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ageyears"
+          }
+        },
+        "type": "object",
+        "title": "PrevalencePopulation"
+      },
+      "Question": {
+        "properties": {
+          "param": {
+            "type": "string",
+            "title": "Param"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "enum",
+              "string",
+              "int"
+            ],
+            "title": "Type"
+          },
+          "options": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Options"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "help": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Help"
+          },
+          "defects": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Defects"
+          }
+        },
+        "type": "object",
+        "required": [
+          "param",
+          "type",
+          "options",
+          "label",
+          "help",
+          "defects"
+        ],
+        "title": "Question"
+      },
+      "Quote": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "lang": {
+            "type": "string",
+            "title": "Lang"
+          }
+        },
+        "type": "object",
+        "required": [
+          "text",
+          "lang"
+        ],
+        "title": "Quote"
+      },
+      "Repair": {
+        "properties": {
+          "remedy": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remedy"
+          },
+          "cost": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CostRange"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "worstCase": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CostRange"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "manufacturerProgramme": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ManufacturerProgramme"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "remedy",
+          "cost",
+          "worstCase",
+          "manufacturerProgramme"
+        ],
+        "title": "Repair"
+      },
+      "ResolvedFact": {
+        "properties": {
+          "value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "title": "Value"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "query",
+              "vin",
+              "wmi"
+            ],
+            "title": "Source"
+          }
+        },
+        "type": "object",
+        "required": [
+          "value",
+          "source"
+        ],
+        "title": "ResolvedFact"
       },
       "ScoreRequest": {
         "properties": {
@@ -464,6 +3013,79 @@
           "disclaimer"
         ],
         "title": "ScoreResponse"
+      },
+      "SourceAttribution": {
+        "properties": {
+          "source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source"
+          },
+          "license": {
+            "type": "string",
+            "title": "License"
+          },
+          "statement": {
+            "type": "string",
+            "title": "Statement"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "license",
+          "statement"
+        ],
+        "title": "SourceAttribution"
+      },
+      "Symptom": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Text"
+          },
+          "stage": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stage"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "text",
+          "stage"
+        ],
+        "title": "Symptom"
       },
       "ValidationError": {
         "properties": {

@@ -1,0 +1,1416 @@
+{
+  "format": 3,
+  "evidence": [
+    {
+      "id": "ev_pt_e01",
+      "type": "recall",
+      "tier": 1,
+      "defects": [
+        "puretech.wetbelt"
+      ],
+      "supports": [
+        "existence",
+        "mechanism",
+        "applicability",
+        "manufacturer_acknowledgement"
+      ],
+      "scope": {
+        "productionDate": {
+          "from": "2013-03",
+          "to": "2017-04"
+        }
+      },
+      "source": {
+        "publisher": "RappelConso (DGCCRF)",
+        "title": "Recall A12/01504/20 — Citroën and DS, 1.2 turbo petrol",
+        "url": "https://rappel.conso.gouv.fr/fiche-rappel/48835/rapex",
+        "identifier": "A12/01504/20",
+        "publishedDate": "2020-11-20",
+        "retrievedAt": "2026-10-13",
+        "language": "fr",
+        "archive": null,
+        "license": "Licence-Ouverte-2.0",
+        "reuse": "republish",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Official recall: Citroën and DS 1.2 turbo petrol cars built March 2013 to April 2017; abrasion of timing-belt material can damage the brake vacuum pump. The record does not name the engine code.",
+        "pt": "Chamada oficial: Citroën e DS 1.2 turbo a gasolina fabricados entre março de 2013 e abril de 2017; o desgaste do material da correia de distribuição pode danificar a bomba de vácuo dos travões. O registo não indica o código do motor.",
+        "ru": "Официальный отзыв: Citroën и DS с бензиновым 1.2 турбо, выпущенные с марта 2013 по апрель 2017 года; продукты истирания ремня ГРМ могут повредить вакуумный насос тормозов. Код двигателя в записи не указан.",
+        "uk": "Офіційне відкликання: Citroën і DS з бензиновим 1.2 турбо, випущені з березня 2013 по квітень 2017 року; продукти стирання ременя ГРМ можуть пошкодити вакуумний насос гальм. Код двигуна в записі не вказано.",
+        "fr": "Rappel officiel : Citroën et DS 1.2 turbo essence produites de mars 2013 à avril 2017 ; l'abrasion de la courroie de distribution peut endommager la pompe à vide du freinage. La fiche ne cite pas le code moteur."
+      },
+      "confidence": "high",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_pt_e02",
+      "type": "recall",
+      "tier": 1,
+      "defects": [
+        "puretech.wetbelt"
+      ],
+      "supports": [
+        "existence",
+        "applicability",
+        "manufacturer_acknowledgement"
+      ],
+      "scope": {
+        "productionDate": {
+          "from": "2013-03",
+          "to": "2017-04"
+        }
+      },
+      "source": {
+        "publisher": "RappelConso (DGCCRF)",
+        "title": "Recall A12/01505/20 — Peugeot 208, 308, 2008, 3008, 5008, Partner",
+        "url": "https://rappel.conso.gouv.fr/fiche-rappel/48836/rapex",
+        "identifier": "A12/01505/20",
+        "publishedDate": "2020-11-20",
+        "retrievedAt": "2026-10-13",
+        "language": "fr",
+        "archive": null,
+        "license": "Licence-Ouverte-2.0",
+        "reuse": "republish",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Official recall of the same campaign for Peugeot 208, 308, 2008, 3008, 5008 and Partner built March 2013 to April 2017.",
+        "pt": "Chamada oficial da mesma campanha para Peugeot 208, 308, 2008, 3008, 5008 e Partner fabricados entre março de 2013 e abril de 2017.",
+        "ru": "Официальный отзыв той же кампании для Peugeot 208, 308, 2008, 3008, 5008 и Partner, выпущенных с марта 2013 по апрель 2017 года.",
+        "uk": "Офіційне відкликання тієї ж кампанії для Peugeot 208, 308, 2008, 3008, 5008 і Partner, випущених з березня 2013 по квітень 2017 року.",
+        "fr": "Rappel officiel de la même campagne pour les Peugeot 208, 308, 2008, 3008, 5008 et Partner produites de mars 2013 à avril 2017."
+      },
+      "confidence": "high",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_pt_e03",
+      "type": "recall",
+      "tier": 1,
+      "defects": [
+        "puretech.wetbelt"
+      ],
+      "supports": [
+        "existence",
+        "mechanism",
+        "applicability"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "RappelConso (DGCCRF)",
+        "title": "Recall A12/01042/21 — Citroën C3 Picasso, C4, DS4, DS3",
+        "url": "https://rappel.conso.gouv.fr/fiche-rappel/48607/rapex",
+        "identifier": "A12/01042/21",
+        "publishedDate": "2021-07-16",
+        "retrievedAt": "2026-10-13",
+        "language": "fr",
+        "archive": null,
+        "license": "Licence-Ouverte-2.0",
+        "reuse": "republish",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Official recall: vacuum pump damaged by chemical corrosion of the timing belt associated with degraded oil; C3 Picasso built Sept 2014–Mar 2017, C4/DS4 July 2014–Mar 2017, DS3 Mar 2016–Mar 2017. The engine is not named; the link to the 1.2 PureTech turbo is an inference.",
+        "pt": "Chamada oficial: bomba de vácuo danificada por corrosão química da correia de distribuição associada a óleo degradado; C3 Picasso de set. 2014 a mar. 2017, C4/DS4 de jul. 2014 a mar. 2017, DS3 de mar. 2016 a mar. 2017. O motor não é indicado; a ligação ao 1.2 PureTech turbo é uma inferência.",
+        "ru": "Официальный отзыв: вакуумный насос повреждается из-за химической коррозии ремня ГРМ в деградировавшем масле; C3 Picasso 09.2014–03.2017, C4/DS4 07.2014–03.2017, DS3 03.2016–03.2017. Двигатель не назван; связь с 1.2 PureTech турбо — вывод.",
+        "uk": "Офіційне відкликання: вакуумний насос пошкоджується через хімічну корозію ременя ГРМ у деградованій оливі; C3 Picasso 09.2014–03.2017, C4/DS4 07.2014–03.2017, DS3 03.2016–03.2017. Двигун не названо; зв'язок з 1.2 PureTech турбо — висновок.",
+        "fr": "Rappel officiel : pompe à vide endommagée par la corrosion chimique de la courroie de distribution liée à une huile dégradée ; C3 Picasso sept. 2014–mars 2017, C4/DS4 juil. 2014–mars 2017, DS3 mars 2016–mars 2017. Le moteur n'est pas nommé ; le lien avec le 1.2 PureTech turbo est une déduction."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_pt_e04",
+      "type": "recall",
+      "tier": 1,
+      "defects": [
+        "puretech.wetbelt"
+      ],
+      "supports": [
+        "manufacturer_acknowledgement"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "RappelConso (DGCCRF)",
+        "title": "Recall A11/00077/23 — Opel and Peugeot, insufficient vacuum pump lubrication",
+        "url": "https://rappel.conso.gouv.fr/fiche-rappel/48204/rapex",
+        "identifier": "A11/00077/23",
+        "publishedDate": "2023-06-16",
+        "retrievedAt": "2026-10-13",
+        "language": "fr",
+        "archive": null,
+        "license": "Licence-Ouverte-2.0",
+        "reuse": "republish",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Second-wave recall for insufficient vacuum pump lubrication: Opel built April 2017–August 2018, Peugeot April 2017–December 2020. The engine is not named; the link to the belt issue is an inference from the press.",
+        "pt": "Chamada da segunda vaga por lubrificação insuficiente da bomba de vácuo: Opel fabricados entre abril de 2017 e agosto de 2018, Peugeot entre abril de 2017 e dezembro de 2020. O motor não é indicado; a ligação ao problema da correia é uma inferência a partir da imprensa.",
+        "ru": "Отзыв второй волны из-за недостаточной смазки вакуумного насоса: Opel 04.2017–08.2018, Peugeot 04.2017–12.2020. Двигатель не назван; связь с проблемой ремня — вывод по публикациям прессы.",
+        "uk": "Відкликання другої хвилі через недостатнє змащення вакуумного насоса: Opel 04.2017–08.2018, Peugeot 04.2017–12.2020. Двигун не названо; зв'язок із проблемою ременя — висновок за публікаціями преси.",
+        "fr": "Rappel de seconde vague pour lubrification insuffisante de la pompe à vide : Opel produites d'avril 2017 à août 2018, Peugeot d'avril 2017 à décembre 2020. Le moteur n'est pas nommé ; le lien avec la courroie est déduit de la presse."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_pt_e05",
+      "type": "recall",
+      "tier": 1,
+      "defects": [
+        "puretech.wetbelt"
+      ],
+      "supports": [
+        "manufacturer_acknowledgement"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "RappelConso (DGCCRF)",
+        "title": "Recall A12/01048/24 — Citroën and DS, insufficient vacuum pump lubrication",
+        "url": "https://rappel.conso.gouv.fr/fiche-rappel/49989/rapex",
+        "identifier": "A12/01048/24",
+        "publishedDate": "2024-12-13",
+        "retrievedAt": "2026-10-13",
+        "language": "fr",
+        "archive": null,
+        "license": "Licence-Ouverte-2.0",
+        "reuse": "republish",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Second-wave recall for Citroën and DS built February 2017–November 2019 (Berlingo, C3, C3 Aircross, C4, C4 Cactus, C4 Picasso, DS3). The engine is not named.",
+        "pt": "Chamada da segunda vaga para Citroën e DS fabricados entre fevereiro de 2017 e novembro de 2019 (Berlingo, C3, C3 Aircross, C4, C4 Cactus, C4 Picasso, DS3). O motor não é indicado.",
+        "ru": "Отзыв второй волны для Citroën и DS, выпущенных с февраля 2017 по ноябрь 2019 года (Berlingo, C3, C3 Aircross, C4, C4 Cactus, C4 Picasso, DS3). Двигатель не назван.",
+        "uk": "Відкликання другої хвилі для Citroën і DS, випущених з лютого 2017 по листопад 2019 року (Berlingo, C3, C3 Aircross, C4, C4 Cactus, C4 Picasso, DS3). Двигун не названо.",
+        "fr": "Rappel de seconde vague pour Citroën et DS produites de février 2017 à novembre 2019 (Berlingo, C3, C3 Aircross, C4, C4 Cactus, C4 Picasso, DS3). Le moteur n'est pas nommé."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_pt_e06",
+      "type": "regulator_investigation",
+      "tier": 1,
+      "defects": [
+        "puretech.wetbelt"
+      ],
+      "supports": [
+        "existence",
+        "manufacturer_acknowledgement"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "Assemblée nationale",
+        "title": "Written question no. 1396 (17th legislature) and ministerial answer",
+        "url": "https://questions.assemblee-nationale.fr/dyn/17/questions/QANR5L17QE1396.pdf",
+        "identifier": "QE 1396 (17e législature)",
+        "publishedDate": "2025-03-18",
+        "retrievedAt": "2026-10-13",
+        "language": "fr",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Government answer: the vehicle market surveillance service (SSMVM) and the DGCCRF handle reports on the 1.2 PureTech; Stellantis acted through recall campaigns in 2020 and 2022 and voluntary commitments.",
+        "pt": "Resposta do Governo: o serviço de fiscalização do mercado automóvel (SSMVM) e a DGCCRF tratam as queixas sobre o 1.2 PureTech; a Stellantis agiu através de campanhas de chamada em 2020 e 2022 e de compromissos voluntários.",
+        "ru": "Ответ правительства: жалобы по 1.2 PureTech рассматривают служба надзора за рынком автомобилей (SSMVM) и DGCCRF; Stellantis провела отзывные кампании в 2020 и 2022 годах и взяла добровольные обязательства.",
+        "uk": "Відповідь уряду: скарги щодо 1.2 PureTech розглядають служба нагляду за ринком автомобілів (SSMVM) і DGCCRF; Stellantis провела кампанії відкликання у 2020 і 2022 роках і взяла добровільні зобов'язання.",
+        "fr": "Réponse du Gouvernement : le service de surveillance du marché des véhicules (SSMVM) et la DGCCRF traitent les signalements sur le 1.2 PureTech ; Stellantis a agi par des campagnes de rappel en 2020 et 2022 et des engagements volontaires."
+      },
+      "confidence": "high",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_pt_e07",
+      "type": "regulator_investigation",
+      "tier": 1,
+      "defects": [
+        "puretech.wetbelt"
+      ],
+      "supports": [
+        "existence",
+        "manufacturer_acknowledgement"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "Assemblée nationale",
+        "title": "Written question no. 14313 (16th legislature) and ministerial answer",
+        "url": "https://www.assemblee-nationale.fr/dyn/16/questions/QANR5L16QE14313.pdf",
+        "identifier": "QE 14313 (16e législature)",
+        "publishedDate": "2024-06-11",
+        "retrievedAt": "2026-10-13",
+        "language": "fr",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Government answer: the SSMVM examines conformity, and a recall campaign was carried out on the 1.2 PureTech.",
+        "pt": "Resposta do Governo: o SSMVM analisa a conformidade, e foi realizada uma campanha de chamada ao 1.2 PureTech.",
+        "ru": "Ответ правительства: SSMVM проверяет соответствие; по 1.2 PureTech проведена отзывная кампания.",
+        "uk": "Відповідь уряду: SSMVM перевіряє відповідність; щодо 1.2 PureTech проведено кампанію відкликання.",
+        "fr": "Réponse du Gouvernement : le SSMVM examine la conformité et une campagne de rappel a été menée sur le 1.2 PureTech."
+      },
+      "confidence": "high",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_pt_e08",
+      "type": "technical_analysis",
+      "tier": 2,
+      "defects": [
+        "puretech.wetbelt"
+      ],
+      "supports": [
+        "existence",
+        "mechanism",
+        "applicability",
+        "inspection",
+        "remedy"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "NTN-SNR",
+        "title": "TECHinfo #22 — The 1.2 PureTech turbo engine",
+        "url": "https://www.ntn-snr.com/sites/default/files/2023-03/TECHinfo%201.2%20PureTech%20Turbo_EN_rev.pdf",
+        "identifier": null,
+        "publishedDate": "2022-06",
+        "retrievedAt": "2026-10-13",
+        "language": "en",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Timing-kit supplier bulletin restating the recall notice: engine codes EB2DT (HNZ) and EB2DTS (HNY) built March 2013–April 2017 (recall codes JZR and HFC); oil-dilution mechanism; belt check with gauge G-0109-6 through the oil filler; interval now 6 years / 100,000 km; repair steps.",
+        "pt": "Boletim do fornecedor de kits de distribuição que retoma a nota de chamada: códigos de motor EB2DT (HNZ) e EB2DTS (HNY) fabricados entre março de 2013 e abril de 2017 (códigos de chamada JZR e HFC); mecanismo de diluição do óleo; verificação da correia com o calibre G-0109-6 pelo bocal de enchimento de óleo; intervalo agora de 6 anos / 100 000 km; passos de reparação.",
+        "ru": "Бюллетень поставщика комплектов ГРМ, пересказывающий уведомление об отзыве: коды двигателей EB2DT (HNZ) и EB2DTS (HNY), выпуск 03.2013–04.2017 (коды отзыва JZR и HFC); механизм разжижения масла; проверка ремня калибром G-0109-6 через маслозаливную горловину; интервал теперь 6 лет / 100 000 км; порядок ремонта.",
+        "uk": "Бюлетень постачальника комплектів ГРМ, що переказує повідомлення про відкликання: коди двигунів EB2DT (HNZ) і EB2DTS (HNY), випуск 03.2013–04.2017 (коди відкликання JZR і HFC); механізм розрідження оливи; перевірка ременя калібром G-0109-6 через оливозаливну горловину; інтервал тепер 6 років / 100 000 км; порядок ремонту.",
+        "fr": "Bulletin du fournisseur de kits de distribution reprenant la notice de rappel : codes moteur EB2DT (HNZ) et EB2DTS (HNY) produits de mars 2013 à avril 2017 (codes de rappel JZR et HFC) ; mécanisme de dilution de l'huile ; contrôle de la courroie avec la jauge G-0109-6 par l'orifice de remplissage d'huile ; intervalle désormais de 6 ans / 100 000 km ; étapes de réparation."
+      },
+      "confidence": "high",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_pt_e09",
+      "type": "press",
+      "tier": 2,
+      "defects": [
+        "puretech.wetbelt"
+      ],
+      "supports": [
+        "manufacturer_acknowledgement",
+        "remedy"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "Test-Achats",
+        "title": "Extension de garantie sur les moteurs PureTech",
+        "url": "https://www.test-achats.be/mobilite/autos/presse/extension-de-garantie-sur-les-moteurs-puretech",
+        "identifier": null,
+        "publishedDate": "2024-09-10",
+        "retrievedAt": "2026-10-13",
+        "language": "fr",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Consumer organisation: warranty extension to 10 years or 175,000 km confirmed for Belgium; diagnosis and repair in the brand network.",
+        "pt": "Organização de consumidores: extensão de garantia para 10 anos ou 175 000 km confirmada na Bélgica; diagnóstico e reparação na rede da marca.",
+        "ru": "Организация потребителей: продление гарантии до 10 лет или 175 000 км подтверждено для Бельгии; диагностика и ремонт в сети марки.",
+        "uk": "Організація споживачів: продовження гарантії до 10 років або 175 000 км підтверджено для Бельгії; діагностика і ремонт у мережі марки.",
+        "fr": "Association de consommateurs : extension de garantie à 10 ans ou 175 000 km confirmée pour la Belgique ; diagnostic et réparation dans le réseau de la marque."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_pt_e10",
+      "type": "press",
+      "tier": 2,
+      "defects": [
+        "puretech.wetbelt"
+      ],
+      "supports": [
+        "mechanism",
+        "manufacturer_acknowledgement",
+        "remedy"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "Test-Achats",
+        "title": "Problèmes moteurs PureTech : Stellantis reporte l'indemnisation",
+        "url": "https://www.test-achats.be/mobilite/autos/news/puretech",
+        "identifier": null,
+        "publishedDate": null,
+        "retrievedAt": "2026-10-13",
+        "language": "fr",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Reports Stellantis' position: degradation attributed to premature oil ageing; belt replaced by a chain in 2023; warranty policy in force since 18 March 2024 (10 years / 175,000 km; maintenance to the recommended plan in any garage, diagnosis and repair in the brand network). The page date is inconsistent, so it is used for these qualitative points only.",
+        "pt": "Relata a posição da Stellantis: degradação atribuída ao envelhecimento prematuro do óleo; correia substituída por corrente em 2023; política de garantia em vigor desde 18 de março de 2024 (10 anos / 175 000 km; manutenção segundo o plano recomendado em qualquer oficina, diagnóstico e reparação na rede da marca). A data da página é incoerente, pelo que só é usada para estes pontos qualitativos.",
+        "ru": "Излагает позицию Stellantis: деградацию объясняют преждевременным старением масла; в 2023 году ремень заменён цепью; гарантийная политика действует с 18 марта 2024 года (10 лет / 175 000 км; ТО по рекомендованному плану в любом сервисе, диагностика и ремонт в сети марки). Дата страницы противоречива, поэтому источник используется только для этих качественных утверждений.",
+        "uk": "Викладає позицію Stellantis: деградацію пояснюють передчасним старінням оливи; у 2023 році ремінь замінено ланцюгом; гарантійна політика діє з 18 березня 2024 року (10 років / 175 000 км; ТО за рекомендованим планом у будь-якому сервісі, діагностика й ремонт у мережі марки). Дата сторінки суперечлива, тому джерело використано лише для цих якісних тверджень.",
+        "fr": "Rapporte la position de Stellantis : dégradation attribuée au vieillissement prématuré de l'huile ; courroie remplacée par une chaîne en 2023 ; politique de garantie en vigueur depuis le 18 mars 2024 (10 ans / 175 000 km ; entretien conforme au plan préconisé dans n'importe quel garage, diagnostic et réparation dans le réseau de la marque). La date de la page est incohérente : source utilisée pour ces points qualitatifs uniquement."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_pt_e12",
+      "type": "specialist_press",
+      "tier": 2,
+      "defects": [
+        "puretech.wetbelt"
+      ],
+      "supports": [
+        "manufacturer_acknowledgement",
+        "remedy"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "L'argus",
+        "title": "PureTech : Stellantis a lancé sa plate-forme d'indemnisation en janvier 2025",
+        "url": "https://www.largus.fr/actualite-automobile/moteur-1-2-puretech-stellantis-lancera-bientot-une-plate-forme-d-indemnisation-30037499.html",
+        "identifier": null,
+        "publishedDate": "2024-11-30",
+        "retrievedAt": "2026-10-13",
+        "language": "fr",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Warranty extension since March 2024 up to 10 years / 175,000 km (belt and oil consumption); compensation platform opened on 16 January 2025 for repairs paid between 1 January 2022 and 31 December 2024.",
+        "pt": "Extensão de garantia desde março de 2024 até 10 anos / 175 000 km (correia e consumo de óleo); plataforma de indemnização aberta a 16 de janeiro de 2025 para reparações pagas entre 1 de janeiro de 2022 e 31 de dezembro de 2024.",
+        "ru": "Продление гарантии с марта 2024 года до 10 лет / 175 000 км (ремень и расход масла); платформа компенсаций открыта 16 января 2025 года для ремонтов, оплаченных с 1 января 2022 по 31 декабря 2024 года.",
+        "uk": "Продовження гарантії з березня 2024 року до 10 років / 175 000 км (ремінь і витрата оливи); платформу компенсацій відкрито 16 січня 2025 року для ремонтів, оплачених з 1 січня 2022 по 31 грудня 2024 року.",
+        "fr": "Extension de garantie depuis mars 2024 jusqu'à 10 ans / 175 000 km (courroie et consommation d'huile) ; plate-forme d'indemnisation ouverte le 16 janvier 2025 pour les réparations payées entre le 1er janvier 2022 et le 31 décembre 2024."
+      },
+      "confidence": "high",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_pt_e13",
+      "type": "press",
+      "tier": 2,
+      "defects": [
+        "puretech.wetbelt"
+      ],
+      "supports": [
+        "manufacturer_acknowledgement",
+        "remedy",
+        "prevalence"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "Boursorama",
+        "title": "Défaillance des moteurs PureTech : Stellantis a commencé à indemniser ses premiers clients",
+        "url": "https://www.boursorama.com/conso/actualites/defaillance-des-moteurs-puretech-stellantis-a-commence-a-indemniser-ses-premiers-clients-b37b94bb9565850079f94b84ba7bbea0",
+        "identifier": null,
+        "publishedDate": "2025-05-06",
+        "retrievedAt": "2026-10-13",
+        "language": "fr",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Platform figures reported by the press: 8,226 claims, 4,337 processed, about 60% favourable; main rejection reasons were repairs outside the network and maintenance plan not followed. This article gives 180,000 km for the warranty, against 175,000 km in other sources.",
+        "pt": "Números da plataforma relatados pela imprensa: 8 226 pedidos, 4 337 tratados, cerca de 60% favoráveis; os principais motivos de recusa foram reparações fora da rede e plano de manutenção não cumprido. Este artigo indica 180 000 km para a garantia, contra 175 000 km noutras fontes.",
+        "ru": "Цифры платформы по данным прессы: 8 226 заявок, 4 337 рассмотрено, около 60% — в пользу клиента; основные причины отказа — ремонт вне сети и несоблюдение плана ТО. В статье для гарантии указано 180 000 км, в других источниках — 175 000 км.",
+        "uk": "Цифри платформи за даними преси: 8 226 заявок, 4 337 розглянуто, близько 60% — на користь клієнта; основні причини відмови — ремонт поза мережею та недотримання плану ТО. У статті для гарантії вказано 180 000 км, в інших джерелах — 175 000 км.",
+        "fr": "Chiffres de la plate-forme rapportés par la presse : 8 226 demandes, 4 337 traitées, environ 60 % favorables ; principaux motifs de refus : réparation hors réseau et plan d'entretien non respecté. Cet article indique 180 000 km pour la garantie, contre 175 000 km dans les autres sources."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_pt_e14",
+      "type": "press",
+      "tier": 2,
+      "defects": [
+        "puretech.wetbelt"
+      ],
+      "supports": [
+        "existence",
+        "mechanism",
+        "manufacturer_acknowledgement"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "UFC-Que Choisir",
+        "title": "Moteurs PureTech : un problème d'ampleur pour Stellantis",
+        "url": "https://www.quechoisir.org/actualite-moteurs-puretech-un-probleme-d-ampleur-pour-stellantis-n109962",
+        "identifier": null,
+        "publishedDate": "2023-08-29",
+        "retrievedAt": "2026-10-13",
+        "language": "fr",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Consumer organisation: European Commission Safety Gate alert of 20 November 2020 covering 14 countries; Stellantis attributes the problem to premature oil ageing under specific driving conditions and does not admit a design defect.",
+        "pt": "Organização de consumidores: alerta Safety Gate da Comissão Europeia de 20 de novembro de 2020, abrangendo 14 países; a Stellantis atribui o problema ao envelhecimento prematuro do óleo em condições de utilização específicas e não admite um defeito de conceção.",
+        "ru": "Организация потребителей: оповещение Safety Gate Еврокомиссии от 20 ноября 2020 года по 14 странам; Stellantis объясняет проблему преждевременным старением масла в особых условиях эксплуатации и не признаёт конструктивного дефекта.",
+        "uk": "Організація споживачів: сповіщення Safety Gate Єврокомісії від 20 листопада 2020 року щодо 14 країн; Stellantis пояснює проблему передчасним старінням оливи в особливих умовах експлуатації та не визнає конструктивного дефекту.",
+        "fr": "Association de consommateurs : alerte Safety Gate de la Commission européenne du 20 novembre 2020 couvrant 14 pays ; Stellantis attribue le problème au vieillissement prématuré de l'huile dans des conditions d'utilisation particulières et ne reconnaît pas de défaut de conception."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_pt_e17",
+      "type": "specialist_press",
+      "tier": 2,
+      "defects": [
+        "puretech.wetbelt"
+      ],
+      "supports": [
+        "applicability",
+        "remedy"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "Caradisiac",
+        "title": "Faut-il acheter une Peugeot, Citroën, DS d'occasion équipée du moteur 1.2 PureTech",
+        "url": "https://www.caradisiac.com/faut-il-acheter-une-peugeot-citroen-ds-d-occasion-equipee-du-moteur-1-2-puretech-196274.htm",
+        "identifier": null,
+        "publishedDate": null,
+        "retrievedAt": "2026-10-13",
+        "language": "fr",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Engine codes EB2DT 'HNZ' (110 hp) and EB2DTS 'HNY' (130 hp); recall JZR/HFC for builds March 2013–April 2017; belt interval cut from 10 years / 180,000 km to 6 years / 100,000 km in December 2020.",
+        "pt": "Códigos de motor EB2DT 'HNZ' (110 cv) e EB2DTS 'HNY' (130 cv); chamada JZR/HFC para fabrico entre março de 2013 e abril de 2017; intervalo da correia reduzido de 10 anos / 180 000 km para 6 anos / 100 000 km em dezembro de 2020.",
+        "ru": "Коды двигателей EB2DT «HNZ» (110 л. с.) и EB2DTS «HNY» (130 л. с.); отзыв JZR/HFC для выпуска 03.2013–04.2017; в декабре 2020 года интервал замены ремня сокращён с 10 лет / 180 000 км до 6 лет / 100 000 км.",
+        "uk": "Коди двигунів EB2DT «HNZ» (110 к. с.) і EB2DTS «HNY» (130 к. с.); відкликання JZR/HFC для випуску 03.2013–04.2017; у грудні 2020 року інтервал заміни ременя скорочено з 10 років / 180 000 км до 6 років / 100 000 км.",
+        "fr": "Codes moteur EB2DT « HNZ » (110 ch) et EB2DTS « HNY » (130 ch) ; rappel JZR/HFC pour les productions de mars 2013 à avril 2017 ; intervalle de la courroie ramené de 10 ans / 180 000 km à 6 ans / 100 000 km en décembre 2020."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_pt_e18",
+      "type": "specialist_press",
+      "tier": 2,
+      "defects": [
+        "puretech.wetbelt"
+      ],
+      "supports": [
+        "remedy",
+        "prevalence"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "Fiches-auto.fr",
+        "title": "Rappel des moteurs 1.2 PureTech 110 et 130 ch",
+        "url": "https://www.fiches-auto.fr/articles-auto/rappels-constructeurs/s-2398-rappel-des-12-puretech.php",
+        "identifier": null,
+        "publishedDate": null,
+        "retrievedAt": "2026-10-13",
+        "language": "fr",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "November 2020 recall: about 220,000 vehicles in France and more than 500,000 worldwide (figures not sourced to the recall notice); remedy steps; the chain-driven Gen3 engine had separate camshaft-screw fixes in early 2024.",
+        "pt": "Chamada de novembro de 2020: cerca de 220 000 veículos em França e mais de 500 000 no mundo (números sem referência à nota de chamada); passos de reparação; o motor Gen3 com corrente teve correções separadas dos parafusos da árvore de cames no início de 2024.",
+        "ru": "Отзыв ноября 2020 года: около 220 000 машин во Франции и более 500 000 в мире (цифры не подкреплены уведомлением об отзыве); порядок ремонта; у цепного Gen3 в начале 2024 года были отдельные исправления болтов распредвала.",
+        "uk": "Відкликання листопада 2020 року: близько 220 000 машин у Франції та понад 500 000 у світі (цифри не підкріплені повідомленням про відкликання); порядок ремонту; у ланцюгового Gen3 на початку 2024 року були окремі виправлення болтів розподільного вала.",
+        "fr": "Rappel de novembre 2020 : environ 220 000 véhicules en France et plus de 500 000 dans le monde (chiffres non rattachés à la notice de rappel) ; étapes de réparation ; le moteur Gen3 à chaîne a fait l'objet de corrections distinctes des vis d'arbre à cames début 2024."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_bm_e01",
+      "type": "specialist_press",
+      "tier": 2,
+      "defects": [
+        "n47.chain"
+      ],
+      "supports": [
+        "existence",
+        "mechanism",
+        "applicability",
+        "manufacturer_acknowledgement",
+        "remedy"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "L'argus",
+        "title": "Fiabilité BMW : problèmes de chaîne de distribution sur le 2.0 diesel",
+        "url": "https://www.largus.fr/actualite-automobile/fiabilite-bmw-problemes-de-chaine-de-distribution-sur-le-20-diesel-6313385.html",
+        "identifier": null,
+        "publishedDate": "2015-06-18",
+        "retrievedAt": "2026-10-13",
+        "language": "fr",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "BMW workshop campaign 0011540300 (network notified 23 January 2015) with a new chain tensioner for 1, 3, 5 Series and X3 with the N47 built up to the end of 2008; BMW's production bands 1 March 2007–5 January 2009, 5 January 2009–1 March 2011 and later; new crankshaft reference from January 2009; cover close to 100% with maintenance history.",
+        "pt": "Campanha de oficina BMW 0011540300 (rede notificada a 23 de janeiro de 2015) com um novo tensor da corrente para Série 1, 3, 5 e X3 com N47 fabricados até ao fim de 2008; faixas de produção BMW: 1 de março de 2007–5 de janeiro de 2009, 5 de janeiro de 2009–1 de março de 2011 e posteriores; nova referência da cambota desde janeiro de 2009; cobertura próxima de 100% com histórico de manutenção.",
+        "ru": "Сервисная кампания BMW 0011540300 (сеть уведомлена 23 января 2015 года): новый натяжитель цепи для 1, 3, 5 серии и X3 с N47, выпущенных до конца 2008 года; диапазоны выпуска по BMW: 01.03.2007–05.01.2009, 05.01.2009–01.03.2011 и позже; новый номер коленвала с января 2009 года; покрытие близко к 100% при наличии истории ТО.",
+        "uk": "Сервісна кампанія BMW 0011540300 (мережу повідомлено 23 січня 2015 року): новий натягувач ланцюга для 1, 3, 5 серії та X3 з N47, випущених до кінця 2008 року; діапазони випуску за BMW: 01.03.2007–05.01.2009, 05.01.2009–01.03.2011 і пізніше; новий номер колінчастого вала з січня 2009 року; покриття близьке до 100% за наявності історії ТО.",
+        "fr": "Campagne atelier BMW 0011540300 (réseau informé le 23 janvier 2015) avec un nouveau tendeur de chaîne pour Série 1, 3, 5 et X3 à moteur N47 produites jusqu'à fin 2008 ; plages de production BMW : 1er mars 2007–5 janvier 2009, 5 janvier 2009–1er mars 2011 et après ; nouvelle référence de vilebrequin depuis janvier 2009 ; prise en charge proche de 100 % avec historique d'entretien."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_bm_e03",
+      "type": "specialist_press",
+      "tier": 3,
+      "defects": [
+        "n47.chain"
+      ],
+      "supports": [
+        "applicability"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "Wikipedia",
+        "title": "BMW N47 (English)",
+        "url": "https://en.wikipedia.org/wiki/BMW_N47",
+        "identifier": null,
+        "publishedDate": null,
+        "retrievedAt": "2026-10-13",
+        "language": "en",
+        "archive": null,
+        "license": "CC-BY-SA-4.0",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Encyclopedia entry: N47 production March 2007 to September 2014. Used only for the production window, alongside the academic source.",
+        "pt": "Entrada de enciclopédia: produção do N47 de março de 2007 a setembro de 2014. Usada apenas para o período de produção, em conjunto com a fonte académica.",
+        "ru": "Энциклопедическая статья: N47 выпускался с марта 2007 по сентябрь 2014 года. Используется только для периода выпуска, вместе с академическим источником.",
+        "uk": "Енциклопедична стаття: N47 випускався з березня 2007 по вересень 2014 року. Використовується лише для періоду випуску, разом з академічним джерелом.",
+        "fr": "Article d'encyclopédie : production du N47 de mars 2007 à septembre 2014. Utilisé uniquement pour la période de production, avec la source universitaire."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_bm_e05",
+      "type": "court_decision",
+      "tier": 2,
+      "defects": [
+        "n47.chain"
+      ],
+      "supports": [
+        "legal_outcome"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "IWW Institut (Autorecht aktuell)",
+        "title": "NW-Handel Rechtsprechungsreport 2017",
+        "url": "https://www.iww.de/asr/autorecht/nw-handel-rechtsprechungsreport-die-wichtigsten-urteile-des-jahres-2017-zum-nw-handel-auf-einen-blick-f109782",
+        "identifier": "OLG Frankfurt a.M. 24 U 26/15; 24 U 85/15",
+        "publishedDate": "2018-01-02",
+        "retrievedAt": "2026-10-13",
+        "language": "de",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Legal trade report of OLG Frankfurt am Main judgments of 21 April 2017 (24 U 26/15, 24 U 85/15): chain noise on N47 BMWs was held to be an acoustic comfort issue, not a substantial defect. The judgments themselves were not consulted.",
+        "pt": "Relatório jurídico especializado sobre os acórdãos do OLG Frankfurt am Main de 21 de abril de 2017 (24 U 26/15, 24 U 85/15): o ruído da corrente nos BMW N47 foi considerado um problema acústico de conforto e não um defeito substancial. Os acórdãos em si não foram consultados.",
+        "ru": "Отраслевой юридический обзор решений OLG Frankfurt am Main от 21 апреля 2017 года (24 U 26/15, 24 U 85/15): шум цепи на BMW с N47 признан акустической проблемой комфорта, а не существенным дефектом. Сами решения не изучались.",
+        "uk": "Галузевий юридичний огляд рішень OLG Frankfurt am Main від 21 квітня 2017 року (24 U 26/15, 24 U 85/15): шум ланцюга на BMW з N47 визнано акустичною проблемою комфорту, а не суттєвим дефектом. Самі рішення не вивчалися.",
+        "fr": "Revue juridique spécialisée sur les arrêts de l'OLG Frankfurt am Main du 21 avril 2017 (24 U 26/15, 24 U 85/15) : le bruit de chaîne des BMW N47 a été jugé être un problème acoustique de confort et non un défaut substantiel. Les arrêts eux-mêmes n'ont pas été consultés."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_bm_e08",
+      "type": "specialist_press",
+      "tier": 2,
+      "defects": [
+        "n47.chain"
+      ],
+      "supports": [
+        "symptom",
+        "cost"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "repareo.de",
+        "title": "N47 Motor: Motorschaden — Anzeichen, Probleme, Kostenbeispiele",
+        "url": "https://www.repareo.de/n47-motor-motorschaden/",
+        "identifier": null,
+        "publishedDate": null,
+        "retrievedAt": "2026-10-13",
+        "language": "de",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Workshop booking platform: chain replacement offer of about 1,850 EUR (both chains, guide rails, tensioners, seals, oil and coolant), plus about 550 EUR on X models / all-wheel drive; cold-start rattle and warning light as symptoms.",
+        "pt": "Plataforma de marcação de oficinas: oferta de substituição da corrente de cerca de 1 850 EUR (ambas as correntes, guias, tensores, vedantes, óleo e líquido de refrigeração), mais cerca de 550 EUR nos modelos X / tração integral; ruído a frio e luz de aviso como sintomas.",
+        "ru": "Платформа записи в мастерские: предложение по замене цепи около 1 850 EUR (обе цепи, направляющие, натяжители, уплотнения, масло и антифриз), плюс около 550 EUR для моделей X / полного привода; симптомы — стук при холодном пуске и контрольная лампа.",
+        "uk": "Платформа запису до майстерень: пропозиція заміни ланцюга близько 1 850 EUR (обидва ланцюги, напрямні, натягувачі, ущільнення, олива й антифриз), плюс близько 550 EUR для моделей X / повного приводу; симптоми — стук під час холодного пуску та контрольна лампа.",
+        "fr": "Plate-forme de réservation d'ateliers : offre de remplacement de chaîne d'environ 1 850 EUR (deux chaînes, guides, tendeurs, joints, huile et liquide de refroidissement), plus environ 550 EUR sur les modèles X / transmission intégrale ; claquement à froid et voyant comme symptômes."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_bm_e09a",
+      "type": "specialist_press",
+      "tier": 2,
+      "defects": [
+        "n47.chain"
+      ],
+      "supports": [
+        "existence",
+        "symptom",
+        "cost"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "auto motor und sport",
+        "title": "Steuerkettenprobleme bei BMW N47-Motoren: Symptome, Kosten, Lösungen",
+        "url": "https://www.auto-motor-und-sport.de/tech-zukunft/steuerkettenprobleme-bei-bmw-n47-motoren-symptome-kosten-loesungen/",
+        "identifier": null,
+        "publishedDate": "2026-03-26",
+        "retrievedAt": "2026-10-13",
+        "language": "de",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Magazine: N47 built 2007–2015; metallic rattle at cold start; chain repair typically 1,500–2,500 EUR; The magazine states that later engine generations largely resolved the issue (no BMW statement is quoted). No failure percentage is given.",
+        "pt": "Revista: N47 fabricado entre 2007 e 2015; ruído metálico no arranque a frio; reparação da corrente normalmente 1 500–2 500 EUR; a revista afirma que as gerações posteriores do motor resolveram em grande parte o problema (não é citada nenhuma declaração da BMW). Não é indicada qualquer percentagem de avarias.",
+        "ru": "Журнал: N47 выпускался в 2007–2015 годах; металлический стук при холодном пуске; ремонт цепи обычно 1 500–2 500 EUR; журнал утверждает, что в поздних поколениях двигателя проблема в основном устранена (заявление BMW не цитируется). Доля отказов не приводится.",
+        "uk": "Журнал: N47 випускався у 2007–2015 роках; металевий стук під час холодного пуску; ремонт ланцюга зазвичай 1 500–2 500 EUR; журнал стверджує, що в пізніх поколіннях двигуна проблему здебільшого усунено (заяву BMW не цитовано). Частка відмов не наводиться.",
+        "fr": "Magazine : N47 produit de 2007 à 2015 ; claquement métallique au démarrage à froid ; réparation de la chaîne généralement 1 500–2 500 EUR ; le magazine affirme que les générations ultérieures du moteur ont en grande partie résolu le problème (aucune déclaration de BMW n'est citée). Aucun pourcentage de pannes n'est donné."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_bm_e09b",
+      "type": "specialist_press",
+      "tier": 2,
+      "defects": [
+        "n47.chain"
+      ],
+      "supports": [
+        "prevalence"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "auto motor und sport",
+        "title": "Steuerkettenprobleme beim BMW N47: Ursachen und Lösungen",
+        "url": "https://www.auto-motor-und-sport.de/tech-zukunft/steuerkettenprobleme-beim-bmw-n47-ursachen-und-loesungen/",
+        "identifier": null,
+        "publishedDate": "2026-08-04",
+        "retrievedAt": "2026-10-13",
+        "language": "de",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Second article from the same magazine: no failure percentage. Cited because a '20%' figure attributed online to this magazine does not appear in it.",
+        "pt": "Segundo artigo da mesma revista: sem percentagem de avarias. Citado porque um número de '20%' atribuído online a esta revista não aparece nele.",
+        "ru": "Вторая статья того же журнала: доли отказов нет. Приводится потому, что цифра «20%», которую в интернете приписывают этому журналу, в ней отсутствует.",
+        "uk": "Друга стаття того ж журналу: частки відмов немає. Наводиться тому, що цифри «20%», яку в інтернеті приписують цьому журналу, у ній немає.",
+        "fr": "Second article du même magazine : aucun pourcentage de pannes. Cité parce qu'un chiffre de « 20 % » attribué en ligne à ce magazine n'y figure pas."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_bm_e10",
+      "type": "specialist_press",
+      "tier": 2,
+      "defects": [
+        "n47.chain"
+      ],
+      "supports": [
+        "existence",
+        "mechanism"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "Gebrauchtwagenberater.de",
+        "title": "BMW N47 Probleme und Haltbarkeit",
+        "url": "https://gebrauchtwagenberater.de/bmw-n47-probleme/",
+        "identifier": null,
+        "publishedDate": "2024-09-14",
+        "retrievedAt": "2026-10-13",
+        "language": "de",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Most affected are the first production years, which had sharp-edged sprockets; model years 2014–2015 the least affected.",
+        "pt": "Os mais afetados são os primeiros anos de produção, com rodas dentadas de arestas vivas; os anos-modelo 2014–2015 são os menos afetados.",
+        "ru": "Сильнее всего затронуты первые годы выпуска с острокромочными звёздочками; меньше всего — модельные годы 2014–2015.",
+        "uk": "Найбільше уражені перші роки випуску з гострокромковими зірочками; найменше — модельні роки 2014–2015.",
+        "fr": "Les plus touchées sont les premières années de production, aux pignons à arêtes vives ; les millésimes 2014–2015 sont les moins touchés."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_bm_e11",
+      "type": "technical_analysis",
+      "tier": 2,
+      "defects": [
+        "n47.chain"
+      ],
+      "supports": [
+        "applicability"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "University of Miskolc",
+        "title": "T. Fekete, 'Maintenance of the N47 internal-combustion diesel engine', Design of Machines and Structures 12(2), 64–72",
+        "url": "https://doi.org/10.32972/dms.2022.015",
+        "identifier": "doi:10.32972/dms.2022.015",
+        "publishedDate": "2022",
+        "retrievedAt": "2026-10-13",
+        "language": "en",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Academic maintenance paper giving the early N47 codes N47D20U0 (105 kW), N47D20O0 (130 kW) and N47D20T0 (150 kW, twin turbo). Its statement about a recall cites a secondary source and is not used.",
+        "pt": "Artigo académico de manutenção com os primeiros códigos N47: N47D20U0 (105 kW), N47D20O0 (130 kW) e N47D20T0 (150 kW, biturbo). A sua afirmação sobre uma chamada cita uma fonte secundária e não é usada.",
+        "ru": "Академическая статья по обслуживанию с ранними кодами N47: N47D20U0 (105 кВт), N47D20O0 (130 кВт) и N47D20T0 (150 кВт, битурбо). Её утверждение об отзыве ссылается на вторичный источник и не используется.",
+        "uk": "Академічна стаття з обслуговування з ранніми кодами N47: N47D20U0 (105 кВт), N47D20O0 (130 кВт) і N47D20T0 (150 кВт, бітурбо). Її твердження про відкликання посилається на вторинне джерело й не використовується.",
+        "fr": "Article universitaire de maintenance donnant les premiers codes N47 : N47D20U0 (105 kW), N47D20O0 (130 kW) et N47D20T0 (150 kW, biturbo). Son affirmation sur un rappel cite une source secondaire et n'est pas utilisée."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_dq_e01",
+      "type": "recall",
+      "tier": 1,
+      "defects": [
+        "dsg.dq200"
+      ],
+      "supports": [
+        "existence",
+        "mechanism",
+        "manufacturer_acknowledgement",
+        "remedy"
+      ],
+      "scope": {
+        "gearbox": {
+          "family": [
+            "DQ200"
+          ]
+        }
+      },
+      "source": {
+        "publisher": "NHTSA",
+        "title": "Recall 13V568 — Volkswagen Jetta Hybrid, DQ200",
+        "url": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=13V568",
+        "identifier": "NHTSA 13V568",
+        "publishedDate": "2013-11-14",
+        "retrievedAt": "2026-10-13",
+        "language": "en",
+        "archive": null,
+        "license": "US-Gov-Public-Domain",
+        "reuse": "republish",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Official US recall: 2013–2014 Jetta Hybrid built October 2012–October 2013 with the DQ200; additives in the gearbox oil can corrode the control module, causing a loss of drive; remedy: non-corrosive gearbox oil (VW 34F6/4V); 3,837 vehicles.",
+        "pt": "Chamada oficial nos EUA: Jetta Hybrid 2013–2014 fabricados entre outubro de 2012 e outubro de 2013 com DQ200; aditivos do óleo da caixa podem corroer o módulo de controlo, provocando perda de tração; solução: óleo de caixa não corrosivo (VW 34F6/4V); 3 837 veículos.",
+        "ru": "Официальный отзыв в США: Jetta Hybrid 2013–2014 модельных годов, выпуск 10.2012–10.2013, с DQ200; присадки в масле КПП могут вызвать коррозию блока управления и потерю тяги; решение — некоррозионное масло (VW 34F6/4V); 3 837 машин.",
+        "uk": "Офіційне відкликання у США: Jetta Hybrid 2013–2014 модельних років, випуск 10.2012–10.2013, з DQ200; присадки в оливі КПП можуть спричинити корозію блока керування і втрату тяги; рішення — некорозійна олива (VW 34F6/4V); 3 837 машин.",
+        "fr": "Rappel officiel aux États-Unis : Jetta Hybrid 2013–2014 produites d'octobre 2012 à octobre 2013 avec DQ200 ; des additifs de l'huile de boîte peuvent corroder le module de commande et provoquer une perte de motricité ; remède : huile de boîte non corrosive (VW 34F6/4V) ; 3 837 véhicules."
+      },
+      "confidence": "high",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_dq_e02",
+      "type": "recall",
+      "tier": 1,
+      "defects": [
+        "dsg.dq200"
+      ],
+      "supports": [
+        "existence",
+        "mechanism",
+        "manufacturer_acknowledgement",
+        "remedy"
+      ],
+      "scope": {
+        "gearbox": {
+          "family": [
+            "DQ200"
+          ]
+        }
+      },
+      "source": {
+        "publisher": "NHTSA",
+        "title": "Recall 19V866 — Volkswagen Jetta Hybrid, DQ200 7-speed DSG",
+        "url": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=19V866",
+        "identifier": "NHTSA 19V866",
+        "publishedDate": "2019-12-06",
+        "retrievedAt": "2026-10-13",
+        "language": "en",
+        "archive": null,
+        "license": "US-Gov-Public-Domain",
+        "reuse": "republish",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Official US recall: 2013–2015 Jetta Hybrid; hairline cracks in the mechatronic unit can leak oil and drop pressure so the clutch does not engage, with a sudden loss of drive; remedy: repair kit (VW 34J6); 2,167 vehicles.",
+        "pt": "Chamada oficial nos EUA: Jetta Hybrid 2013–2015; microfissuras na unidade mecatrónica podem causar fuga de óleo e queda de pressão, impedindo a embraiagem de engatar, com perda súbita de tração; solução: kit de reparação (VW 34J6); 2 167 veículos.",
+        "ru": "Официальный отзыв в США: Jetta Hybrid 2013–2015; микротрещины в мехатронике приводят к утечке масла и падению давления, сцепление не включается, возможна внезапная потеря тяги; решение — ремкомплект (VW 34J6); 2 167 машин.",
+        "uk": "Офіційне відкликання у США: Jetta Hybrid 2013–2015; мікротріщини в мехатроніку призводять до витоку оливи та падіння тиску, зчеплення не вмикається, можлива раптова втрата тяги; рішення — ремкомплект (VW 34J6); 2 167 машин.",
+        "fr": "Rappel officiel aux États-Unis : Jetta Hybrid 2013–2015 ; des microfissures du mécatronique peuvent provoquer une fuite d'huile et une chute de pression empêchant l'embrayage de s'engager, avec perte soudaine de motricité ; remède : kit de réparation (VW 34J6) ; 2 167 véhicules."
+      },
+      "confidence": "high",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_dq_e03",
+      "type": "recall",
+      "tier": 1,
+      "defects": [
+        "dsg.dq200"
+      ],
+      "supports": [
+        "existence",
+        "mechanism",
+        "applicability",
+        "remedy"
+      ],
+      "scope": {
+        "gearbox": {
+          "family": [
+            "DQ200"
+          ]
+        },
+        "modelYear": {
+          "from": 2009,
+          "to": 2012
+        }
+      },
+      "source": {
+        "publisher": "Transport Department, Hong Kong",
+        "title": "Recall 10000424 — DQ200, replacing gearbox mechatronics",
+        "url": "https://www.td.gov.hk/filemanager/en/content_4797/10000424_e.pdf",
+        "identifier": "HK TD 10000424",
+        "publishedDate": "2013-04-29",
+        "retrievedAt": "2026-10-13",
+        "language": "en",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Official recall: Golf, Jetta, Scirocco and Touran 1.4 TSI, Passat 1.8 TSI and Polo 1.4, model years 2009–2012; a control-unit fault or lack of oil pressure may interrupt power; mechatronics replaced. Applies only to the listed VINs; the notice says the power interruption occurs only in isolated cases and that steering and braking are not affected.",
+        "pt": "Chamada oficial: Golf, Jetta, Scirocco e Touran 1.4 TSI, Passat 1.8 TSI e Polo 1.4, anos-modelo 2009–2012; uma avaria da unidade de controlo ou falta de pressão de óleo pode interromper a transmissão de potência; mecatrónica substituída. Aplica-se apenas aos VIN listados; a nota indica que a interrupção de potência ocorre apenas em casos isolados e que a direção e os travões não são afetados.",
+        "ru": "Официальный отзыв: Golf, Jetta, Scirocco и Touran 1.4 TSI, Passat 1.8 TSI и Polo 1.4, модельные годы 2009–2012; неисправность блока управления или нехватка давления масла может прервать передачу мощности; мехатроник заменяется. Относится только к перечисленным VIN; в уведомлении сказано, что прерывание мощности бывает лишь в единичных случаях, а рулевое управление и тормоза не затрагиваются.",
+        "uk": "Офіційне відкликання: Golf, Jetta, Scirocco і Touran 1.4 TSI, Passat 1.8 TSI і Polo 1.4, модельні роки 2009–2012; несправність блока керування або брак тиску оливи може перервати передачу потужності; мехатронік замінюється. Стосується лише перелічених VIN; у повідомленні сказано, що переривання потужності трапляється лише в поодиноких випадках, а кермо та гальма не зачіпаються.",
+        "fr": "Rappel officiel : Golf, Jetta, Scirocco et Touran 1.4 TSI, Passat 1.8 TSI et Polo 1.4, millésimes 2009–2012 ; un défaut du calculateur ou un manque de pression d'huile peut interrompre la transmission ; mécatronique remplacé. Ne concerne que les VIN listés ; la fiche précise que l'interruption de puissance n'arrive que dans des cas isolés et que la direction et le freinage ne sont pas affectés."
+      },
+      "confidence": "high",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_dq_e04",
+      "type": "press",
+      "tier": 2,
+      "defects": [
+        "dsg.dq200"
+      ],
+      "supports": [
+        "existence",
+        "manufacturer_acknowledgement",
+        "remedy"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "JustCars",
+        "title": "Volkswagen issue recall on DSG-equipped cars",
+        "url": "https://www.justcars.com.au/news-and-reviews/volkswagen-issue-recall-on-dsg-equipped-cars/11808",
+        "identifier": null,
+        "publishedDate": "2013-06-13",
+        "retrievedAt": "2026-10-13",
+        "language": "en",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Volkswagen Group Australia voluntary recall of 25,928 vehicles with the 7-speed DSG (DQ200), Golf, Jetta, Polo, Passat and Caddy built June 2008–September 2011; mechatronics replaced and software updated.",
+        "pt": "Chamada voluntária da Volkswagen Group Australia de 25 928 veículos com DSG de 7 velocidades (DQ200), Golf, Jetta, Polo, Passat e Caddy fabricados entre junho de 2008 e setembro de 2011; mecatrónica substituída e software atualizado.",
+        "ru": "Добровольный отзыв Volkswagen Group Australia: 25 928 машин с 7-ступенчатой DSG (DQ200), Golf, Jetta, Polo, Passat и Caddy выпуска 06.2008–09.2011; замена мехатроника и обновление ПО.",
+        "uk": "Добровільне відкликання Volkswagen Group Australia: 25 928 машин із 7-ступінчастою DSG (DQ200), Golf, Jetta, Polo, Passat і Caddy випуску 06.2008–09.2011; заміна мехатроніка та оновлення ПЗ.",
+        "fr": "Rappel volontaire de Volkswagen Group Australia portant sur 25 928 véhicules à DSG 7 rapports (DQ200), Golf, Jetta, Polo, Passat et Caddy produits de juin 2008 à septembre 2011 ; mécatronique remplacé et logiciel mis à jour."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_dq_e06",
+      "type": "press",
+      "tier": 2,
+      "defects": [
+        "dsg.dq200"
+      ],
+      "supports": [
+        "existence",
+        "mechanism",
+        "applicability",
+        "manufacturer_acknowledgement",
+        "remedy"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "AUTO BILD",
+        "title": "VW: Probleme mit DSG",
+        "url": "https://www.autobild.de/artikel/vw-probleme-mit-dsg-4559939.html",
+        "identifier": null,
+        "publishedDate": "2014-02-06",
+        "retrievedAt": "2026-10-13",
+        "language": "de",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Germany: about 257,000 cars with the 7-speed DSG (DQ200) across Audi, SEAT, Škoda and VW; no official recall, fixed at the next workshop visit; in November 2013 the oil was changed from synthetic to mineral because sulfur additives crystallise in humid heat; production periods 2008 to May 2011 and October 2012 to April 2013.",
+        "pt": "Alemanha: cerca de 257 000 automóveis com DSG de 7 velocidades (DQ200) da Audi, SEAT, Škoda e VW; sem chamada oficial, correção na visita seguinte à oficina; em novembro de 2013 o óleo passou de sintético a mineral porque os aditivos de enxofre cristalizam com calor húmido; períodos de produção de 2008 a maio de 2011 e de outubro de 2012 a abril de 2013.",
+        "ru": "Германия: около 257 000 машин Audi, SEAT, Škoda и VW с 7-ступенчатой DSG (DQ200); официального отзыва нет, исправление при следующем визите в сервис; в ноябре 2013 года синтетическое масло заменено минеральным, так как сернистые присадки кристаллизуются во влажной жаре; периоды выпуска 2008–05.2011 и 10.2012–04.2013.",
+        "uk": "Німеччина: близько 257 000 машин Audi, SEAT, Škoda і VW із 7-ступінчастою DSG (DQ200); офіційного відкликання немає, виправлення під час наступного візиту до сервісу; у листопаді 2013 року синтетичну оливу замінено мінеральною, бо сірчисті присадки кристалізуються у вологій спеці; періоди випуску 2008–05.2011 і 10.2012–04.2013.",
+        "fr": "Allemagne : environ 257 000 voitures Audi, SEAT, Škoda et VW à DSG 7 rapports (DQ200) ; pas de rappel officiel, correction lors du passage suivant à l'atelier ; en novembre 2013, l'huile synthétique a été remplacée par une huile minérale car les additifs soufrés cristallisent par chaleur humide ; périodes de production 2008 à mai 2011 et octobre 2012 à avril 2013."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_dq_e07",
+      "type": "specialist_press",
+      "tier": 2,
+      "defects": [
+        "dsg.dq200"
+      ],
+      "supports": [
+        "existence",
+        "mechanism",
+        "applicability",
+        "manufacturer_acknowledgement",
+        "remedy"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "L'argus",
+        "title": "Polo, Golf, Tiguan... un rappel historique chez Volkswagen",
+        "url": "https://www.largus.fr/actualite-automobile/rappel-historique-chez-volkswagen-3326377.html",
+        "identifier": null,
+        "publishedDate": "2013-11-14",
+        "retrievedAt": "2026-10-13",
+        "language": "fr",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "About 1.8 million vehicles worldwide with the 7-speed DSG in Volkswagen's 2013 campaign: synthetic oil reacting and causing deposits and corrosion in the mechatronics; fix with higher-viscosity mineral oil and reprogramming; DQ200 only (engines up to 250 Nm); in France no official recall, done at workshop visits.",
+        "pt": "Cerca de 1,8 milhões de veículos no mundo com DSG de 7 velocidades na campanha de 2013 da Volkswagen: o óleo sintético reage e provoca depósitos e corrosão na mecatrónica; correção com óleo mineral de maior viscosidade e reprogramação; apenas a DQ200 (motores até 250 Nm); em França sem chamada oficial, feita nas visitas à oficina.",
+        "ru": "Около 1,8 млн машин в мире с 7-ступенчатой DSG в кампании Volkswagen 2013 года: синтетическое масло вступает в реакцию, вызывая отложения и коррозию в мехатронике; исправление — более вязкое минеральное масло и перепрограммирование; только DQ200 (двигатели до 250 Н·м); во Франции без официального отзыва, при визитах в сервис.",
+        "uk": "Близько 1,8 млн машин у світі із 7-ступінчастою DSG у кампанії Volkswagen 2013 року: синтетична олива вступає в реакцію, спричиняючи відкладення та корозію в мехатроніку; виправлення — в'язкіша мінеральна олива й перепрограмування; лише DQ200 (двигуни до 250 Н·м); у Франції без офіційного відкликання, під час візитів до сервісу.",
+        "fr": "Environ 1,8 million de véhicules dans le monde à DSG 7 rapports dans la campagne Volkswagen de 2013 : l'huile synthétique réagit et provoque dépôts et corrosion dans le mécatronique ; correction par une huile minérale plus visqueuse et une reprogrammation ; DQ200 uniquement (moteurs jusqu'à 250 Nm) ; en France, pas de rappel officiel, intervention lors des passages à l'atelier."
+      },
+      "confidence": "high",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_dq_e08",
+      "type": "press",
+      "tier": 2,
+      "defects": [
+        "dsg.dq200"
+      ],
+      "supports": [
+        "manufacturer_acknowledgement",
+        "remedy"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "Autonews.ru",
+        "title": "«Проблемную DSG» отменили вместе с гарантией",
+        "url": "https://www.autonews.ru/news/58259e8c9a7947474312002c",
+        "identifier": null,
+        "publishedDate": "2014-03-07",
+        "retrievedAt": "2026-10-13",
+        "language": "ru",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Russia: Volkswagen Group Rus extended the DSG warranty to 5 years / 150,000 km from summer 2012 and ended it for cars built from 1 January 2014, citing gearbox improvements.",
+        "pt": "Rússia: a Volkswagen Group Rus alargou a garantia da DSG para 5 anos / 150 000 km a partir do verão de 2012 e terminou-a para os automóveis fabricados a partir de 1 de janeiro de 2014, invocando melhorias na caixa.",
+        "ru": "Россия: Volkswagen Group Rus с лета 2012 года продлила гарантию на DSG до 5 лет / 150 000 км и отменила её для машин, выпущенных с 1 января 2014 года, сославшись на доработку коробки.",
+        "uk": "Росія: Volkswagen Group Rus з літа 2012 року продовжила гарантію на DSG до 5 років / 150 000 км і скасувала її для машин, випущених з 1 січня 2014 року, пославшись на доопрацювання коробки.",
+        "fr": "Russie : Volkswagen Group Rus a étendu la garantie DSG à 5 ans / 150 000 km à partir de l'été 2012 et l'a supprimée pour les véhicules produits à partir du 1er janvier 2014, en invoquant des améliorations de la boîte."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_dq_e11",
+      "type": "specialist_press",
+      "tier": 3,
+      "defects": [
+        "dsg.dq200"
+      ],
+      "supports": [
+        "applicability"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "Autohled.cz",
+        "title": "DSG DQ200 (wiki)",
+        "url": "https://www.autohled.cz/wiki/pojmy/dq200",
+        "identifier": null,
+        "publishedDate": null,
+        "retrievedAt": "2026-10-13",
+        "language": "cs",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Wiki: gearbox codes 0AM (VW), 0BM (Audi) and 0CW (revised version, from 2013); limit about 250 Nm. Used only for the gearbox codes.",
+        "pt": "Wiki: códigos de caixa 0AM (VW), 0BM (Audi) e 0CW (versão revista, desde 2013); limite de cerca de 250 Nm. Usada apenas para os códigos da caixa.",
+        "ru": "Вики: коды КПП 0AM (VW), 0BM (Audi) и 0CW (доработанная версия, с 2013 года); предел около 250 Н·м. Используется только для кодов КПП.",
+        "uk": "Вікі: коди КПП 0AM (VW), 0BM (Audi) і 0CW (доопрацьована версія, з 2013 року); межа близько 250 Н·м. Використовується лише для кодів КПП.",
+        "fr": "Wiki : codes de boîte 0AM (VW), 0BM (Audi) et 0CW (version révisée, à partir de 2013) ; limite d'environ 250 Nm. Utilisé uniquement pour les codes de boîte."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_dq_e12",
+      "type": "specialist_press",
+      "tier": 2,
+      "defects": [
+        "dsg.dq200"
+      ],
+      "supports": [
+        "mechanism",
+        "symptom"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "Gears Magazine (ATRA)",
+        "title": "DQ200: They Just Keep Coming!",
+        "url": "https://gearsmagazine.com/magazine/dq200-they-just-keep-coming/",
+        "identifier": null,
+        "publishedDate": "2025-08-15",
+        "retrievedAt": "2026-10-13",
+        "language": "en",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Transmission trade magazine: failure modes include a cracked pressure-accumulator casting, control-unit overheating and clutch wear; pressure below about 40 bar leads to a no-move condition. Its 'high failure rate' remark has no data behind it and is not used.",
+        "pt": "Revista do setor de transmissões: modos de avaria incluem fissura no corpo do acumulador de pressão, sobreaquecimento da unidade de controlo e desgaste da embraiagem; pressão abaixo de cerca de 40 bar impede o veículo de andar. A sua referência a uma 'elevada taxa de avarias' não tem dados e não é usada.",
+        "ru": "Отраслевой журнал по трансмиссиям: виды отказов — трещина корпуса гидроаккумулятора, перегрев блока управления, износ сцепления; при давлении ниже примерно 40 бар машина не трогается. Упоминание «высокой частоты отказов» не подкреплено данными и не используется.",
+        "uk": "Галузевий журнал з трансмісій: види відмов — тріщина корпусу гідроакумулятора, перегрів блока керування, знос зчеплення; за тиску нижче приблизно 40 бар машина не рушає. Згадка про «високу частоту відмов» не підкріплена даними й не використовується.",
+        "fr": "Revue professionnelle de la transmission : modes de défaillance incluant la fissuration du corps de l'accumulateur de pression, la surchauffe du calculateur et l'usure de l'embrayage ; sous environ 40 bar, le véhicule ne peut plus avancer. Sa mention d'un « taux de panne élevé » n'est étayée par aucune donnée et n'est pas utilisée."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_dq_e14",
+      "type": "specialist_press",
+      "tier": 2,
+      "defects": [
+        "dsg.dq200"
+      ],
+      "supports": [
+        "inspection",
+        "symptom"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "Kfz-Meisterbetrieb Dietrich",
+        "title": "DSG DQ200 (0AM) — Befund vor Tausch bei Mechatronik & Kupplung",
+        "url": "https://kfz-dietrich.com/dq200/",
+        "identifier": null,
+        "publishedDate": null,
+        "retrievedAt": "2026-10-13",
+        "language": "de",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Workshop page: fault codes P17BF (pressure loss, typically a cracked accumulator) and P189C (clutch forced open); diagnosis with ODIS, live hydraulic measurements and adaptation checks before replacing parts.",
+        "pt": "Página de oficina: códigos de avaria P17BF (perda de pressão, tipicamente acumulador fissurado) e P189C (embraiagem forçada a abrir); diagnóstico com ODIS, medições hidráulicas em tempo real e verificação das adaptações antes de substituir peças.",
+        "ru": "Страница мастерской: коды неисправностей P17BF (потеря давления, обычно трещина гидроаккумулятора) и P189C (принудительное размыкание сцепления); диагностика через ODIS, замеры гидравлики в реальном времени и проверка адаптаций перед заменой деталей.",
+        "uk": "Сторінка майстерні: коди несправностей P17BF (втрата тиску, зазвичай тріщина гідроакумулятора) і P189C (примусове розмикання зчеплення); діагностика через ODIS, заміри гідравліки в реальному часі та перевірка адаптацій перед заміною деталей.",
+        "fr": "Page d'atelier : codes défaut P17BF (perte de pression, typiquement accumulateur fissuré) et P189C (embrayage forcé ouvert) ; diagnostic avec ODIS, mesures hydrauliques en temps réel et contrôle des adaptations avant tout remplacement."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    },
+    {
+      "id": "ev_dq_e15",
+      "type": "specialist_press",
+      "tier": 2,
+      "defects": [
+        "dsg.dq200"
+      ],
+      "supports": [
+        "applicability"
+      ],
+      "scope": null,
+      "source": {
+        "publisher": "CarWiki.de",
+        "title": "DSG Probleme der VW, Skoda & Seat Doppelkupplungsgetriebe",
+        "url": "https://carwiki.de/vw-DSG-probleme/",
+        "identifier": null,
+        "publishedDate": "2026-09-09",
+        "retrievedAt": "2026-10-13",
+        "language": "de",
+        "archive": null,
+        "license": "proprietary",
+        "reuse": "cite",
+        "status": "no_archive"
+      },
+      "quote": null,
+      "translations": {},
+      "note": {
+        "en": "Distinguishes the DQ200 (7-speed, dry clutches, up to 250 Nm, since 2007) from the wet-clutch DQ250 (6-speed, 02E), DQ381 and DQ500.",
+        "pt": "Distingue a DQ200 (7 velocidades, embraiagens a seco, até 250 Nm, desde 2007) das caixas com embraiagens em banho de óleo DQ250 (6 velocidades, 02E), DQ381 e DQ500.",
+        "ru": "Отличает DQ200 (7 ступеней, сухие сцепления, до 250 Н·м, с 2007 года) от коробок с мокрыми сцеплениями DQ250 (6 ступеней, 02E), DQ381 и DQ500.",
+        "uk": "Відрізняє DQ200 (7 ступенів, сухі зчеплення, до 250 Н·м, з 2007 року) від коробок з мокрими зчепленнями DQ250 (6 ступенів, 02E), DQ381 і DQ500.",
+        "fr": "Distingue la DQ200 (7 rapports, embrayages à sec, jusqu'à 250 Nm, depuis 2007) des boîtes à embrayages humides DQ250 (6 rapports, 02E), DQ381 et DQ500."
+      },
+      "confidence": "medium",
+      "review": {
+        "status": "source_verified",
+        "at": "2026-10-13"
+      }
+    }
+  ]
+}

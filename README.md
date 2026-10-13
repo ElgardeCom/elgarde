@@ -94,6 +94,40 @@ Self-check, before you rely on any of it:
 python3 inspection-core/tools/check.py     # schemas, structure, all 32 vectors
 ```
 
+## Known defects v3 (dossiers)
+
+`inspection-core/data/v3/` holds sourced dossiers for individual known defects, next to the v2
+rule file, which is **unchanged** (`data/defects.json`, `format 2`, still what the packages and the
+MCP server use). Schemas are in `inspection-core/data/schema/v3/`; the release manifest, with
+counts, changelog and source licences, is `data/v3/release.json`.
+
+| File | Holds |
+|---|---|
+| `defects.json` | one dossier per defect: component, mechanism, applicability, severity, symptoms, inspection steps, repair, ids of evidence and prevalence |
+| `evidence.json` | the sources behind each claim: type, tier, scope, publisher, link, licence, note |
+| `prevalence.json` | how common a defect is: a measured figure, a partial one such as a recall scope, or an explicit "no reliable figure" |
+| `vehicles.json` | makes, models, engines and gearboxes used to resolve what a caller knows about a car |
+| `disclaimer.json`, `release.json` | the wording that goes with the data, and the release manifest |
+
+Applicability is decided per defect from the facts you supply (model, engine or gearbox code,
+production date and so on), with three outcomes:
+
+- `applies`: the supplied facts satisfy the defect's conditions.
+- `possible`: the model matches but a fact needed to decide is missing (for example the engine
+  code); the answer lists what to ask for.
+- `not_applicable`: the model is not covered, or a supplied fact rules it out (for example a different
+  engine code, or a production date outside the affected range).
+
+`reviewStatus` on evidence (`review.status` in the files) says how far a record has been checked.
+`source_verified` means an automated check against the source as opened on the stated date: claims,
+dates and figures were compared with it. It is **not** a human sign-off. `approved` is reserved for
+records a named person has reviewed.
+
+Some evidence derives from RappelConso under the Licence Ouverte 2.0; see
+[`LICENSE-DATA`](LICENSE-DATA). The v3 dossiers are served by `GET /v1/defects/{defect_id}` and
+`GET /v1/catalog`, and `GET /v1/defects` accepts fact-based matching (see
+[`openapi/`](openapi/)).
+
 ## Porting the core
 
 1. Load `inspection-core/data/checklist.json` and `inspection-core/data/defects.json`.

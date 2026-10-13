@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elgarde.com/schema/v3/release.schema.json",
+  "title": "Elgarde known defects v3 — release manifest",
+  "type": "object",
+  "required": [
+    "format",
+    "release",
+    "createdAt",
+    "license",
+    "counts",
+    "licenses",
+    "changelog"
+  ],
+  "properties": {
+    "format": {
+      "const": 3
+    },
+    "release": {
+      "type": "string",
+      "pattern": "^[0-9]{4}\\.[0-9]{2}\\.[0-9]+$"
+    },
+    "createdAt": {
+      "$ref": "#/$defs/date"
+    },
+    "license": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "review": {
+      "type": "string"
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "defects",
+        "evidence",
+        "prevalence"
+      ],
+      "properties": {
+        "defects": {
+          "type": "integer"
+        },
+        "evidence": {
+          "type": "integer"
+        },
+        "prevalence": {
+          "type": "integer"
+        }
+      }
+    },
+    "licenses": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "name",
+          "url",
+          "statement"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "statement": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "changelog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "release",
+          "added",
+          "updated",
+          "deprecated"
+        ],
+        "properties": {
+          "release": {
+            "type": "string"
+          },
+          "added": {
+            "$ref": "#/$defs/strings"
+          },
+          "updated": {
+            "$ref": "#/$defs/strings"
+          },
+          "deprecated": {
+            "$ref": "#/$defs/strings"
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+    },
+    "strings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "format": 3,
+  "release": "2026.10.0",
+  "createdAt": "2026-10-13",
+  "license": "CC-BY-4.0",
+  "source": "docs/research/defects-v3/02-pilot.json (pilot research, 2026-10-13)",
+  "review": "Converted from the pilot dossiers. Every evidence source was opened on 2026-10-13 and the claims, dates and figures compared with it (automated fact-check). No human reviewer has signed off yet; see reviewStatus on each evidence item.",
+  "counts": {
+    "defects": 3,
+    "evidence": 34,
+    "prevalence": 7
+  },
+  "licenses": {
+    "Licence-Ouverte-2.0": {
+      "name": "Licence Ouverte / Open Licence 2.0 (Etalab)",
+      "url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence/",
+      "statement": "Contains recall records from RappelConso (DGCCRF, France), reused under the Licence Ouverte / Open Licence 2.0."
+    },
+    "US-Gov-Public-Domain": {
+      "name": "U.S. Government work, public domain",
+      "url": "https://www.nhtsa.gov/",
+      "statement": null
+    },
+    "proprietary": {
+      "name": "All rights reserved by the publisher (cited, not republished)",
+      "url": null,
+      "statement": null
+    },
+    "CC-BY-SA-4.0": {
+      "name": "Creative Commons Attribution-ShareAlike 4.0",
+      "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "statement": null
+    }
+  },
+  "changelog": [
+    {
+      "release": "2026.10.0",
+      "added": [
+        "dsg.dq200",
+        "n47.chain",
+        "puretech.wetbelt"
+      ],
+      "updated": [],
+      "deprecated": []
+    }
+  ]
+}

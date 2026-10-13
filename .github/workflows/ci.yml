@@ -129,11 +129,17 @@ jobs:
           spec = json.load(open("openapi/elgarde-api.json"))
           assert spec["openapi"].startswith("3.1"), spec["openapi"]
           paths = set(spec["paths"])
-          expected = {"/v1/meta", "/v1/checklist", "/v1/defects", "/v1/score", "/v1/vin/{vin}"}
+          expected = {"/v1/meta", "/v1/checklist", "/v1/defects", "/v1/defects/{defect_id}",
+                      "/v1/catalog", "/v1/score", "/v1/vin/{vin}"}
           assert paths == expected, f"unexpected paths: {paths ^ expected}"
           # The snapshot must never carry an authenticated route.
           for path in paths:
               assert path.startswith("/v1/"), path
+          # No dangling references: every $ref must resolve inside the snapshot.
+          import re
+          schemas = set(spec["components"]["schemas"])
+          refs = set(re.findall(r'#/components/schemas/([^"]+)', json.dumps(spec)))
+          assert refs <= schemas, f"dangling $ref: {refs - schemas}"
           print(f"OK — {len(paths)} public paths, OpenAPI {spec['openapi']}")
           PY
 

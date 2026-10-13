@@ -1,0 +1,938 @@
+{
+  "format": 3,
+  "languages": [
+    "en",
+    "pt",
+    "ru",
+    "uk",
+    "fr"
+  ],
+  "questions": {
+    "model": {
+      "label": {
+        "en": "Model",
+        "pt": "Modelo",
+        "ru": "Модель",
+        "uk": "Модель",
+        "fr": "Modèle"
+      },
+      "help": {
+        "en": "The model name as on the registration document, e.g. Golf, 208, 320d.",
+        "pt": "O nome do modelo como consta do documento único, p. ex. Golf, 208, 320d.",
+        "ru": "Название модели как в регистрационном документе, например Golf, 208, 320d.",
+        "uk": "Назва моделі як у реєстраційному документі, наприклад Golf, 208, 320d.",
+        "fr": "Le nom du modèle tel qu'il figure sur le certificat d'immatriculation, p. ex. Golf, 208, 320d."
+      }
+    },
+    "year": {
+      "label": {
+        "en": "Year of manufacture",
+        "pt": "Ano de fabrico",
+        "ru": "Год выпуска",
+        "uk": "Рік випуску",
+        "fr": "Année de fabrication"
+      },
+      "help": {
+        "en": "If unsure, the date of first registration (field B of the EU registration certificate) is a close guide.",
+        "pt": "Em caso de dúvida, a data da primeira matrícula (campo B do certificado de matrícula UE) é uma boa referência.",
+        "ru": "Если не уверены, ориентируйтесь на дату первой регистрации (поле B европейского свидетельства о регистрации).",
+        "uk": "Якщо не впевнені, орієнтуйтеся на дату першої реєстрації (поле B європейського свідоцтва про реєстрацію).",
+        "fr": "En cas de doute, la date de première immatriculation (champ B du certificat d'immatriculation UE) est un bon repère."
+      }
+    },
+    "fuel": {
+      "label": {
+        "en": "Fuel",
+        "pt": "Combustível",
+        "ru": "Топливо",
+        "uk": "Пальне",
+        "fr": "Carburant"
+      },
+      "help": {
+        "en": "Field P.3 of the EU registration certificate.",
+        "pt": "Campo P.3 do certificado de matrícula UE.",
+        "ru": "Поле P.3 европейского свидетельства о регистрации.",
+        "uk": "Поле P.3 європейського свідоцтва про реєстрацію.",
+        "fr": "Champ P.3 du certificat d'immatriculation UE."
+      }
+    },
+    "gearbox": {
+      "label": {
+        "en": "Gearbox type",
+        "pt": "Tipo de caixa de velocidades",
+        "ru": "Тип КПП",
+        "uk": "Тип КПП",
+        "fr": "Type de boîte de vitesses"
+      },
+      "help": {
+        "en": "Manual or automatic? On VW group cars a dual-clutch gearbox usually shows 'DSG' or 'S tronic' on or near the gear lever.",
+        "pt": "Manual ou automática? Nos automóveis do grupo VW, uma caixa de dupla embraiagem costuma ter 'DSG' ou 'S tronic' na alavanca ou junto dela.",
+        "ru": "Механика или автомат? На машинах группы VW коробка с двумя сцеплениями обычно обозначена «DSG» или «S tronic» на рычаге или рядом с ним.",
+        "uk": "Механіка чи автомат? На машинах групи VW коробка з двома зчепленнями зазвичай позначена «DSG» або «S tronic» на важелі чи поруч із ним.",
+        "fr": "Manuelle ou automatique ? Sur les véhicules du groupe VW, une boîte à double embrayage porte généralement « DSG » ou « S tronic » sur le levier ou à côté."
+      }
+    },
+    "gearboxCode": {
+      "label": {
+        "en": "Gearbox code",
+        "pt": "Código da caixa de velocidades",
+        "ru": "Код КПП",
+        "uk": "Код КПП",
+        "fr": "Code de la boîte de vitesses"
+      },
+      "help": {
+        "en": "Stamped on the gearbox housing and returned by a dealer VIN query; on VW group cars also printed on the vehicle data sticker.",
+        "pt": "Gravado na carcaça da caixa e indicado por uma consulta do VIN no concessionário; nos automóveis do grupo VW também consta da etiqueta de dados do veículo.",
+        "ru": "Выбит на корпусе КПП и выдаётся дилером по запросу VIN; на машинах группы VW также напечатан на наклейке с данными автомобиля.",
+        "uk": "Вибитий на корпусі КПП і видається дилером за запитом VIN; на машинах групи VW також надрукований на наліпці з даними автомобіля.",
+        "fr": "Frappé sur le carter de boîte et fourni par le concessionnaire à partir du VIN ; sur les véhicules du groupe VW, il figure aussi sur l'étiquette de données du véhicule."
+      }
+    },
+    "engineCode": {
+      "label": {
+        "en": "Engine code",
+        "pt": "Código do motor",
+        "ru": "Код двигателя",
+        "uk": "Код двигуна",
+        "fr": "Code moteur"
+      },
+      "help": {
+        "en": "On the engine plate or block, or from a dealer VIN query. Displacement (P.1) and power in kW (P.2) on the registration certificate help narrow it down.",
+        "pt": "Na placa ou no bloco do motor, ou numa consulta do VIN no concessionário. A cilindrada (P.1) e a potência em kW (P.2) do certificado de matrícula ajudam a identificá-lo.",
+        "ru": "На табличке или блоке двигателя либо по запросу VIN у дилера. Сузить выбор помогут объём (P.1) и мощность в кВт (P.2) из свидетельства о регистрации.",
+        "uk": "На табличці або блоці двигуна чи за запитом VIN у дилера. Звузити вибір допоможуть об'єм (P.1) і потужність у кВт (P.2) зі свідоцтва про реєстрацію.",
+        "fr": "Sur la plaque ou le bloc moteur, ou via une requête VIN chez le concessionnaire. La cylindrée (P.1) et la puissance en kW (P.2) du certificat d'immatriculation aident à le déterminer."
+      }
+    },
+    "productionDate": {
+      "label": {
+        "en": "Production month",
+        "pt": "Mês de produção",
+        "ru": "Месяц выпуска",
+        "uk": "Місяць випуску",
+        "fr": "Mois de production"
+      },
+      "help": {
+        "en": "The build date (YYYY-MM) on the door-pillar label or from a dealer VIN query. The affected range starts or ends within this year.",
+        "pt": "A data de fabrico (AAAA-MM) na etiqueta do pilar da porta ou numa consulta do VIN no concessionário. O período afetado começa ou termina dentro deste ano.",
+        "ru": "Дата сборки (ГГГГ-ММ) на наклейке в проёме двери или по запросу VIN у дилера. Граница затронутого периода приходится на этот год.",
+        "uk": "Дата збирання (РРРР-ММ) на наліпці в отворі дверей або за запитом VIN у дилера. Межа ураженого періоду припадає на цей рік.",
+        "fr": "La date de fabrication (AAAA-MM) sur l'étiquette du montant de porte ou via une requête VIN chez le concessionnaire. La période concernée commence ou se termine dans cette année."
+      }
+    }
+  },
+  "defects": [
+    {
+      "id": "dsg.dq200",
+      "aliases": [],
+      "status": "published",
+      "replacedBy": null,
+      "revision": 1,
+      "updatedAt": "2026-10-13",
+      "legacyRule": "vag-known-issues",
+      "title": {
+        "en": "VW group 7-speed DSG DQ200 (0AM / 0CW / 0BM, dry clutches): reported mechatronic and clutch faults",
+        "pt": "DSG de 7 velocidades DQ200 do grupo VW (0AM / 0CW / 0BM, embraiagens a seco): avarias referidas da mecatrónica e da embraiagem",
+        "ru": "7-ступенчатая DSG DQ200 группы VW (0AM / 0CW / 0BM, сухие сцепления): сообщаемые отказы мехатроника и сцепления",
+        "uk": "7-ступінчаста DSG DQ200 групи VW (0AM / 0CW / 0BM, сухі зчеплення): повідомлювані відмови мехатроніка та зчеплення",
+        "fr": "DSG 7 rapports DQ200 du groupe VW (0AM / 0CW / 0BM, embrayages à sec) : défaillances signalées du mécatronique et de l'embrayage"
+      },
+      "summary": {
+        "en": "In 2013 Volkswagen announced a gearbox oil and software measure for DQ200 units (about 1.8 million vehicles worldwide according to L'argus); in Germany and France it was carried out at workshop visits rather than as a recall. Regulators also recorded recalls for a possible loss of drive (NHTSA 13V568 and 19V866, US Jetta Hybrid only; Hong Kong 10000424, where the notice says it happens only in isolated cases). Recalls and trade-press reports describe faults of the mechatronic unit; workshop sources also describe clutch wear. The 7-speed dry-clutch DSG is used with engines up to about 250 Nm.",
+        "pt": "Em 2013 a Volkswagen anunciou uma medida de óleo e software para as caixas DQ200 (cerca de 1,8 milhões de veículos no mundo, segundo o L'argus); na Alemanha e em França foi executada nas visitas à oficina e não como chamada. As autoridades registaram também chamadas por possível perda de tração (NHTSA 13V568 e 19V866, apenas Jetta Hybrid nos EUA; Hong Kong 10000424, cuja nota indica que ocorre apenas em casos isolados). As chamadas e a imprensa técnica descrevem avarias da unidade mecatrónica; fontes de oficinas descrevem também desgaste da embraiagem. A DSG de 7 velocidades com embraiagens a seco é usada com motores até cerca de 250 Nm.",
+        "ru": "В 2013 году Volkswagen объявила мероприятие по замене масла и обновлению ПО на коробках DQ200 (около 1,8 млн машин в мире по данным L'argus); в Германии и Франции оно выполнялось при визитах в сервис, а не как отзыв. Регуляторы также зарегистрировали отзывы из-за возможной потери тяги (NHTSA 13V568 и 19V866, только Jetta Hybrid в США; Гонконг 10000424, где в уведомлении сказано, что это бывает лишь в единичных случаях). Отзывы и техническая пресса описывают неисправности мехатроника; источники из мастерских описывают и износ сцеплений. 7-ступенчатую DSG с сухими сцеплениями ставят на двигатели до примерно 250 Н·м.",
+        "uk": "У 2013 році Volkswagen оголосила захід із заміни оливи та оновлення ПЗ на коробках DQ200 (близько 1,8 млн машин у світі за даними L'argus); у Німеччині та Франції його виконували під час візитів до сервісу, а не як відкликання. Регулятори також зареєстрували відкликання через можливу втрату тяги (NHTSA 13V568 і 19V866, лише Jetta Hybrid у США; Гонконг 10000424, де в повідомленні сказано, що це трапляється лише в поодиноких випадках). Відкликання й технічна преса описують несправності мехатроніка; джерела з майстерень описують також знос зчеплень. 7-ступінчасту DSG із сухими зчепленнями ставлять на двигуни до приблизно 250 Н·м.",
+        "fr": "En 2013, Volkswagen a annoncé une action huile et logiciel sur les boîtes DQ200 (environ 1,8 million de véhicules dans le monde selon L'argus) ; en Allemagne et en France, elle a été menée lors des passages à l'atelier plutôt que par un rappel. Des autorités ont aussi enregistré des rappels pour une possible perte de motricité (NHTSA 13V568 et 19V866, Jetta Hybrid américaine uniquement ; Hong Kong 10000424, dont la fiche indique que cela n'arrive que dans des cas isolés). Les rappels et la presse technique décrivent des défauts de l'unité mécatronique ; des sources d'ateliers décrivent aussi une usure des embrayages. La DSG 7 rapports à embrayages à sec est montée avec des moteurs jusqu'à environ 250 Nm."
+      },
+      "checklistPrompt": {
+        "en": "DSG (DQ200 dry-clutch) — check for judder and mechatronic faults",
+        "pt": "DSG (DQ200 embraiagem seca) — verificar trepidação e avarias da mecatrónica",
+        "ru": "DSG (DQ200, сухое сцепление) — проверить рывки и неисправности мехатроника",
+        "uk": "DSG (DQ200, сухе зчеплення) — перевірити ривки та несправності мехатроніка",
+        "fr": "DSG (DQ200 à embrayage à sec) — vérifier à-coups et défauts du mécatronique"
+      },
+      "component": "transmission.dct.mechatronic",
+      "mechanism": {
+        "en": "The mechatronic unit combines the hydraulic pressure accumulator, an electric pump and the control electronics. Recalls and the trade press describe: additives in the original synthetic gearbox oil that could corrode the electronics (addressed in 2013 with mineral oil and new software); cracks in the accumulator or housing that let hydraulic pressure drop so the clutches may not engage; and wear of the dry clutches reported by workshops. Reported results include judder and gears not engaging and, in the recalls, a possible sudden loss of drive; the Hong Kong notice says the latter occurs only in isolated cases.",
+        "pt": "A unidade mecatrónica junta o acumulador de pressão hidráulica, uma bomba elétrica e a eletrónica de controlo. As chamadas e a imprensa técnica descrevem: aditivos do óleo sintético original da caixa que podiam corroer a eletrónica (tratado em 2013 com óleo mineral e novo software); fissuras no acumulador ou no corpo que fazem cair a pressão hidráulica, pelo que as embraiagens podem não engatar; e desgaste das embraiagens a seco referido por oficinas. Os resultados referidos incluem trepidação e mudanças que não entram e, nas chamadas, uma possível perda súbita de tração; a nota de Hong Kong indica que esta ocorre apenas em casos isolados.",
+        "ru": "Мехатроник объединяет гидроаккумулятор, электронасос и электронику управления. В отзывах и технической прессе описаны: присадки в исходном синтетическом масле КПП, способные вызывать коррозию электроники (в 2013 году — переход на минеральное масло и новое ПО); трещины в гидроаккумуляторе или корпусе, из-за которых падает давление и сцепления могут не включаться; а также износ сухих сцеплений по сообщениям мастерских. Сообщаемые последствия — рывки, невключение передач и, в отзывах, возможная внезапная потеря тяги; в уведомлении Гонконга сказано, что она возникает лишь в единичных случаях.",
+        "uk": "Мехатронік поєднує гідроакумулятор, електронасос і електроніку керування. У відкликаннях і технічній пресі описано: присадки у вихідній синтетичній оливі КПП, здатні спричиняти корозію електроніки (у 2013 році — перехід на мінеральну оливу та нове ПЗ); тріщини в гідроакумуляторі чи корпусі, через які падає тиск і зчеплення можуть не вмикатися; а також знос сухих зчеплень за повідомленнями майстерень. Повідомлювані наслідки — ривки, невмикання передач і, у відкликаннях, можлива раптова втрата тяги; у повідомленні Гонконгу сказано, що вона трапляється лише в поодиноких випадках.",
+        "fr": "Le mécatronique réunit l'accumulateur de pression hydraulique, une pompe électrique et l'électronique de commande. Les rappels et la presse technique décrivent : des additifs de l'huile synthétique d'origine de la boîte pouvant corroder l'électronique (traité en 2013 par une huile minérale et un nouveau logiciel) ; des fissures de l'accumulateur ou du carter qui font chuter la pression, de sorte que les embrayages peuvent ne plus s'engager ; et une usure des embrayages à sec signalée par des ateliers. Les effets signalés comprennent des à-coups, des rapports qui ne passent pas et, dans les rappels, une possible perte soudaine de motricité ; la fiche de Hong Kong précise qu'elle n'arrive que dans des cas isolés."
+      },
+      "applicability": {
+        "models": [
+          "volkswagen.golf",
+          "volkswagen.polo",
+          "volkswagen.passat",
+          "volkswagen.caddy",
+          "volkswagen.jetta",
+          "volkswagen.scirocco",
+          "volkswagen.touran",
+          "audi.a1",
+          "audi.a3",
+          "seat.ibiza",
+          "seat.leon",
+          "skoda.fabia",
+          "skoda.octavia"
+        ],
+        "when": {
+          "gearbox": {
+            "family": [
+              "DQ200"
+            ],
+            "codes": [
+              "0AM",
+              "0CW",
+              "0BM"
+            ]
+          }
+        },
+        "markets": [
+          "EU",
+          "US",
+          "HK",
+          "AU",
+          "CN",
+          "RU"
+        ],
+        "hint": {
+          "en": "Only cars with the 7-speed DSG with dry clutches (DQ200, gearbox codes 0AM / 0CW / 0BM). Not applicable to manual gearboxes or to wet-clutch DSGs (DQ250 / 02E, DQ381, DQ500).",
+          "pt": "Apenas automóveis com DSG de 7 velocidades com embraiagens a seco (DQ200, códigos de caixa 0AM / 0CW / 0BM). Não se aplica a caixas manuais nem a DSG com embraiagens em banho de óleo (DQ250 / 02E, DQ381, DQ500).",
+          "ru": "Только машины с 7-ступенчатой DSG с сухими сцеплениями (DQ200, коды КПП 0AM / 0CW / 0BM). Не относится к механическим коробкам и к DSG с мокрыми сцеплениями (DQ250 / 02E, DQ381, DQ500).",
+          "uk": "Лише машини із 7-ступінчастою DSG із сухими зчепленнями (DQ200, коди КПП 0AM / 0CW / 0BM). Не стосується механічних коробок і DSG з мокрими зчепленнями (DQ250 / 02E, DQ381, DQ500).",
+          "fr": "Uniquement les véhicules équipés de la DSG 7 rapports à embrayages à sec (DQ200, codes de boîte 0AM / 0CW / 0BM). Ne concerne ni les boîtes manuelles ni les DSG à embrayages humides (DQ250 / 02E, DQ381, DQ500)."
+        },
+        "notes": {
+          "en": "The gearbox codes come from secondary sources (0CW is described as a revised version from 2013; 0BM is the code used on some Audi models). Campaign build windows differ by market, for example Germany 2008 to May 2011 and October 2012 to April 2013. A 2019 Australian accumulator recall is not included because its notice does not name the gearbox type.",
+          "pt": "Os códigos de caixa vêm de fontes secundárias (a 0CW é descrita como versão revista desde 2013; a 0BM é o código usado em alguns modelos Audi). Os períodos de fabrico abrangidos pelas campanhas variam por mercado, por exemplo na Alemanha de 2008 a maio de 2011 e de outubro de 2012 a abril de 2013. Uma chamada australiana de 2019 relativa ao acumulador não é incluída porque a nota não indica o tipo de caixa.",
+          "ru": "Коды КПП взяты из вторичных источников (0CW описывается как доработанная версия с 2013 года; 0BM — код, используемый на некоторых моделях Audi). Периоды выпуска, охваченные кампаниями, зависят от рынка: например, в Германии 2008–05.2011 и 10.2012–04.2013. Австралийский отзыв 2019 года по гидроаккумулятору не включён: в уведомлении тип КПП не указан.",
+          "uk": "Коди КПП узято з вторинних джерел (0CW описується як доопрацьована версія з 2013 року; 0BM — код, що використовується на деяких моделях Audi). Періоди випуску, охоплені кампаніями, залежать від ринку: наприклад, у Німеччині 2008–05.2011 і 10.2012–04.2013. Австралійське відкликання 2019 року щодо гідроакумулятора не включено: у повідомленні тип КПП не вказано.",
+          "fr": "Les codes de boîte proviennent de sources secondaires (0CW est décrite comme une version révisée à partir de 2013 ; 0BM est le code utilisé sur certains modèles Audi). Les périodes de production couvertes par les campagnes varient selon le marché, par exemple en Allemagne de 2008 à mai 2011 et d'octobre 2012 à avril 2013. Un rappel australien de 2019 portant sur l'accumulateur n'est pas repris car sa notice ne précise pas le type de boîte."
+        }
+      },
+      "severity": "major",
+      "safety": true,
+      "critical": false,
+      "symptoms": [
+        {
+          "id": "s1",
+          "stage": "early",
+          "text": {
+            "en": "Judder or shudder when pulling away",
+            "pt": "Trepidação ao arrancar",
+            "ru": "Рывки или вибрация при трогании",
+            "uk": "Ривки або вібрація під час рушання",
+            "fr": "À-coups ou broutement au démarrage"
+          }
+        },
+        {
+          "id": "s2",
+          "stage": "early",
+          "text": {
+            "en": "Clunk or rattle at standstill or on load change",
+            "pt": "Pancada ou ruído parado ou na mudança de carga",
+            "ru": "Удар или дребезг на месте или при смене нагрузки",
+            "uk": "Удар або деренчання на місці чи під час зміни навантаження",
+            "fr": "Claquement ou cliquetis à l'arrêt ou lors des changements de charge"
+          }
+        },
+        {
+          "id": "s3",
+          "stage": "late",
+          "text": {
+            "en": "Gear not engaging, or sudden loss of drive",
+            "pt": "Mudança que não entra ou perda súbita de tração",
+            "ru": "Передача не включается или внезапная потеря тяги",
+            "uk": "Передача не вмикається або раптова втрата тяги",
+            "fr": "Rapport qui ne s'engage pas ou perte soudaine de motricité"
+          }
+        },
+        {
+          "id": "s4",
+          "stage": "late",
+          "text": {
+            "en": "Gearbox warning light or flashing gear indicator",
+            "pt": "Luz de aviso da caixa ou indicador de mudança a piscar",
+            "ru": "Лампа неисправности КПП или мигающий индикатор передач",
+            "uk": "Лампа несправності КПП або блимаючий індикатор передач",
+            "fr": "Voyant de boîte ou indicateur de rapport clignotant"
+          }
+        }
+      ],
+      "inspection": [
+        {
+          "id": "i1",
+          "method": "document",
+          "tools": [],
+          "text": {
+            "en": "Confirm the gearbox is a DQ200: read the code (0AM / 0CW / 0BM) on the gearbox housing or from a dealer VIN query. Wet-clutch DSGs (DQ250, DQ381, DQ500) are different units.",
+            "pt": "Confirme que a caixa é uma DQ200: leia o código (0AM / 0CW / 0BM) na carcaça da caixa ou numa consulta do VIN no concessionário. As DSG com embraiagens em banho de óleo (DQ250, DQ381, DQ500) são unidades diferentes.",
+            "ru": "Убедитесь, что стоит DQ200: код (0AM / 0CW / 0BM) на корпусе КПП или по запросу VIN у дилера. DSG с мокрыми сцеплениями (DQ250, DQ381, DQ500) — другие агрегаты.",
+            "uk": "Переконайтеся, що стоїть DQ200: код (0AM / 0CW / 0BM) на корпусі КПП або за запитом VIN у дилера. DSG з мокрими зчепленнями (DQ250, DQ381, DQ500) — інші агрегати.",
+            "fr": "Vérifiez qu'il s'agit d'une DQ200 : lisez le code (0AM / 0CW / 0BM) sur le carter de boîte ou via une requête VIN chez le concessionnaire. Les DSG à embrayages humides (DQ250, DQ381, DQ500) sont d'autres boîtes."
+          },
+          "redFlag": null
+        },
+        {
+          "id": "i2",
+          "method": "document",
+          "tools": [],
+          "text": {
+            "en": "Check recall and campaign status by VIN and ask whether the 2013 oil and software measure was done.",
+            "pt": "Verifique o estado de chamadas e campanhas pelo VIN e pergunte se a medida de 2013 (óleo e software) foi realizada.",
+            "ru": "Проверьте по VIN статус отзывов и кампаний и уточните, выполнено ли мероприятие 2013 года (масло и ПО).",
+            "uk": "Перевірте за VIN статус відкликань і кампаній та з'ясуйте, чи виконано захід 2013 року (олива та ПЗ).",
+            "fr": "Vérifiez par le VIN l'état des rappels et campagnes et demandez si l'action de 2013 (huile et logiciel) a été réalisée."
+          },
+          "redFlag": {
+            "en": "Open campaign, or no record on a car built 2008–2013.",
+            "pt": "Campanha pendente, ou sem registo num automóvel fabricado entre 2008 e 2013.",
+            "ru": "Кампания не закрыта или нет записей для машины 2008–2013 годов выпуска.",
+            "uk": "Кампанія не закрита або немає записів для машини 2008–2013 років випуску.",
+            "fr": "Campagne ouverte, ou aucune trace sur un véhicule produit entre 2008 et 2013."
+          }
+        },
+        {
+          "id": "i3",
+          "method": "obd",
+          "tools": [
+            "ODIS",
+            "VCDS"
+          ],
+          "text": {
+            "en": "Read the gearbox fault memory (P17BF, P189C, P1895) and, with a suitable tester, hydraulic pressure build-up and clutch adaptation values.",
+            "pt": "Leia a memória de avarias da caixa (P17BF, P189C, P1895) e, com um equipamento adequado, a subida de pressão hidráulica e os valores de adaptação da embraiagem.",
+            "ru": "Считайте память ошибок КПП (P17BF, P189C, P1895) и подходящим тестером — нарастание давления гидравлики и адаптации сцеплений.",
+            "uk": "Зчитайте пам'ять помилок КПП (P17BF, P189C, P1895) і відповідним тестером — наростання тиску гідравліки та адаптації зчеплень.",
+            "fr": "Lisez la mémoire de défauts de la boîte (P17BF, P189C, P1895) et, avec un outil adapté, la montée en pression hydraulique et les valeurs d'adaptation d'embrayage."
+          },
+          "redFlag": {
+            "en": "Pressure-loss or clutch fault codes: price in a mechatronic or clutch repair.",
+            "pt": "Códigos de perda de pressão ou de embraiagem: inclua no preço uma reparação da mecatrónica ou da embraiagem.",
+            "ru": "Ошибки потери давления или сцепления — заложите в цену ремонт мехатроника или сцепления.",
+            "uk": "Помилки втрати тиску чи зчеплення — закладіть у ціну ремонт мехатроніка або зчеплення.",
+            "fr": "Codes de perte de pression ou d'embrayage : intégrez dans le prix une réparation du mécatronique ou de l'embrayage."
+          }
+        },
+        {
+          "id": "i4",
+          "method": "test_drive",
+          "tools": [],
+          "text": {
+            "en": "Test drive in stop-and-go traffic and pull away on a slope: feel for judder, clunks, hesitation, gears not engaging or a flashing gear indicator.",
+            "pt": "Faça um ensaio em pára-arranca e arranque numa subida: atenção a trepidação, pancadas, hesitação, mudanças que não entram ou indicador de mudança a piscar.",
+            "ru": "Проедьте в режиме «старт-стоп» и тронитесь в горку: обратите внимание на рывки, удары, задержки, невключение передач или мигающий индикатор.",
+            "uk": "Проїдьте в режимі «старт-стоп» і рушайте вгору: зверніть увагу на ривки, удари, затримки, невмикання передач або блимаючий індикатор.",
+            "fr": "Faites un essai en circulation urbaine et un démarrage en côte : à-coups, claquements, hésitations, rapports qui ne passent pas ou indicateur clignotant."
+          },
+          "redFlag": {
+            "en": "Any judder or delayed engagement.",
+            "pt": "Qualquer trepidação ou engate atrasado.",
+            "ru": "Любые рывки или запаздывание включения.",
+            "uk": "Будь-які ривки або запізнення вмикання.",
+            "fr": "Tout à-coup ou engagement retardé."
+          }
+        }
+      ],
+      "repair": {
+        "remedy": {
+          "en": "Depending on the fault: mechatronic replacement (the remedy in the Hong Kong recall) or repair kit (US recall 19V866), clutch replacement, then software update and adaptation.",
+          "pt": "Consoante a avaria: substituição da mecatrónica (solução da chamada de Hong Kong) ou kit de reparação (chamada 19V866 nos EUA), substituição da embraiagem, seguida de atualização de software e adaptação.",
+          "ru": "В зависимости от неисправности: замена мехатроника (мера по отзыву в Гонконге) или ремкомплект (отзыв 19V866 в США), замена сцепления, затем обновление ПО и адаптация.",
+          "uk": "Залежно від несправності: заміна мехатроніка (захід за відкликанням у Гонконзі) або ремкомплект (відкликання 19V866 у США), заміна зчеплення, потім оновлення ПЗ і адаптація.",
+          "fr": "Selon le défaut : remplacement du mécatronique (remède du rappel de Hong Kong) ou kit de réparation (rappel 19V866 aux États-Unis), remplacement de l'embrayage, puis mise à jour logicielle et adaptation."
+        },
+        "cost": null,
+        "worstCase": null,
+        "manufacturerProgramme": {
+          "evidence": [
+            "ev_dq_e06",
+            "ev_dq_e07",
+            "ev_dq_e08"
+          ],
+          "text": {
+            "en": "In November 2013 Volkswagen announced a change from synthetic to mineral gearbox oil for DQ200 units, with a software update (about 257,000 cars in Germany; about 1.8 million worldwide according to L'argus); in Germany and France this was done at workshop visits, not as an official recall. In Russia, Volkswagen offered a 5-year / 150,000 km DSG warranty from summer 2012, not applied to cars built from 1 January 2014.",
+            "pt": "Em novembro de 2013 a Volkswagen anunciou a troca do óleo sintético da caixa por óleo mineral nas DQ200, com atualização de software (cerca de 257 000 automóveis na Alemanha; cerca de 1,8 milhões no mundo, segundo o L'argus); na Alemanha e em França isto foi feito nas visitas à oficina, não como chamada oficial. Na Rússia, a Volkswagen ofereceu a partir do verão de 2012 uma garantia de 5 anos / 150 000 km para a DSG, não aplicada aos automóveis fabricados a partir de 1 de janeiro de 2014.",
+            "ru": "В ноябре 2013 года Volkswagen объявила о замене синтетического масла КПП минеральным на DQ200 с обновлением ПО (около 257 000 машин в Германии; около 1,8 млн в мире по данным L'argus); в Германии и Франции это делалось при визитах в сервис, а не как официальный отзыв. В России Volkswagen с лета 2012 года давала гарантию на DSG 5 лет / 150 000 км; на машины выпуска с 1 января 2014 года она не распространялась.",
+            "uk": "У листопаді 2013 року Volkswagen оголосила про заміну синтетичної оливи КПП мінеральною на DQ200 з оновленням ПЗ (близько 257 000 машин у Німеччині; близько 1,8 млн у світі за даними L'argus); у Німеччині та Франції це робилося під час візитів до сервісу, а не як офіційне відкликання. У Росії Volkswagen з літа 2012 року давала гарантію на DSG 5 років / 150 000 км; на машини випуску з 1 січня 2014 року вона не поширювалася.",
+            "fr": "En novembre 2013, Volkswagen a annoncé le remplacement de l'huile synthétique de boîte par une huile minérale sur les DQ200, avec une mise à jour logicielle (environ 257 000 voitures en Allemagne ; environ 1,8 million dans le monde selon L'argus) ; en Allemagne et en France, cela s'est fait lors des passages à l'atelier et non par un rappel officiel. En Russie, Volkswagen a proposé dès l'été 2012 une garantie DSG de 5 ans / 150 000 km, non appliquée aux véhicules produits à partir du 1er janvier 2014."
+          }
+        }
+      },
+      "evidence": [
+        "ev_dq_e01",
+        "ev_dq_e02",
+        "ev_dq_e03",
+        "ev_dq_e04",
+        "ev_dq_e06",
+        "ev_dq_e07",
+        "ev_dq_e08",
+        "ev_dq_e11",
+        "ev_dq_e12",
+        "ev_dq_e14",
+        "ev_dq_e15"
+      ],
+      "prevalence": [
+        "pv_dq_none",
+        "pv_dq_13v568",
+        "pv_dq_19v866"
+      ]
+    },
+    {
+      "id": "n47.chain",
+      "aliases": [],
+      "status": "published",
+      "replacedBy": null,
+      "revision": 1,
+      "updatedAt": "2026-10-13",
+      "legacyRule": "bmw-known-issues",
+      "title": {
+        "en": "BMW N47 2.0 diesel: rear timing chain wear and failure",
+        "pt": "BMW N47 2.0 diesel: desgaste e rotura da corrente de distribuição traseira",
+        "ru": "BMW N47 2.0 дизель: износ и обрыв цепи ГРМ (со стороны КПП)",
+        "uk": "BMW N47 2.0 дизель: знос і обрив ланцюга ГРМ (з боку КПП)",
+        "fr": "BMW N47 2.0 diesel : usure et rupture de la chaîne de distribution arrière"
+      },
+      "summary": {
+        "en": "BMW ran a workshop campaign in 2015 (0011540300) fitting a new chain tensioner to N47 2.0 diesels built up to the end of 2008. On the N47 2.0 diesel the timing chain sits at the gearbox end of the engine; sources describe wear of the chain, guide rails or tensioner, a chain that lengthens and rattles and, in extreme cases, engine damage.",
+        "pt": "A BMW realizou em 2015 uma campanha de oficina (0011540300) que montou um novo tensor da corrente nos N47 2.0 diesel fabricados até ao fim de 2008. No N47 2.0 diesel a corrente de distribuição fica do lado da caixa de velocidades; as fontes descrevem desgaste da corrente, das guias ou do tensor, uma corrente que alonga e faz ruído e, em casos extremos, danos no motor.",
+        "ru": "В 2015 году BMW провела сервисную кампанию (0011540300) с установкой нового натяжителя цепи на дизели N47 2.0, выпущенные до конца 2008 года. На дизеле N47 2.0 цепь ГРМ расположена со стороны КПП; в источниках описаны износ цепи, направляющих или натяжителя, вытягивание цепи с шумом и, в крайних случаях, повреждение двигателя.",
+        "uk": "У 2015 році BMW провела сервісну кампанію (0011540300) із встановленням нового натягувача ланцюга на дизелі N47 2.0, випущені до кінця 2008 року. На дизелі N47 2.0 ланцюг ГРМ розташований з боку КПП; у джерелах описано знос ланцюга, напрямних чи натягувача, витягування ланцюга з шумом і, в крайніх випадках, пошкодження двигуна.",
+        "fr": "BMW a mené en 2015 une campagne atelier (0011540300) montant un nouveau tendeur de chaîne sur les N47 2.0 diesel produits jusqu'à fin 2008. Sur le N47 2.0 diesel, la chaîne de distribution est côté boîte de vitesses ; les sources décrivent une usure de la chaîne, des guides ou du tendeur, une chaîne qui s'allonge et cliquette et, dans les cas extrêmes, des dégâts au moteur."
+      },
+      "checklistPrompt": {
+        "en": "N47 diesel timing chain (rear of engine) — check for stretch and rattle",
+        "pt": "Corrente N47 diesel (traseira do motor) — verificar alongamento e ruído",
+        "ru": "Цепь ГРМ дизеля N47 (со стороны КПП) — проверить вытягивание и шум",
+        "uk": "Ланцюг ГРМ дизеля N47 (з боку КПП) — перевірити витягування й шум",
+        "fr": "Chaîne de distribution du diesel N47 (côté boîte) — vérifier allongement et cliquetis"
+      },
+      "component": "engine.timing.chain",
+      "mechanism": {
+        "en": "A timing chain at the transmission end drives the camshafts. Wear of the chain, the sprockets, the guide rails or the tensioner lets the chain lengthen; early engines had sharp-edged sprockets, and BMW introduced a new crankshaft part number from January 2009. The lengthened chain rattles and the timing can drift; in extreme cases the engine can be severely damaged. Because the chain is at the rear, the replacement is extensive work. According to a BMW workshop note as reported by L'argus, the risk is higher if maintenance was missed or oils of variable quality were used.",
+        "pt": "Uma corrente de distribuição do lado da caixa aciona as árvores de cames. O desgaste da corrente, das rodas dentadas, das guias ou do tensor deixa a corrente alongar; os primeiros motores tinham rodas dentadas de arestas vivas e a BMW introduziu uma nova referência de cambota a partir de janeiro de 2009. A corrente alongada faz ruído e a calagem pode desviar-se; em casos extremos o motor pode sofrer danos graves. Como a corrente fica atrás, a substituição é uma intervenção extensa. Segundo uma nota de oficina da BMW referida pelo L'argus, o risco é maior se a manutenção não foi cumprida ou se foram usados óleos de qualidade variável.",
+        "ru": "Распредвалы приводит цепь со стороны КПП. Износ цепи, звёздочек, направляющих или натяжителя приводит к вытягиванию цепи; у ранних моторов были острокромочные звёздочки, а с января 2009 года BMW ввела новый номер коленвала. Вытянутая цепь гремит, фазы могут смещаться; в крайних случаях возможны серьёзные повреждения двигателя. Так как цепь расположена сзади, замена — объёмная работа. По сервисной записке BMW, о которой пишет L'argus, риск выше при пропущенном ТО или масле переменного качества.",
+        "uk": "Розподільні вали приводить ланцюг з боку КПП. Знос ланцюга, зірочок, напрямних або натягувача призводить до витягування ланцюга; у ранніх моторів були гострокромкові зірочки, а з січня 2009 року BMW запровадила новий номер колінчастого вала. Витягнутий ланцюг гримить, фази можуть зміщуватися; у крайніх випадках можливе серйозне пошкодження двигуна. Оскільки ланцюг розташований ззаду, заміна — об'ємна робота. За сервісною запискою BMW, про яку пише L'argus, ризик вищий за пропущеного ТО або оливи змінної якості.",
+        "fr": "Une chaîne de distribution côté boîte de vitesses entraîne les arbres à cames. L'usure de la chaîne, des pignons, des guides ou du tendeur laisse la chaîne s'allonger ; les premiers moteurs avaient des pignons à arêtes vives et BMW a introduit une nouvelle référence de vilebrequin à partir de janvier 2009. La chaîne allongée cliquette et le calage peut dériver ; dans les cas extrêmes, le moteur peut subir de graves dommages. La chaîne étant à l'arrière, le remplacement est une intervention importante. D'après une note atelier BMW rapportée par L'argus, le risque est plus élevé si l'entretien n'a pas été respecté ou si des huiles de qualité variable ont été utilisées."
+      },
+      "applicability": {
+        "models": [
+          "bmw.1series",
+          "bmw.2series",
+          "bmw.3series",
+          "bmw.5series",
+          "bmw.x1",
+          "bmw.x3"
+        ],
+        "when": {
+          "all": [
+            {
+              "engine": {
+                "ids": [
+                  "bmw.n47d20"
+                ]
+              }
+            },
+            {
+              "productionDate": {
+                "from": "2007-03",
+                "to": "2015-12"
+              }
+            }
+          ]
+        },
+        "markets": [
+          "EU"
+        ],
+        "hint": {
+          "en": "Only BMW 2.0 diesels with the N47 engine (N47D20), built from March 2007 to about 2015 (sources give September 2014 or 2015). Petrol engines and the later B47 diesel are outside this entry.",
+          "pt": "Apenas BMW 2.0 diesel com motor N47 (N47D20), fabricados entre março de 2007 e cerca de 2015 (as fontes indicam setembro de 2014 ou 2015). Os motores a gasolina e o diesel B47 posterior ficam fora desta entrada.",
+          "ru": "Только BMW 2.0 дизель с двигателем N47 (N47D20), выпущенные с марта 2007 примерно по 2015 год (источники называют сентябрь 2014 или 2015 год). Бензиновые моторы и более поздний дизель B47 в эту запись не входят.",
+          "uk": "Лише BMW 2.0 дизель з двигуном N47 (N47D20), випущені з березня 2007 приблизно по 2015 рік (джерела називають вересень 2014 або 2015 рік). Бензинові мотори та пізніший дизель B47 до цього запису не входять.",
+          "fr": "Uniquement les BMW 2.0 diesel à moteur N47 (N47D20) produites de mars 2007 à 2015 environ (les sources indiquent septembre 2014 ou 2015). Les moteurs essence et le diesel B47 ultérieur ne relèvent pas de cette fiche."
+        },
+        "notes": {
+          "en": "BMW splits production into bands: before 5 January 2009 (the cars that, according to BMW, did not receive later improvements; covered by the 2015 campaign up to the end of 2008), 5 January 2009 to 1 March 2011, and later. Other N47 variants (1.6 N47D16, N47S, N47T) are not confirmed by the sources used here. No official recall specifically for the chain was identified in the sources used here. According to a legal trade report, a German appeal court (OLG Frankfurt am Main, 2017) treated chain noise on its own as a comfort issue, not a substantial defect. The end of production is given as September 2014 by one encyclopedia entry and as 2015 by two magazines.",
+          "pt": "A BMW divide a produção em faixas: antes de 5 de janeiro de 2009 (os automóveis que, segundo a BMW, não receberam as melhorias posteriores; abrangidos pela campanha de 2015 até ao fim de 2008), de 5 de janeiro de 2009 a 1 de março de 2011, e posteriores. Outras variantes do N47 (1.6 N47D16, N47S, N47T) não são confirmadas pelas fontes aqui usadas. Nas fontes aqui usadas não foi identificada nenhuma chamada oficial específica para a corrente. Segundo uma publicação jurídica, um tribunal de recurso alemão (OLG Frankfurt am Main, 2017) considerou o ruído da corrente, por si só, uma questão de conforto e não um defeito substancial. O fim da produção é indicado como setembro de 2014 por uma enciclopédia e como 2015 por duas revistas.",
+          "ru": "BMW делит выпуск на периоды: до 5 января 2009 года (машины, которые, по словам BMW, не получили последующих улучшений; кампания 2015 года охватила выпуск до конца 2008 года), с 5 января 2009 по 1 марта 2011 года и позже. Другие версии N47 (1.6 N47D16, N47S, N47T) использованными источниками не подтверждены. В использованных источниках официального отзыва именно по цепи не обнаружено. По данным юридического издания, апелляционный суд Германии (OLG Frankfurt am Main, 2017) счёл сам по себе шум цепи вопросом комфорта, а не существенным дефектом. Окончание производства указано как сентябрь 2014 года в одной энциклопедии и как 2015 год в двух журналах.",
+          "uk": "BMW ділить випуск на періоди: до 5 січня 2009 року (машини, які, за словами BMW, не отримали подальших покращень; кампанія 2015 року охопила випуск до кінця 2008 року), з 5 січня 2009 по 1 березня 2011 року і пізніше. Інші версії N47 (1.6 N47D16, N47S, N47T) використаними джерелами не підтверджено. У використаних джерелах офіційного відкликання саме щодо ланцюга не виявлено. За даними юридичного видання, апеляційний суд Німеччини (OLG Frankfurt am Main, 2017) визнав сам по собі шум ланцюга питанням комфорту, а не суттєвим дефектом. Закінчення виробництва вказано як вересень 2014 року в одній енциклопедії та як 2015 рік у двох журналах.",
+          "fr": "BMW découpe la production en plages : avant le 5 janvier 2009 (véhicules qui, selon BMW, n'ont pas bénéficié des améliorations ultérieures ; couverts par la campagne 2015 jusqu'à fin 2008), du 5 janvier 2009 au 1er mars 2011, et après. Les autres variantes du N47 (1.6 N47D16, N47S, N47T) ne sont pas confirmées par les sources utilisées ici. Aucun rappel officiel portant spécifiquement sur la chaîne n'a été identifié dans les sources utilisées ici. Selon une revue juridique spécialisée, une cour d'appel allemande (OLG Frankfurt am Main, 2017) a jugé que le bruit de chaîne, à lui seul, relevait du confort et non d'un défaut substantiel. La fin de production est indiquée comme septembre 2014 par une encyclopédie et comme 2015 par deux magazines."
+        }
+      },
+      "severity": "critical",
+      "safety": false,
+      "critical": true,
+      "symptoms": [
+        {
+          "id": "s1",
+          "stage": "early",
+          "text": {
+            "en": "Metallic rattle at cold start, often for a few seconds",
+            "pt": "Ruído metálico no arranque a frio, muitas vezes durante alguns segundos",
+            "ru": "Металлический стук при холодном пуске, часто несколько секунд",
+            "uk": "Металевий стук під час холодного пуску, часто кілька секунд",
+            "fr": "Claquement métallique au démarrage à froid, souvent quelques secondes"
+          }
+        },
+        {
+          "id": "s2",
+          "stage": "early",
+          "text": {
+            "en": "Scraping or grinding from the rear of the engine around 1,500 rpm",
+            "pt": "Ruído de raspagem na parte traseira do motor por volta das 1 500 rpm",
+            "ru": "Скрежет со стороны задней части двигателя около 1 500 об/мин",
+            "uk": "Скрегіт із задньої частини двигуна близько 1 500 об/хв",
+            "fr": "Raclement à l'arrière du moteur vers 1 500 tr/min"
+          }
+        },
+        {
+          "id": "s3",
+          "stage": "late",
+          "text": {
+            "en": "Engine warning light, loss of power or hard starting",
+            "pt": "Luz de avaria do motor, perda de potência ou arranque difícil",
+            "ru": "Лампа неисправности двигателя, потеря мощности или трудный пуск",
+            "uk": "Лампа несправності двигуна, втрата потужності або важкий пуск",
+            "fr": "Voyant moteur, perte de puissance ou démarrage difficile"
+          }
+        }
+      ],
+      "inspection": [
+        {
+          "id": "i1",
+          "method": "document",
+          "tools": [],
+          "text": {
+            "en": "Confirm the N47 engine and the build date (door-pillar label or dealer VIN query) and place the car in BMW's bands: before 5 January 2009, up to 1 March 2011, or later.",
+            "pt": "Confirme o motor N47 e a data de fabrico (etiqueta do pilar da porta ou consulta do VIN no concessionário) e situe o automóvel nas faixas da BMW: antes de 5 de janeiro de 2009, até 1 de março de 2011, ou depois.",
+            "ru": "Уточните, что стоит N47, и дату выпуска (наклейка в проёме двери или запрос VIN у дилера); определите период по BMW: до 5 января 2009, до 1 марта 2011 или позже.",
+            "uk": "Уточніть, що стоїть N47, і дату випуску (наліпка в отворі дверей або запит VIN у дилера); визначте період за BMW: до 5 січня 2009, до 1 березня 2011 або пізніше.",
+            "fr": "Confirmez le moteur N47 et la date de fabrication (étiquette du montant de porte ou requête VIN chez le concessionnaire) et situez le véhicule dans les plages BMW : avant le 5 janvier 2009, jusqu'au 1er mars 2011, ou après."
+          },
+          "redFlag": {
+            "en": "Built before 5 January 2009 with no record of chain work.",
+            "pt": "Fabricado antes de 5 de janeiro de 2009 sem registo de intervenção na corrente.",
+            "ru": "Выпуск до 5 января 2009 года и нет записей о работах с цепью.",
+            "uk": "Випуск до 5 січня 2009 року і немає записів про роботи з ланцюгом.",
+            "fr": "Produit avant le 5 janvier 2009 sans trace d'intervention sur la chaîne."
+          }
+        },
+        {
+          "id": "i2",
+          "method": "document",
+          "tools": [],
+          "text": {
+            "en": "Ask for the status of BMW campaign 0011540300 and for invoices of any chain, guide rail, tensioner or crankshaft work.",
+            "pt": "Peça o estado da campanha BMW 0011540300 e as faturas de qualquer intervenção na corrente, guias, tensor ou cambota.",
+            "ru": "Запросите статус кампании BMW 0011540300 и счета за любые работы с цепью, направляющими, натяжителем или коленвалом.",
+            "uk": "Запитайте статус кампанії BMW 0011540300 і рахунки за будь-які роботи з ланцюгом, напрямними, натягувачем або колінчастим валом.",
+            "fr": "Demandez l'état de la campagne BMW 0011540300 et les factures de toute intervention sur la chaîne, les guides, le tendeur ou le vilebrequin."
+          },
+          "redFlag": {
+            "en": "No chain work on record for a car built before 2009: price the repair in.",
+            "pt": "Sem intervenção na corrente registada num automóvel anterior a 2009: inclua a reparação no preço.",
+            "ru": "Для машины до 2009 года нет записей о работах с цепью — заложите ремонт в цену.",
+            "uk": "Для машини до 2009 року немає записів про роботи з ланцюгом — закладіть ремонт у ціну.",
+            "fr": "Aucune intervention sur la chaîne pour un véhicule antérieur à 2009 : intégrez la réparation dans le prix."
+          }
+        },
+        {
+          "id": "i3",
+          "method": "listen",
+          "tools": [],
+          "text": {
+            "en": "Start the engine from fully cold and listen at the rear of the engine for rattle, then for scraping around 1,500 rpm.",
+            "pt": "Ponha o motor a trabalhar completamente frio e escute na parte traseira do motor se há ruído metálico e, depois, raspagem por volta das 1 500 rpm.",
+            "ru": "Запустите полностью холодный двигатель и послушайте заднюю часть мотора: стук при пуске, затем скрежет около 1 500 об/мин.",
+            "uk": "Запустіть повністю холодний двигун і послухайте задню частину мотора: стук під час пуску, потім скрегіт близько 1 500 об/хв.",
+            "fr": "Démarrez le moteur complètement froid et écoutez l'arrière du moteur : claquement au démarrage, puis raclement vers 1 500 tr/min."
+          },
+          "redFlag": {
+            "en": "Rattle or scraping: have a specialist check the chain before buying.",
+            "pt": "Ruído ou raspagem: peça a um especialista para verificar a corrente antes de comprar.",
+            "ru": "Стук или скрежет — до покупки проверьте цепь у специалиста.",
+            "uk": "Стук або скрегіт — до купівлі перевірте ланцюг у фахівця.",
+            "fr": "Claquement ou raclement : faites contrôler la chaîne par un spécialiste avant l'achat."
+          }
+        },
+        {
+          "id": "i4",
+          "method": "document",
+          "tools": [],
+          "text": {
+            "en": "Check the oil-change history: changes every 10,000–15,000 km rather than long-life intervals only.",
+            "pt": "Verifique o histórico de mudanças de óleo: a cada 10 000–15 000 km, e não apenas com intervalos longos (long-life).",
+            "ru": "Проверьте историю замены масла: каждые 10 000–15 000 км, а не только по увеличенным интервалам (long-life).",
+            "uk": "Перевірте історію заміни оливи: кожні 10 000–15 000 км, а не лише за збільшеними інтервалами (long-life).",
+            "fr": "Vérifiez l'historique des vidanges : tous les 10 000–15 000 km plutôt qu'uniquement aux intervalles longue durée."
+          },
+          "redFlag": {
+            "en": "No oil history, or long-life intervals only.",
+            "pt": "Sem histórico de óleo, ou apenas intervalos longos.",
+            "ru": "Нет истории замены масла или только увеличенные интервалы.",
+            "uk": "Немає історії заміни оливи або лише збільшені інтервали.",
+            "fr": "Pas d'historique de vidange, ou uniquement des intervalles longue durée."
+          }
+        }
+      ],
+      "repair": {
+        "remedy": {
+          "en": "Replacement of both timing chains with guide rails, tensioners and seals; the work is extensive because the chain sits at the gearbox end of the engine.",
+          "pt": "Substituição das duas correntes de distribuição, com guias, tensores e vedantes; a intervenção é extensa porque a corrente fica do lado da caixa de velocidades.",
+          "ru": "Замена обеих цепей ГРМ с направляющими, натяжителями и уплотнениями; работа объёмная, так как цепь расположена со стороны КПП.",
+          "uk": "Заміна обох ланцюгів ГРМ з напрямними, натягувачами та ущільненнями; робота об'ємна, бо ланцюг розташований з боку КПП.",
+          "fr": "Remplacement des deux chaînes de distribution avec guides, tendeurs et joints ; l'intervention est importante car la chaîne est côté boîte de vitesses."
+        },
+        "cost": {
+          "currency": "EUR",
+          "low": 1500,
+          "high": 2500,
+          "asOf": "2026-03",
+          "basis": {
+            "en": "Germany: magazine range; a published workshop offer for the full chain job is about 1,850 EUR (about 550 EUR more on X models / all-wheel drive).",
+            "pt": "Alemanha: intervalo indicado por uma revista; uma oferta publicada de uma oficina para o trabalho completo é de cerca de 1 850 EUR (cerca de 550 EUR a mais nos modelos X / tração integral).",
+            "ru": "Германия: диапазон по данным журнала; опубликованное предложение мастерской на полный комплекс работ — около 1 850 EUR (около 550 EUR дороже для моделей X / полного привода).",
+            "uk": "Німеччина: діапазон за даними журналу; опублікована пропозиція майстерні на повний комплекс робіт — близько 1 850 EUR (близько 550 EUR дорожче для моделей X / повного приводу).",
+            "fr": "Allemagne : fourchette d'un magazine ; une offre publiée d'atelier pour l'intervention complète est d'environ 1 850 EUR (environ 550 EUR de plus sur les modèles X / transmission intégrale)."
+          },
+          "evidence": [
+            "ev_bm_e09a",
+            "ev_bm_e08"
+          ]
+        },
+        "worstCase": null,
+        "manufacturerProgramme": {
+          "evidence": [
+            "ev_bm_e01"
+          ],
+          "text": {
+            "en": "BMW workshop campaign 0011540300 (network notified on 23 January 2015) fits a newly developed chain tensioner to cars built up to the end of 2008. In France, BMW's after-sales service told L'argus in 2015 that repair costs were covered close to 100% where maintenance had followed the manufacturer's recommendations.",
+            "pt": "A campanha de oficina BMW 0011540300 (rede notificada a 23 de janeiro de 2015) monta um tensor da corrente desenvolvido de novo nos automóveis fabricados até ao fim de 2008. Em França, o serviço pós-venda da BMW disse ao L'argus, em 2015, que os custos de reparação eram cobertos em perto de 100% quando a manutenção tinha seguido as recomendações do fabricante.",
+            "ru": "Сервисная кампания BMW 0011540300 (сеть уведомлена 23 января 2015 года): установка нового натяжителя цепи на машины выпуска до конца 2008 года. Во Франции послепродажная служба BMW в 2015 году сообщила L'argus, что расходы на ремонт покрываются почти на 100%, если ТО выполнялось по рекомендациям производителя.",
+            "uk": "Сервісна кампанія BMW 0011540300 (мережу повідомлено 23 січня 2015 року): встановлення нового натягувача ланцюга на машини випуску до кінця 2008 року. У Франції післяпродажна служба BMW у 2015 році повідомила L'argus, що витрати на ремонт покриваються майже на 100%, якщо ТО виконувалося за рекомендаціями виробника.",
+            "fr": "La campagne atelier BMW 0011540300 (réseau informé le 23 janvier 2015) monte un tendeur de chaîne nouvellement développé sur les véhicules produits jusqu'à fin 2008. En France, le service après-vente de BMW a indiqué à L'argus en 2015 une prise en charge des réparations proche de 100 % lorsque l'entretien avait suivi les préconisations du constructeur."
+          }
+        }
+      },
+      "evidence": [
+        "ev_bm_e01",
+        "ev_bm_e03",
+        "ev_bm_e05",
+        "ev_bm_e08",
+        "ev_bm_e09a",
+        "ev_bm_e09b",
+        "ev_bm_e10",
+        "ev_bm_e11"
+      ],
+      "prevalence": [
+        "pv_n47_none"
+      ]
+    },
+    {
+      "id": "puretech.wetbelt",
+      "aliases": [],
+      "status": "published",
+      "replacedBy": null,
+      "revision": 1,
+      "updatedAt": "2026-10-13",
+      "legacyRule": "psa-known-issues",
+      "title": {
+        "en": "1.2 PureTech turbo (EB2DT / EB2DTS): wet timing belt degradation",
+        "pt": "1.2 PureTech turbo (EB2DT / EB2DTS): degradação da correia de distribuição em banho de óleo",
+        "ru": "1.2 PureTech турбо (EB2DT / EB2DTS): деградация «мокрого» ремня ГРМ",
+        "uk": "1.2 PureTech турбо (EB2DT / EB2DTS): деградація «мокрого» ременя ГРМ",
+        "fr": "1.2 PureTech turbo (EB2DT / EB2DTS) : dégradation de la courroie de distribution humide"
+      },
+      "summary": {
+        "en": "Peugeot, Citroën and DS recalled 1.2 turbo petrol cars built from March 2013 to April 2017 (RappelConso A12/01505/20 and A12/01504/20) because material from the timing belt, which runs in engine oil, can damage the brake vacuum pump. A timing-kit supplier bulletin adds that belt residue can also plug the oil pump strainer, and consumer organisations report cases up to engine failure.",
+        "pt": "A Peugeot, a Citroën e a DS chamaram automóveis 1.2 turbo a gasolina fabricados entre março de 2013 e abril de 2017 (RappelConso A12/01505/20 e A12/01504/20) porque o material da correia de distribuição, que trabalha em banho de óleo, pode danificar a bomba de vácuo dos travões. Um boletim de um fornecedor de kits de distribuição acrescenta que os resíduos da correia podem também obstruir o filtro da bomba de óleo, e organizações de consumidores referem casos que chegam à avaria total do motor.",
+        "ru": "Peugeot, Citroën и DS отозвали бензиновые машины 1.2 турбо, выпущенные с марта 2013 по апрель 2017 года (RappelConso A12/01505/20 и A12/01504/20): материал ремня ГРМ, работающего в масле, может повредить вакуумный насос тормозов. Бюллетень поставщика комплектов ГРМ добавляет, что остатки ремня могут также забить сетку маслозаборника, а потребительские организации сообщают о случаях вплоть до отказа двигателя.",
+        "uk": "Peugeot, Citroën і DS відкликали бензинові машини 1.2 турбо, випущені з березня 2013 по квітень 2017 року (RappelConso A12/01505/20 і A12/01504/20): матеріал ременя ГРМ, що працює в оливі, може пошкодити вакуумний насос гальм. Бюлетень постачальника комплектів ГРМ додає, що рештки ременя можуть також забити сітку оливоприймача, а споживчі організації повідомляють про випадки аж до відмови двигуна.",
+        "fr": "Peugeot, Citroën et DS ont rappelé des véhicules 1.2 turbo essence produits de mars 2013 à avril 2017 (RappelConso A12/01505/20 et A12/01504/20) car le matériau de la courroie de distribution, qui baigne dans l'huile, peut endommager la pompe à vide du freinage. Un bulletin d'équipementier (kits de distribution) ajoute que les résidus de courroie peuvent aussi obstruer la crépine de la pompe à huile, et des associations de consommateurs font état de cas allant jusqu'à la défaillance du moteur."
+      },
+      "checklistPrompt": {
+        "en": "PureTech 1.2 wet timing belt — can degrade and affect the oil system (check belt and oil)",
+        "pt": "Correia em banho de óleo 1.2 PureTech — pode degradar-se e afetar o circuito de óleo (verificar correia e óleo)",
+        "ru": "«Мокрый» ремень ГРМ PureTech 1.2 — может деградировать и влиять на систему смазки (проверить ремень и масло)",
+        "uk": "«Мокрий» ремінь ГРМ PureTech 1.2 — може деградувати й впливати на систему мащення (перевірити ремінь і оливу)",
+        "fr": "Courroie de distribution humide PureTech 1.2 — peut se dégrader et affecter le circuit d'huile (vérifier courroie et huile)"
+      },
+      "component": "engine.timing.belt",
+      "mechanism": {
+        "en": "The timing belt runs immersed in engine oil. According to a timing-kit supplier bulletin, oil diluted by fuel on short, mostly urban trips can become abrasive to the belt, and belt residue can plug the oil pump strainer, the variable valve timing solenoids and the brake vacuum pump. Reported effects include loss of oil pressure, camshaft and valve fouling and reduced brake assist; consumer organisations report cases up to engine failure. Stellantis attributes the problem to premature oil ageing under specific driving conditions and does not acknowledge a design defect.",
+        "pt": "A correia de distribuição trabalha mergulhada no óleo do motor. Segundo um boletim de um fornecedor de kits de distribuição, o óleo diluído por combustível em trajetos curtos, sobretudo urbanos, pode tornar-se abrasivo para a correia, e os resíduos da correia podem obstruir o filtro da bomba de óleo, as eletroválvulas da distribuição variável e a bomba de vácuo dos travões. Os efeitos referidos incluem perda de pressão de óleo, sujidade nas árvores de cames e nas válvulas e menor assistência à travagem; organizações de consumidores referem casos que chegam à avaria total do motor. A Stellantis atribui o problema ao envelhecimento prematuro do óleo em condições de utilização específicas e não reconhece um defeito de conceção.",
+        "ru": "Ремень ГРМ работает погружённым в моторное масло. По бюллетеню поставщика комплектов ГРМ, масло, разжиженное топливом при коротких, преимущественно городских поездках, может становиться абразивным для ремня, а остатки ремня могут забивать сетку маслозаборника, электроклапаны изменения фаз газораспределения и вакуумный насос тормозов. Среди сообщаемых последствий — падение давления масла, загрязнение распредвалов и клапанов и ослабление усилителя тормозов; потребительские организации сообщают о случаях вплоть до отказа двигателя. Stellantis объясняет проблему преждевременным старением масла в особых условиях эксплуатации и не признаёт конструктивного дефекта.",
+        "uk": "Ремінь ГРМ працює зануреним у моторну оливу. За бюлетенем постачальника комплектів ГРМ, олива, розріджена паливом під час коротких, переважно міських поїздок, може ставати абразивною для ременя, а рештки ременя можуть забивати сітку оливоприймача, електроклапани зміни фаз газорозподілу та вакуумний насос гальм. Серед повідомлюваних наслідків — падіння тиску оливи, забруднення розподільних валів і клапанів та послаблення підсилювача гальм; споживчі організації повідомляють про випадки аж до відмови двигуна. Stellantis пояснює проблему передчасним старінням оливи в особливих умовах експлуатації та не визнає конструктивного дефекту.",
+        "fr": "La courroie de distribution baigne dans l'huile moteur. Selon le bulletin d'un équipementier de kits de distribution, l'huile diluée par le carburant lors de trajets courts, surtout urbains, peut devenir abrasive pour la courroie, et les résidus de courroie peuvent obstruer la crépine de la pompe à huile, les électrovannes de distribution variable et la pompe à vide du freinage. Les effets signalés comprennent une baisse de pression d'huile, un encrassement des arbres à cames et des soupapes et une assistance de freinage réduite ; des associations de consommateurs font état de cas allant jusqu'à la défaillance du moteur. Stellantis attribue le problème à un vieillissement prématuré de l'huile dans des conditions d'utilisation particulières et ne reconnaît pas de défaut de conception."
+      },
+      "applicability": {
+        "models": [
+          "peugeot.208",
+          "peugeot.2008",
+          "peugeot.308",
+          "peugeot.3008",
+          "peugeot.5008",
+          "peugeot.partner",
+          "citroen.c3",
+          "citroen.c3_picasso",
+          "citroen.c4",
+          "citroen.c4_cactus",
+          "citroen.c4_picasso",
+          "citroen.berlingo",
+          "citroen.ds3",
+          "citroen.ds4",
+          "ds.ds3",
+          "ds.ds4"
+        ],
+        "when": {
+          "all": [
+            {
+              "engine": {
+                "codes": [
+                  "EB2DT",
+                  "HNZ",
+                  "EB2DTS",
+                  "HNY"
+                ]
+              }
+            },
+            {
+              "productionDate": {
+                "from": "2013-03",
+                "to": "2017-04"
+              }
+            }
+          ]
+        },
+        "markets": [
+          "EU"
+        ],
+        "hint": {
+          "en": "Only the 1.2 turbo petrol engines EB2DT (HNZ, 110 hp) and EB2DTS (HNY, 130 hp) built from March 2013 to April 2017. Diesel engines, the naturally aspirated 1.2 and the chain-driven Gen3 1.2 are outside this entry.",
+          "pt": "Apenas os motores 1.2 turbo a gasolina EB2DT (HNZ, 110 cv) e EB2DTS (HNY, 130 cv) fabricados entre março de 2013 e abril de 2017. Os motores diesel, o 1.2 atmosférico e o 1.2 Gen3 com corrente ficam fora desta entrada.",
+          "ru": "Только бензиновые 1.2 турбо EB2DT (HNZ, 110 л. с.) и EB2DTS (HNY, 130 л. с.), выпущенные с марта 2013 по апрель 2017 года. Дизели, атмосферный 1.2 и цепной 1.2 Gen3 в эту запись не входят.",
+          "uk": "Лише бензинові 1.2 турбо EB2DT (HNZ, 110 к. с.) і EB2DTS (HNY, 130 к. с.), випущені з березня 2013 по квітень 2017 року. Дизелі, атмосферний 1.2 і ланцюговий 1.2 Gen3 до цього запису не входять.",
+          "fr": "Uniquement les moteurs 1.2 turbo essence EB2DT (HNZ, 110 ch) et EB2DTS (HNY, 130 ch) produits de mars 2013 à avril 2017. Les diesels, le 1.2 atmosphérique et le 1.2 Gen3 à chaîne ne relèvent pas de cette fiche."
+        },
+        "notes": {
+          "en": "The recall records do not name the engine code; the link between codes and recall comes from a timing-kit supplier bulletin (NTN-SNR) and the press. Cars built from 2017 to 2020 were covered by a separate vacuum-pump lubrication recall whose records also do not name the engine; they are outside this entry until that link is confirmed. The belt interval was cut from 10 years / 180,000 km to 6 years / 100,000 km in December 2020 (supplier bulletin and specialist press). The extended warranty is given as 175,000 km by most sources and as 180,000 km by one.",
+          "pt": "Os registos de chamada não indicam o código do motor; a ligação entre códigos e chamada vem de um boletim de um fornecedor de kits de distribuição (NTN-SNR) e da imprensa. Os automóveis fabricados entre 2017 e 2020 foram abrangidos por uma chamada separada por lubrificação da bomba de vácuo cujos registos também não indicam o motor; ficam fora desta entrada até essa ligação ser confirmada. O intervalo da correia foi reduzido de 10 anos / 180 000 km para 6 anos / 100 000 km em dezembro de 2020 (boletim do fornecedor e imprensa especializada). A garantia alargada é indicada como 175 000 km pela maioria das fontes e como 180 000 km por uma.",
+          "ru": "В записях об отзыве код двигателя не указан; соответствие кодов и отзыва взято из бюллетеня поставщика комплектов ГРМ (NTN-SNR) и прессы. Машины 2017–2020 годов выпуска попали под отдельный отзыв по смазке вакуумного насоса, в записях которого двигатель тоже не назван; они не входят в эту запись, пока связь не подтверждена. Интервал замены ремня в декабре 2020 года сокращён с 10 лет / 180 000 км до 6 лет / 100 000 км (бюллетень поставщика и специализированная пресса). Продлённую гарантию большинство источников указывает как 175 000 км, один — как 180 000 км.",
+          "uk": "У записах про відкликання код двигуна не вказано; відповідність кодів і відкликання взято з бюлетеня постачальника комплектів ГРМ (NTN-SNR) і преси. Машини 2017–2020 років випуску потрапили під окреме відкликання щодо змащення вакуумного насоса, у записах якого двигун теж не названо; вони не входять до цього запису, доки зв'язок не підтверджено. Інтервал заміни ременя в грудні 2020 року скорочено з 10 років / 180 000 км до 6 років / 100 000 км (бюлетень постачальника та спеціалізована преса). Продовжену гарантію більшість джерел вказує як 175 000 км, одне — як 180 000 км.",
+          "fr": "Les fiches de rappel ne citent pas le code moteur ; la correspondance entre codes et rappel provient d'un bulletin d'un fournisseur de kits de distribution (NTN-SNR) et de la presse. Les véhicules produits de 2017 à 2020 ont fait l'objet d'un rappel distinct pour lubrification de la pompe à vide, dont les fiches ne nomment pas non plus le moteur ; ils ne relèvent pas de cette fiche tant que ce lien n'est pas confirmé. L'intervalle de la courroie a été ramené de 10 ans / 180 000 km à 6 ans / 100 000 km en décembre 2020 (bulletin du fournisseur et presse spécialisée). La garantie étendue est donnée à 175 000 km par la plupart des sources et à 180 000 km par une."
+        }
+      },
+      "severity": "critical",
+      "safety": true,
+      "critical": true,
+      "symptoms": [
+        {
+          "id": "s1",
+          "stage": "early",
+          "text": {
+            "en": "Oil-pressure warning light",
+            "pt": "Luz de aviso de pressão de óleo",
+            "ru": "Лампа давления масла",
+            "uk": "Лампа тиску оливи",
+            "fr": "Voyant de pression d'huile"
+          }
+        },
+        {
+          "id": "s3",
+          "stage": "early",
+          "text": {
+            "en": "Higher than usual oil consumption",
+            "pt": "Consumo de óleo acima do habitual",
+            "ru": "Повышенный расход масла",
+            "uk": "Підвищена витрата оливи",
+            "fr": "Consommation d'huile anormalement élevée"
+          }
+        },
+        {
+          "id": "s4",
+          "stage": "late",
+          "text": {
+            "en": "Engine damage or failure in severe reported cases",
+            "pt": "Danos ou avaria do motor em casos graves referidos",
+            "ru": "Повреждение или отказ двигателя в тяжёлых из описанных случаев",
+            "uk": "Пошкодження або відмова двигуна в тяжких із описаних випадків",
+            "fr": "Dommages ou défaillance du moteur dans les cas graves signalés"
+          }
+        },
+        {
+          "id": "s6",
+          "stage": "late",
+          "text": {
+            "en": "Hard brake pedal (reduced vacuum assist)",
+            "pt": "Pedal de travão duro (menor assistência por vácuo)",
+            "ru": "Тугая педаль тормоза (ослаб вакуумный усилитель)",
+            "uk": "Туга педаль гальма (ослаб вакуумний підсилювач)",
+            "fr": "Pédale de frein dure (assistance par dépression réduite)"
+          }
+        }
+      ],
+      "inspection": [
+        {
+          "id": "i1",
+          "method": "document",
+          "tools": [],
+          "text": {
+            "en": "Check the VIN on the manufacturer's recall lookup and ask for proof that the 2020 recall (Peugeot JZR, Citroën/DS HFC) was carried out.",
+            "pt": "Verifique o VIN na consulta de chamadas do fabricante e peça prova de que a chamada de 2020 (Peugeot JZR, Citroën/DS HFC) foi executada.",
+            "ru": "Проверьте VIN в сервисе отзывов производителя и попросите подтверждение, что отзыв 2020 года (Peugeot JZR, Citroën/DS HFC) выполнен.",
+            "uk": "Перевірте VIN у сервісі відкликань виробника та попросіть підтвердження, що відкликання 2020 року (Peugeot JZR, Citroën/DS HFC) виконано.",
+            "fr": "Vérifiez le VIN sur le service de rappel du constructeur et demandez la preuve que le rappel de 2020 (Peugeot JZR, Citroën/DS HFC) a été effectué."
+          },
+          "redFlag": {
+            "en": "Open recall, or no proof that it was done.",
+            "pt": "Chamada pendente ou sem prova de execução.",
+            "ru": "Отзыв не закрыт или нет подтверждения.",
+            "uk": "Відкликання не закрите або немає підтвердження.",
+            "fr": "Rappel ouvert ou aucune preuve de réalisation."
+          }
+        },
+        {
+          "id": "i2",
+          "method": "document",
+          "tools": [],
+          "text": {
+            "en": "Confirm the engine: belt-driven EB2DT / EB2DTS, or the chain-driven engine introduced in 2023, from the engine plate or the registration documents.",
+            "pt": "Confirme o motor: EB2DT / EB2DTS com correia, ou o motor com corrente introduzido em 2023, pela placa do motor ou pelos documentos do veículo.",
+            "ru": "Уточните двигатель: ременной EB2DT / EB2DTS или цепной, появившийся в 2023 году, — по табличке двигателя или документам.",
+            "uk": "Уточніть двигун: ремінний EB2DT / EB2DTS або ланцюговий, що з'явився у 2023 році, — за табличкою двигуна чи документами.",
+            "fr": "Identifiez le moteur : EB2DT / EB2DTS à courroie, ou le moteur à chaîne introduit en 2023, d'après la plaque moteur ou les papiers du véhicule."
+          },
+          "redFlag": null
+        },
+        {
+          "id": "i3",
+          "method": "tool",
+          "tools": [
+            "G-0109-6"
+          ],
+          "text": {
+            "en": "Have the belt width checked through the oil filler opening with the manufacturer's gauge (G-0109-6).",
+            "pt": "Peça a verificação da largura da correia pelo bocal de enchimento de óleo com o calibre do fabricante (G-0109-6).",
+            "ru": "Попросите проверить ширину ремня через маслозаливную горловину калибром производителя (G-0109-6).",
+            "uk": "Попросіть перевірити ширину ременя через оливозаливну горловину калібром виробника (G-0109-6).",
+            "fr": "Faites contrôler la largeur de la courroie par l'orifice de remplissage d'huile avec la jauge du constructeur (G-0109-6)."
+          },
+          "redFlag": {
+            "en": "Belt width outside the specification: belt (and vacuum pump) replacement due. A pass is a screening result only.",
+            "pt": "Largura da correia fora da especificação: substituição da correia (e da bomba de vácuo) necessária. Passar no teste é apenas uma triagem.",
+            "ru": "Ширина ремня вне нормы — нужна замена ремня (и вакуумного насоса). Прохождение проверки — лишь предварительный результат.",
+            "uk": "Ширина ременя поза нормою — потрібна заміна ременя (і вакуумного насоса). Проходження перевірки — лише попередній результат.",
+            "fr": "Largeur de courroie hors spécification : remplacement de la courroie (et de la pompe à vide) nécessaire. Un contrôle réussi n'est qu'un dépistage."
+          }
+        },
+        {
+          "id": "i4",
+          "method": "document",
+          "tools": [],
+          "text": {
+            "en": "Review the service history: oil and filter at least yearly with the recommended oil if the car does under 15,000 km a year, mostly on short trips, and the belt replaced within 6 years / 100,000 km.",
+            "pt": "Analise o histórico de manutenção: óleo e filtro pelo menos uma vez por ano com o óleo recomendado se o automóvel faz menos de 15 000 km por ano, sobretudo em trajetos curtos, e correia substituída dentro de 6 anos / 100 000 km.",
+            "ru": "Изучите историю ТО: замена масла и фильтра рекомендованным маслом не реже раза в год, если машина проезжает меньше 15 000 км в год в основном короткими поездками, и замена ремня в пределах 6 лет / 100 000 км.",
+            "uk": "Перегляньте історію ТО: заміна оливи та фільтра рекомендованою оливою не рідше разу на рік, якщо машина проїжджає менше 15 000 км на рік переважно короткими поїздками, і заміна ременя в межах 6 років / 100 000 км.",
+            "fr": "Examinez l'historique d'entretien : vidange et filtre au moins une fois par an avec l'huile préconisée si le véhicule roule moins de 15 000 km par an, surtout sur trajets courts, et courroie remplacée dans les 6 ans / 100 000 km."
+          },
+          "redFlag": {
+            "en": "Missed yearly oil changes on such a car, or no belt replacement past 6 years / 100,000 km.",
+            "pt": "Mudanças de óleo anuais em falta num automóvel assim, ou correia não substituída após 6 anos / 100 000 km.",
+            "ru": "Пропущенные ежегодные замены масла на такой машине или ремень не менялся после 6 лет / 100 000 км.",
+            "uk": "Пропущені щорічні заміни оливи на такій машині або ремінь не мінявся після 6 років / 100 000 км.",
+            "fr": "Vidanges annuelles manquées sur un tel véhicule, ou courroie non remplacée au-delà de 6 ans / 100 000 km."
+          }
+        },
+        {
+          "id": "i5",
+          "method": "obd",
+          "tools": [
+            "OBD scanner"
+          ],
+          "text": {
+            "en": "Read the fault memory for engine faults and any oil-pressure alerts.",
+            "pt": "Leia a memória de avarias à procura de avarias do motor e de alertas de pressão de óleo.",
+            "ru": "Считайте память ошибок: неисправности двигателя и предупреждения о давлении масла.",
+            "uk": "Зчитайте пам'ять помилок: несправності двигуна й попередження про тиск оливи.",
+            "fr": "Lisez la mémoire de défauts : défauts moteur et alertes de pression d'huile."
+          },
+          "redFlag": {
+            "en": "Any oil-pressure or valve-timing fault: have a workshop diagnose it before deciding to buy.",
+            "pt": "Qualquer avaria de pressão de óleo ou de distribuição: peça um diagnóstico em oficina antes de decidir comprar.",
+            "ru": "Любая ошибка давления масла или фаз газораспределения — до решения о покупке сделайте диагностику в сервисе.",
+            "uk": "Будь-яка помилка тиску оливи чи фаз газорозподілу — перед рішенням про купівлю зробіть діагностику в сервісі.",
+            "fr": "Tout défaut de pression d'huile ou de calage : faites faire un diagnostic en atelier avant de décider d'acheter."
+          }
+        },
+        {
+          "id": "i6",
+          "method": "document",
+          "tools": [],
+          "text": {
+            "en": "Ask about the service history and keep the invoices: the manufacturer's extended cover asks for maintenance to the recommended plan, with diagnosis and repair done in the brand network.",
+            "pt": "Pergunte pelo histórico de manutenção e guarde as faturas: a cobertura alargada do fabricante pede manutenção segundo o plano recomendado, com diagnóstico e reparação feitos na rede da marca.",
+            "ru": "Спросите историю обслуживания и сохраните счета: продлённое покрытие производителя предполагает ТО по рекомендованному плану, а диагностику и ремонт — в сети марки.",
+            "uk": "Запитайте історію обслуговування й збережіть рахунки: продовжене покриття виробника передбачає ТО за рекомендованим планом, а діагностику й ремонт — у мережі марки.",
+            "fr": "Demandez l'historique d'entretien et conservez les factures : la prise en charge étendue du constructeur suppose un entretien conforme au plan préconisé, avec diagnostic et réparation dans le réseau de la marque."
+          },
+          "redFlag": {
+            "en": "Maintenance plan not followed, or repairs done outside the brand network: the extended cover may be refused.",
+            "pt": "Plano de manutenção não cumprido, ou reparações feitas fora da rede da marca: a cobertura alargada pode ser recusada.",
+            "ru": "План ТО не соблюдался или ремонт делали вне сети марки — в продлённом покрытии могут отказать.",
+            "uk": "План ТО не дотримувався або ремонт робили поза мережею марки — у продовженому покритті можуть відмовити.",
+            "fr": "Plan d'entretien non respecté, ou réparations faites hors du réseau de la marque : la prise en charge étendue peut être refusée."
+          }
+        }
+      ],
+      "repair": {
+        "remedy": {
+          "en": "Recall remedy: engine control unit update (earlier oil-pressure warning), belt width check, vacuum pump replacement, and cleaning or replacement of the oil pump strainer and timing solenoids as needed. The belt interval was reduced to 6 years / 100,000 km.",
+          "pt": "Solução da chamada: atualização da unidade de controlo do motor (aviso de pressão de óleo mais cedo), verificação da largura da correia, substituição da bomba de vácuo e limpeza ou substituição do filtro da bomba de óleo e das eletroválvulas, conforme necessário. O intervalo da correia foi reduzido para 6 anos / 100 000 km.",
+          "ru": "Мероприятия по отзыву: обновление ЭБУ двигателя (более раннее предупреждение о давлении масла), проверка ширины ремня, замена вакуумного насоса, при необходимости очистка или замена сетки маслозаборника и электроклапанов фаз. Интервал замены ремня сокращён до 6 лет / 100 000 км.",
+          "uk": "Заходи за відкликанням: оновлення ЕБК двигуна (раніше попередження про тиск оливи), перевірка ширини ременя, заміна вакуумного насоса, за потреби очищення або заміна сітки оливоприймача й електроклапанів фаз. Інтервал заміни ременя скорочено до 6 років / 100 000 км.",
+          "fr": "Remède du rappel : mise à jour du calculateur moteur (alerte de pression d'huile plus précoce), contrôle de la largeur de courroie, remplacement de la pompe à vide, et nettoyage ou remplacement de la crépine de pompe à huile et des électrovannes selon le cas. L'intervalle de la courroie a été ramené à 6 ans / 100 000 km."
+        },
+        "cost": null,
+        "worstCase": null,
+        "manufacturerProgramme": {
+          "evidence": [
+            "ev_pt_e09",
+            "ev_pt_e10",
+            "ev_pt_e12",
+            "ev_pt_e13"
+          ],
+          "text": {
+            "en": "Since 18 March 2024 Stellantis covers the belt and excess oil consumption up to 10 years or 175,000 km (one press report says 180,000 km), provided the maintenance plan was followed and diagnosis and repair are done in the brand network. A compensation platform opened on 16 January 2025 for repairs paid between 1 January 2022 and 31 December 2024.",
+            "pt": "Desde 18 de março de 2024, a Stellantis cobre a correia e o consumo excessivo de óleo até 10 anos ou 175 000 km (uma notícia de imprensa indica 180 000 km), desde que o plano de manutenção tenha sido cumprido e o diagnóstico e a reparação sejam feitos na rede da marca. Uma plataforma de indemnização abriu a 16 de janeiro de 2025 para reparações pagas entre 1 de janeiro de 2022 e 31 de dezembro de 2024.",
+            "ru": "С 18 марта 2024 года Stellantis покрывает ремень и повышенный расход масла до 10 лет или 175 000 км (в одной публикации — 180 000 км) при соблюдении плана ТО, диагностике и ремонте в сети марки. 16 января 2025 года открыта платформа компенсаций за ремонты, оплаченные с 1 января 2022 по 31 декабря 2024 года.",
+            "uk": "З 18 березня 2024 року Stellantis покриває ремінь і підвищену витрату оливи до 10 років або 175 000 км (в одній публікації — 180 000 км) за дотримання плану ТО, діагностики й ремонту в мережі марки. 16 січня 2025 року відкрито платформу компенсацій за ремонти, оплачені з 1 січня 2022 по 31 грудня 2024 року.",
+            "fr": "Depuis le 18 mars 2024, Stellantis prend en charge la courroie et la surconsommation d'huile jusqu'à 10 ans ou 175 000 km (un article de presse indique 180 000 km), à condition que le plan d'entretien ait été respecté et que le diagnostic et la réparation soient faits dans le réseau de la marque. Une plate-forme d'indemnisation a ouvert le 16 janvier 2025 pour les réparations payées entre le 1er janvier 2022 et le 31 décembre 2024."
+          }
+        }
+      },
+      "evidence": [
+        "ev_pt_e01",
+        "ev_pt_e02",
+        "ev_pt_e03",
+        "ev_pt_e04",
+        "ev_pt_e05",
+        "ev_pt_e06",
+        "ev_pt_e07",
+        "ev_pt_e08",
+        "ev_pt_e09",
+        "ev_pt_e10",
+        "ev_pt_e12",
+        "ev_pt_e13",
+        "ev_pt_e14",
+        "ev_pt_e17",
+        "ev_pt_e18"
+      ],
+      "prevalence": [
+        "pv_pt_none",
+        "pv_pt_recall_fr",
+        "pv_pt_claims"
+      ]
+    }
+  ]
+}

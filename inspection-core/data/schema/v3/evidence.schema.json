@@ -1,0 +1,359 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elgarde.com/schema/v3/evidence.schema.json",
+  "title": "Elgarde known defects v3 — evidence",
+  "description": "The sources behind the claims, one record per document. Entity objects allow additional properties on purpose: new fields arrive in minor releases. Only the condition language is closed.",
+  "type": "object",
+  "required": [
+    "format",
+    "evidence"
+  ],
+  "properties": {
+    "format": {
+      "const": 3
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "i18n": {
+      "description": "Text per language. 'en' is always present; other languages are added as they are authored.",
+      "type": "object",
+      "required": [
+        "en"
+      ],
+      "propertyNames": {
+        "pattern": "^[a-z]{2}$"
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+    },
+    "strings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "condition": {
+      "description": "Closed condition language. Keys of one object are ANDed. No regular expressions and no substring matching: names are normalised through vehicles.json first.",
+      "type": "object",
+      "properties": {
+        "all": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/condition"
+          }
+        },
+        "any": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/condition"
+          }
+        },
+        "not": {
+          "$ref": "#/$defs/condition"
+        },
+        "make": {
+          "$ref": "#/$defs/strings"
+        },
+        "model": {
+          "$ref": "#/$defs/strings"
+        },
+        "generation": {
+          "$ref": "#/$defs/strings"
+        },
+        "engine": {
+          "$ref": "#/$defs/refSelector"
+        },
+        "gearbox": {
+          "$ref": "#/$defs/refSelector"
+        },
+        "fuel": {
+          "$ref": "#/$defs/strings"
+        },
+        "market": {
+          "$ref": "#/$defs/strings"
+        },
+        "modelYear": {
+          "$ref": "#/$defs/yearRange"
+        },
+        "productionDate": {
+          "$ref": "#/$defs/monthRange"
+        }
+      },
+      "additionalProperties": false
+    },
+    "yearMonth": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])$"
+    },
+    "monthRange": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "$ref": "#/$defs/yearMonth"
+        },
+        "to": {
+          "$ref": "#/$defs/yearMonth"
+        }
+      },
+      "additionalProperties": false
+    },
+    "yearRange": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "integer"
+        },
+        "to": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "refSelector": {
+      "description": "Match a catalogue entry by id, family or code.",
+      "type": "object",
+      "properties": {
+        "ids": {
+          "$ref": "#/$defs/strings"
+        },
+        "family": {
+          "$ref": "#/$defs/strings"
+        },
+        "codes": {
+          "$ref": "#/$defs/strings"
+        },
+        "type": {
+          "$ref": "#/$defs/strings"
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "tier",
+        "defects",
+        "supports",
+        "source",
+        "note",
+        "confidence",
+        "review"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^ev_[a-z0-9_]+$"
+        },
+        "type": {
+          "enum": [
+            "recall",
+            "tsb",
+            "manufacturer_statement",
+            "warranty_extension",
+            "regulator_investigation",
+            "court_decision",
+            "type_approval_doc",
+            "specialist_press",
+            "press",
+            "technical_analysis",
+            "survey_statistic",
+            "dataset",
+            "forum_thread",
+            "photo"
+          ]
+        },
+        "tier": {
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "description": "1 primary source with legal weight; 2 specialist press or independent analysis; 3 signal only."
+        },
+        "defects": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "supports": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "existence",
+              "mechanism",
+              "applicability",
+              "symptom",
+              "inspection",
+              "cost",
+              "prevalence",
+              "remedy",
+              "manufacturer_acknowledgement",
+              "legal_outcome"
+            ]
+          }
+        },
+        "scope": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/condition"
+            }
+          ],
+          "description": "What the document actually covers, often narrower than the defect."
+        },
+        "source": {
+          "type": "object",
+          "required": [
+            "publisher",
+            "title",
+            "url",
+            "retrievedAt",
+            "language",
+            "license",
+            "reuse"
+          ],
+          "properties": {
+            "publisher": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https?://"
+            },
+            "identifier": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "publishedDate": {
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/date"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "retrievedAt": {
+              "$ref": "#/$defs/date"
+            },
+            "language": {
+              "type": "string",
+              "pattern": "^[a-z]{2}$"
+            },
+            "archive": {
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "license": {
+              "type": "string",
+              "description": "A key of release.json 'licenses'."
+            },
+            "reuse": {
+              "enum": [
+                "republish",
+                "cite",
+                "link_only"
+              ]
+            },
+            "status": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        },
+        "quote": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "required": [
+                "text",
+                "lang"
+              ],
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "lang": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            }
+          ]
+        },
+        "translations": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "note": {
+          "$ref": "#/$defs/i18n"
+        },
+        "confidence": {
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "review": {
+          "type": "object",
+          "required": [
+            "status",
+            "at"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "source_verified",
+                "approved",
+                "needs_review"
+              ],
+              "description": "source_verified: an automated check against the opened source, no human sign-off. approved: a named human reviewed it."
+            },
+            "by": {
+              "type": "string"
+            },
+            "at": {
+              "$ref": "#/$defs/date"
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

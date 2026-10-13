@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elgarde.com/schema/v3/disclaimer.schema.json",
+  "title": "Elgarde known defects v3 — disclaimer",
+  "description": "The wording that must accompany v3 dossiers wherever they are shown.",
+  "type": "object",
+  "required": [
+    "version",
+    "updatedAt",
+    "contact",
+    "text"
+  ],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "updatedAt": {
+      "$ref": "#/$defs/date"
+    },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "issues": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "text": {
+      "$ref": "#/$defs/i18n"
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "i18n": {
+      "description": "Text per language. 'en' is always present; other languages are added as they are authored.",
+      "type": "object",
+      "required": [
+        "en"
+      ],
+      "propertyNames": {
+        "pattern": "^[a-z]{2}$"
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+    }
+  }
+}

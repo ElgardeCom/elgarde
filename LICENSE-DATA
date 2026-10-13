@@ -1,5 +1,5 @@
-The datasets in this repository — data/checklist.json, data/defects.json and
-conformance/vectors.json — are licensed under the Creative Commons
+The datasets in this repository — data/checklist.json, data/defects.json,
+every file in data/v3/ (the known-defects v3 dossiers) and conformance/vectors.json — are licensed under the Creative Commons
 Attribution 4.0 International licence (CC-BY-4.0).
 
     https://creativecommons.org/licenses/by/4.0/
@@ -11,6 +11,23 @@ appropriate credit:
 
 The Elgarde API returns this attribution block with every response; keeping it
 satisfies the licence.
+
+Third-party material in data/v3/. Some evidence records reproduce recall records
+from RappelConso (DGCCRF, France), which are reused under the Licence Ouverte /
+Open Licence 2.0 (https://www.etalab.gouv.fr/licence-ouverte-open-licence/):
+
+    Contains recall records from RappelConso (DGCCRF, France), reused under the
+    Licence Ouverte / Open Licence 2.0.
+
+Each evidence record names the licence of its source in source.license; the
+definitions are in data/v3/release.json ("licenses"). Records marked
+reuse = "cite" only point to a source and quote nothing beyond a short extract;
+the rights in those sources remain with their publishers.
+
+The disclaimer in data/v3/disclaimer.json (available in five languages) applies to
+every v3 dossier and must accompany the data wherever it is shown. In short: an
+entry describes a known weak point of a model, engine or gearbox, not any
+individual car, and the data is provided as is, without warranty.
 
 The data describes known weak points on vehicle models and generic inspection
 items. It is not a certified inspection, not professional advice, and never a
