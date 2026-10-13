@@ -44,8 +44,8 @@ for (const group of localize(groups, 'pt')) {
 }
 ```
 
-Checklist content is authored in **English, Portuguese, Russian, Ukrainian and French**; defect
-text in English and Portuguese, falling back to English.
+Content, defect texts included, is authored in **English, Portuguese, Russian, Ukrainian and
+French**; any other language falls back to English.
 
 ### Score it
 
@@ -78,6 +78,50 @@ matchDefectRule('Peugeot', '208').defects.map((d) => d.id);
 ```
 
 `null` means nothing is curated for that model yet — **not** that the model is trouble-free.
+
+## Known defects v3
+
+A v2 rule says which weak points are known on a *model*. A v3 dossier also says which cars of
+that model it concerns — the engine, the gearbox, the build dates — so the list can be narrowed
+to one particular car. Give whatever facts you have; each dossier on the model comes back as
+`applies`, `possible` (with the facts that would settle it) or `not_applicable` (with the facts
+that ruled it out).
+
+```js
+import { resolveDefects, assembleV3, localize } from 'elgarde-inspection';
+
+resolveDefects({ make: 'Peugeot', model: '208', engineCode: 'HNZ', productionDate: '2015-06' });
+// [{ defectId: 'puretech.wetbelt', status: 'applies', needs: [], excludedBy: [], warnings: [] }]
+
+resolveDefects({ make: 'VW', model: 'Golf', year: 2014 }).map((r) => [r.defectId, r.status, r.needs]);
+// [['dsg.dq200', 'possible', ['gearbox']],
+//  ['tdi.egr', 'possible', ['engineCode']],
+//  ['tsi.chain', 'possible', ['engineCode']],
+//  ['tsi.oil', 'not_applicable', []]]
+```
+
+Facts use the API's names: `make`, `model`, `year`, `productionDate` (`YYYY-MM`), `fuel`,
+`engineCode`, `engineFamily`, `gearbox` (`manual` / `automatic` / `dct` / `cvt`), `gearboxCode`,
+`cc`, `powerKw` and `vin`. Unknown stays unknown: a missing fact makes a dossier `possible`, never
+`not_applicable`. The VIN is only used offline for its first three characters, to find the make.
+
+`assembleV3(facts)` builds the checklist the same way, with the defects group narrowed to the car.
+Its items keep their v2 ids, so stored answers stay valid, and carry `status`, `needs`,
+`dossierId` and a `hint` on who is affected:
+
+```js
+const groups = assembleV3({ make: 'Volkswagen', model: 'Golf', fuel: 'petrol', year: 2012 });
+localize(groups, 'en').at(-1).children[0].items.map((i) => [i.id, i.status, i.needs]);
+// [['defect.dsg.dq200', 'possible', ['gearbox']],
+//  ['defect.tsi.chain', 'possible', ['engineCode', 'productionDate']],
+//  ['defect.tsi.oil', 'possible', ['engineCode', 'productionDate']]]
+```
+
+A renamed defect keeps its old id as an alias: `servedId('m271.balanceshaft')` is
+`'m271.timingchain'`. The package bundles the dossiers and the vehicle dictionary
+(`elgarde-inspection/data/v3/defects.json`, `…/v3/vehicles.json`); the sources, archived
+evidence and prevalence behind each dossier are served by the free API at
+`https://api.elgarde.com/api/v1/defects/{id}`.
 
 TypeScript types ship with the package. The raw canon is importable too:
 `elgarde-inspection/data/checklist.json`.
